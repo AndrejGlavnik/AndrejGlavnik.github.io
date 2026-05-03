@@ -8,6 +8,22 @@
   <title>Recommendations | Andrej Glavnik</title>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .recommendations-list { display: grid; gap: 18px; }
+    .recommendation-full { border-radius: var(--radius-lg); padding: clamp(22px, 4vw, 34px); }
+    .recommendation-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 14px; }
+    .recommendation-head h3 { margin: 0 0 8px; font-size: 1.35rem; letter-spacing: -0.03em; }
+    .recommendation-head p { margin: 0; font-size: 0.95rem; }
+    .recommendation-badge { border-radius: 999px; padding: 8px 11px; color: var(--blue); background: rgba(23,117,218,.09); font-weight: 750; font-size: .82rem; white-space: nowrap; }
+    .recommendation-full blockquote { margin: 0; color: rgba(11,16,32,.82); line-height: 1.72; font-size: 1.02rem; }
+    .pdf-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    .pdf-frame-wrap { overflow: hidden; border-radius: var(--radius-lg); margin-top: 22px; background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.78); }
+    .pdf-frame { width: 100%; min-height: 720px; border: 0; display: block; }
+    .proof-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 18px; align-items: stretch; }
+    .proof-note { border-radius: var(--radius-lg); padding: 24px; }
+    @media (max-width: 980px) { .proof-grid { grid-template-columns: 1fr; } .pdf-frame { min-height: 560px; } }
+    @media (max-width: 560px) { .recommendation-head { flex-direction: column; } .recommendation-badge { white-space: normal; } .pdf-actions .button { width: 100%; } .pdf-frame { min-height: 440px; } }
+  </style>
 </head>
 <body>
   <div class="background-orb orb-one"></div>
@@ -19,10 +35,10 @@
       <span>Andrej Glavnik</span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="index.html#work">Work</a>
+      <a href="projects.html">Projects</a>
       <a class="active" href="recommendations.html">Recommendations</a>
-      <a href="index.html#licenses">Licenses</a>
       <a href="cv.html">CV</a>
+      <a href="index.html#licenses">Licenses</a>
     </nav>
     <a class="nav-cta" href="mailto:andrejglavnik1@gmail.com">Contact</a>
   </header>
@@ -31,76 +47,74 @@
     <section class="hero narrow reveal" id="top">
       <p class="eyebrow">Proof of work</p>
       <h1>Recommendations on my work.</h1>
-      <p class="hero-text">A dedicated page for written recommendations, LinkedIn feedback and formal proof of impact from colleagues, managers and collaborators.</p>
+      <p class="hero-text">Full recommendation list from colleagues, leaders and collaborators, plus a formal recommendation letter from Emil Korpar, Director of Support at Databox.</p>
       <div class="hero-actions">
-        <a class="button primary" href="mailto:andrejglavnik1@gmail.com">Contact me</a>
-        <a class="button secondary" href="cv.html">Open CV</a>
+        <a class="button liquid" href="#formal-letter">Open Emil letter</a>
+        <a class="button secondary" href="#all-recommendations">View all recommendations</a>
+        <a class="button secondary" href="mailto:andrejglavnik1@gmail.com">Contact me</a>
       </div>
     </section>
 
-    <section class="section reveal" aria-labelledby="letter-title">
+    <section class="section reveal" id="formal-letter" aria-labelledby="letter-title">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Formal letter</p>
-          <h2 id="letter-title">Letter of recommendation</h2>
+          <p class="eyebrow">Formal proof of work</p>
+          <h2 id="letter-title">Emil Korpar recommendation letter</h2>
         </div>
       </div>
-      <article class="glass-card letter-card">
-        <div class="letter-meta">
-          <span>September 29, 2025</span>
-          <span>Emil Korpar, Director of Support, Databox</span>
-        </div>
-        <h3>Recommendation from direct management at Databox</h3>
-        <p>Emil Korpar recommended Andrej Glavnik after directly managing him at Databox for two years, highlighting technical troubleshooting, support process improvement, knowledge sharing, sales development support and measurable impact on customer experience and business outcomes.</p>
-        <blockquote>“Andrej’s strong technical background stood out. His ability to troubleshoot complex cases quickly and collaborate effectively with our technical support team has been instrumental in improving the efficiency of our processes and ensuring customers received timely solutions.”</blockquote>
-        <blockquote>“Andrej’s blend of technical skills, dedication, and team-first mindset makes him an invaluable asset.”</blockquote>
-      </article>
+      <div class="proof-grid">
+        <article class="glass-card letter-card">
+          <div class="letter-meta">
+            <span>September 29, 2025</span>
+            <span>Emil Korpar, Director of Support, Databox</span>
+          </div>
+          <h3>Formal recommendation from direct management at Databox</h3>
+          <p>Emil Korpar directly managed Andrej at Databox for two years and highlighted his technical troubleshooting, support process improvement, team knowledge sharing, Sales Development support and measurable impact on customer experience and business outcomes.</p>
+          <blockquote>“Andrej’s strong technical background stood out. His ability to troubleshoot complex cases quickly and collaborate effectively with our technical support team has been instrumental in improving the efficiency of our processes and ensuring customers received timely solutions.”</blockquote>
+          <blockquote>“Andrej’s blend of technical skills, dedication, and team-first mindset makes him an invaluable asset.”</blockquote>
+          <div class="pdf-actions">
+            <a class="button liquid" href="assets/docs/emil-korpar-recommendation.pdf" target="_blank" rel="noopener">Open full PDF</a>
+            <a class="button secondary" href="assets/docs/emil-korpar-recommendation.pdf" download>Download PDF</a>
+          </div>
+        </article>
+        <aside class="glass-card proof-note">
+          <p class="eyebrow">Why this matters</p>
+          <h3>Manager-verified impact</h3>
+          <p>This letter is positioned as formal proof of work because it comes from direct management and connects technical skill with process improvement, customer outcomes and team enablement.</p>
+          <div class="project-meta">
+            <span class="project-pill">Technical support</span>
+            <span class="project-pill">Process improvement</span>
+            <span class="project-pill">Customer outcomes</span>
+            <span class="project-pill">Team enablement</span>
+          </div>
+        </aside>
+      </div>
+      <div class="pdf-frame-wrap glass-card">
+        <iframe class="pdf-frame" src="assets/docs/emil-korpar-recommendation.pdf" title="Emil Korpar recommendation letter PDF"></iframe>
+      </div>
     </section>
 
-    <section class="section" aria-labelledby="linkedin-title">
+    <section class="section" id="all-recommendations" aria-labelledby="all-title">
       <div class="section-heading reveal">
         <div>
-          <p class="eyebrow">LinkedIn recommendations</p>
-          <h2 id="linkedin-title">Themes repeated across peer and leadership feedback</h2>
+          <p class="eyebrow">All recommendations</p>
+          <h2 id="all-title">Listed feedback from colleagues and collaborators</h2>
         </div>
       </div>
-      <div class="card-grid three">
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“A great colleague, fast paced and always eager to learn and help.”</blockquote>
-          <figcaption>Roberta Medeiros, Databox Expert</figcaption>
-        </figure>
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“He has a unique ability to quickly understand complex questions and steer conversations toward resolution.”</blockquote>
-          <figcaption>Andrej Bačić, Manager of Sales Development Team</figcaption>
-        </figure>
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“A proactive person, organized and attentive, especially when working on technical support topics.”</blockquote>
-          <figcaption>Dragana Gajić, Digital Account Management</figcaption>
-        </figure>
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“Calm, supportive, solution focused and always ready to jump in and help.”</blockquote>
-          <figcaption>Mirabela Ionesco, Account Manager</figcaption>
-        </figure>
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“Strong technical knowledge and adaptability, with an ability to explain complex topics clearly.”</blockquote>
-          <figcaption>Jelena Cvetković, CX and Support Ops</figcaption>
-        </figure>
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“Deep product knowledge, skilled at helping customers with API and SQL integrations.”</blockquote>
-          <figcaption>Peter Caputa, CEO at Databox</figcaption>
-        </figure>
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“A trusted partner for both customers and colleagues, approaching every challenge with a positive attitude and a solution-oriented mindset.”</blockquote>
-          <figcaption>Tory Ferrall, Director of Revenue Operations</figcaption>
-        </figure>
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“A fantastic communicator and team player.”</blockquote>
-          <figcaption>Dragana Prica, Technical Support</figcaption>
-        </figure>
-        <figure class="glass-card quote-card reveal">
-          <blockquote>“Organized, fast to learn and focused on helping colleagues improve and succeed.”</blockquote>
-          <figcaption>Katarina Jovanović, Customer Support Specialist</figcaption>
-        </figure>
+      <div class="recommendations-list">
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Roberta Medeiros</h3><p>Databox Expert, Level 2 Customer Support Specialist at Databox</p></div><span class="recommendation-badge">Colleague feedback</span></div><blockquote>Andrej has always proven to be a great colleague, fast paced and always eager to learn and help. He is described as someone who can work under pressure and achieve strong results while staying on top of his targets.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Andrej Bačić</h3><p>Manager of the Sales Development Team, Tech Partnerships Pipeline and Revenue Systems</p></div><span class="recommendation-badge">Manager feedback</span></div><blockquote>During Andrej’s time on the Business Development team, he consistently used his technical background to support inbound leads, understand complex questions quickly, steer conversations toward resolution and deliver a high level of customer satisfaction. He is highlighted for technical curiosity, fast learning and a positive attitude.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Stefan Guslov</h3><p>Technical Sales Consultant at Databox</p></div><span class="recommendation-badge">Peer feedback</span></div><blockquote>Stefan described Andrej as detail-oriented, reliable and technically strong, especially during onboarding and knowledge sharing. He highlighted Andrej’s ability to handle multiple requests, ask the right questions and resolve issues quickly.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Mirabela Ionesco</h3><p>Account Manager, Customer Success</p></div><span class="recommendation-badge">Customer success feedback</span></div><blockquote>Mirabela highlighted Andrej’s strong technical knowledge, solution-focused approach and readiness to help. She described him as patient, clear in explanations, thorough in follow-ups and trusted by customers.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Nicole Castillo</h3><p>GTM Specialist, Marketing Analyst and Project Manager</p></div><span class="recommendation-badge">Cross-functional feedback</span></div><blockquote>Nicole described Andrej as driven and result-oriented, noting that he took initiative seriously and brought sales-savvy communication into work that required customer story collection and collaboration.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Dragana Gajić</h3><p>Digital Account Management professional</p></div><span class="recommendation-badge">Project collaboration</span></div><blockquote>Dragana described Andrej as a great professional and a pleasure to work with on Databox SaaS projects, highlighting him as thoughtful, positive and someone who raises the bar for others around him.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Tory Ferrall</h3><p>Director of Revenue Operations</p></div><span class="recommendation-badge">Leadership feedback</span></div><blockquote>Tory highlighted Andrej’s strong technical foundation, proactive problem-solving and commitment to timely, accurate and thoughtful support. He described Andrej as collaborative, customer-focused and a trusted partner for customers and colleagues.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Dragana Prica</h3><p>Technical Support and Data Solutions</p></div><span class="recommendation-badge">Mentorship feedback</span></div><blockquote>Dragana described Andrej as deeply knowledgeable, fast at understanding complex topics and capable of sharing practical knowledge. She also highlighted him as a strong communicator and team player.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Emil Korpar</h3><p>Director of Support at Databox</p></div><span class="recommendation-badge">Direct manager feedback</span></div><blockquote>Emil highlighted Andrej’s technical skills, dedication and team-first mindset. He credited Andrej with improving support processes, sharing knowledge, supporting Sales Development and creating measurable impact on customer experience and business outcomes.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Jelena Cvetković</h3><p>CX and Support Ops, Writer, former coworker</p></div><span class="recommendation-badge">Peer feedback</span></div><blockquote>Jelena emphasized Andrej’s professionalism, dedication, technical knowledge and adaptability. She described him as a quick learner who shares insight clearly, works well under pressure and supports the team with a calm, positive approach.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Katarina Jovanović</h3><p>Customer Support Specialist at Databox</p></div><span class="recommendation-badge">Colleague feedback</span></div><blockquote>Katarina described Andrej as quick, results-oriented and helpful. She highlighted his ability to use Sales Development experience to teach the team, share insights and help others improve and succeed.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Peter Caputa</h3><p>CEO at Databox</p></div><span class="recommendation-badge">Executive feedback</span></div><blockquote>Peter described Andrej as a valuable member of the customer support team with deep product knowledge, especially around API and SQL integrations. He highlighted Andrej’s ability to resolve tickets quickly and offer proactive guidance to customers.</blockquote></article>
+        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Andrea Bučko</h3><p>Professional recommendation</p></div><span class="recommendation-badge">Professional feedback</span></div><blockquote>Andrea recommended Andrej as hardworking, dedicated and professional, with cyber security expertise, strong communication, teamwork, attention to detail and effective problem-solving.</blockquote></article>
       </div>
     </section>
 
