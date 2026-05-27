@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Original GitHub portfolio projects by Andrej Glavnik: Analytics QA Toolkit, Datorama Stream Validator, eCommerce KPI Framework and analytics governance tools." />
+  <meta name="description" content="Original GitHub portfolio projects by Andrej Glavnik: analytics QA, GA4 tracking validation, Datorama governance, eCommerce KPI logic, vendor handover and dashboard governance." />
   <meta property="og:title" content="Projects | Andrej Glavnik" />
-  <meta property="og:description" content="Practical analytics operations tools for dashboard QA, Datorama naming validation and eCommerce KPI documentation." />
+  <meta property="og:description" content="Practical analytics operations tools for dashboard QA, GA4 validation, Datorama governance, vendor handover and eCommerce KPI documentation." />
   <meta property="og:image" content="https://andrejglavnik.github.io/assets/img/og-card.svg" />
   <title>Projects | Andrej Glavnik</title>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260527" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260527-dark" />
 </head>
 <body>
   <header class="site-header" data-header>
@@ -23,6 +23,9 @@
         <a href="blog.html">Blog</a>
         <a href="book.html">Contact</a>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle dark mode" data-theme-toggle>
+        <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
+      </button>
       <a class="nav-cta" href="book.html">Send brief</a>
     </div>
   </header>
@@ -37,7 +40,7 @@
     <section class="section">
       <div class="grid three">
         <article class="project-card" id="analytics-qa-toolkit">
-          <span class="kicker">Built first</span>
+          <span class="kicker">Live repo</span>
           <h3>Analytics QA Toolkit</h3>
           <p>Python/pandas toolkit that scans CSV or Excel dashboard exports for missing dates, null KPIs, duplicate rows, abnormal spikes, broken mappings and inconsistent naming.</p>
           <div class="tag-list"><span>Python</span><span>pandas</span><span>CSV/XLSX</span><span>QA report</span></div>
@@ -47,7 +50,7 @@
         </article>
 
         <article class="project-card" id="datorama-stream-validator">
-          <span class="kicker">Built first</span>
+          <span class="kicker">Live repo</span>
           <h3>Datorama Data Stream Naming Validator</h3>
           <p>Validates stream naming conventions, country/category/source fields, campaign naming and taxonomy drift before dashboard operations become harder to maintain.</p>
           <div class="tag-list"><span>Datorama</span><span>YAML rules</span><span>Governance</span><span>QA</span></div>
@@ -57,12 +60,42 @@
         </article>
 
         <article class="project-card" id="ecommerce-kpi-framework">
-          <span class="kicker">Built first</span>
+          <span class="kicker">Live repo</span>
           <h3>eCommerce KPI Framework</h3>
           <p>Documents KPI definitions, mock datasets, calculated metric logic and sample reporting checks for sessions, clicks, conversion rate, orders, revenue and retailer sales.</p>
           <div class="tag-list"><span>eCommerce</span><span>KPI logic</span><span>Python</span><span>Documentation</span></div>
           <footer>
             <a class="button secondary" href="https://github.com/AndrejGlavnik/ecommerce-kpi-framework" target="_blank" rel="noopener">GitHub repo</a>
+          </footer>
+        </article>
+
+        <article class="project-card" id="ga4-tracking-validation-framework">
+          <span class="kicker">Live repo</span>
+          <h3>GA4 Tracking Validation Framework</h3>
+          <p>Validates event taxonomy, conversion flags, ecommerce parameters, page types, UTM completeness and duplicate event IDs before reporting depends on GA4 data.</p>
+          <div class="tag-list"><span>GA4</span><span>Tracking QA</span><span>YAML rules</span><span>Python</span></div>
+          <footer>
+            <a class="button secondary" href="https://github.com/AndrejGlavnik/ga4-tracking-validation-framework" target="_blank" rel="noopener">GitHub repo</a>
+          </footer>
+        </article>
+
+        <article class="project-card" id="vendor-handover-tracker">
+          <span class="kicker">Live repo</span>
+          <h3>Vendor Handover Tracker</h3>
+          <p>Tracks analytics handover owners, access gaps, dependencies, due dates, risk levels and next actions so vendor transitions are visible and survivable.</p>
+          <div class="tag-list"><span>Vendor work</span><span>Access gaps</span><span>Risk register</span><span>PM</span></div>
+          <footer>
+            <a class="button secondary" href="https://github.com/AndrejGlavnik/vendor-handover-tracker" target="_blank" rel="noopener">GitHub repo</a>
+          </footer>
+        </article>
+
+        <article class="project-card" id="dashboard-governance-playbook">
+          <span class="kicker">Live repo</span>
+          <h3>Dashboard Governance Playbook</h3>
+          <p>Documentation-first governance system for KPI definitions, dashboard owners, filter logic, QA evidence, stakeholder sign-off and monthly reporting workflows.</p>
+          <div class="tag-list"><span>Governance</span><span>KPI definitions</span><span>Sign-off</span><span>Playbook</span></div>
+          <footer>
+            <a class="button secondary" href="https://github.com/AndrejGlavnik/dashboard-governance-playbook" target="_blank" rel="noopener">GitHub repo</a>
           </footer>
         </article>
       </div>
@@ -71,15 +104,15 @@
     <section class="section-band">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Next portfolio repos</p>
-          <h2 class="section-title">A sustainable GitHub roadmap.</h2>
+          <p class="eyebrow">Portfolio system</p>
+          <h2 class="section-title">The repos map to real analytics delivery problems.</h2>
         </div>
-        <p>These future repos will extend the same positioning without becoming generic beginner projects.</p>
+        <p>Each repo is intentionally small, practical and business-facing, so the portfolio supports analytics PM positioning instead of pretending to be a pure software engineering profile.</p>
       </div>
       <div class="grid three">
-        <div class="card"><h3>GA4 Tracking Validation Framework</h3><p>Event readiness templates, ecommerce validation examples, UTM QA and sample tracking reports.</p></div>
-        <div class="card"><h3>Vendor Handover Tracker</h3><p>Project-management template for access gaps, dependencies, risks, owners and next actions.</p></div>
-        <div class="card"><h3>Dashboard Governance Playbook</h3><p>Documentation-heavy repo for naming, filters, QA checklist, stakeholder sign-off and monthly workflows.</p></div>
+        <div class="card"><h3>QA and trust</h3><p>Analytics QA Toolkit, GA4 Validation Framework and Datorama Validator show how I turn reporting risk into evidence.</p></div>
+        <div class="card"><h3>Definitions and governance</h3><p>eCommerce KPI Framework and Dashboard Governance Playbook show how I structure metrics, filters and sign-off.</p></div>
+        <div class="card"><h3>Delivery ownership</h3><p>Vendor Handover Tracker shows how I manage owners, access gaps, dependencies and operational follow-through.</p></div>
       </div>
     </section>
 
@@ -107,6 +140,6 @@
     <span>© <span data-year></span> Andrej Glavnik</span>
     <span><a href="https://github.com/AndrejGlavnik" target="_blank" rel="noopener">GitHub</a> · <a href="blog.html">Blog</a></span>
   </footer>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=20260527-dark"></script>
 </body>
 </html>
