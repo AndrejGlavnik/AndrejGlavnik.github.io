@@ -1,46 +1,34 @@
 # Andrej Glavnik Portfolio Website
 
-Minimal Apple-like liquid-glass portfolio website for GitHub Pages.
+Static GitHub Pages portfolio for Andrej Glavnik, focused on analytics operations, dashboard governance, tracking QA, Datorama / Salesforce Marketing Cloud Intelligence operations and technical project management for BI/data workstreams.
+
+## Live Site
+
+https://andrejglavnik.github.io/
 
 ## Structure
 
-- `index.html` — landing page with positioning, work, recommendations and licenses
-- `cv.html` — CV page with profile, highlights, projects, skills and certificates
-- `assets/css/styles.css` — full visual system
-- `assets/js/main.js` — reveal animation, header state and print CV button
-- `404.html` — fallback page
-- `.nojekyll` — disables Jekyll processing on GitHub Pages
+- `index.html` - conversion-focused homepage
+- `services.html` - freelance, consulting and recruiter service positioning
+- `case-studies.html` - confidentiality-safe case study drafts
+- `projects.html` - GitHub portfolio project overview
+- `blog.html` - analytics QA toolkit article
+- `book.html` - project brief and contact page
+- `recommendations.html` - professional proof and recommendation links
+- `assets/css/styles.css` - static design system
+- `assets/js/main.js` - lightweight year/header behavior
 
-## Deploy to GitHub Pages
+## Positioning
 
-Recommended repository name:
+The site does not position Andrej as a pure software engineer. It positions him as a technical analytics delivery owner who can manage messy cross-functional analytics work and build useful internal tools, QA scripts, documentation and portfolio-quality technical assets.
 
-```text
-AndrejGlavnik.github.io
-```
+## Deployment
 
-Steps:
+This repository is designed to run directly through GitHub Pages:
 
-1. Create a new public GitHub repository named `AndrejGlavnik.github.io`.
-2. Upload all files from this folder to the repository root.
-3. Go to repository Settings → Pages.
-4. Set source to `Deploy from a branch`.
-5. Select branch `main` and folder `/root`.
-6. Save.
-7. Website URL should become:
+1. Repository: `AndrejGlavnik.github.io`
+2. Source: deploy from branch
+3. Branch: `main`
+4. Folder: `/root`
 
-```text
-https://AndrejGlavnik.github.io/
-```
-
-## Content to replace before publishing
-
-Search for these placeholders:
-
-- `andrej.glavnik@example.com`
-- `Add verified recommendation text here`
-- `Colleague name, role`
-- `Add certificate issuer, issue date and credential link`
-- `LinkedIn profile` URL if needed
-
-Do not invent recommendations. Use exact verified feedback from LinkedIn, email, Slack/Teams or written performance feedback.
+No build step is required.
