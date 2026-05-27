@@ -3,119 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f7fb" />
-  <meta name="description" content="Professional referrals and recommendations for Andrej Glavnik." />
-  <meta property="og:title" content="Referrals | Andrej Glavnik" />
-  <meta property="og:description" content="Professional referrals, written recommendations and proof of work." />
-  <meta property="og:image" content="assets/img/og-card.svg" />
-  <title>Referrals | Andrej Glavnik</title>
+  <meta name="description" content="Professional recommendations and proof points for Andrej Glavnik across analytics support, technical delivery, customer operations and project ownership." />
+  <meta property="og:title" content="Recommendations | Andrej Glavnik" />
+  <meta property="og:description" content="Professional proof for analytics operations, technical support and delivery ownership." />
+  <meta property="og:image" content="https://andrejglavnik.github.io/assets/img/og-card.svg" />
+  <title>Recommendations | Andrej Glavnik</title>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <style>
-    .recommendations-list { display: grid; gap: 18px; }
-    .recommendation-full { border-radius: var(--radius-lg); padding: clamp(22px, 4vw, 34px); }
-    .recommendation-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 14px; }
-    .recommendation-head h3 { margin: 0 0 8px; font-size: 1.35rem; letter-spacing: -0.03em; }
-    .recommendation-head p { margin: 0; font-size: 0.95rem; }
-    .recommendation-badge { border-radius: 999px; padding: 8px 11px; color: var(--blue); background: rgba(23,117,218,.09); font-weight: 750; font-size: .82rem; white-space: nowrap; }
-    .recommendation-full blockquote { margin: 0; color: rgba(11,16,32,.82); line-height: 1.72; font-size: 1.02rem; }
-    .pdf-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
-    .pdf-frame-wrap { overflow: hidden; border-radius: var(--radius-lg); margin-top: 22px; background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.78); }
-    .pdf-frame { width: 100%; min-height: 720px; border: 0; display: block; }
-    .proof-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 18px; align-items: stretch; }
-    .proof-note { border-radius: var(--radius-lg); padding: 24px; }
-    .referral-hero { min-height: auto; padding-bottom: 34px; }
-    #formal-letter { padding-top: 36px; }
-    @media (max-width: 980px) { .proof-grid { grid-template-columns: 1fr; } .pdf-frame { min-height: 560px; } }
-    @media (max-width: 560px) { .recommendation-head { flex-direction: column; } .recommendation-badge { white-space: normal; } .pdf-actions .button { width: 100%; } .pdf-frame { min-height: 440px; } }
-  </style>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260527" />
 </head>
 <body>
-  <div class="background-orb orb-one"></div>
-  <div class="background-orb orb-two"></div>
-
-  <header class="site-header glass-shell" data-header>
-    <a class="brand" href="index.html" aria-label="Andrej Glavnik home"><span class="brand-mark">AG</span><span>Andrej Glavnik</span></a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="projects.html">Projects</a>
-      <a class="active" href="recommendations.html">Referrals</a>
-      <a href="book.html">Contact</a>
-      <a href="cv.html" target="_blank" rel="noopener">CV</a>
-    </nav>
-    <a class="nav-cta" href="book.html">Book with me</a>
+  <header class="site-header" data-header>
+    <div class="header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">AG</span><span>Andrej Glavnik</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="book.html">Contact</a>
+      </nav>
+      <a class="nav-cta" href="book.html">Send brief</a>
+    </div>
   </header>
 
   <main>
-    <section class="hero narrow reveal referral-hero" id="top">
-      <p class="eyebrow">Proof of work</p>
-      <h1>Professional referrals.</h1>
-      <p class="hero-text">Recommendations from direct management, colleagues, leadership and cross-functional collaborators across technical support, customer success, business development and technical operations.</p>
-      <div class="hero-actions">
-        <a class="button liquid" href="#formal-letter">Director-level proof</a>
-        <a class="button secondary" href="#all-recommendations">All referrals</a>
-        <a class="button secondary" href="book.html">Contact</a>
+    <section class="page-hero">
+      <p class="eyebrow">Professional proof</p>
+      <h1>Recommendations from people who worked with me.</h1>
+      <p>My public LinkedIn profile includes 13 recommendations across management, support, sales, success and technical collaboration. This page highlights the themes without over-exposing private detail.</p>
+      <div class="button-row">
+        <a class="button primary" href="https://www.linkedin.com/in/andrejglavnik/" target="_blank" rel="noopener">View LinkedIn</a>
+        <a class="button secondary" href="assets/emil-korpar-recommendation.pdf" target="_blank" rel="noopener">Open recommendation PDF</a>
       </div>
     </section>
 
-    <section class="section reveal" id="formal-letter" aria-labelledby="letter-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Formal proof of work</p>
-          <h2 id="letter-title">Director-level recommendation letter</h2>
-        </div>
-      </div>
-      <div class="proof-grid">
-        <article class="glass-card letter-card">
-          <div class="letter-meta">
-            <span>September 29, 2025</span>
-            <span>Director of Support, Databox</span>
-          </div>
-          <h3>Formal recommendation based on direct management</h3>
-          <p>This letter validates my work from a direct management perspective. It highlights technical troubleshooting, process improvement, team knowledge sharing, support for Sales Development, and measurable impact on customer experience and business outcomes.</p>
-          <blockquote>“His ability to troubleshoot complex cases quickly and collaborate effectively with our technical support team has been instrumental in improving the efficiency of our processes and ensuring customers received timely solutions.”</blockquote>
-          <blockquote>“His blend of technical skills, dedication, and team-first mindset makes him an invaluable asset.”</blockquote>
-          <div class="pdf-actions">
-            <a class="button liquid" href="assets/emil-korpar-recommendation.pdf" target="_blank" rel="noopener">Open full PDF</a>
-            <a class="button secondary" href="assets/emil-korpar-recommendation.pdf" download>Download PDF</a>
-          </div>
-        </article>
-        <aside class="glass-card proof-note">
-          <p class="eyebrow">Why this matters</p>
-          <h3>Manager-verified impact</h3>
-          <p>The value of this proof is not the person’s name, it is the level of context: direct management, two years of work history, and concrete examples of technical support, process improvement, customer handling and internal enablement.</p>
-          <div class="project-meta">
-            <span class="project-pill">Technical support</span><span class="project-pill">Process improvement</span><span class="project-pill">Customer outcomes</span><span class="project-pill">Team enablement</span>
-          </div>
-        </aside>
-      </div>
-      <div class="pdf-frame-wrap glass-card">
-        <iframe class="pdf-frame" src="assets/emil-korpar-recommendation.pdf" title="Director-level recommendation letter PDF"></iframe>
+    <section class="section">
+      <div class="grid three">
+        <div class="quote-card"><span class="kicker">Manager theme</span><h3>Technical curiosity plus communication</h3><p>Recommendations repeatedly point to fast learning, technical curiosity, customer empathy and the ability to explain complex topics clearly.</p></div>
+        <div class="quote-card"><span class="kicker">Team theme</span><h3>Reliable under pressure</h3><p>Colleagues describe dependable follow-through, pressure handling and willingness to help when support or delivery work gets busy.</p></div>
+        <div class="quote-card"><span class="kicker">Delivery theme</span><h3>Bridge between teams</h3><p>The strongest pattern is bridging customer needs, technical troubleshooting, product context and internal handoffs.</p></div>
       </div>
     </section>
 
-    <section class="section" id="all-recommendations" aria-labelledby="all-title">
-      <div class="section-heading reveal"><div><p class="eyebrow">All referrals</p><h2 id="all-title">Full recommendation list</h2></div></div>
-      <div class="recommendations-list">
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Roberta Medeiros</h3><p>Databox Expert, Level 2 Customer Support Specialist at Databox</p></div><span class="recommendation-badge">Colleague feedback</span></div><blockquote>I have always been a great colleague, fast paced and eager to learn and help. The feedback highlights that I can work under pressure, achieve results and stay on top of targets while supporting the people around me.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Andrej Bačić</h3><p>Manager of the Sales Development Team, Tech Partnerships Pipeline and Revenue Systems</p></div><span class="recommendation-badge">Manager feedback</span></div><blockquote>During my time on the Business Development team, my technical background helped support inbound leads, quickly understand complex questions, steer conversations toward resolution and consistently deliver a high level of customer satisfaction. The feedback also highlights my curiosity, fast learning curve, positive attitude and ability to bring technical expertise into customer conversations.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Stefan Guslov</h3><p>Technical Sales Consultant at Databox</p></div><span class="recommendation-badge">Peer feedback</span></div><blockquote>The recommendation highlights me as detail-oriented, reliable and technically strong, especially during onboarding and knowledge sharing. It points to my ability to handle multiple requests, ask the right questions and resolve issues quickly.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Mirabela Ionesco</h3><p>Account Manager, Customer Success</p></div><span class="recommendation-badge">Customer success feedback</span></div><blockquote>The feedback emphasizes my technical knowledge, solution-focused approach and readiness to help. It describes me as patient, clear in explanations, thorough in follow-ups and trusted by customers.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Nicole Castillo</h3><p>GTM Specialist, Marketing Analyst and Project Manager</p></div><span class="recommendation-badge">Cross-functional feedback</span></div><blockquote>This recommendation points to my initiative, customer orientation and ability to bring sales-savvy communication into work that requires customer stories, collaboration and follow-through.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Dragana Gajić</h3><p>Digital Account Management professional</p></div><span class="recommendation-badge">Project collaboration</span></div><blockquote>The feedback describes working with me on Databox SaaS projects as positive and professional. It highlights me as thoughtful, proactive and someone who raises the bar for others around him.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Tory Ferrall</h3><p>Director of Revenue Operations</p></div><span class="recommendation-badge">Leadership feedback</span></div><blockquote>The recommendation highlights my technical foundation, proactive problem-solving and commitment to timely, accurate and thoughtful support. It also describes me as collaborative, customer-focused and a trusted partner for customers and colleagues.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Dragana Prica</h3><p>Technical Support and Data Solutions</p></div><span class="recommendation-badge">Mentorship feedback</span></div><blockquote>The feedback describes me as deeply knowledgeable, fast at understanding complex topics and capable of sharing practical knowledge. It also highlights communication, teamwork and the ability to make collaboration productive.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Emil Korpar</h3><p>Director of Support at Databox</p></div><span class="recommendation-badge">Direct manager feedback</span></div><blockquote>This recommendation highlights my technical skills, dedication and team-first mindset. It credits my work with improving support processes, sharing knowledge, supporting Sales Development and creating measurable impact on customer experience and business outcomes.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Jelena Cvetković</h3><p>CX and Support Ops, Writer, former coworker</p></div><span class="recommendation-badge">Peer feedback</span></div><blockquote>The feedback emphasizes professionalism, dedication, technical knowledge and adaptability. It describes me as a quick learner who explains technical topics clearly, works well under pressure and supports the team with a calm, positive approach.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Katarina Jovanović</h3><p>Customer Support Specialist at Databox</p></div><span class="recommendation-badge">Colleague feedback</span></div><blockquote>The recommendation describes me as quick, results-oriented and helpful. It highlights my ability to use Sales Development experience to teach the team, share insights and help others improve and succeed.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Peter Caputa</h3><p>CEO at Databox</p></div><span class="recommendation-badge">Executive feedback</span></div><blockquote>The feedback describes me as a valuable member of the customer support team with deep product knowledge, especially around API and SQL integrations. It highlights my ability to resolve tickets quickly and offer proactive guidance to customers.</blockquote></article>
-        <article class="glass-card recommendation-full reveal"><div class="recommendation-head"><div><h3>Andrea Bučko</h3><p>Professional recommendation</p></div><span class="recommendation-badge">Professional feedback</span></div><blockquote>This recommendation describes me as hardworking, dedicated and professional, with cybersecurity expertise, strong communication, teamwork, attention to detail and effective problem-solving.</blockquote></article>
+    <section class="cta">
+      <div>
+        <h2>Need proof before starting a conversation?</h2>
+        <p>Review LinkedIn recommendations, the recommendation PDF, GitHub projects and case studies together.</p>
       </div>
+      <a class="button primary" href="book.html">Contact me</a>
     </section>
-
-    <section class="section cta-section reveal" aria-labelledby="cta-title"><div class="glass-card cta-card"><p class="eyebrow">Contact</p><h2 id="cta-title">Want to discuss project, product or technical operations work?</h2><p>Reach me directly by email or book a call.</p><div class="hero-actions" style="justify-content:center"><a class="button liquid" href="book.html">Book with me</a><a class="button secondary" href="mailto:andrejglavnik1@gmail.com">Email me</a></div></div></section>
   </main>
 
-  <footer class="site-footer"><span>© <span data-year></span> Andrej Glavnik</span><a href="#top">Back to top</a></footer>
+  <footer class="site-footer">
+    <span>© <span data-year></span> Andrej Glavnik</span>
+    <span><a href="case-studies.html">Case Studies</a> · <a href="projects.html">Projects</a></span>
+  </footer>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
