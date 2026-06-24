@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
-  <title id="title">Analytics operations desk visual</title>
-  <desc id="desc">Abstract laptop dashboard, QA checklist and project notes representing analytics operations and dashboard governance.</desc>
+  <title id="title">Technical project management desk visual</title>
+  <desc id="desc">Abstract laptop, ticket queue, QA checklist and project notes representing technical project management and customer-facing operations.</desc>
   <rect width="1400" height="900" fill="#f7f8fb"/>
   <rect x="0" y="0" width="720" height="900" fill="#ffffff"/>
   <rect x="760" y="128" width="526" height="330" rx="24" fill="#111827"/>

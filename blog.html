@@ -3,96 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="A practical analytics operations article by Andrej Glavnik about using a QA toolkit to catch dashboard export issues before stakeholders lose trust." />
-  <meta property="og:title" content="How a Small Analytics QA Toolkit Protects Dashboard Trust" />
-  <meta property="og:description" content="A detailed case-style blog about missing dates, null KPIs, duplicate rows, naming drift and dashboard QA workflows." />
-  <meta property="og:image" content="https://andrejglavnik.github.io/assets/img/og-card.svg" />
-  <title>Blog | Andrej Glavnik</title>
+  <meta http-equiv="refresh" content="0; url=index.html#builds" />
+  <meta name="robots" content="noindex" />
+  <title>Opening Portfolio | Andrej Glavnik</title>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260527" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260624-apple-proof" />
 </head>
 <body>
-  <header class="site-header" data-header>
-    <div class="header-inner">
-      <a class="brand" href="index.html"><span class="brand-mark">AG</span><span>Andrej Glavnik</span></a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="case-studies.html">Case Studies</a>
-        <a href="projects.html">Projects</a>
-        <a class="active" href="blog.html">Blog</a>
-        <a href="book.html">Contact</a>
-      </nav>
-      <a class="nav-cta" href="book.html">Send brief</a>
-    </div>
-  </header>
-
   <main>
-    <article class="article">
-      <p class="eyebrow">Analytics QA</p>
-      <h1>How a small analytics QA toolkit protects dashboard trust.</h1>
-      <p class="hero-text">A dashboard can look polished and still be wrong. The risk usually appears before the dashboard layer: missing dates, null KPIs, duplicate rows, inconsistent naming and silent data spikes inside exports that nobody has time to inspect manually.</p>
-
-      <blockquote>
-        The tool is not meant to replace analysts. It gives analytics teams a repeatable way to catch obvious reporting risks before the meeting where numbers are questioned.
-      </blockquote>
-
-      <h2>The situation</h2>
-      <p>Imagine a marketing or eCommerce team receiving weekly dashboard exports from multiple sources: retailer files, campaign reports, web analytics data and manually maintained mapping sheets. The dashboard team is expected to report sessions, clicks, revenue, orders, conversion rate and media performance with confidence.</p>
-      <p>The difficult part is that each source can fail differently. A retailer export may skip a date. A campaign field may use a new naming format. A country code may not match the dashboard mapping. A revenue column may be blank for one market. A duplicate row may inflate a KPI. None of those issues need to be dramatic to create a credibility problem.</p>
-
-      <h2>The business problem</h2>
-      <p>When data quality checks live only in someone’s memory, reporting becomes fragile. Stakeholders ask why numbers changed, analysts lose time re-checking old files, and project managers cannot easily tell whether the problem is tracking, ingestion, mappings, dashboard logic or source data.</p>
-      <p>That is why I built the <strong>Analytics QA Toolkit</strong> as a portfolio project: a lightweight Python/pandas workflow that reads CSV or Excel exports and produces a clear QA report. It is intentionally practical, not over-engineered.</p>
-
-      <h2>What the toolkit checks</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Check</th><th>Why it matters</th><th>Example risk</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Missing dates</td><td>Find gaps in expected reporting periods.</td><td>A weekly report skips Sunday and undercounts revenue.</td></tr>
-            <tr><td>Null KPIs</td><td>Detect important metrics that are blank.</td><td>Orders are missing for one market while sessions are present.</td></tr>
-            <tr><td>Duplicate rows</td><td>Catch repeated records at the expected grain.</td><td>One campaign/date row is counted twice.</td></tr>
-            <tr><td>Spike detection</td><td>Flag abnormal jumps that need investigation.</td><td>Revenue jumps 400% because a file used the wrong currency or grain.</td></tr>
-            <tr><td>Mapping validation</td><td>Compare country, brand or source fields to approved values.</td><td>A new country label breaks dashboard filters.</td></tr>
-            <tr><td>Naming consistency</td><td>Catch inconsistent campaign or stream naming.</td><td>Paid social campaigns split into multiple dashboard buckets.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>How it helps a real team</h2>
-      <p>The value is not only technical. The value is operational. A QA report gives the team a shared object to discuss: here are the failed checks, here are warnings, here is the affected file, here is the likely business risk, and here are the next actions.</p>
-      <p>That changes the stakeholder conversation from “the dashboard looks wrong” to “we found three source-file issues and one mapping issue; the dashboard logic is probably not the first problem.” That distinction saves time and reduces blame.</p>
-
-      <h2>The workflow</h2>
-      <ol>
-        <li>Export or receive the reporting file.</li>
-        <li>Run the QA toolkit against the file and mapping config.</li>
-        <li>Review the Markdown and CSV QA report.</li>
-        <li>Route each issue to the right owner: source data, tracking, naming, vendor, mapping or dashboard logic.</li>
-        <li>Attach the report to the delivery ticket or monthly reporting documentation.</li>
-      </ol>
-
-      <h2>Why this matters for analytics project management</h2>
-      <p>Analytics delivery often fails in the middle layer. The tools exist. The data exists. The dashboard exists. But nobody owns the validation logic, documentation and follow-up rhythm. A small QA workflow creates a bridge between technical checks and business confidence.</p>
-      <p>That is the exact space I like to own: enough technical depth to inspect the problem, enough project management discipline to coordinate the fix, and enough stakeholder communication to make the outcome usable.</p>
-
-      <h2>What I would improve next</h2>
-      <p>The next version should support configurable severity levels, richer Excel summaries, GitHub Actions examples for scheduled QA, and Streamlit upload screens for non-technical users. The first version stays intentionally simple so it can be understood, adapted and trusted.</p>
-
+    <section class="page-hero">
+      <p class="eyebrow">Moved</p>
+      <h1>Opening the one-page portfolio.</h1>
+      <p>Writing has been folded into proof and practical projects.</p>
       <div class="button-row">
-        <a class="button primary" href="projects.html#analytics-qa-toolkit">View project</a>
-        <a class="button secondary" href="book.html">Discuss a QA workflow</a>
+        <a class="button primary" href="index.html#builds">Open Builds</a>
+        <a class="button secondary" href="index.html">Back to portfolio</a>
       </div>
-    </article>
+    </section>
   </main>
-
-  <footer class="site-footer">
-    <span>© <span data-year></span> Andrej Glavnik</span>
-    <span><a href="projects.html">Projects</a> · <a href="services.html">Services</a></span>
-  </footer>
-  <script src="assets/js/main.js"></script>
+  <script>window.location.replace("index.html#builds");</script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Andrej Glavnik Portfolio Website
 
-Static GitHub Pages portfolio for Andrej Glavnik, focused on analytics operations, dashboard governance, tracking QA, Datorama / Salesforce Marketing Cloud Intelligence operations and technical project management for BI/data workstreams.
+Static GitHub Pages portfolio for Andrej Glavnik, focused on technical project management, customer-facing operations, analytics delivery, technical support, product ownership, certifications, recommendation proof and practical workflow tooling.
 
 ## Live Site
 
@@ -8,19 +8,19 @@ https://andrejglavnik.github.io/
 
 ## Structure
 
-- `index.html` - conversion-focused homepage
-- `services.html` - freelance, consulting and recruiter service positioning
-- `case-studies.html` - confidentiality-safe case study drafts
-- `projects.html` - GitHub portfolio project overview
-- `blog.html` - analytics QA toolkit article
-- `book.html` - project brief and contact page
-- `recommendations.html` - professional proof and recommendation links
+- `index.html` - one-page technical project management portfolio
+- `services.html` - legacy redirect to the work section
+- `case-studies.html` - legacy redirect to proof
+- `projects.html` - legacy redirect to projects
+- `blog.html` - legacy redirect to projects
+- `book.html` - legacy redirect to contact
+- `recommendations.html` - legacy redirect to recommendations
 - `assets/css/styles.css` - static design system
 - `assets/js/main.js` - lightweight year/header behavior
 
 ## Positioning
 
-The site does not position Andrej as a pure software engineer. It positions him as a technical analytics delivery owner who can manage messy cross-functional analytics work and build useful internal tools, QA scripts, documentation and portfolio-quality technical assets.
+The site positions Andrej as a technical project manager who can turn messy customer, support, analytics, ticketing and delivery problems into clear owned work.
 
 ## Deployment
 
