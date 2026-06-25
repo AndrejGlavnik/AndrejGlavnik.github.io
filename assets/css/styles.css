@@ -339,8 +339,14 @@ h1 {
 
 .availability {
   margin-top: 22px;
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+
+.availability-row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 6px;
 }
 
@@ -898,7 +904,11 @@ summary::-webkit-details-marker { display: none; }
   }
 
   .availability {
-    flex-wrap: wrap;
+    justify-items: center;
+  }
+
+  .availability-row {
+    justify-content: center;
   }
 
   .role-head {
