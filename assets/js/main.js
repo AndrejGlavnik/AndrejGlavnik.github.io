@@ -2,7 +2,7 @@ const storageKey = "andrejglavnik-theme-v2";
 const root = document.documentElement;
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 const themeToggle = document.querySelector("[data-theme-toggle]");
-const expandExperienceTrigger = document.querySelector("[data-expand-experience]");
+const scrollExperienceTrigger = document.querySelector("[data-scroll-experience]");
 
 const getStoredTheme = () => {
   try {
@@ -64,19 +64,11 @@ roleDetails.forEach((details) => {
   details.addEventListener("toggle", () => syncRoleSummary(details));
 });
 
-const openExperienceDetails = () => {
-  roleDetails.forEach((details) => {
-    details.open = true;
-    syncRoleSummary(details);
-  });
-};
-
-expandExperienceTrigger?.addEventListener("click", (event) => {
+scrollExperienceTrigger?.addEventListener("click", (event) => {
   event.preventDefault();
   const experience = document.querySelector("#experience");
   experience?.scrollIntoView({ behavior: "smooth", block: "start" });
   window.history.pushState(null, "", "#experience");
-  window.setTimeout(openExperienceDetails, 1100);
 });
 
 document.querySelectorAll("[data-year]").forEach((target) => {
