@@ -16,8 +16,8 @@
   <title>OpsDesk | Daily Operations Workbench</title>
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="stylesheet" href="../shared/project.css?v=20260718" />
-  <link rel="stylesheet" href="app.css?v=20260718" />
+  <link rel="stylesheet" href="../shared/project.css?v=20260718-storage" />
+  <link rel="stylesheet" href="app.css?v=20260718-storage" />
 </head>
 <body>
   <header class="app-header">
@@ -32,7 +32,11 @@
         <a href="#updates" data-view-link="updates">Updates</a>
       </nav>
       <div class="header-tools">
-        <button class="theme-button" type="button" data-theme-button aria-label="Switch theme">Dark</button>
+        <button class="theme-toggle" type="button" data-theme-button role="switch" aria-checked="false" aria-label="Dark mode" title="Switch to dark mode">
+          <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path></svg>
+          <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
+          <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
         <a class="button small ghost" href="../../index.html#builds">Portfolio</a>
       </div>
     </div>
@@ -46,7 +50,7 @@
         <p>Tasks, technical issues, decisions, blockers, and handoffs in one private workspace.</p>
       </div>
       <div class="button-row">
-        <span class="local-badge">Local only</span>
+        <button class="local-badge local-badge-button" type="button" data-storage-guide>Local only</button>
         <button class="button primary" type="button" data-new-item>New item</button>
       </div>
     </section>
@@ -96,6 +100,7 @@
           <button class="sidebar-action" type="button" data-export-csv>Export CSV</button>
           <button class="sidebar-action" type="button" data-import-trigger>Import backup</button>
           <input class="visually-hidden" type="file" accept="application/json,.json" data-import-file />
+          <button class="sidebar-action" type="button" data-storage-guide>How storage works</button>
           <button class="sidebar-action" type="button" data-show-archive>Archive <span data-archive-count>0</span></button>
         </div>
       </aside>
@@ -317,6 +322,64 @@
     </form>
   </dialog>
 
+  <dialog class="modal data-modal" data-onboarding-modal>
+    <div class="modal-form">
+      <div class="modal-header"><div><p class="eyebrow">Before you start</p><h2>Your workspace lives in this browser.</h2></div></div>
+      <div class="modal-content storage-content">
+        <p class="storage-lead">OpsDesk has no account or cloud database. Every edit is autosaved to this browser's site storage, but that copy can be erased.</p>
+        <dl class="storage-facts">
+          <div><dt>Local autosave</dt><dd>Refreshes and normal browser restarts keep your work on this device.</dd></div>
+          <div><dt>What can remove it</dt><dd>Clearing website data, private browsing, browser cleanup, or moving to another browser or device.</dd></div>
+          <div><dt>Reliable continuation</dt><dd>Download a JSON backup, then import it later to merge with or replace a workspace.</dd></div>
+        </dl>
+        <p class="storage-note"><strong>JSON is the complete restore file.</strong> CSV is only for Excel, Sheets, and reporting.</p>
+      </div>
+      <div class="modal-footer onboarding-actions">
+        <button class="button ghost" type="button" data-onboarding-import>Import backup</button>
+        <button class="button primary" type="button" data-onboarding-continue>Start locally</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal data-modal" data-storage-modal>
+    <div class="modal-form">
+      <div class="modal-header"><div><p class="eyebrow">Workspace data</p><h2>Local by design. Portable by backup.</h2></div><button class="icon-button" type="button" aria-label="Close storage guide" data-storage-close>×</button></div>
+      <div class="modal-content storage-content">
+        <p class="storage-lead">OpsDesk autosaves to <code>localStorage</code> for this site. Nothing is uploaded, and there is no server copy to recover after browser data is cleared.</p>
+        <dl class="storage-facts">
+          <div><dt>Download backup</dt><dd>Creates a complete JSON copy of active and archived items, notes, decisions, statuses, priorities, focus, dates, links, and technical context.</dd></div>
+          <div><dt>Import backup</dt><dd>Continue in this or another browser. Choose Merge to keep both workspaces or Replace to restore the file exactly.</dd></div>
+          <div><dt>Export CSV</dt><dd>Useful for spreadsheets and reporting, but it does not contain enough data to restore the workspace.</dd></div>
+        </dl>
+        <p class="storage-note"><strong>Best practice:</strong> download a JSON backup after important changes and before clearing browser data or changing devices.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button ghost" type="button" data-storage-close>Close</button>
+        <button class="button primary" type="button" data-export-json>Download backup</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal data-modal" data-import-modal>
+    <div class="modal-form">
+      <div class="modal-header"><div><p class="eyebrow">Restore workspace</p><h2>How should this backup be imported?</h2></div><button class="icon-button" type="button" aria-label="Cancel import" data-import-close>×</button></div>
+      <div class="modal-content storage-content">
+        <p class="import-summary" data-import-summary></p>
+        <dl class="storage-facts compact">
+          <div><dt>Merge</dt><dd>Keep current work and add the backup. Matching item IDs are updated from the backup.</dd></div>
+          <div><dt>Replace</dt><dd>Remove the current workspace and restore only the items in this backup.</dd></div>
+        </dl>
+      </div>
+      <div class="modal-footer import-actions">
+        <button class="button ghost" type="button" data-import-close>Cancel</button>
+        <div class="button-row">
+          <button class="button" type="button" data-import-mode="merge">Merge</button>
+          <button class="button primary" type="button" data-import-mode="replace">Replace workspace</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
   <dialog class="modal archive-modal" data-archive-modal>
     <div class="modal-form">
       <div class="modal-header"><div><p class="eyebrow">Workspace</p><h2>Archive</h2></div><button class="icon-button" type="button" aria-label="Close archive" data-archive-close>×</button></div>
@@ -329,10 +392,10 @@
 
   <footer class="project-footer">
     <span>OpsDesk by Andrej Glavnik · <span data-year></span></span>
-    <span>Local-first · No account · No uploads</span>
+    <button class="footer-data-link" type="button" data-storage-guide>Browser storage · JSON backup · No uploads</button>
   </footer>
 
-  <script src="../shared/project.js?v=20260718"></script>
-  <script src="app.js?v=20260718"></script>
+  <script src="../shared/project.js?v=20260718-storage"></script>
+  <script src="app.js?v=20260718-storage"></script>
 </body>
 </html>

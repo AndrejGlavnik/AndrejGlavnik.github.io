@@ -1,6 +1,7 @@
 (function () {
   const { storage, download, copy, uid, escapeHtml, toast } = globalThis.OpsTools;
   const storageKey = "opsdesk-workspace-v1";
+  const storageNoticeKey = "opsdesk-storage-notice-v1";
   const priorityRank = { P1: 1, P2: 2, P3: 3, P4: 4 };
   const statusOrder = ["inbox", "planned", "active", "blocked", "done"];
   const statusLabels = {
@@ -59,6 +60,7 @@
     updateRange: "week",
     activeTemplate: null
   };
+  let pendingImport = null;
 
   const elements = {
     views: [...document.querySelectorAll("[data-view]")],
@@ -89,7 +91,11 @@
     decisionList: document.querySelector("[data-decision-list]"),
     archiveModal: document.querySelector("[data-archive-modal]"),
     archiveList: document.querySelector("[data-archive-list]"),
-    importFile: document.querySelector("[data-import-file]")
+    importFile: document.querySelector("[data-import-file]"),
+    importModal: document.querySelector("[data-import-modal]"),
+    importSummary: document.querySelector("[data-import-summary]"),
+    onboardingModal: document.querySelector("[data-onboarding-modal]"),
+    storageModal: document.querySelector("[data-storage-modal]")
   };
 
   function normalizeItem(item) {
@@ -587,9 +593,68 @@
   }
 
   function exportJson() {
-    const payload = JSON.stringify({ app: "OpsDesk", version: 1, exportedAt: new Date().toISOString(), items: state.items }, null, 2);
+    const payload = JSON.stringify({
+      app: "OpsDesk",
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      preferences: { view: state.view, updateRange: state.updateRange },
+      items: state.items
+    }, null, 2);
     download(`opsdesk-backup-${localDateString()}.json`, payload, "application/json;charset=utf-8");
     toast("Backup downloaded");
+  }
+
+  function acknowledgeStorageNotice() {
+    storage.set(storageNoticeKey, true);
+    if (elements.onboardingModal.open) elements.onboardingModal.close();
+  }
+
+  function openImportPicker() {
+    elements.importFile.click();
+  }
+
+  function itemCountLabel(count) {
+    return `${count} item${count === 1 ? "" : "s"}`;
+  }
+
+  function prepareImport(payload, fileName) {
+    if (payload?.app && payload.app !== "OpsDesk") throw new Error("Invalid OpsDesk backup");
+    if (!Array.isArray(payload?.items)) throw new Error("Invalid OpsDesk backup");
+    const items = payload.items.map(normalizeItem);
+    const archivedCount = items.filter((item) => item.archived).length;
+    const activeCount = items.length - archivedCount;
+    const exportedAt = payload.exportedAt
+      ? formatDate(payload.exportedAt, { month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" }) || "unknown date"
+      : "unknown date";
+    pendingImport = {
+      items,
+      preferences: payload.preferences || {},
+      fileName
+    };
+    elements.importSummary.textContent = `${fileName} contains ${itemCountLabel(items.length)} (${activeCount} active, ${archivedCount} archived), exported ${exportedAt}. Your current workspace has ${itemCountLabel(state.items.length)}.`;
+    elements.importModal.showModal();
+  }
+
+  function applyImport(mode) {
+    if (!pendingImport) return;
+    if (mode === "merge") {
+      const merged = new Map(state.items.map((item) => [item.id, item]));
+      pendingImport.items.forEach((item) => merged.set(item.id, item));
+      state.items = [...merged.values()];
+    } else {
+      state.items = pendingImport.items;
+    }
+    if (["focus", "board", "updates"].includes(pendingImport.preferences.view)) state.view = pendingImport.preferences.view;
+    if (["today", "week", "all"].includes(pendingImport.preferences.updateRange)) state.updateRange = pendingImport.preferences.updateRange;
+    state.selectedId = null;
+    elements.updateRange.value = state.updateRange;
+    history.replaceState(null, "", `#${state.view}`);
+    persist();
+    render();
+    if (elements.importModal.open) elements.importModal.close();
+    const importedCount = pendingImport.items.length;
+    pendingImport = null;
+    toast(mode === "merge" ? `${itemCountLabel(importedCount)} merged from backup` : `${itemCountLabel(importedCount)} restored`);
   }
 
   function csvCell(value) {
@@ -648,7 +713,20 @@
     }
     if (event.target.closest("[data-export-json]")) exportJson();
     if (event.target.closest("[data-export-csv]")) exportCsv();
-    if (event.target.closest("[data-import-trigger]")) elements.importFile.click();
+    if (event.target.closest("[data-import-trigger]")) openImportPicker();
+    if (event.target.closest("[data-storage-guide]")) elements.storageModal.showModal();
+    if (event.target.closest("[data-storage-close]")) elements.storageModal.close();
+    if (event.target.closest("[data-onboarding-continue]")) acknowledgeStorageNotice();
+    if (event.target.closest("[data-onboarding-import]")) {
+      acknowledgeStorageNotice();
+      openImportPicker();
+    }
+    if (event.target.closest("[data-import-close]")) {
+      pendingImport = null;
+      elements.importModal.close();
+    }
+    const importMode = event.target.closest("[data-import-mode]");
+    if (importMode) applyImport(importMode.dataset.importMode);
     if (event.target.closest("[data-show-archive]")) {
       renderArchive();
       elements.archiveModal.showModal();
@@ -746,12 +824,7 @@
     if (!file) return;
     try {
       const payload = JSON.parse(await file.text());
-      if (!Array.isArray(payload.items)) throw new Error("Invalid OpsDesk backup");
-      state.items = payload.items.map(normalizeItem);
-      state.selectedId = null;
-      persist();
-      render();
-      toast(`${state.items.length} items imported`);
+      prepareImport(payload, file.name);
     } catch {
       toast("This file is not a valid OpsDesk backup");
     } finally {
@@ -788,4 +861,7 @@
   }
 
   render();
+  if (!storage.get(storageNoticeKey, false)) {
+    requestAnimationFrame(() => elements.onboardingModal.showModal());
+  }
 })();

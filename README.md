@@ -2,7 +2,7 @@
 
 Static GitHub Pages portfolio for Andrej Glavnik, focused on technical project management, customer-facing operations, analytics delivery, technical support, product ownership, certifications, recommendation proof and practical workflow tooling.
 
-The repository also includes **OpsDesk**, a functional local-first daily operations workbench. It combines task capture, priority and status management, technical context, blockers, meeting notes, decision logging, automatic team updates, archive recovery, and JSON/CSV backup in a single browser application.
+The repository also includes **OpsDesk**, a functional local-first daily operations workbench. It combines task capture, priority and status management, technical context, blockers, meeting notes, decision logging, automatic team updates, archive recovery, and JSON/CSV export in a single browser application. The complete JSON backup can be merged into or used to replace a workspace; CSV is intended for reporting rather than restoration.
 
 ## Live Site
 
@@ -35,4 +35,4 @@ This repository is designed to run directly through GitHub Pages:
 3. Branch: `main`
 4. Folder: `/root`
 
-No build step is required. OpsDesk stores workspace data in the user's browser and does not send it to a backend.
+No build step is required. OpsDesk autosaves workspace data to the site's `localStorage` and does not send it to a backend. Clearing site data removes that browser copy, so the app explains the limitation on first use and provides a portable JSON backup/import workflow.

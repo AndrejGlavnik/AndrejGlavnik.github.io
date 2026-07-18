@@ -88,9 +88,13 @@
   const setTheme = (theme) => {
     root.dataset.theme = theme;
     document.querySelectorAll("[data-theme-button]").forEach((button) => {
-      button.textContent = theme === "dark" ? "Light" : "Dark";
-      button.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} mode`);
+      const darkMode = theme === "dark";
+      button.setAttribute("aria-checked", String(darkMode));
+      button.setAttribute("aria-label", "Dark mode");
+      button.setAttribute("title", `Switch to ${darkMode ? "light" : "dark"} mode`);
     });
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.setAttribute("content", theme === "dark" ? "#0b0d12" : "#f4f6f8");
   };
 
   const storedTheme = safeStorage.get(themeKey, null);

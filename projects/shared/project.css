@@ -176,7 +176,6 @@ textarea:focus-visible {
   gap: 8px;
 }
 
-.theme-button,
 .icon-button {
   width: 38px;
   height: 38px;
@@ -189,8 +188,57 @@ textarea:focus-visible {
   cursor: pointer;
 }
 
-.theme-button:hover,
 .icon-button:hover { color: var(--ink); border-color: var(--line-strong); }
+
+.theme-toggle {
+  width: 78px;
+  height: 38px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.theme-toggle:hover { color: var(--ink); border-color: var(--line-strong); }
+
+.theme-toggle-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle-track {
+  width: 30px;
+  height: 18px;
+  flex: 0 0 auto;
+  padding: 2px;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  background: var(--surface-muted);
+}
+
+.theme-toggle-thumb {
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-radius: 50%;
+  background: var(--blue);
+  transform: translateX(0);
+  transition: transform 180ms ease;
+}
+
+.theme-toggle[aria-checked="true"] .theme-toggle-thumb { transform: translateX(12px); }
 
 .app-shell {
   max-width: var(--max);
@@ -247,6 +295,17 @@ textarea:focus-visible {
   background: var(--green);
   box-shadow: 0 0 0 4px var(--green-soft);
 }
+
+.local-badge-button {
+  min-height: 34px;
+  padding: 0 5px;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+}
+
+.local-badge-button:hover { background: var(--green-soft); }
 
 .button-row,
 .toolbar,
@@ -490,6 +549,16 @@ textarea:focus-visible {
   color: var(--soft);
   font-size: 0.78rem;
 }
+
+.footer-data-link {
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.footer-data-link:hover { color: var(--blue); }
 
 @media (max-width: 900px) {
   .app-header-inner {
