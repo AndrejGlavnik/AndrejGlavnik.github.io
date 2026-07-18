@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f6f8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="OpsDesk" />
+  <meta name="description" content="OpsDesk is a private, browser-based daily operations workbench for tasks, support cases, analytics issues, decisions, blockers, and status updates." />
+  <meta name="keywords" content="SupportOps, task manager, analytics workflow, ticket management, daily operations, project management, local-first" />
+  <meta property="og:title" content="OpsDesk | Daily Operations Workbench" />
+  <meta property="og:description" content="A local-first workspace for operational tasks, support cases, analytics issues, blockers, decisions, and status updates." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andrejglavnik.github.io/projects/opsdesk/" />
+  <title>OpsDesk | Daily Operations Workbench</title>
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="../shared/project.css?v=20260718" />
+  <link rel="stylesheet" href="app.css?v=20260718" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="../../index.html#builds" aria-label="Back to Andrej Glavnik portfolio">
+        <span class="app-mark">OD</span>
+        <span>OpsDesk</span>
+      </a>
+      <nav class="app-nav" aria-label="OpsDesk views">
+        <a href="#focus" data-view-link="focus" aria-current="page">Focus</a>
+        <a href="#board" data-view-link="board">Board</a>
+        <a href="#updates" data-view-link="updates">Updates</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-button" type="button" data-theme-button aria-label="Switch theme">Dark</button>
+        <a class="button small ghost" href="../../index.html#builds">Portfolio</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="workspace-heading" aria-labelledby="workspace-title">
+      <div>
+        <p class="eyebrow">Daily operations</p>
+        <h1 id="workspace-title">Keep the work moving.</h1>
+        <p>Tasks, technical issues, decisions, blockers, and handoffs in one private workspace.</p>
+      </div>
+      <div class="button-row">
+        <span class="local-badge">Local only</span>
+        <button class="button primary" type="button" data-new-item>New item</button>
+      </div>
+    </section>
+
+    <section class="quick-capture" aria-label="Quick capture">
+      <form data-quick-form>
+        <label class="visually-hidden" for="quick-title">Quick capture</label>
+        <input id="quick-title" class="quick-input" name="title" type="text" maxlength="140" placeholder="Capture a task, issue, follow-up, or decision" autocomplete="off" />
+        <select class="quick-select" name="type" aria-label="Item type">
+          <option value="task">Task</option>
+          <option value="ticket">Ticket</option>
+          <option value="analytics">Analytics issue</option>
+          <option value="follow-up">Follow-up</option>
+          <option value="decision">Decision</option>
+        </select>
+        <button class="button primary" type="submit">Add</button>
+      </form>
+    </section>
+
+    <section class="metrics" aria-label="Workspace metrics">
+      <article class="metric"><strong data-metric-focus>0</strong><span>Today focus</span></article>
+      <article class="metric is-warning"><strong data-metric-due>0</strong><span>Due or overdue</span></article>
+      <article class="metric is-danger"><strong data-metric-blocked>0</strong><span>Blocked</span></article>
+      <article class="metric is-success"><strong data-metric-done>0</strong><span>Done this week</span></article>
+    </section>
+
+    <div class="ops-layout">
+      <aside class="ops-sidebar" aria-label="Workspace controls">
+        <div class="sidebar-section">
+          <p class="sidebar-label">Views</p>
+          <button class="sidebar-link active" type="button" data-view-button="focus"><span>Focus</span><strong data-count-focus>0</strong></button>
+          <button class="sidebar-link" type="button" data-view-button="board"><span>Board</span><strong data-count-open>0</strong></button>
+          <button class="sidebar-link" type="button" data-view-button="updates"><span>Updates</span><strong data-count-done>0</strong></button>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-label">Templates</p>
+          <button class="template-button" type="button" data-template="analytics">Analytics discrepancy</button>
+          <button class="template-button" type="button" data-template="support">Support escalation</button>
+          <button class="template-button" type="button" data-template="project">Project follow-up</button>
+          <button class="template-button" type="button" data-template="meeting">Meeting decision</button>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-label">Workspace data</p>
+          <button class="sidebar-action" type="button" data-export-json>Download backup</button>
+          <button class="sidebar-action" type="button" data-export-csv>Export CSV</button>
+          <button class="sidebar-action" type="button" data-import-trigger>Import backup</button>
+          <input class="visually-hidden" type="file" accept="application/json,.json" data-import-file />
+          <button class="sidebar-action" type="button" data-show-archive>Archive <span data-archive-count>0</span></button>
+        </div>
+      </aside>
+
+      <section class="ops-main">
+        <section class="view-panel" data-view="focus">
+          <div class="view-heading">
+            <div>
+              <h2>Today</h2>
+              <p data-date-label></p>
+            </div>
+            <button class="button small" type="button" data-auto-focus>Build my top 3</button>
+          </div>
+
+          <div class="focus-grid">
+            <section class="work-section focus-list-section" aria-labelledby="top-focus-title">
+              <div class="work-section-header">
+                <div><h3 id="top-focus-title">Top focus</h3><p>Maximum three items</p></div>
+                <span class="count-badge" data-focus-capacity>0 / 3</span>
+              </div>
+              <div class="work-list" data-focus-list></div>
+            </section>
+
+            <section class="work-section" aria-labelledby="attention-title">
+              <div class="work-section-header">
+                <div><h3 id="attention-title">Needs attention</h3><p>Blocked, overdue, or critical</p></div>
+              </div>
+              <div class="work-list compact" data-attention-list></div>
+            </section>
+          </div>
+
+          <section class="work-section" aria-labelledby="next-title">
+            <div class="work-section-header">
+              <div><h3 id="next-title">Next up</h3><p>Active and planned work</p></div>
+              <button class="text-button" type="button" data-open-board>Open board</button>
+            </div>
+            <div class="work-list next-list" data-next-list></div>
+          </section>
+        </section>
+
+        <section class="view-panel" data-view="board" hidden>
+          <div class="view-heading board-heading">
+            <div><h2>Work board</h2><p>Drag items between stages or update them from the detail panel.</p></div>
+            <button class="button primary small" type="button" data-new-item>Add item</button>
+          </div>
+
+          <div class="board-toolbar">
+            <input class="search-input" type="search" placeholder="Search title, project, tags, or notes" data-search />
+            <select class="select" data-filter-priority aria-label="Filter by priority">
+              <option value="all">All priorities</option>
+              <option value="P1">P1 critical</option>
+              <option value="P2">P2 high</option>
+              <option value="P3">P3 normal</option>
+              <option value="P4">P4 low</option>
+            </select>
+            <select class="select" data-filter-type aria-label="Filter by type">
+              <option value="all">All types</option>
+              <option value="task">Tasks</option>
+              <option value="ticket">Tickets</option>
+              <option value="analytics">Analytics issues</option>
+              <option value="follow-up">Follow-ups</option>
+              <option value="decision">Decisions</option>
+            </select>
+            <button class="button small ghost" type="button" data-clear-filters>Clear</button>
+          </div>
+
+          <div class="kanban" data-board></div>
+        </section>
+
+        <section class="view-panel" data-view="updates" hidden>
+          <div class="view-heading">
+            <div><h2>Status update</h2><p>Generated from the work already captured in OpsDesk.</p></div>
+            <div class="button-row">
+              <button class="button small" type="button" data-copy-update>Copy update</button>
+              <button class="button small ghost" type="button" data-download-update>Download</button>
+            </div>
+          </div>
+
+          <div class="update-layout">
+            <section class="update-preview" aria-labelledby="update-preview-title">
+              <div class="update-controls">
+                <div>
+                  <h3 id="update-preview-title">Team update</h3>
+                  <p data-update-range-label></p>
+                </div>
+                <select class="select" data-update-range aria-label="Update time range">
+                  <option value="today">Today</option>
+                  <option value="week" selected>This week</option>
+                  <option value="all">All open work</option>
+                </select>
+              </div>
+              <div class="update-document" data-update-preview></div>
+            </section>
+
+            <section class="decision-panel" aria-labelledby="decision-log-title">
+              <div class="work-section-header">
+                <div><h3 id="decision-log-title">Decision log</h3><p>Decisions captured across work items</p></div>
+              </div>
+              <div class="decision-list" data-decision-list></div>
+            </section>
+          </div>
+        </section>
+      </section>
+
+      <aside class="detail-panel" data-detail-panel aria-label="Selected item details">
+        <div class="detail-empty" data-detail-empty>
+          <div>
+            <h2>No item selected</h2>
+            <p>Select work from Focus or Board to open its full context.</p>
+          </div>
+        </div>
+
+        <div class="detail-form" data-detail-form hidden>
+          <div class="detail-header">
+            <div>
+              <span class="status-chip tone-neutral" data-detail-type>Task</span>
+              <p data-detail-updated>Not saved yet</p>
+            </div>
+            <button class="icon-button" type="button" aria-label="Close details" title="Close details" data-close-detail>×</button>
+          </div>
+
+          <div class="detail-scroll">
+            <div class="field">
+              <label for="detail-title">Title</label>
+              <input class="detail-title-input" id="detail-title" name="title" maxlength="140" required />
+            </div>
+
+            <div class="field-grid three detail-select-grid">
+              <div class="field">
+                <label for="detail-status">Status</label>
+                <select class="select" id="detail-status" name="status">
+                  <option value="inbox">Inbox</option>
+                  <option value="planned">Planned</option>
+                  <option value="active">In progress</option>
+                  <option value="blocked">Blocked</option>
+                  <option value="done">Done</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="detail-priority">Priority</label>
+                <select class="select" id="detail-priority" name="priority">
+                  <option value="P1">P1 critical</option>
+                  <option value="P2">P2 high</option>
+                  <option value="P3">P3 normal</option>
+                  <option value="P4">P4 low</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="detail-type">Type</label>
+                <select class="select" id="detail-type" name="type">
+                  <option value="task">Task</option>
+                  <option value="ticket">Ticket</option>
+                  <option value="analytics">Analytics issue</option>
+                  <option value="follow-up">Follow-up</option>
+                  <option value="decision">Decision</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field"><label for="detail-project">Project / account</label><input class="input" id="detail-project" name="project" placeholder="e.g. Reporting migration" /></div>
+              <div class="field"><label for="detail-owner">Owner</label><input class="input" id="detail-owner" name="owner" placeholder="You or teammate" /></div>
+              <div class="field"><label for="detail-due">Due date</label><input class="input" id="detail-due" name="due" type="date" /></div>
+              <div class="field"><label for="detail-tags">Tags</label><input class="input" id="detail-tags" name="tags" placeholder="support, GA4, vendor" /></div>
+            </div>
+
+            <label class="focus-toggle"><input type="checkbox" name="focus" /> <span>Add to today's top focus</span></label>
+
+            <div class="field"><label for="detail-summary">Context</label><textarea class="textarea" id="detail-summary" name="summary" placeholder="What is happening and why it matters?"></textarea></div>
+            <div class="field"><label for="detail-next">Next action</label><textarea class="textarea compact-textarea" id="detail-next" name="nextAction" placeholder="The next concrete move"></textarea></div>
+            <div class="field"><label for="detail-blocker">Blocker</label><textarea class="textarea compact-textarea" id="detail-blocker" name="blocker" placeholder="Dependency, missing access, unclear decision"></textarea></div>
+
+            <details class="technical-context">
+              <summary>Technical context</summary>
+              <div class="technical-fields">
+                <div class="field"><label for="detail-expected">Expected</label><textarea class="textarea compact-textarea" id="detail-expected" name="expected"></textarea></div>
+                <div class="field"><label for="detail-actual">Actual</label><textarea class="textarea compact-textarea" id="detail-actual" name="actual"></textarea></div>
+                <div class="field"><label for="detail-links">Links / evidence</label><textarea class="textarea compact-textarea" id="detail-links" name="links" placeholder="Ticket, dashboard, query, recording, documentation"></textarea></div>
+              </div>
+            </details>
+
+            <section class="notes-section" aria-labelledby="notes-title">
+              <div class="notes-heading">
+                <h3 id="notes-title">Notes & decisions</h3>
+                <select class="select note-kind" data-note-kind aria-label="Note type"><option value="note">Note</option><option value="decision">Decision</option></select>
+              </div>
+              <form class="note-composer" data-note-form>
+                <textarea class="textarea compact-textarea" name="note" placeholder="Add context, a meeting note, or a decision" required></textarea>
+                <button class="button small" type="submit">Add</button>
+              </form>
+              <div class="notes-list" data-notes-list></div>
+            </section>
+          </div>
+
+          <div class="detail-footer">
+            <span data-autosave-status>Saved locally</span>
+            <button class="button small ghost" type="button" data-archive-item>Archive</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <dialog class="modal" data-item-modal>
+    <form class="modal-form" data-item-form>
+      <div class="modal-header"><div><p class="eyebrow">New work</p><h2 data-modal-title>Add item</h2></div><button class="icon-button" type="button" aria-label="Close" data-modal-close>×</button></div>
+      <div class="modal-content">
+        <div class="field-grid">
+          <div class="field full"><label for="new-title">Title</label><input class="input" id="new-title" name="title" maxlength="140" required autofocus /></div>
+          <div class="field"><label for="new-type">Type</label><select class="select" id="new-type" name="type"><option value="task">Task</option><option value="ticket">Ticket</option><option value="analytics">Analytics issue</option><option value="follow-up">Follow-up</option><option value="decision">Decision</option></select></div>
+          <div class="field"><label for="new-priority">Priority</label><select class="select" id="new-priority" name="priority"><option value="P1">P1 critical</option><option value="P2">P2 high</option><option value="P3" selected>P3 normal</option><option value="P4">P4 low</option></select></div>
+          <div class="field"><label for="new-project">Project / account</label><input class="input" id="new-project" name="project" /></div>
+          <div class="field"><label for="new-due">Due date</label><input class="input" id="new-due" name="due" type="date" /></div>
+          <div class="field full"><label for="new-context">Context</label><textarea class="textarea" id="new-context" name="summary" placeholder="Enough context to make the next step obvious"></textarea></div>
+          <div class="field full"><label for="new-next">Next action</label><textarea class="textarea compact-textarea" id="new-next" name="nextAction"></textarea></div>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="button ghost" type="button" data-modal-close>Cancel</button><button class="button primary" type="submit">Create item</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal archive-modal" data-archive-modal>
+    <div class="modal-form">
+      <div class="modal-header"><div><p class="eyebrow">Workspace</p><h2>Archive</h2></div><button class="icon-button" type="button" aria-label="Close archive" data-archive-close>×</button></div>
+      <div class="modal-content"><div class="archive-list" data-archive-list></div></div>
+      <div class="modal-footer"><span></span><button class="button" type="button" data-archive-close>Done</button></div>
+    </div>
+  </dialog>
+
+  <div class="toast" data-toast role="status"></div>
+
+  <footer class="project-footer">
+    <span>OpsDesk by Andrej Glavnik · <span data-year></span></span>
+    <span>Local-first · No account · No uploads</span>
+  </footer>
+
+  <script src="../shared/project.js?v=20260718"></script>
+  <script src="app.js?v=20260718"></script>
+</body>
+</html>
