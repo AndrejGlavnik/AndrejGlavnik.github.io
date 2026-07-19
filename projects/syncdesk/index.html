@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f6f8" />
+  <meta name="description" content="SyncDesk is a local-first data connection knowledge workspace for ownership, schema, calculations, changes, discrepancies, lineage, and runbooks." />
+  <meta name="keywords" content="data catalog, data connections, schema registry, metric definitions, data lineage, discrepancy management, analytics operations" />
+  <meta property="og:title" content="SyncDesk | Data Connection Knowledge Workspace" />
+  <meta property="og:description" content="Know the owner, schema, business logic, history, and issues behind every data connection." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andrejglavnik.github.io/projects/syncdesk/" />
+  <title>SyncDesk | Data Connection Knowledge Workspace</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="../shared/project.css?v=20260719-sync" />
+  <link rel="stylesheet" href="app.css?v=20260719-sync" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="../../index.html#builds" aria-label="Back to Andrej Glavnik portfolio">
+        <span class="app-mark sync-mark">SD</span>
+        <span>SyncDesk</span>
+      </a>
+      <nav class="app-nav sync-nav" aria-label="SyncDesk views">
+        <a href="#connections" data-view-link="connections" aria-current="page">Connections</a>
+        <a href="#schema" data-view-link="schema">Schema</a>
+        <a href="#logic" data-view-link="logic">Logic</a>
+        <a href="#changes" data-view-link="changes">Manifest</a>
+        <a href="#issues" data-view-link="issues">Issues</a>
+      </nav>
+      <div class="header-tools">
+        <a class="button small ghost app-switch-link" href="../opsdesk/" title="Open the connected daily operations workspace">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          <span>OpsDesk</span>
+        </a>
+        <button class="theme-toggle" type="button" data-theme-button role="switch" aria-checked="false" aria-label="Dark mode" title="Switch to dark mode">
+          <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path></svg>
+          <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
+          <svg class="theme-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <a class="button small ghost portfolio-link" href="../../index.html#builds">Portfolio</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="workspace-heading" aria-labelledby="workspace-title">
+      <div>
+        <p class="eyebrow">Data knowledge</p>
+        <h1 id="workspace-title">Know every connection.</h1>
+        <p>Ownership, schema, calculations, changes, discrepancies, and runbooks in one private catalog.</p>
+      </div>
+      <div class="button-row">
+        <button class="local-badge local-badge-button" type="button" data-storage-guide>Local only</button>
+        <button class="button ghost" type="button" data-export-workspace>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>
+          <span>Export workspace</span>
+        </button>
+        <button class="button primary" type="button" data-new-connection>New connection</button>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Knowledge metrics">
+      <article class="metric"><strong data-metric-connections>0</strong><span>Connections</span></article>
+      <article class="metric is-success"><strong data-metric-current>0</strong><span>Current syncs</span></article>
+      <article class="metric is-warning"><strong data-metric-fields>0</strong><span>Documented fields</span></article>
+      <article class="metric is-danger"><strong data-metric-issues>0</strong><span>Open discrepancies</span></article>
+    </section>
+
+    <div class="sync-layout">
+      <aside class="sync-sidebar" aria-label="Knowledge filters">
+        <div class="sidebar-section">
+          <p class="sidebar-label">Workspace</p>
+          <button class="sidebar-link active" type="button" data-view-button="connections"><span>Connections</span><strong data-count-connections>0</strong></button>
+          <button class="sidebar-link" type="button" data-view-button="schema"><span>Schema</span><strong data-count-fields>0</strong></button>
+          <button class="sidebar-link" type="button" data-view-button="logic"><span>Logic</span><strong data-count-calculations>0</strong></button>
+          <button class="sidebar-link" type="button" data-view-button="changes"><span>Manifest</span><strong data-count-changes>0</strong></button>
+          <button class="sidebar-link" type="button" data-view-button="issues"><span>Issues</span><strong data-count-issues>0</strong></button>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label-row"><p class="sidebar-label">Applications</p><button class="mini-icon-button" type="button" data-new-application aria-label="Add application" title="Add application">+</button></div>
+          <button class="sidebar-link active" type="button" data-application-filter="all"><span>All applications</span></button>
+          <div data-application-list></div>
+        </div>
+        <div class="sidebar-section">
+          <p class="sidebar-label">Workspace data</p>
+          <button class="sidebar-action" type="button" data-export-workspace>Export workspace</button>
+          <button class="sidebar-action" type="button" data-import-trigger>Import workspace</button>
+          <input class="visually-hidden" type="file" accept="application/json,.json" data-import-file />
+          <button class="sidebar-action" type="button" data-storage-guide>How storage works</button>
+        </div>
+      </aside>
+
+      <section class="sync-main">
+        <section class="view-panel" data-view="connections">
+          <div class="view-heading">
+            <div><h2>Connection map</h2><p>Where data comes from, where it goes, who owns it, and how current it is.</p></div>
+            <button class="button primary small" type="button" data-new-connection>Add connection</button>
+          </div>
+          <div class="connection-toolbar">
+            <input class="search-input" type="search" placeholder="Search connection, owner, provider, source, or purpose" data-search-connections />
+            <select class="select" data-status-filter aria-label="Filter connection status"><option value="all">All statuses</option><option value="active">Active</option><option value="paused">Paused</option><option value="deprecated">Deprecated</option></select>
+          </div>
+          <div class="connection-list" data-connection-list></div>
+        </section>
+
+        <section class="view-panel" data-view="schema" hidden>
+          <div class="view-heading"><div><h2>Schema library</h2><p>Datasets, sheets, endpoints, metrics, dimensions, keys, and date fields.</p></div><button class="button primary small" type="button" data-new-schema>Add dataset + fields</button></div>
+          <div class="connection-toolbar"><select class="select" data-schema-connection-filter aria-label="Filter schema by connection"></select><input class="search-input" type="search" placeholder="Search fields, definitions, or datasets" data-schema-search /></div>
+          <div class="schema-library" data-schema-library></div>
+        </section>
+
+        <section class="view-panel" data-view="logic" hidden>
+          <div class="view-heading"><div><h2>Business logic</h2><p>Versioned calculated metrics and dimensions with source fields and validation.</p></div><button class="button primary small" type="button" data-new-calculation>Add calculation</button></div>
+          <div class="logic-list" data-calculation-list></div>
+        </section>
+
+        <section class="view-panel" data-view="changes" hidden>
+          <div class="view-heading"><div><h2>Manifest</h2><p>Date-versioned commits for datasource, schema, metric, dimension, and calculation changes.</p></div><button class="button primary small" type="button" data-new-change>New manifest update</button></div>
+          <div class="timeline" data-change-list></div>
+        </section>
+
+        <section class="view-panel" data-view="issues" hidden>
+          <div class="view-heading"><div><h2>Discrepancies</h2><p>Track expected versus actual data, business impact, ownership, and resolution.</p></div><button class="button primary small" type="button" data-new-discrepancy>Log discrepancy</button></div>
+          <div class="issue-list" data-discrepancy-list></div>
+        </section>
+      </section>
+
+      <aside class="connection-detail" data-detail-panel aria-label="Selected connection details">
+        <div class="detail-empty" data-detail-empty><div><h2>No connection selected</h2><p>Select a connection to open ownership, sync coverage, documentation, and linked OpsDesk work.</p></div></div>
+        <form class="detail-form" data-detail-form hidden>
+          <div class="detail-header"><div><span class="status-chip tone-neutral" data-detail-status>Active</span><p data-detail-updated></p></div><button class="icon-button" type="button" aria-label="Close details" title="Close details" data-close-detail>×</button></div>
+          <div class="detail-scroll">
+            <div class="field"><label for="detail-name">Connection</label><input class="detail-title-input" id="detail-name" name="name" maxlength="120" /></div>
+            <div class="field-grid">
+              <div class="field"><label for="detail-application">Application</label><select class="select" id="detail-application" name="applicationId"></select></div>
+              <div class="field"><label for="detail-status-select">Status</label><select class="select" id="detail-status-select" name="status"><option value="active">Active</option><option value="paused">Paused</option><option value="deprecated">Deprecated</option></select></div>
+              <div class="field"><label for="detail-type">Source type</label><select class="select" id="detail-type" name="sourceType"><option>API</option><option>Excel</option><option>CSV</option><option>Database</option><option>Warehouse</option><option>SaaS connector</option><option>Manual upload</option><option>Other</option></select></div>
+              <div class="field"><label for="detail-provider">Provider / vendor</label><input class="input" id="detail-provider" name="provider" /></div>
+              <div class="field"><label for="detail-business-owner">Business owner</label><input class="input" id="detail-business-owner" name="businessOwner" /></div>
+              <div class="field"><label for="detail-technical-owner">Technical owner</label><input class="input" id="detail-technical-owner" name="technicalOwner" /></div>
+              <div class="field"><label for="detail-source">Source</label><input class="input" id="detail-source" name="sourceSystem" /></div>
+              <div class="field"><label for="detail-destination">Destination</label><input class="input" id="detail-destination" name="destinationSystem" /></div>
+              <div class="field"><label for="detail-cadence">Sync cadence</label><input class="input" id="detail-cadence" name="cadence" placeholder="Daily at 06:00 UTC" /></div>
+              <div class="field"><label for="detail-last-sync">Last verified sync</label><input class="input" id="detail-last-sync" name="lastSync" type="datetime-local" /></div>
+              <div class="field"><label for="detail-coverage-from">Data from</label><input class="input" id="detail-coverage-from" name="coverageFrom" type="date" /></div>
+              <div class="field"><label for="detail-coverage-to">Data through</label><input class="input" id="detail-coverage-to" name="coverageTo" type="date" /></div>
+            </div>
+            <div class="field"><label for="detail-purpose">Business purpose</label><textarea class="textarea compact-textarea" id="detail-purpose" name="purpose"></textarea></div>
+            <div class="field"><label for="detail-grain">Grain and keys</label><textarea class="textarea compact-textarea" id="detail-grain" name="grain" placeholder="One row per vendor, product, and day. Keys: date + vendor_id + sku"></textarea></div>
+            <div class="field"><label for="detail-notes">Important notes</label><textarea class="textarea" id="detail-notes" name="notes" placeholder="Access, limitations, exclusions, known discrepancies, dependencies"></textarea></div>
+            <div class="field"><label for="detail-runbook">Runbook</label><textarea class="textarea" id="detail-runbook" name="runbook" placeholder="How to validate, troubleshoot, refresh, or escalate this connection"></textarea></div>
+            <section class="linked-work"><div class="notes-heading"><h3>Linked OpsDesk work</h3><button class="text-button" type="button" data-create-ops-task>Create task</button></div><div data-linked-work></div></section>
+          </div>
+          <div class="detail-footer"><span data-autosave-status>Saved locally</span><button class="button small danger ghost" type="button" data-delete-connection>Delete</button></div>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <dialog class="modal" data-application-modal>
+    <form class="modal-form" data-application-form><div class="modal-header"><div><p class="eyebrow">Catalog group</p><h2>Add application</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content"><div class="field-grid"><div class="field full"><label for="app-name">Name</label><input class="input" id="app-name" name="name" required /></div><div class="field"><label for="app-owner">Owner</label><input class="input" id="app-owner" name="owner" /></div><div class="field"><label for="app-environment">Environment</label><input class="input" id="app-environment" name="environment" placeholder="Production, reporting, sandbox" /></div><div class="field full"><label for="app-description">Purpose</label><textarea class="textarea compact-textarea" id="app-description" name="description"></textarea></div></div></div><div class="modal-footer"><button class="button ghost" type="button" data-dialog-close>Cancel</button><button class="button primary" type="submit">Add application</button></div></form>
+  </dialog>
+
+  <dialog class="modal" data-connection-modal>
+    <form class="modal-form" data-connection-form><div class="modal-header"><div><p class="eyebrow">Connection record</p><h2>Add connection</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content"><div class="field-grid"><div class="field full"><label for="connection-name">Connection name</label><input class="input" id="connection-name" name="name" required placeholder="eCom sales workbook → analytics platform" /></div><div class="field"><label for="connection-application">Application</label><select class="select" id="connection-application" name="applicationId"></select></div><div class="field"><label for="connection-type">Source type</label><select class="select" id="connection-type" name="sourceType"><option>API</option><option>Excel</option><option>CSV</option><option>Database</option><option>Warehouse</option><option>SaaS connector</option><option>Manual upload</option><option>Other</option></select></div><div class="field"><label for="connection-source">Source</label><input class="input" id="connection-source" name="sourceSystem" /></div><div class="field"><label for="connection-destination">Destination</label><input class="input" id="connection-destination" name="destinationSystem" /></div><div class="field"><label for="connection-provider">Provider / vendor</label><input class="input" id="connection-provider" name="provider" /></div><div class="field"><label for="connection-owner">Technical owner</label><input class="input" id="connection-owner" name="technicalOwner" /></div><div class="field full"><label for="connection-purpose">Business purpose</label><textarea class="textarea compact-textarea" id="connection-purpose" name="purpose"></textarea></div></div></div><div class="modal-footer"><button class="button ghost" type="button" data-dialog-close>Cancel</button><button class="button primary" type="submit">Create connection</button></div></form>
+  </dialog>
+
+  <dialog class="modal wide-modal" data-schema-modal>
+    <form class="modal-form" data-schema-form><div class="modal-header"><div><p class="eyebrow">Dataset contract</p><h2>Add dataset and fields</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content"><div class="field-grid"><div class="field"><label for="schema-connection">Connection</label><select class="select" id="schema-connection" name="connectionId" required></select></div><div class="field"><label for="schema-name">Dataset / sheet / endpoint</label><input class="input" id="schema-name" name="name" required placeholder="ecom.xlsx / Sales sheet" /></div><div class="field"><label for="schema-kind">Kind</label><select class="select" id="schema-kind" name="kind"><option>Sheet</option><option>File</option><option>API endpoint</option><option>Table</option><option>View</option><option>Report</option></select></div><div class="field"><label for="schema-location">Location</label><input class="input" id="schema-location" name="location" placeholder="Sheet name, endpoint, table, or path" /></div><div class="field"><label for="schema-grain">Row grain</label><input class="input" id="schema-grain" name="grain" placeholder="One row per vendor + SKU + day" /></div><div class="field"><label for="schema-keys">Primary keys</label><input class="input" id="schema-keys" name="primaryKeys" placeholder="date, vendor_id, sku" /></div><div class="field full"><label for="schema-fields">Fields</label><textarea class="textarea schema-input" id="schema-fields" name="fields" placeholder="One field per line:&#10;sales | metric | decimal | Net sales after returns&#10;vendor_name | dimension | text | Display name of seller&#10;order_date | date | date | Business transaction date"></textarea><small>Format: name | metric, dimension, key, or date | data type | definition</small></div></div></div><div class="modal-footer"><button class="button ghost" type="button" data-dialog-close>Cancel</button><button class="button primary" type="submit">Save schema</button></div></form>
+  </dialog>
+
+  <dialog class="modal wide-modal" data-calculation-modal>
+    <form class="modal-form" data-calculation-form><div class="modal-header"><div><p class="eyebrow">Versioned logic</p><h2>Add calculation</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content"><div class="field-grid"><div class="field"><label for="calc-connection">Connection</label><select class="select" id="calc-connection" name="connectionId" required></select></div><div class="field"><label for="calc-dataset">Dataset</label><select class="select" id="calc-dataset" name="datasetId"></select></div><div class="field"><label for="calc-name">Calculated field</label><input class="input" id="calc-name" name="name" required /></div><div class="field"><label for="calc-output">Output</label><select class="select" id="calc-output" name="outputType"><option>Metric</option><option>Dimension</option></select></div><div class="field"><label for="calc-version">Version date</label><input class="input" id="calc-version" name="versionDate" type="date" /></div><div class="field"><label for="calc-effective">Effective from</label><input class="input" id="calc-effective" name="effectiveFrom" type="date" /></div><div class="field full"><label for="calc-sources">Source fields</label><input class="input" id="calc-sources" name="sourceFields" placeholder="sales, vendor_name" /></div><div class="field full"><label for="calc-formula">Formula / code</label><textarea class="textarea code-input" id="calc-formula" name="formula" required></textarea></div><div class="field full"><label for="calc-reason">Business definition and reason</label><textarea class="textarea compact-textarea" id="calc-reason" name="businessReason"></textarea></div><div class="field"><label for="calc-owner">Owner</label><input class="input" id="calc-owner" name="owner" /></div><div class="field"><label for="calc-validation">Validation</label><input class="input" id="calc-validation" name="validation" placeholder="QA query, tolerance, sign-off" /></div></div></div><div class="modal-footer"><button class="button ghost" type="button" data-dialog-close>Cancel</button><button class="button primary" type="submit">Save calculation</button></div></form>
+  </dialog>
+
+  <dialog class="modal wide-modal" data-change-modal>
+    <form class="modal-form" data-change-form><div class="modal-header"><div><p class="eyebrow">Manifest commit</p><h2>Document an update</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content"><div class="field-grid"><div class="field"><label for="change-connection">Connection</label><select class="select" id="change-connection" name="connectionId" required></select></div><div class="field"><label for="change-version-date">Version date</label><input class="input" id="change-version-date" name="versionDate" type="date" required /></div><div class="field full"><label for="change-title">Commit message</label><input class="input" id="change-title" name="title" required placeholder="Update SFMC calculated vendor dimension" /></div><div class="field full"><label>Tag affected records</label><div class="manifest-targets" data-manifest-targets><p>Select a connection to load its metrics, dimensions, and calculations.</p></div><small>Tag every field affected by this update. These links build each metric's history.</small></div><div class="field full"><label for="change-reason">What changed and why</label><textarea class="textarea compact-textarea" id="change-reason" name="reason" required></textarea></div><div class="field full"><label for="change-snapshot">Implementation snapshot</label><textarea class="textarea code-input" id="change-snapshot" name="snapshot" placeholder="Paste the final SFMC formula, SQL, mapping, configuration, or schema definition"></textarea></div><div class="field"><label for="change-owner">Author / owner</label><input class="input" id="change-owner" name="owner" /></div><div class="field"><label for="change-approved">Approved by</label><input class="input" id="change-approved" name="approvedBy" /></div><div class="field full"><label for="change-ticket">Ticket / decision link</label><input class="input" id="change-ticket" name="ticket" /></div><div class="field full"><label for="change-validation">Validation and rollout notes</label><textarea class="textarea compact-textarea" id="change-validation" name="validation"></textarea></div><label class="focus-toggle full"><input type="checkbox" name="applySnapshot" checked /><span>When one calculated field is tagged, apply this snapshot as its current setup</span></label></div></div><div class="modal-footer"><button class="button ghost" type="button" data-dialog-close>Cancel</button><button class="button primary" type="submit">Commit manifest update</button></div></form>
+  </dialog>
+
+  <dialog class="modal wide-modal" data-record-modal>
+    <div class="modal-form"><div class="modal-header"><div><p class="eyebrow" data-record-kind>Metric</p><h2 data-record-title>Field detail</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content record-detail" data-record-detail></div><div class="modal-footer"><span class="record-help">Current setup and every manifest update tagged to this record.</span><button class="button" type="button" data-dialog-close>Done</button></div></div>
+  </dialog>
+
+  <dialog class="modal wide-modal" data-discrepancy-modal>
+    <form class="modal-form" data-discrepancy-form><div class="modal-header"><div><p class="eyebrow">Data issue</p><h2>Log discrepancy</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content"><div class="field-grid"><div class="field"><label for="issue-connection">Connection</label><select class="select" id="issue-connection" name="connectionId" required></select></div><div class="field"><label for="issue-severity">Severity</label><select class="select" id="issue-severity" name="severity"><option value="P1">P1 critical</option><option value="P2">P2 high</option><option value="P3" selected>P3 normal</option><option value="P4">P4 low</option></select></div><div class="field full"><label for="issue-title">Discrepancy</label><input class="input" id="issue-title" name="title" required /></div><div class="field"><label for="issue-from">Observed from</label><input class="input" id="issue-from" name="observedFrom" type="date" /></div><div class="field"><label for="issue-to">Observed through</label><input class="input" id="issue-to" name="observedTo" type="date" /></div><div class="field full"><label for="issue-impact">Business impact</label><textarea class="textarea compact-textarea" id="issue-impact" name="impact"></textarea></div><div class="field"><label for="issue-expected">Expected</label><textarea class="textarea compact-textarea" id="issue-expected" name="expected"></textarea></div><div class="field"><label for="issue-actual">Actual</label><textarea class="textarea compact-textarea" id="issue-actual" name="actual"></textarea></div><div class="field"><label for="issue-owner">Owner</label><input class="input" id="issue-owner" name="owner" /></div><label class="focus-toggle"><input type="checkbox" name="createOpsTask" checked /><span>Create a linked OpsDesk task</span></label></div></div><div class="modal-footer"><button class="button ghost" type="button" data-dialog-close>Cancel</button><button class="button primary" type="submit">Log discrepancy</button></div></form>
+  </dialog>
+
+  <dialog class="modal data-modal" data-storage-modal><div class="modal-form"><div class="modal-header"><div><p class="eyebrow">Workspace data</p><h2>One local workspace. Two connected desks.</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content storage-content"><p class="storage-lead">SyncDesk and OpsDesk share one browser workspace. Data is not uploaded, so a workspace export is the recovery copy when site data is cleared or you change devices.</p><dl class="storage-facts"><div><dt>Local autosave</dt><dd>Every connection, field, formula, change, discrepancy, and linked OpsDesk item is saved in this browser.</dd></div><div><dt>Export workspace</dt><dd>Downloads one complete JSON file containing compatible data for both apps.</dd></div><div><dt>Import workspace</dt><dd>Merge the file with existing records or replace the browser workspace completely.</dd></div></dl></div><div class="modal-footer"><button class="button ghost" type="button" data-dialog-close>Close</button><button class="button primary" type="button" data-export-workspace>Export workspace</button></div></div></dialog>
+
+  <dialog class="modal data-modal" data-import-modal><div class="modal-form"><div class="modal-header"><div><p class="eyebrow">Restore workspace</p><h2>Import this workspace?</h2></div><button class="icon-button" type="button" data-import-close aria-label="Cancel import">×</button></div><div class="modal-content storage-content"><p class="import-summary" data-import-summary></p><dl class="storage-facts compact"><div><dt>Merge</dt><dd>Keep current records and update matching IDs from the file.</dd></div><div><dt>Replace</dt><dd>Use only the imported workspace, including its OpsDesk tasks.</dd></div></dl></div><div class="modal-footer import-actions"><button class="button ghost" type="button" data-import-close>Cancel</button><div class="button-row"><button class="button" type="button" data-import-mode="merge">Merge</button><button class="button primary" type="button" data-import-mode="replace">Replace workspace</button></div></div></div></dialog>
+
+  <dialog class="modal data-modal" data-delete-modal><div class="modal-form"><div class="modal-header"><div><p class="eyebrow danger-eyebrow">Permanent action</p><h2>Delete this connection?</h2></div><button class="icon-button" type="button" data-delete-close aria-label="Cancel deletion">×</button></div><div class="modal-content storage-content"><p class="storage-lead" data-delete-summary></p><p class="delete-warning">The connection, its datasets, fields, calculations, changes, and discrepancies will be removed. Linked OpsDesk tasks remain available.</p></div><div class="modal-footer"><button class="button ghost" type="button" data-delete-close>Cancel</button><button class="button danger" type="button" data-confirm-delete>Delete permanently</button></div></div></dialog>
+
+  <div class="toast" data-toast role="status"></div>
+  <footer class="project-footer"><span>SyncDesk by Andrej Glavnik · <span data-year></span></span><button class="footer-data-link" type="button" data-storage-guide>Browser storage · shared backup · no uploads</button></footer>
+
+  <script src="../shared/project.js?v=20260719-sync"></script>
+  <script src="../shared/workspace.js?v=20260719-sync"></script>
+  <script src="app.js?v=20260719-sync"></script>
+</body>
+</html>

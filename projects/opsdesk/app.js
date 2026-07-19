@@ -1,6 +1,6 @@
 (function () {
   const { storage, download, copy, uid, escapeHtml, toast } = globalThis.OpsTools;
-  const storageKey = "opsdesk-workspace-v1";
+  const workspaceStore = globalThis.WorkspaceStore;
   const storageNoticeKey = "opsdesk-storage-notice-v1";
   const priorityRank = { P1: 1, P2: 2, P3: 3, P4: 4 };
   const statusOrder = ["inbox", "planned", "active", "blocked", "done"];
@@ -50,17 +50,21 @@
     }
   };
 
-  const emptyWorkspace = { version: 1, items: [] };
-  const storedWorkspace = storage.get(storageKey, emptyWorkspace);
+  let workspace = workspaceStore.get();
   const state = {
-    items: Array.isArray(storedWorkspace?.items) ? storedWorkspace.items.map(normalizeItem) : [],
+    items: workspace.opsDesk.items.map(normalizeItem),
     selectedId: null,
-    view: ["focus", "board", "updates"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "focus",
+    view: ["focus", "board", "todo", "updates"].includes(location.hash.slice(1))
+      ? location.hash.slice(1)
+      : ["focus", "board", "todo", "updates"].includes(workspace.opsDesk.preferences?.view)
+        ? workspace.opsDesk.preferences.view
+        : "focus",
     filters: { search: "", priority: "all", type: "all" },
-    updateRange: "week",
+    updateRange: ["today", "week", "all"].includes(workspace.opsDesk.preferences?.updateRange) ? workspace.opsDesk.preferences.updateRange : "week",
     activeTemplate: null
   };
   let pendingImport = null;
+  let pendingDeleteId = null;
 
   const elements = {
     views: [...document.querySelectorAll("[data-view]")],
@@ -82,6 +86,8 @@
     attentionList: document.querySelector("[data-attention-list]"),
     nextList: document.querySelector("[data-next-list]"),
     board: document.querySelector("[data-board]"),
+    todoForm: document.querySelector("[data-todo-form]"),
+    todoGroups: document.querySelector("[data-todo-groups]"),
     search: document.querySelector("[data-search]"),
     filterPriority: document.querySelector("[data-filter-priority]"),
     filterType: document.querySelector("[data-filter-type]"),
@@ -95,7 +101,13 @@
     importModal: document.querySelector("[data-import-modal]"),
     importSummary: document.querySelector("[data-import-summary]"),
     onboardingModal: document.querySelector("[data-onboarding-modal]"),
-    storageModal: document.querySelector("[data-storage-modal]")
+    storageModal: document.querySelector("[data-storage-modal]"),
+    exportModal: document.querySelector("[data-export-modal]"),
+    exportForm: document.querySelector("[data-export-form]"),
+    exportScopeField: document.querySelector("[data-export-scope-field]"),
+    exportNote: document.querySelector("[data-export-note]"),
+    deleteModal: document.querySelector("[data-delete-modal]"),
+    deleteSummary: document.querySelector("[data-delete-summary]")
   };
 
   function normalizeItem(item) {
@@ -115,6 +127,7 @@
       expected: item.expected || "",
       actual: item.actual || "",
       links: item.links || "",
+      knowledgeLinks: Array.isArray(item.knowledgeLinks) ? item.knowledgeLinks : [],
       focus: Boolean(item.focus),
       archived: Boolean(item.archived),
       notes: Array.isArray(item.notes) ? item.notes : [],
@@ -134,7 +147,12 @@
   }
 
   function persist() {
-    storage.set(storageKey, { version: 1, items: state.items });
+    workspace = workspaceStore.get();
+    workspace.opsDesk = {
+      items: state.items,
+      preferences: { view: state.view, updateRange: state.updateRange }
+    };
+    workspaceStore.save(workspace);
   }
 
   function localDateString(date = new Date()) {
@@ -240,6 +258,7 @@
       expected: input.expected || "",
       actual: input.actual || "",
       links: input.links || "",
+      knowledgeLinks: input.knowledgeLinks || [],
       focus: Boolean(input.focus),
       notes: input.notes || [],
       createdAt: now,
@@ -263,9 +282,10 @@
   }
 
   function setView(view) {
-    if (!["focus", "board", "updates"].includes(view)) return;
+    if (!["focus", "board", "todo", "updates"].includes(view)) return;
     state.view = view;
     if (location.hash !== `#${view}`) history.pushState(null, "", `#${view}`);
+    persist();
     renderViews();
     if (view === "updates") renderUpdates();
   }
@@ -292,6 +312,7 @@
     document.querySelector("[data-metric-done]").textContent = done.length;
     document.querySelector("[data-count-focus]").textContent = focus.length;
     document.querySelector("[data-count-open]").textContent = open.length;
+    document.querySelector("[data-count-todo]").textContent = open.filter((item) => item.type === "task" || item.type === "follow-up").length;
     document.querySelector("[data-count-done]").textContent = done.length;
     document.querySelector("[data-focus-capacity]").textContent = `${focus.length} / 3`;
     document.querySelector("[data-archive-count]").textContent = state.items.filter((item) => item.archived).length;
@@ -370,6 +391,39 @@
         </section>`;
     }).join("");
     bindBoardDragAndDrop();
+  }
+
+  function todoRowHtml(item) {
+    const checked = item.status === "done";
+    return `
+      <article class="todo-row ${checked ? "is-done" : ""}">
+        <button class="todo-check" type="button" data-todo-toggle="${item.id}" aria-label="${checked ? "Reopen" : "Complete"} ${escapeHtml(item.title)}" title="${checked ? "Reopen" : "Mark complete"}">
+          ${checked ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"></path></svg>' : ""}
+        </button>
+        <button class="todo-title" type="button" data-item-id="${item.id}">${escapeHtml(item.title)}</button>
+        <span class="todo-meta ${isOverdue(item) ? "due-overdue" : ""}">${escapeHtml(item.due ? dueLabel(item) : item.project || typeLabels[item.type])}</span>
+      </article>`;
+  }
+
+  function renderTodo() {
+    const items = activeItems().filter((item) => ["task", "follow-up"].includes(item.type));
+    const open = items.filter((item) => item.status !== "done").sort(compareItems);
+    const today = open.filter((item) => item.focus || isOverdue(item) || isDueToday(item));
+    const todayIds = new Set(today.map((item) => item.id));
+    const upcoming = open.filter((item) => item.due && !todayIds.has(item.id));
+    const anytime = open.filter((item) => !item.due && !todayIds.has(item.id));
+    const completed = items.filter((item) => item.status === "done").sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt)).slice(0, 20);
+    const groups = [
+      ["Today", "Focus, due today, and overdue", today],
+      ["Upcoming", "Scheduled next actions", upcoming],
+      ["Anytime", "Open work without a due date", anytime],
+      ["Completed", "Recently finished", completed]
+    ];
+    elements.todoGroups.innerHTML = groups.map(([title, subtitle, groupItems]) => `
+      <section class="todo-section">
+        <div class="work-section-header"><div><h3>${title}</h3><p>${subtitle}</p></div><span class="count-badge">${groupItems.length}</span></div>
+        <div class="todo-list">${groupItems.length ? groupItems.map(todoRowHtml).join("") : '<div class="list-empty">No items</div>'}</div>
+      </section>`).join("");
   }
 
   function bindBoardDragAndDrop() {
@@ -558,7 +612,12 @@
     elements.archiveList.innerHTML = items.length ? items.map((item) => `
       <article class="archive-item">
         <div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.project || typeLabels[item.type])} · archived ${formatDate(item.updatedAt, { month: "short", day: "numeric" })}</p></div>
-        <button class="button small" type="button" data-restore-item="${item.id}">Restore</button>
+        <div class="archive-actions">
+          <button class="button small" type="button" data-restore-item="${item.id}">Restore</button>
+          <button class="icon-button danger" type="button" aria-label="Delete ${escapeHtml(item.title)} permanently" title="Delete permanently" data-delete-item="${item.id}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v5M14 11v5"></path></svg>
+          </button>
+        </div>
       </article>`).join("") : '<div class="empty-state"><div><h3>Archive is empty</h3><p>Archived work stays recoverable here.</p></div></div>';
   }
 
@@ -567,6 +626,7 @@
     renderMetrics();
     renderFocus();
     renderBoard();
+    renderTodo();
     renderUpdates();
     renderDetails();
   }
@@ -592,16 +652,166 @@
     requestAnimationFrame(() => elements.itemForm.elements.title.focus());
   }
 
-  function exportJson() {
-    const payload = JSON.stringify({
-      app: "OpsDesk",
-      version: 1,
-      exportedAt: new Date().toISOString(),
-      preferences: { view: state.view, updateRange: state.updateRange },
-      items: state.items
-    }, null, 2);
-    download(`opsdesk-backup-${localDateString()}.json`, payload, "application/json;charset=utf-8");
-    toast("Backup downloaded");
+  function scopedItems(scope) {
+    const items = [...state.items];
+    if (scope === "active") return items.filter((item) => !item.archived);
+    if (scope === "open") return items.filter((item) => !item.archived && item.status !== "done");
+    if (scope === "completed") return items.filter((item) => !item.archived && item.status === "done");
+    if (scope === "archived") return items.filter((item) => item.archived);
+    return items;
+  }
+
+  function reportRecord(item) {
+    return {
+      ID: item.id,
+      Title: item.title,
+      Type: typeLabels[item.type],
+      Status: statusLabels[item.status],
+      Priority: item.priority,
+      "Project / account": item.project,
+      Owner: item.owner,
+      "Due date": item.due,
+      Tags: item.tags.join("; "),
+      Context: item.summary,
+      "Next action": item.nextAction,
+      Blocker: item.blocker,
+      Expected: item.expected,
+      Actual: item.actual,
+      "Links / evidence": item.links,
+      "SyncDesk links": item.knowledgeLinks.map((link) => `${link.type}:${link.id}`).join("; "),
+      "Top focus": item.focus ? "Yes" : "No",
+      Archived: item.archived ? "Yes" : "No",
+      "Created at": item.createdAt,
+      "Updated at": item.updatedAt,
+      "Completed at": item.completedAt,
+      "Notes / decisions": item.notes.length
+    };
+  }
+
+  function reportNotes(items) {
+    return items.flatMap((item) => item.notes.map((note) => ({
+      "Work item ID": item.id,
+      "Work item": item.title,
+      Type: note.kind === "decision" ? "Decision" : "Note",
+      Entry: note.text,
+      "Created at": note.createdAt
+    })));
+  }
+
+  function exportWorkspaceBackup() {
+    persist();
+    const payload = workspaceStore.exportPayload(workspaceStore.get());
+    download(
+      `operations-workspace-${localDateString()}.json`,
+      JSON.stringify(payload, null, 2),
+      "application/json;charset=utf-8"
+    );
+    toast("Workspace backup downloaded");
+  }
+
+  function exportCsv(scope) {
+    const records = scopedItems(scope).map(reportRecord);
+    const columns = Object.keys(reportRecord(createItem()));
+    const rows = records.map((record) => columns.map((column) => csvCell(record[column])).join(","));
+    download(
+      `opsdesk-report-${scope}-${localDateString()}.csv`,
+      `\ufeff${[columns.map(csvCell).join(","), ...rows].join("\n")}`,
+      "text/csv;charset=utf-8"
+    );
+    toast("CSV report exported");
+  }
+
+  function exportExcel(scope) {
+    if (!globalThis.XLSX) {
+      toast("Excel exporter is unavailable");
+      return;
+    }
+    const items = scopedItems(scope);
+    const records = items.map(reportRecord);
+    const notes = reportNotes(items);
+    const summary = [
+      { Metric: "Report scope", Value: scope },
+      { Metric: "Exported at", Value: new Date().toISOString() },
+      { Metric: "Total items", Value: items.length },
+      { Metric: "Open", Value: items.filter((item) => !item.archived && item.status !== "done").length },
+      { Metric: "Completed", Value: items.filter((item) => !item.archived && item.status === "done").length },
+      { Metric: "Blocked", Value: items.filter((item) => !item.archived && item.status === "blocked").length },
+      { Metric: "Archived", Value: items.filter((item) => item.archived).length },
+      { Metric: "Notes and decisions", Value: notes.length }
+    ];
+    const workbook = XLSX.utils.book_new();
+    const summarySheet = XLSX.utils.json_to_sheet(summary);
+    const workSheet = XLSX.utils.json_to_sheet(records.length ? records : [{ Message: "No work items in this scope" }]);
+    const notesSheet = XLSX.utils.json_to_sheet(notes.length ? notes : [{ Message: "No notes or decisions in this scope" }]);
+    summarySheet["!cols"] = [{ wch: 24 }, { wch: 32 }];
+    workSheet["!cols"] = Object.keys(records[0] || { Message: "" }).map((key) => ({ wch: Math.min(42, Math.max(12, key.length + 2)) }));
+    notesSheet["!cols"] = [{ wch: 38 }, { wch: 34 }, { wch: 14 }, { wch: 64 }, { wch: 24 }];
+    XLSX.utils.book_append_sheet(workbook, summarySheet, "Summary");
+    XLSX.utils.book_append_sheet(workbook, workSheet, "Work items");
+    XLSX.utils.book_append_sheet(workbook, notesSheet, "Notes and decisions");
+    XLSX.writeFile(workbook, `opsdesk-report-${scope}-${localDateString()}.xlsx`, { compression: true });
+    toast("Excel report exported");
+  }
+
+  function markdownReport(scope) {
+    const items = scopedItems(scope).sort(compareItems);
+    const lines = [
+      "# OpsDesk work report",
+      "",
+      `Generated: ${formatDate(new Date(), { month: "long", day: "numeric", year: "numeric" })}`,
+      `Scope: ${scope}`,
+      "",
+      "## Summary",
+      `- Total items: ${items.length}`,
+      `- Open: ${items.filter((item) => !item.archived && item.status !== "done").length}`,
+      `- Completed: ${items.filter((item) => !item.archived && item.status === "done").length}`,
+      `- Blocked: ${items.filter((item) => !item.archived && item.status === "blocked").length}`,
+      `- Archived: ${items.filter((item) => item.archived).length}`,
+      ""
+    ];
+    const groups = [
+      ["In progress", items.filter((item) => !item.archived && item.status === "active")],
+      ["Blocked", items.filter((item) => !item.archived && item.status === "blocked")],
+      ["Planned and inbox", items.filter((item) => !item.archived && ["planned", "inbox"].includes(item.status))],
+      ["Completed", items.filter((item) => !item.archived && item.status === "done")],
+      ["Archive", items.filter((item) => item.archived)]
+    ];
+    groups.forEach(([title, groupItems]) => {
+      lines.push(`## ${title}`);
+      if (!groupItems.length) lines.push("- None");
+      groupItems.forEach((item) => {
+        const metadata = [item.priority, typeLabels[item.type], item.project, item.owner].filter(Boolean).join(" · ");
+        lines.push(`- **${item.title}**${metadata ? ` — ${metadata}` : ""}`);
+        if (item.nextAction) lines.push(`  - Next: ${item.nextAction}`);
+        if (item.blocker) lines.push(`  - Blocker: ${item.blocker}`);
+      });
+      lines.push("");
+    });
+    return lines.join("\n").trim();
+  }
+
+  function exportMarkdown(scope) {
+    download(`opsdesk-report-${scope}-${localDateString()}.md`, markdownReport(scope), "text/markdown;charset=utf-8");
+    toast("Markdown report exported");
+  }
+
+  function updateExportUi() {
+    const format = elements.exportForm.elements.format.value;
+    const notes = {
+      xlsx: ["Excel is selected.", "The workbook includes a summary plus detailed work and notes sheets."],
+      csv: ["CSV is selected.", "This is a flat work-item table for analysis and reporting."],
+      md: ["Markdown is selected.", "This creates a readable status report grouped by work state."],
+      json: ["Workspace backup is selected.", "This complete restore file includes OpsDesk and SyncDesk data."]
+    };
+    elements.exportScopeField.hidden = format === "json";
+    elements.exportNote.innerHTML = `<strong>${notes[format][0]}</strong> ${notes[format][1]}`;
+  }
+
+  function openExportModal() {
+    if (elements.storageModal.open) elements.storageModal.close();
+    elements.exportForm.reset();
+    updateExportUi();
+    elements.exportModal.showModal();
   }
 
   function acknowledgeStorageNotice() {
@@ -618,41 +828,40 @@
   }
 
   function prepareImport(payload, fileName) {
-    if (payload?.app && payload.app !== "OpsDesk") throw new Error("Invalid OpsDesk backup");
-    if (!Array.isArray(payload?.items)) throw new Error("Invalid OpsDesk backup");
-    const items = payload.items.map(normalizeItem);
+    const isLegacy = payload?.app === "OpsDesk" && Array.isArray(payload?.items);
+    const isWorkspace = payload?.schemaVersion === 2 && Array.isArray(payload?.opsDesk?.items);
+    if (!isLegacy && !isWorkspace) throw new Error("Invalid workspace backup");
+    const importedWorkspace = workspaceStore.normalize(payload);
+    const items = importedWorkspace.opsDesk.items.map(normalizeItem);
     const archivedCount = items.filter((item) => item.archived).length;
     const activeCount = items.length - archivedCount;
     const exportedAt = payload.exportedAt
       ? formatDate(payload.exportedAt, { month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" }) || "unknown date"
       : "unknown date";
-    pendingImport = {
-      items,
-      preferences: payload.preferences || {},
-      fileName
-    };
-    elements.importSummary.textContent = `${fileName} contains ${itemCountLabel(items.length)} (${activeCount} active, ${archivedCount} archived), exported ${exportedAt}. Your current workspace has ${itemCountLabel(state.items.length)}.`;
+    importedWorkspace.opsDesk.items = items;
+    const knowledgeCount = Object.values(importedWorkspace.syncDesk).reduce((sum, records) => sum + records.length, 0);
+    pendingImport = { workspace: importedWorkspace, fileName };
+    elements.importSummary.textContent = `${fileName} contains ${itemCountLabel(items.length)} (${activeCount} active, ${archivedCount} archived) and ${knowledgeCount} SyncDesk records, exported ${exportedAt}. Your current workspace has ${itemCountLabel(state.items.length)}.`;
     elements.importModal.showModal();
   }
 
   function applyImport(mode) {
     if (!pendingImport) return;
-    if (mode === "merge") {
-      const merged = new Map(state.items.map((item) => [item.id, item]));
-      pendingImport.items.forEach((item) => merged.set(item.id, item));
-      state.items = [...merged.values()];
-    } else {
-      state.items = pendingImport.items;
-    }
-    if (["focus", "board", "updates"].includes(pendingImport.preferences.view)) state.view = pendingImport.preferences.view;
-    if (["today", "week", "all"].includes(pendingImport.preferences.updateRange)) state.updateRange = pendingImport.preferences.updateRange;
+    const importedWorkspace = pendingImport.workspace;
+    workspace = mode === "merge"
+      ? workspaceStore.merge(workspaceStore.get(), importedWorkspace)
+      : workspaceStore.normalize(importedWorkspace);
+    workspace = workspaceStore.save(workspace);
+    state.items = workspace.opsDesk.items.map(normalizeItem);
+    const preferences = workspace.opsDesk.preferences || {};
+    if (["focus", "board", "todo", "updates"].includes(preferences.view)) state.view = preferences.view;
+    if (["today", "week", "all"].includes(preferences.updateRange)) state.updateRange = preferences.updateRange;
     state.selectedId = null;
     elements.updateRange.value = state.updateRange;
     history.replaceState(null, "", `#${state.view}`);
-    persist();
     render();
     if (elements.importModal.open) elements.importModal.close();
-    const importedCount = pendingImport.items.length;
+    const importedCount = importedWorkspace.opsDesk.items.length;
     pendingImport = null;
     toast(mode === "merge" ? `${itemCountLabel(importedCount)} merged from backup` : `${itemCountLabel(importedCount)} restored`);
   }
@@ -662,11 +871,25 @@
     return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
   }
 
-  function exportCsv() {
-    const columns = ["title", "type", "status", "priority", "project", "owner", "due", "tags", "summary", "nextAction", "blocker", "updatedAt"];
-    const rows = activeItems().map((item) => columns.map((column) => csvCell(column === "tags" ? item.tags.join("; ") : item[column])).join(","));
-    download(`opsdesk-work-${localDateString()}.csv`, [columns.join(","), ...rows].join("\n"), "text/csv;charset=utf-8");
-    toast("CSV exported");
+  function requestDelete(id) {
+    const item = state.items.find((entry) => entry.id === id);
+    if (!item) return;
+    pendingDeleteId = item.id;
+    elements.deleteSummary.textContent = `“${item.title}” will be removed permanently.`;
+    elements.deleteModal.showModal();
+  }
+
+  function deletePendingItem() {
+    const item = state.items.find((entry) => entry.id === pendingDeleteId);
+    if (!item) return;
+    state.items = state.items.filter((entry) => entry.id !== pendingDeleteId);
+    if (state.selectedId === pendingDeleteId) state.selectedId = null;
+    pendingDeleteId = null;
+    persist();
+    if (elements.deleteModal.open) elements.deleteModal.close();
+    if (elements.archiveModal.open) renderArchive();
+    render();
+    toast("Item deleted permanently");
   }
 
   elements.quickForm.addEventListener("submit", (event) => {
@@ -692,6 +915,17 @@
     if (templateButton) openNewItemModal(templateButton.dataset.template);
     if (event.target.closest("[data-new-item]")) openNewItemModal();
     if (event.target.closest("[data-open-board]")) setView("board");
+    const todoToggle = event.target.closest("[data-todo-toggle]");
+    if (todoToggle) {
+      const item = state.items.find((entry) => entry.id === todoToggle.dataset.todoToggle);
+      if (item) {
+        setItemStatus(item, item.status === "done" ? "planned" : "done");
+        item.updatedAt = new Date().toISOString();
+        persist();
+        render();
+        toast(item.status === "done" ? "To-do completed" : "To-do reopened");
+      }
+    }
     if (event.target.closest("[data-modal-close]")) elements.itemModal.close();
     if (event.target.closest("[data-close-detail]")) {
       state.selectedId = null;
@@ -711,8 +945,8 @@
       elements.filterType.value = "all";
       renderBoard();
     }
-    if (event.target.closest("[data-export-json]")) exportJson();
-    if (event.target.closest("[data-export-csv]")) exportCsv();
+    if (event.target.closest("[data-export-report]")) openExportModal();
+    if (event.target.closest("[data-export-close]")) elements.exportModal.close();
     if (event.target.closest("[data-import-trigger]")) openImportPicker();
     if (event.target.closest("[data-storage-guide]")) elements.storageModal.showModal();
     if (event.target.closest("[data-storage-close]")) elements.storageModal.close();
@@ -744,6 +978,17 @@
         toast("Item restored");
       }
     }
+    const deleteItem = event.target.closest("[data-delete-item]");
+    if (deleteItem) requestDelete(deleteItem.dataset.deleteItem);
+    if (event.target.closest("[data-delete-selected]")) {
+      const item = getSelected();
+      if (item) requestDelete(item.id);
+    }
+    if (event.target.closest("[data-delete-close]")) {
+      pendingDeleteId = null;
+      elements.deleteModal.close();
+    }
+    if (event.target.closest("[data-confirm-delete]")) deletePendingItem();
     const removeNote = event.target.closest("[data-remove-note]");
     if (removeNote) {
       const item = getSelected();
@@ -784,6 +1029,24 @@
     state.activeTemplate = null;
   });
 
+  elements.todoForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const values = Object.fromEntries(new FormData(elements.todoForm).entries());
+    addItem({ title: values.title, due: values.due, type: "task", status: "planned", priority: "P3" }, false);
+    elements.todoForm.reset();
+  });
+
+  elements.exportForm.addEventListener("change", updateExportUi);
+  elements.exportForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const values = Object.fromEntries(new FormData(elements.exportForm).entries());
+    if (values.format === "json") exportWorkspaceBackup();
+    if (values.format === "csv") exportCsv(values.scope);
+    if (values.format === "xlsx") exportExcel(values.scope);
+    if (values.format === "md") exportMarkdown(values.scope);
+    elements.exportModal.close();
+  });
+
   elements.detailForm.addEventListener("input", syncDetailToState);
   elements.detailForm.addEventListener("change", syncDetailToState);
 
@@ -816,6 +1079,7 @@
   });
   elements.updateRange.addEventListener("change", () => {
     state.updateRange = elements.updateRange.value;
+    persist();
     renderUpdates();
   });
 
@@ -826,7 +1090,7 @@
       const payload = JSON.parse(await file.text());
       prepareImport(payload, file.name);
     } catch {
-      toast("This file is not a valid OpsDesk backup");
+      toast("This file is not a valid workspace backup");
     } finally {
       elements.importFile.value = "";
     }
@@ -834,7 +1098,7 @@
 
   window.addEventListener("hashchange", () => {
     const next = location.hash.slice(1);
-    if (["focus", "board", "updates"].includes(next)) {
+    if (["focus", "board", "todo", "updates"].includes(next)) {
       state.view = next;
       renderViews();
       if (next === "updates") renderUpdates();
@@ -860,6 +1124,7 @@
     });
   }
 
+  elements.updateRange.value = state.updateRange;
   render();
   if (!storage.get(storageNoticeKey, false)) {
     requestAnimationFrame(() => elements.onboardingModal.showModal());

@@ -723,6 +723,10 @@ summary::-webkit-details-marker { display: none; }
   -webkit-backdrop-filter: blur(20px) saturate(150%);
 }
 
+.build-feature + .build-feature {
+  margin-top: 24px;
+}
+
 .build-feature-copy {
   padding: clamp(24px, 4vw, 42px);
   display: flex;

@@ -1,4 +1,4 @@
-const cacheName = "opsdesk-shell-v4";
+const cacheName = "syncdesk-shell-v2";
 const appShell = [
   "./",
   "./index.html",
@@ -9,7 +9,6 @@ const appShell = [
   "../shared/project.css",
   "../shared/project.js",
   "../shared/workspace.js",
-  "../shared/vendor/xlsx.full.min.js",
   "../../assets/img/favicon.svg"
 ];
 
@@ -28,7 +27,6 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET" || new URL(event.request.url).origin !== location.origin) return;
-
   if (event.request.mode === "navigate") {
     event.respondWith(
       fetch(event.request)
@@ -41,7 +39,6 @@ self.addEventListener("fetch", (event) => {
     );
     return;
   }
-
   event.respondWith(
     fetch(event.request)
       .then((response) => {

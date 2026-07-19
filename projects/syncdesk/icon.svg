@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">SyncDesk</title>
+  <desc id="desc">A compact data connection mark with synchronized database layers.</desc>
+  <rect width="512" height="512" rx="104" fill="#0b6f67"/>
+  <ellipse cx="256" cy="154" rx="146" ry="62" fill="none" stroke="#fff" stroke-width="30"/>
+  <path d="M110 154v102c0 34 65 62 146 62s146-28 146-62V154M110 256v102c0 34 65 62 146 62s146-28 146-62V256" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round"/>
+  <path d="m218 260 30 30 58-67" fill="none" stroke="#92f0de" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
