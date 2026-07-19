@@ -53,3 +53,5 @@ The portfolio uses system fonts and first-party HTML, CSS, JavaScript, screensho
 ## Deployment
 
 The repository is compatible with GitHub Pages from the repository root and requires no build output. Deployment is intentionally separate from local redesign work; review the local preview and `docs/final-redesign-report.md` before publishing.
+
+Production site: https://andrejglavnik.github.io/
