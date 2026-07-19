@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Technical project management desk visual</title>
+  <desc id="desc">Abstract laptop, ticket queue, QA checklist and project notes representing technical project management and customer-facing operations.</desc>
+  <rect width="1400" height="900" fill="#f7f8fb"/>
+  <rect x="0" y="0" width="720" height="900" fill="#ffffff"/>
+  <rect x="760" y="128" width="526" height="330" rx="24" fill="#111827"/>
+  <rect x="790" y="158" width="466" height="270" rx="12" fill="#172033"/>
+  <rect x="822" y="192" width="160" height="88" rx="8" fill="#20314d"/>
+  <polyline points="842,252 866,230 892,240 916,206 940,220 964,198" fill="none" stroke="#37b6ab" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1008" y="192" width="200" height="22" rx="11" fill="#2a3d5c"/>
+  <rect x="1008" y="232" width="150" height="22" rx="11" fill="#37b6ab"/>
+  <rect x="1008" y="272" width="182" height="22" rx="11" fill="#2a3d5c"/>
+  <rect x="822" y="316" width="176" height="82" rx="8" fill="#20314d"/>
+  <rect x="842" y="368" width="16" height="24" rx="4" fill="#0b4f8a"/>
+  <rect x="870" y="342" width="16" height="50" rx="4" fill="#168c86"/>
+  <rect x="898" y="330" width="16" height="62" rx="4" fill="#0b4f8a"/>
+  <rect x="926" y="356" width="16" height="36" rx="4" fill="#168c86"/>
+  <rect x="954" y="320" width="16" height="72" rx="4" fill="#0b4f8a"/>
+  <circle cx="1110" cy="358" r="48" fill="none" stroke="#0b4f8a" stroke-width="18"/>
+  <path d="M1110 310a48 48 0 0 1 44 29" fill="none" stroke="#37b6ab" stroke-width="18" stroke-linecap="round"/>
+  <path d="M730 470h590l50 70H680z" fill="#cbd5df"/>
+  <path d="M680 540h690v26c0 18-16 32-36 32H716c-20 0-36-14-36-32z" fill="#9aa8b6"/>
+  <rect x="128" y="548" width="478" height="220" rx="14" fill="#ffffff" stroke="#dce3ea" stroke-width="3"/>
+  <rect x="168" y="602" width="168" height="22" rx="11" fill="#dceaf5"/>
+  <rect x="168" y="648" width="360" height="16" rx="8" fill="#e8edf2"/>
+  <rect x="168" y="684" width="292" height="16" rx="8" fill="#e8edf2"/>
+  <circle cx="508" cy="612" r="22" fill="#168c86"/>
+  <path d="M496 612l8 9 18-22" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="508" cy="672" r="22" fill="#168c86"/>
+  <path d="M496 672l8 9 18-22" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="660" y="630" width="140" height="76" rx="8" fill="#d7f1ec"/>
+  <rect x="824" y="626" width="140" height="76" rx="8" fill="#eaf4fb"/>
+  <rect x="988" y="632" width="140" height="76" rx="8" fill="#fff3dd"/>
+  <path d="M128 806h1100" stroke="#dce3ea" stroke-width="5"/>
+</svg>

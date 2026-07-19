@@ -1,0 +1,15 @@
+{
+  "notice": "Synthetic portfolio data. No employer or customer data is included.",
+  "dataset": "ga4_events_daily",
+  "grain": "one row per event",
+  "freshness_sla_hours": 4,
+  "owners": ["Web Analytics", "Analytics Engineering"],
+  "required_fields": ["event_date", "event_timestamp", "event_name", "user_pseudo_id", "session_id", "source", "medium"],
+  "commerce_fields": ["transaction_id", "item_id", "currency", "value"],
+  "quality_rules": {
+    "transaction_id_unique": true,
+    "event_date_complete": true,
+    "source_medium_mapped": true,
+    "dashboard_variance_threshold_pct": 1.5
+  }
+}

@@ -13,18 +13,13 @@
   <meta property="og:description" content="A local-first workspace for operational tasks, support cases, analytics issues, blockers, decisions, and status updates." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://andrejglavnik.github.io/projects/opsdesk/" />
-  <meta property="og:image" content="https://andrejglavnik.github.io/assets/img/opsdesk-preview.png" />
-  <meta name="twitter:card" content="summary_large_image" />
   <title>OpsDesk | Daily Operations Workbench</title>
-  <link rel="canonical" href="https://andrejglavnik.github.io/projects/opsdesk/" />
   <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="../shared/project.css?v=20260719-sync" />
   <link rel="stylesheet" href="app.css?v=20260719-sync" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"OpsDesk","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","author":{"@type":"Person","name":"Andrej Glavnik","url":"https://andrejglavnik.github.io/"},"description":"A local-first daily operations workbench for tasks, support cases, analytics issues, decisions, blockers, and status updates.","url":"https://andrejglavnik.github.io/projects/opsdesk/"}</script>
 </head>
 <body>
-  <a class="skip-link" href="#opsdesk-content">Skip to workspace</a>
   <header class="app-header">
     <div class="app-header-inner">
       <a class="app-brand" href="../../index.html#builds" aria-label="Back to Andrej Glavnik portfolio">
@@ -52,7 +47,7 @@
     </div>
   </header>
 
-  <main id="opsdesk-content" class="app-shell" tabindex="-1">
+  <main class="app-shell">
     <section class="workspace-heading" aria-labelledby="workspace-title">
       <div>
         <p class="eyebrow">Daily operations</p>
@@ -113,7 +108,7 @@
           <p class="sidebar-label">Workspace data</p>
           <button class="sidebar-action" type="button" data-export-workspace>Export workspace</button>
           <button class="sidebar-action" type="button" data-import-trigger>Import workspace</button>
-          <input class="visually-hidden" type="file" accept="application/json,.json" aria-label="Choose OpsDesk workspace backup" data-import-file />
+          <input class="visually-hidden" type="file" accept="application/json,.json" data-import-file />
           <button class="sidebar-action" type="button" data-storage-guide>How storage works</button>
           <button class="sidebar-action" type="button" data-show-archive>Archive <span data-archive-count>0</span></button>
         </div>
@@ -162,7 +157,7 @@
           </div>
 
           <div class="board-toolbar">
-            <input class="search-input" type="search" aria-label="Search work items" placeholder="Search title, project, tags, or notes" data-search />
+            <input class="search-input" type="search" placeholder="Search title, project, tags, or notes" data-search />
             <select class="select" data-filter-priority aria-label="Filter by priority">
               <option value="all">All priorities</option>
               <option value="P1">P1 critical</option>
@@ -312,11 +307,11 @@
 
             <section class="notes-section" aria-labelledby="notes-title">
               <div class="notes-heading">
-                <h3 id="notes-title">Notes &amp; decisions</h3>
+                <h3 id="notes-title">Notes & decisions</h3>
                 <select class="select note-kind" data-note-kind aria-label="Note type"><option value="note">Note</option><option value="decision">Decision</option></select>
               </div>
               <form class="note-composer" data-note-form>
-                <textarea class="textarea compact-textarea" name="note" aria-label="Note or decision text" placeholder="Add context, a meeting note, or a decision" required></textarea>
+                <textarea class="textarea compact-textarea" name="note" placeholder="Add context, a meeting note, or a decision" required></textarea>
                 <button class="button small" type="submit">Add</button>
               </form>
               <div class="notes-list" data-notes-list></div>

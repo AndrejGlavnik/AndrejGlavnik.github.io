@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Andrej Glavnik technical project manager portfolio</title>
+  <desc id="desc">Open Graph card for Andrej Glavnik focused on technical project management, customer-facing operations and analytics delivery.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f5f5f7"/>
+      <stop offset=".55" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dfeeff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="72" y="66" width="1056" height="498" rx="28" fill="#ffffff" stroke="#d6dce5" stroke-width="2"/>
+  <rect x="112" y="112" width="70" height="70" rx="16" fill="#111827"/>
+  <text x="147" y="156" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="800" fill="#ffffff">AG</text>
+  <text x="112" y="270" font-family="Arial, sans-serif" font-size="84" font-weight="800" fill="#111827">Andrej Glavnik</text>
+  <text x="112" y="344" font-family="Arial, sans-serif" font-size="48" font-weight="800" fill="#111827">Technical Project Manager</text>
+  <text x="112" y="402" font-family="Arial, sans-serif" font-size="27" fill="#526071">Customer operations | Analytics delivery | Support systems</text>
+  <rect x="112" y="462" width="166" height="54" rx="10" fill="#0071e3"/>
+  <text x="195" y="497" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff">13+ recs</text>
+  <rect x="300" y="462" width="154" height="54" rx="10" fill="#eef4fb" stroke="#d6dce5"/>
+  <text x="377" y="497" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#111827">20 certs</text>
+  <rect x="476" y="462" width="186" height="54" rx="10" fill="#eef4fb" stroke="#d6dce5"/>
+  <text x="569" y="497" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#111827">2,000+ customers</text>
+  <text x="784" y="500" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#111827">andrejglavnik.github.io</text>
+</svg>

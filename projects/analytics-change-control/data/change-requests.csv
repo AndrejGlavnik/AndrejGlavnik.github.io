@@ -1,0 +1,7 @@
+change_id,title,priority,status,sla_days,owner,requested_by,qa_status,release_date
+CHANGE-024,Add assisted conversion view,P3,Ready for QA,10,Analytics Delivery,Marketing,In progress,2026-07-24
+CHANGE-023,Correct vendor hierarchy mapping,P3,Released,10,BI Engineering,eCommerce,Passed,2026-07-12
+CHANGE-022,Add consent-state quality flag,P4,In progress,20,Web Analytics,Privacy,Not started,
+CHANGE-021,Repair campaign taxonomy filter,P3,Released,10,Marketing Analytics,Acquisition,Passed,2026-07-08
+CHANGE-020,Create regional revenue target,P4,Approved,20,BI Delivery,Finance,Not started,
+CHANGE-019,Retire legacy session KPI,P5,Backlog,30,Analytics Governance,Product,Not started,

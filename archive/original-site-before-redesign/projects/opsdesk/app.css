@@ -510,7 +510,7 @@
 @media (max-width: 640px) {
   .quick-capture form { grid-template-columns: 1fr auto; }
   .quick-input { grid-column: 1 / -1; }
-  .ops-sidebar { display: block; max-width: 100%; overflow-x: auto; white-space: nowrap; padding-bottom: 8px; contain: layout paint; }
+  .ops-sidebar { display: block; overflow-x: auto; white-space: nowrap; padding-bottom: 8px; }
   .sidebar-section { display: inline-flex; vertical-align: top; margin-right: 12px; }
   .sidebar-label { display: none; }
   .sidebar-link,

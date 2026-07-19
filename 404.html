@@ -1,25 +1,53 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Page Moved | Andrej Glavnik</title>
+  <meta name="color-scheme" content="light dark" />
+  <title>Page Not Found | Andrej Glavnik</title>
+  <meta name="description" content="Return to Andrej Glavnik's project management, analytics delivery, and support operations portfolio." />
   <meta name="robots" content="noindex" />
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260624-apple-proof" />
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/assets/css/case-study.css?v=20260719" />
 </head>
 <body>
-  <main>
-    <section class="page-hero">
-      <p class="eyebrow">404</p>
-      <h1>This portfolio is now one page.</h1>
-      <p>The old URL is gone, but the portfolio is live.</p>
-      <div class="button-row">
-        <a class="button primary" href="index.html">Open Portfolio</a>
-        <a class="button secondary" href="index.html#contact">Contact Andrej</a>
+  <a class="skip-link" href="#not-found">Skip to message</a>
+  <header class="case-header">
+    <div class="case-header-inner">
+      <a class="case-brand" href="/" aria-label="Andrej Glavnik portfolio">
+        <span class="case-brand-mark" aria-hidden="true">AG</span>
+        <span>Andrej Glavnik</span>
+      </a>
+      <div class="case-actions">
+        <button class="case-icon-button" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"></path><circle cx="12" cy="12" r="4"></circle></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="not-found" class="case-main" tabindex="-1">
+    <section class="case-hero">
+      <div>
+        <p class="case-eyebrow">404 · route not found</p>
+        <h1>This page moved.</h1>
+        <p class="case-lead">The work is still here.</p>
+        <p class="case-summary">Return to the portfolio or open the flagship products directly.</p>
+        <div class="case-buttons">
+          <a class="case-button primary" href="/">Open portfolio</a>
+          <a class="case-button" href="/#builds">View projects</a>
+        </div>
+      </div>
+      <div class="case-preview" aria-label="Available project routes">
+        <div class="case-window-list">
+          <span><strong>OpsDesk</strong> Daily operations workspace</span>
+          <span><strong>SyncDesk</strong> Data connection knowledge</span>
+          <span><strong>Analytics cases</strong> QA, governance, command center</span>
+        </div>
+        <span class="case-preview-label">A compact route back to the useful work.</span>
       </div>
     </section>
   </main>
-  <script src="assets/js/main.js?v=20260624-apple-proof"></script>
+  <footer class="case-footer"><span>© <span data-year></span> Andrej Glavnik</span><nav><a href="/">Portfolio</a><a href="/#contact">Contact</a></nav></footer>
+  <script src="/assets/js/case-study.js?v=20260719" defer></script>
 </body>
 </html>

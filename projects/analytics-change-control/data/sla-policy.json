@@ -1,0 +1,9 @@
+{
+  "notice": "Synthetic portfolio workflow. SLA targets are illustrative, not employer policy.",
+  "priorities": {
+    "P3": {"target_days": 10, "use": "material business impact or broken reporting workflow"},
+    "P4": {"target_days": 20, "use": "planned improvement with a defined owner and value"},
+    "P5": {"target_days": 30, "use": "low-risk optimization or backlog candidate"}
+  },
+  "release_gate": ["scope approved", "acceptance criteria met", "data QA passed", "stakeholder sign-off", "release notes written"]
+}

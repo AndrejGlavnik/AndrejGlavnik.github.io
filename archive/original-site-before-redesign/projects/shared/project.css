@@ -51,21 +51,6 @@
 
 * { box-sizing: border-box; }
 
-.skip-link {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-  padding: 9px 12px;
-  border-radius: 6px;
-  color: #fff;
-  background: var(--blue);
-  transform: translateY(-150%);
-  transition: transform 160ms ease;
-}
-
-.skip-link:focus { transform: translateY(0); }
-
 [hidden] { display: none !important; }
 
 html { scroll-behavior: smooth; }

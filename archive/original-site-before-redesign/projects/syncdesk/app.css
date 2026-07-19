@@ -273,7 +273,7 @@
   .app-header-inner { grid-template-columns: auto 1fr; }
   .sync-nav { grid-column: 1 / -1; grid-row: 2; order: 3; overflow-x: auto; justify-content: flex-start; padding-bottom: 8px; }
   .sync-layout { grid-template-columns: 1fr; }
-  .sync-sidebar { position: static; display: block; max-width: 100%; overflow-x: auto; white-space: nowrap; padding-bottom: 8px; contain: layout paint; }
+  .sync-sidebar { position: static; display: block; overflow-x: auto; white-space: nowrap; padding-bottom: 8px; }
   .sync-sidebar .sidebar-section { display: inline-flex; vertical-align: top; margin-right: 12px; }
   .sync-sidebar .sidebar-label,
   .sync-sidebar .sidebar-label-row { display: none; }

@@ -10,18 +10,13 @@
   <meta property="og:description" content="Know the owner, schema, business logic, history, and issues behind every data connection." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://andrejglavnik.github.io/projects/syncdesk/" />
-  <meta property="og:image" content="https://andrejglavnik.github.io/assets/img/syncdesk-preview.png" />
-  <meta name="twitter:card" content="summary_large_image" />
   <title>SyncDesk | Data Connection Knowledge Workspace</title>
-  <link rel="canonical" href="https://andrejglavnik.github.io/projects/syncdesk/" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="../shared/project.css?v=20260719-sync" />
   <link rel="stylesheet" href="app.css?v=20260719-modal" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SyncDesk","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","author":{"@type":"Person","name":"Andrej Glavnik","url":"https://andrejglavnik.github.io/"},"description":"A local-first data connection knowledge workspace for ownership, schema, calculations, change history, discrepancies, lineage, and runbooks.","url":"https://andrejglavnik.github.io/projects/syncdesk/"}</script>
 </head>
 <body>
-  <a class="skip-link" href="#syncdesk-content">Skip to workspace</a>
   <header class="app-header">
     <div class="app-header-inner">
       <a class="app-brand" href="../../index.html#builds" aria-label="Back to Andrej Glavnik portfolio">
@@ -50,7 +45,7 @@
     </div>
   </header>
 
-  <main id="syncdesk-content" class="app-shell" tabindex="-1">
+  <main class="app-shell">
     <section class="workspace-heading" aria-labelledby="workspace-title">
       <div>
         <p class="eyebrow">Data knowledge</p>
@@ -93,7 +88,7 @@
           <p class="sidebar-label">Workspace data</p>
           <button class="sidebar-action" type="button" data-export-workspace>Export workspace</button>
           <button class="sidebar-action" type="button" data-import-trigger>Import workspace</button>
-          <input class="visually-hidden" type="file" accept="application/json,.json" aria-label="Choose shared workspace backup" data-import-file />
+          <input class="visually-hidden" type="file" accept="application/json,.json" data-import-file />
           <button class="sidebar-action" type="button" data-storage-guide>How storage works</button>
         </div>
       </aside>
@@ -105,7 +100,7 @@
             <button class="button primary small" type="button" data-new-connection>Add connection</button>
           </div>
           <div class="connection-toolbar">
-            <input class="search-input" type="search" aria-label="Search connections" placeholder="Search connection, owner, provider, source, or purpose" data-search-connections />
+            <input class="search-input" type="search" placeholder="Search connection, owner, provider, source, or purpose" data-search-connections />
             <select class="select" data-status-filter aria-label="Filter connection status"><option value="all">All statuses</option><option value="active">Active</option><option value="paused">Paused</option><option value="deprecated">Deprecated</option></select>
           </div>
           <div class="connection-list" data-connection-list></div>
@@ -113,7 +108,7 @@
 
         <section class="view-panel" data-view="schema" hidden>
           <div class="view-heading"><div><h2>Schema library</h2><p>Datasets, sheets, endpoints, metrics, dimensions, keys, and date fields.</p></div><button class="button primary small" type="button" data-new-schema>Add dataset + fields</button></div>
-          <div class="connection-toolbar"><select class="select" data-schema-connection-filter aria-label="Filter schema by connection"></select><input class="search-input" type="search" aria-label="Search schema records" placeholder="Search fields, definitions, or datasets" data-schema-search /></div>
+          <div class="connection-toolbar"><select class="select" data-schema-connection-filter aria-label="Filter schema by connection"></select><input class="search-input" type="search" placeholder="Search fields, definitions, or datasets" data-schema-search /></div>
           <div class="schema-library" data-schema-library></div>
         </section>
 

@@ -1,38 +1,55 @@
-# Andrej Glavnik Portfolio Website
+# Andrej Glavnik Portfolio
 
-Static GitHub Pages portfolio for Andrej Glavnik, focused on technical project management, customer-facing operations, analytics delivery, technical support, product ownership, certifications, recommendation proof and practical workflow tooling.
+A static, one-page portfolio for technical project management, product ownership, analytics delivery, support operations, and customer-facing systems. The site includes two usable local-first browser products and three original analytics case studies with inspectable synthetic data.
 
-The repository also includes **OpsDesk**, a functional local-first daily operations workbench. It combines task capture, priority and status management, technical context, blockers, meeting notes, decision logging, automatic team updates, archive recovery, and JSON/CSV export in a single browser application. The complete JSON backup can be merged into or used to replace a workspace; CSV is intended for reporting rather than restoration.
+## Local preview
 
-## Live Site
+No build step or package installation is required.
 
-https://andrejglavnik.github.io/
+```bash
+python3 -m http.server 4180 --bind 127.0.0.1
+```
 
-## Structure
+Open `http://127.0.0.1:4180/`.
 
-- `index.html` - one-page technical project management portfolio
-- `services.html` - legacy redirect to the work section
-- `case-studies.html` - legacy redirect to proof
-- `projects.html` - legacy redirect to projects
+## Public routes
+
+- `/` - one-page portfolio
+- `/projects/opsdesk/` - OpsDesk application
+- `/projects/opsdesk/case-study.html` - OpsDesk product case study
+- `/projects/syncdesk/` - SyncDesk application
+- `/projects/syncdesk/case-study.html` - SyncDesk product case study
+- `/projects/ga4-quality-monitor/` - analytics QA case study
+- `/projects/analytics-change-control/` - analytics delivery governance case study
+- `/projects/marketing-command-center/` - cross-channel marketing analytics case study
+
+Legacy pages remain as redirects to the relevant one-page section.
+
+## Project structure
+
+- `index.html` - portfolio shell and content
+- `assets/css/styles.css` - portfolio design system
+- `assets/js/main.js` - theme, navigation, reveal, and experience behavior
+- `assets/css/case-study.css` - shared case-study design system
+- `assets/js/case-study.js` - shared case-study interactions
 - `projects/opsdesk/` - installable daily operations workbench
-- `projects/shared/` - shared local-first project UI and browser utilities
-- `blog.html` - legacy redirect to projects
-- `book.html` - legacy redirect to contact
-- `recommendations.html` - legacy redirect to recommendations
-- `assets/css/styles.css` - static design system
-- `assets/js/main.js` - lightweight year/header behavior
+- `projects/syncdesk/` - installable data-connection knowledge workspace
+- `projects/*/data/` - synthetic, inspectable portfolio datasets and definitions
+- `docs/` - reference research, redesign decisions, roadmap, QA, and handoff
+- `archive/original-site-before-redesign/` - original production source preserved outside the active routes
 
-## Positioning
+## Local-first data
 
-The site positions Andrej as a technical project manager who can turn messy customer, support, analytics, ticketing and delivery problems into clear owned work.
+OpsDesk and SyncDesk save working data in the browser's `localStorage`. No backend, account, analytics tracker, or upload is used. Clearing site data removes the browser copy, so both applications provide a portable JSON workspace export and import flow. Human-readable Excel, CSV, and Markdown exports are reports; JSON is the complete restore format shared by both applications.
+
+## Data and claims
+
+The analytics projects use clearly labeled synthetic data created for this portfolio. They demonstrate methods, decisions, QA, and governance without exposing employer information or claiming production deployment. Employment and recommendation content is based on Andrej's supplied CV, LinkedIn material, and signed recommendation letter.
+
+## Dependencies and licences
+
+The portfolio uses system fonts and first-party HTML, CSS, JavaScript, screenshots, and synthetic data. OpsDesk and SyncDesk vendor SheetJS Community Edition for spreadsheet export. Attribution and licence details are recorded in [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md).
 
 ## Deployment
 
-This repository is designed to run directly through GitHub Pages:
-
-1. Repository: `AndrejGlavnik.github.io`
-2. Source: deploy from branch
-3. Branch: `main`
-4. Folder: `/root`
-
-No build step is required. OpsDesk autosaves workspace data to the site's `localStorage` and does not send it to a backend. Clearing site data removes that browser copy, so the app explains the limitation on first use and provides a portable JSON backup/import workflow.
+The repository is compatible with GitHub Pages from the repository root and requires no build output. Deployment is intentionally separate from local redesign work; review the local preview and `docs/final-redesign-report.md` before publishing.

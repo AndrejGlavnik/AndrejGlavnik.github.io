@@ -1,0 +1,13 @@
+{
+  "notice": "Synthetic portfolio data. Currency, channel values, and outcomes are illustrative.",
+  "currency": "EUR",
+  "metrics": {
+    "spend": "sum of normalized media cost after currency conversion",
+    "sessions": "GA4-style sessions attributed by governed channel mapping",
+    "leads": "deduplicated CRM leads with valid campaign and consent context",
+    "revenue": "order revenue attributed with the agreed business rule",
+    "roas": "attributed revenue / paid media spend",
+    "taxonomy_error_rate": "invalid campaign rows / all campaign rows"
+  },
+  "guardrails": ["freshness under 24 hours", "unknown channel under 1%", "currency coverage 100%", "campaign taxonomy errors under 2%"]
+}

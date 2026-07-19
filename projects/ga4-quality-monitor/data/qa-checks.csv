@@ -1,0 +1,13 @@
+check_id,check_name,category,status,affected_rows,severity,owner,last_run
+QA-001,Missing purchase event,events,pass,0,critical,Analytics Engineering,2026-07-18
+QA-002,Duplicate transaction IDs,commerce,fail,37,critical,Analytics Engineering,2026-07-18
+QA-003,Broken UTM medium,taxonomy,warn,184,medium,Marketing Operations,2026-07-18
+QA-004,Unexpected channel values,taxonomy,warn,62,medium,Marketing Operations,2026-07-18
+QA-005,Country mapping nulls,dimensions,pass,0,high,Analytics Engineering,2026-07-18
+QA-006,Date coverage gap,coverage,fail,1,critical,Data Platform,2026-07-18
+QA-007,Session drop anomaly,volume,warn,12480,high,Analytics Operations,2026-07-18
+QA-008,Revenue mismatch,commerce,pass,0,critical,Analytics Operations,2026-07-18
+QA-009,Missing consent state,privacy,pass,0,critical,Web Analytics,2026-07-18
+QA-010,Event parameter type drift,schema,warn,420,high,Web Analytics,2026-07-18
+QA-011,Dashboard/raw row variance,reconciliation,pass,0,critical,BI Delivery,2026-07-18
+QA-012,Unknown campaign source,taxonomy,fail,96,medium,Marketing Operations,2026-07-18

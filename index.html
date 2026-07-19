@@ -3,618 +3,356 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f5f7" />
-  <meta name="description" content="Andrej Glavnik is a Technical Project Manager focused on customer-facing operations, technical support, analytics delivery, project ownership, ticketing workflows, and practical support tooling." />
-  <meta name="keywords" content="Technical Project Manager, Customer Support Operations, Technical Support, Analytics Support, Project Management, Product Owner, Jira, Asana, ServiceNow, Zendesk, HubSpot, SQL, API troubleshooting, QA, Certifications" />
-  <meta property="og:title" content="Andrej Glavnik | Technical Project Manager" />
-  <meta property="og:description" content="Customer-facing technical project management, support operations, analytics delivery, tools, certifications, and recommendation proof." />
+  <meta name="theme-color" content="#f3f6f8" />
+  <meta name="description" content="Andrej Glavnik is a Technical Project Manager and Product Owner working across customer-facing operations, analytics delivery, support systems, and data quality." />
+  <meta name="keywords" content="Technical Project Manager, Product Owner, Support Operations, Analytics Delivery, GA4, BigQuery, Datorama, SQL, Jira, Asana, Zendesk, ServiceNow" />
+  <meta property="og:title" content="Andrej Glavnik | Technical Project Manager &amp; Product Owner" />
+  <meta property="og:description" content="Product work, analytics delivery, support operations, and tools built for real workflows." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://andrejglavnik.github.io/" />
-  <meta property="og:image" content="https://andrejglavnik.github.io/assets/img/og-card.svg" />
-  <title>Andrej Glavnik | Technical Project Manager</title>
+  <meta property="og:image" content="https://andrejglavnik.github.io/assets/img/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://andrejglavnik.github.io/" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260718-opsdesk" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260719-liquid" />
+  <title>Andrej Glavnik | Technical Project Manager &amp; Product Owner</title>
 </head>
 <body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
   <header class="site-header" data-header>
     <div class="header-inner">
-      <a class="brand" href="#top" aria-label="Andrej Glavnik home">
-        <span class="brand-mark">AG</span>
-        <span>Andrej Glavnik</span>
+      <a class="brand" href="#top" aria-label="Andrej Glavnik, home">
+        <span class="brand-mark" aria-hidden="true">AG</span>
+        <span class="brand-name">Andrej Glavnik</span>
       </a>
+
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#experience">Experience</a>
-        <a href="#recommendations">Recommendations</a>
-        <a href="#credentials">Certificates</a>
-        <a href="#tools">Tools</a>
-        <a href="#builds">Builds</a>
+        <a href="#recommendations">Proof</a>
+        <a href="#builds">Projects</a>
+        <a href="#contact">Contact</a>
       </nav>
+
       <div class="header-actions">
-        <button class="theme-toggle" type="button" aria-label="Theme mode: light. Switch to dark mode" aria-pressed="false" title="Theme mode" data-theme-toggle>
-          <span class="theme-icon theme-icon-light" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2.4M12 19.6V22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2 12h2.4M19.6 12H22M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"></path></svg>
-          </span>
-          <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
-          <span class="theme-icon theme-icon-dark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><path d="M20.4 15.6A8.5 8.5 0 0 1 8.4 3.6 8.5 8.5 0 1 0 20.4 15.6Z"></path></svg>
-          </span>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-theme-toggle>
+          <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+          <span class="toggle-track" aria-hidden="true"><span></span></span>
+          <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5a8.5 8.5 0 1 0 11.7 11.7Z"></path></svg>
         </button>
-        <a class="nav-cta" href="assets/Andrej-Glavnik-CV.pdf" target="_blank" rel="noopener">CV</a>
+        <a class="icon-button cv-button" href="assets/Andrej-Glavnik-CV.pdf" target="_blank" rel="noopener" aria-label="Open Andrej Glavnik CV">
+          <span>CV</span>
+        </a>
+        <button class="icon-button menu-button" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-button>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
       </div>
     </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav hidden>
+      <a href="#experience">Experience</a>
+      <a href="#recommendations">Recommendations</a>
+      <a href="#credentials">Certificates</a>
+      <a href="#tools">Tools</a>
+      <a href="#builds">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <h1 id="hero-title">Andrej Glavnik</h1>
-        <p class="hero-role">Technical Project Manager for customer-facing operations, support systems, analytics delivery, and practical workflow ownership.</p>
-        <p class="hero-text">I turn unclear customer problems into clean tickets, useful documentation, reliable handoffs, and work that teams can actually finish.</p>
-        <div class="button-row" aria-label="Primary actions">
-          <a class="button primary" href="#experience" data-scroll-experience>
-            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12l7 7 7-7"></path></svg>
-            <span>View Experience</span>
+  <main id="content" tabindex="-1">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Technical project management · product ownership · support operations</p>
+        <h1 id="hero-title">Andrej<br />Glavnik</h1>
+        <p class="hero-role">I turn complex customer and data problems into work teams can ship.</p>
+        <p class="hero-summary">Customer-facing operations, analytics delivery, support systems, and practical workflow ownership.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#builds">
+            <span>See the work</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
           </a>
-          <a class="button secondary" href="assets/Andrej-Glavnik-CV.pdf" target="_blank" rel="noopener">
-            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
-            <span>Download CV</span>
+          <a class="button quiet" href="assets/Andrej-Glavnik-CV.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+            <span>CV</span>
           </a>
-          <a class="button linkedin" href="https://www.linkedin.com/in/andrejglavnik/" target="_blank" rel="noopener">
-            <svg class="button-icon brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.9 20.5H3.6V9h3.3v11.5ZM5.2 7.4a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8Zm15.3 13.1h-3.3v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H10V9h3.2v1.6h.1c.4-.8 1.5-1.8 3.1-1.8 3.4 0 4 2.2 4 5.1v6.6Z"></path></svg>
+          <a class="button quiet" href="https://www.linkedin.com/in/andrejglavnik/" target="_blank" rel="noopener">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.8 20.5H3.5V9h3.3v11.5ZM5.2 7.4a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8Zm15.3 13.1h-3.3v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H10V9h3.2v1.6h.1c.4-.8 1.5-1.8 3.1-1.8 3.4 0 4 2.2 4 5.1v6.6Z"></path></svg>
             <span>LinkedIn</span>
           </a>
         </div>
-        <div class="availability" aria-label="Work availability">
-          <div class="availability-row">
-            <span>Based in Serbia</span>
-            <span>Open to remote, office, or hybrid</span>
-          </div>
-          <div class="availability-row">
-            <span>Time-zone flexible</span>
-            <span>Open to relocate</span>
-          </div>
+        <div class="availability" aria-label="Location and availability">
+          <span>Based in Serbia</span>
+          <span>Remote, office, or hybrid</span>
+          <span>Time-zone flexible</span>
+          <span>Open to relocate</span>
         </div>
       </div>
 
-      <aside class="impact-panel" aria-label="Career impact snapshot">
-        <div class="panel-label">Impact snapshot</div>
-        <div class="metric-grid">
-          <div class="metric-card">
-            <strong>95%</strong>
-            <span>Customer satisfaction across high-volume support tickets, onboarding cases, and analytics requests.</span>
-          </div>
-          <div class="metric-card">
-            <strong>13+</strong>
-            <span>LinkedIn recommendations from managers, directors, a CEO, mentors, and teammates.</span>
-          </div>
-          <div class="metric-card">
-            <strong>10+</strong>
-            <span>Cross-functional groups coordinated across eCommerce, CE, customer support, HCP, analytics, DevOps, agencies, and more.</span>
-          </div>
-          <div class="metric-card">
-            <strong>2,000+</strong>
-            <span>Support tickets handled quarterly across analytics, integrations, dashboards, technical issues, and handoffs.</span>
-          </div>
-          <div class="metric-card">
-            <strong>150+</strong>
-            <span>Inbound and outbound leads qualified per month in a customer/product education role.</span>
-          </div>
-          <div class="metric-card">
-            <strong>100+</strong>
-            <span>Product demos scheduled per month through live chat and email outreach, with a 30% demo-to-opportunity conversion rate.</span>
-          </div>
-          <div class="metric-card">
-            <strong>$50K+</strong>
-            <span>Pipeline growth influenced through high-quality qualification and sales handoffs.</span>
-          </div>
-          <div class="metric-card">
-            <strong>40%</strong>
-            <span>Churn-risk reduction on flagged customer accounts through targeted customer calls, faster follow-up, clearer handoffs, and product education.</span>
-          </div>
+      <div class="hero-workspace reveal" aria-label="OpsDesk and SyncDesk product previews">
+        <div class="workspace-bar" aria-hidden="true">
+          <span class="workspace-title">Work systems</span>
+          <span class="workspace-status"><i></i> Live projects</span>
         </div>
-      </aside>
+        <a class="product-window product-window-primary" href="projects/opsdesk/" aria-label="Open OpsDesk">
+          <img src="assets/img/opsdesk-preview.png" alt="OpsDesk daily operations workspace with focus, work board, updates, and export tools" width="1600" height="1000" fetchpriority="high" />
+          <span class="window-label"><strong>OpsDesk</strong><small>Daily operations workbench</small></span>
+        </a>
+        <a class="product-window product-window-secondary" href="projects/syncdesk/" aria-label="Open SyncDesk">
+          <img src="assets/img/syncdesk-preview.png" alt="SyncDesk data connection workspace with schema, business logic, manifest updates, and issues" width="1600" height="1000" fetchpriority="high" />
+          <span class="window-label"><strong>SyncDesk</strong><small>Data knowledge workspace</small></span>
+        </a>
+      </div>
+      <a class="scroll-cue" href="#proof" aria-label="Continue to proof">
+        <span>Proof, not promises</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg>
+      </a>
     </section>
 
-    <section class="section proof-section" id="proof" aria-labelledby="proof-title">
-      <div class="section-heading centered">
-        <p class="eyebrow">Proof</p>
-        <h2 class="section-title" id="proof-title">The work is customer-facing, technical, and outcome-driven.</h2>
-        <p>Support, sales, analytics, IT, and project roles connected by one pattern: understand the problem, structure the work, and move it forward.</p>
+    <section class="proof-band" id="proof" aria-labelledby="proof-title">
+      <div class="section-intro centered reveal">
+        <p class="eyebrow">Career proof</p>
+        <h2 id="proof-title">The pattern holds across every role.</h2>
+        <p>Understand the problem. Structure the work. Move it forward.</p>
       </div>
-      <div class="proof-grid">
-        <article class="proof-card">
-          <strong>4+ years</strong>
-          <h3>Customer-facing operations</h3>
-          <p>Customer support, technical support, business development, analytics support, project management, and product ownership.</p>
-        </article>
-        <article class="proof-card">
-          <strong>CEO + director proof</strong>
-          <h3>Recommendations with weight</h3>
-          <p>Databox leadership highlights API/SQL support, complex ticket handling, upper-tier technical support growth, process improvement, and customer outcomes.</p>
-        </article>
-        <article class="proof-card">
-          <strong>Dedicated letter</strong>
-          <h3>Director of Support recommendation</h3>
-          <p>A formal recommendation letter from Emil Korpar, Director of Support at Databox, supports the same story.</p>
-        </article>
-        <article class="proof-card">
-          <strong>20 credentials</strong>
-          <h3>Certified across the stack</h3>
-          <p>QA, network administration, CCNA, MikroTik, LPIC-1, ISO 27001, Zendesk, HubSpot, Google Analytics, Scrum, and more.</p>
-        </article>
+      <div class="proof-rail reveal">
+        <article><strong>4+ years</strong><span>Customer-facing technical operations</span></article>
+        <article><strong>95%</strong><span>Customer satisfaction across high-volume support</span></article>
+        <article><strong>13+</strong><span>LinkedIn recommendations from peers and leaders</span></article>
+        <article><strong>2,000+</strong><span>Support tickets handled quarterly</span></article>
+      </div>
+      <div class="proof-note reveal">
+        <div><span class="signal-dot"></span><strong>Leadership trust</strong></div>
+        <p>Promoted into product ownership after six months, with a dedicated recommendation from Databox's Director of Support.</p>
+        <a href="#recommendations">Read the proof <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <section class="section" id="experience" aria-labelledby="experience-title">
-      <div class="section-heading">
+    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-intro split reveal">
         <div>
           <p class="eyebrow">Experience</p>
-          <h2 class="section-title" id="experience-title">Roles built around ownership.</h2>
+          <h2 id="experience-title">Ownership, from ticket to roadmap.</h2>
         </div>
-        <p>Open a role to see the tools, decisions, and outcomes behind the title.</p>
+        <p>Five roles across product ownership, analytics delivery, technical support, business development, and network operations. Open any role for tools, decisions, and impact.</p>
       </div>
 
-      <div class="experience-list">
-        <article class="role-card">
-          <div class="role-head">
-            <div>
-              <a class="kicker" href="https://www.danone.com/" target="_blank" rel="noopener">Danone</a>
-              <h3>Product Owner, Analytics & SFMC Intelligence</h3>
-            </div>
-            <span class="role-badge">Jun 2026 - Present</span>
+      <div class="timeline">
+        <article class="role reveal">
+          <div class="role-marker" aria-hidden="true"><span></span></div>
+          <div class="role-main">
+            <div class="role-company"><a href="https://www.danone.com/" target="_blank" rel="noopener">Danone</a><span>Jun 2026 - Present</span></div>
+            <h3>Product Owner, Analytics &amp; SFMC Intelligence</h3>
+            <p>Own analytics priorities, backlog clarity, stakeholder alignment, reporting support, and cross-functional delivery.</p>
+            <ul class="inline-tools" aria-label="Key tools"><li>Jira</li><li>SFMC Intelligence</li><li>GA4</li><li>BigQuery</li></ul>
+            <details class="role-details">
+              <summary><span class="summary-open">Open role: tools, decisions, impact</span><span class="summary-close">Close role</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></summary>
+              <div class="role-detail-grid">
+                <div><h4>Tools</h4><p>Jira, Asana, Confluence, Slack, SFMC Intelligence / Datorama, GA4, BigQuery, GTM, Looker Studio, APIs, AWS S3, Excel, GitHub, DevOps, LM Studio, and custom LLM workflows.</p></div>
+                <div><h4>What I did</h4><ul><li>Translated stakeholder needs into product priorities, acceptance context, and support documentation.</li><li>Coordinated analytics, eCommerce, CE, HCP, support, DevOps, agency, and product-adjacent workflows.</li><li>Owned backlog clarity, issue context, handoffs, and follow-through.</li></ul></div>
+                <div><h4>Key impact</h4><ul><li>Promoted from project manager scope into product ownership after six months.</li><li>Coordinated 10+ cross-functional groups across business and technical work.</li><li>Built clearer operating paths for requests, reporting issues, and KPI interpretation.</li></ul></div>
+              </div>
+            </details>
           </div>
-          <p>Moved into product ownership after six months, owning Analytics and SFMC Intelligence priorities, stakeholder alignment, reporting support, and delivery clarity across teams.</p>
-          <div class="tag-list">
-            <span>Jira</span><span>Asana</span><span>Confluence</span><span>SFMC Intelligence</span><span>Datorama</span><span>GA4</span><span>BigQuery</span><span>GTM</span>
-          </div>
-          <details>
-            <summary>Open role: see tools, decisions, impact</summary>
-            <div class="detail-grid">
-              <div>
-                <h4>Tools</h4>
-                <p>Jira, Asana, Confluence, Slack, Salesforce Marketing Cloud Intelligence / Datorama, GA4, BigQuery, GTM, Looker Studio, APIs, AWS S3, Excel, CSV/XLS ingestion, GitHub, DevOps, LM Studio, custom LLM workflows.</p>
-              </div>
-              <div>
-                <h4>What I did</h4>
-                <ul>
-                  <li>Translated stakeholder needs into delivery priorities, reporting requirements, support context, and documentation.</li>
-                  <li>Coordinated analytics, eCommerce, CE, HCP, customer support, DevOps, agency, and product-adjacent workflows.</li>
-                  <li>Owned backlog clarity, issue context, handoffs, and cross-functional follow-through.</li>
-                </ul>
-              </div>
-              <div>
-                <h4>Key achievements</h4>
-                <ul>
-                  <li>Promoted from project manager scope into product owner ownership after six months.</li>
-                  <li>Coordinated 10+ cross-functional groups across business, analytics, support, product, agency, and technical workflows.</li>
-                  <li>Built clearer operating paths for analytics requests, reporting issues, KPI interpretation, and support workflows.</li>
-                </ul>
-              </div>
-            </div>
-          </details>
         </article>
 
-        <article class="role-card">
-          <div class="role-head">
-            <div>
-              <a class="kicker" href="https://www.danone.com/" target="_blank" rel="noopener">Danone</a>
-              <h3>Lead Data Analytics Project Manager</h3>
-            </div>
-            <span class="role-badge">Dec 2025 - Jun 2026</span>
+        <article class="role reveal">
+          <div class="role-marker" aria-hidden="true"><span></span></div>
+          <div class="role-main">
+            <div class="role-company"><a href="https://www.danone.com/" target="_blank" rel="noopener">Danone</a><span>Dec 2025 - Jun 2026</span></div>
+            <h3>Lead Data Analytics Project Manager</h3>
+            <p>Led analytics delivery across websites, eCommerce, digital marketing, data quality, reporting support, and documentation.</p>
+            <ul class="inline-tools" aria-label="Key tools"><li>Datorama</li><li>GA4</li><li>BigQuery</li><li>GTM</li></ul>
+            <details class="role-details">
+              <summary><span class="summary-open">Open role: tools, decisions, impact</span><span class="summary-close">Close role</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></summary>
+              <div class="role-detail-grid">
+                <div><h4>Tools</h4><p>GA4, BigQuery, SQL, Datorama, GTM, Looker Studio, Google Ads, Meta Ads, LinkedIn Ads, Amazon Ads, Vendor Central, REST APIs, AWS S3, Excel, Jira, Asana, Confluence, and GitHub.</p></div>
+                <div><h4>What I did</h4><ul><li>Led delivery across websites, eCommerce, digital marketing, and reporting support.</li><li>Structured KPI frameworks, data standards, event schemas, tagging QA, and documentation.</li><li>Translated business goals into measurable analytics outputs with marketing, product, engineering, and agencies.</li></ul></div>
+                <div><h4>Key impact</h4><ul><li>Owned delivery across GA4, BigQuery, Datorama, GTM, APIs, AWS S3, and spreadsheet pipelines.</li><li>Built centralized KPI, mapping, dashboard logic, troubleshooting, and onboarding documentation.</li><li>Led root-cause work across analytics, paid media, and retailer data sources.</li></ul></div>
+              </div>
+            </details>
           </div>
-          <p>Led analytics delivery across digital marketing, websites, eCommerce, reporting support, data quality, stakeholder requests, and documentation.</p>
-          <div class="tag-list">
-            <span>GA4</span><span>BigQuery</span><span>Datorama</span><span>GTM</span><span>REST APIs</span><span>AWS S3</span><span>Jira</span><span>Asana</span>
-          </div>
-          <details>
-            <summary>Open role: see tools, decisions, impact</summary>
-            <div class="detail-grid">
-              <div>
-                <h4>Tools</h4>
-                <p>GA4, GA4 BigQuery Export, BigQuery, SQL, Salesforce Marketing Cloud Intelligence / Datorama, Google Tag Manager, Looker Studio, Google Ads, Meta Ads, LinkedIn Ads, Amazon Ads, Amazon Vendor Central, REST APIs, AWS S3, Excel, CSV/XLS ingestion, Jira, Asana, Confluence, Slack, GitHub, DevOps.</p>
-              </div>
-              <div>
-                <h4>What I did</h4>
-                <ul>
-                  <li>Led analytics delivery across websites, eCommerce, digital marketing, and support reporting workstreams.</li>
-                  <li>Structured KPI frameworks, data standards, event schemas, tagging QA, documentation, and ways of working.</li>
-                  <li>Partnered with marketing, product, engineering, and agencies to translate business goals into measurable analytics outputs.</li>
-                </ul>
-              </div>
-              <div>
-                <h4>Key achievements</h4>
-                <ul>
-                  <li>Owned delivery across GA4, BigQuery, Datorama, GTM, APIs, AWS S3, and Excel/CSV/XLS data pipelines.</li>
-                  <li>Built centralized knowledge-base material for KPI definitions, mappings, dashboard logic, troubleshooting, and onboarding.</li>
-                  <li>Handled discrepancy/root-cause analysis across GA4, Datorama, BigQuery, paid media platforms, and retailer data sources.</li>
-                </ul>
-              </div>
-            </div>
-          </details>
         </article>
 
-        <article class="role-card">
-          <div class="role-head">
-            <div>
-              <a class="kicker" href="https://databox.com/" target="_blank" rel="noopener">Databox</a>
-              <h3>L3 Analytics Technical Support</h3>
-            </div>
-            <span class="role-badge">Mar 2025 - Dec 2025</span>
+        <article class="role reveal">
+          <div class="role-marker" aria-hidden="true"><span></span></div>
+          <div class="role-main">
+            <div class="role-company"><a href="https://databox.com/" target="_blank" rel="noopener">Databox</a><span>Mar 2025 - Dec 2025</span></div>
+            <h3>L3 Analytics Technical Support</h3>
+            <p>Resolved advanced dashboard, connector, metric, API, SQL/database, and cross-team escalation cases.</p>
+            <ul class="inline-tools" aria-label="Key tools"><li>SQL</li><li>Postman</li><li>BigQuery</li><li>Zendesk</li></ul>
+            <details class="role-details">
+              <summary><span class="summary-open">Open role: tools, decisions, impact</span><span class="summary-close">Close role</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></summary>
+              <div class="role-detail-grid">
+                <div><h4>Tools</h4><p>GA4, Adobe Analytics, Amplitude, Google Ads, Meta Ads, HubSpot, Salesforce, Shopify, Stripe, QuickBooks, MySQL, BigQuery, Redshift, Snowflake, Azure, Intercom, Zendesk, Freshdesk, Postman, Slack, and Confluence.</p></div>
+                <div><h4>What I did</h4><ul><li>Delivered upper-tier analytics and BI support for global customers through chat and email.</li><li>Debugged API connections, SQL sources, ETL flows, metric sync issues, and dashboard interpretation.</li><li>Prepared escalation context between customers, support, product, and engineering.</li></ul></div>
+                <div><h4>Key impact</h4><ul><li>Handled upper-tier API, SQL, connector, and metric-validation cases.</li><li>Supported thousands of customer tickets and cases across marketing, CRM, finance, database, and analytics platforms.</li><li>Led knowledge-sharing and process improvements cited by support leadership.</li></ul></div>
+              </div>
+            </details>
           </div>
-          <p>Advanced analytics technical support across customer dashboards, connector stability, metric validation, API issues, SQL/database sources, and cross-team escalations.</p>
-          <div class="tag-list">
-            <span>Intercom</span><span>Zendesk</span><span>Postman</span><span>SQL</span><span>BigQuery</span><span>APIs</span><span>Snowflake</span><span>HubSpot</span>
-          </div>
-          <details>
-            <summary>Open role: see tools, decisions, impact</summary>
-            <div class="detail-grid">
-              <div>
-                <h4>Tools</h4>
-                <p>GA4, Adobe Analytics, Amplitude, Google Play, Google Ads, Facebook Ads, Instagram Business, LinkedIn Ads, SEMrush, HubSpot, Salesforce, Shopify, Stripe, QuickBooks, MySQL, Google BigQuery, Amazon Redshift, Snowflake, Azure, Intercom, Zendesk, Freshdesk, Google Sheets, Excel, Postman, wget/curl, Slack, Confluence, Zoom.</p>
-              </div>
-              <div>
-                <h4>What I did</h4>
-                <ul>
-                  <li>Delivered upper-tier analytics and BI technical support for global customers through chat and email.</li>
-                  <li>Debugged API connections, SQL-based sources, ETL flows, metric sync issues, and dashboard interpretation problems.</li>
-                  <li>Prepared escalation context and bridged customers, support, product, and engineering.</li>
-                </ul>
-              </div>
-              <div>
-                <h4>Key achievements</h4>
-                <ul>
-                  <li>Handled upper-tier integration cases across API, SQL, connector, and metric-validation workflows.</li>
-                  <li>Supported thousands of customer tickets and cases across marketing, CRM, finance, database, and analytics platforms.</li>
-                  <li>Led knowledge-sharing and process improvements cited by Databox support leadership.</li>
-                </ul>
-              </div>
-            </div>
-          </details>
         </article>
 
-        <article class="role-card">
-          <div class="role-head">
-            <div>
-              <a class="kicker" href="https://databox.com/" target="_blank" rel="noopener">Databox</a>
-              <h3>Business Analytics Development Specialist</h3>
-            </div>
-            <span class="role-badge">Apr 2024 - Mar 2025</span>
+        <article class="role reveal">
+          <div class="role-marker" aria-hidden="true"><span></span></div>
+          <div class="role-main">
+            <div class="role-company"><a href="https://databox.com/" target="_blank" rel="noopener">Databox</a><span>Apr 2024 - Mar 2025</span></div>
+            <h3>Business Analytics Development Specialist</h3>
+            <p>Connected onboarding, product education, lead qualification, demos, and high-quality sales handoffs.</p>
+            <ul class="inline-tools" aria-label="Key tools"><li>HubSpot</li><li>Intercom</li><li>MEDDPICC</li><li>BANT</li></ul>
+            <details class="role-details">
+              <summary><span class="summary-open">Open role: tools, decisions, impact</span><span class="summary-close">Close role</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></summary>
+              <div class="role-detail-grid">
+                <div><h4>Tools</h4><p>HubSpot, Intercom, Slack, Confluence, Zoom, LinkedIn, chat and email outreach, MEDDPICC, BANT, discovery, sales handoff notes, and product education workflows.</p></div>
+                <div><h4>What I did</h4><ul><li>Onboarded users, explained product value, identified customer needs, and routed qualified opportunities.</li><li>Applied technical support context to customer discovery and sales handoffs.</li><li>Connected sales, support, and customer success with clearer customer context.</li></ul></div>
+                <div><h4>Key impact</h4><ul><li>Qualified 150+ inbound and outbound leads per month, influencing $50K+ in pipeline.</li><li>Scheduled 100+ product demos per month with a 30% demo-to-opportunity rate.</li><li>Contributed to $50K in closed revenue through quality handoffs.</li></ul></div>
+              </div>
+            </details>
           </div>
-          <p>Customer and product education role across onboarding, discovery, lead qualification, demo scheduling, sales handoffs, and platform adoption.</p>
-          <div class="tag-list">
-            <span>HubSpot</span><span>Intercom</span><span>Slack</span><span>Confluence</span><span>Zoom</span><span>MEDDPICC</span><span>BANT</span>
-          </div>
-          <details>
-            <summary>Open role: see tools, decisions, impact</summary>
-            <div class="detail-grid">
-              <div>
-                <h4>Tools</h4>
-                <p>HubSpot, Intercom, Slack, Confluence, Zoom, LinkedIn, chat/email outreach, lead qualification frameworks, customer discovery, sales handoff notes, product education workflows.</p>
-              </div>
-              <div>
-                <h4>What I did</h4>
-                <ul>
-                  <li>Onboarded users, explained product value, identified customer needs, and routed qualified opportunities.</li>
-                  <li>Used technical support context to make better sales handoffs and customer conversations.</li>
-                  <li>Connected sales, support, and customer success with clearer customer context.</li>
-                </ul>
-              </div>
-              <div>
-                <h4>Key achievements</h4>
-                <ul>
-                  <li>Prospected and qualified 150+ inbound/outbound leads per month, contributing to $50K+ in pipeline growth.</li>
-                  <li>Scheduled 100+ product demos per month through live chat and email outreach with a 30% demo-to-opportunity conversion rate.</li>
-                  <li>Contributed to $50K in closed revenue through high-quality sales handoffs.</li>
-                </ul>
-              </div>
-            </div>
-          </details>
         </article>
 
-        <article class="role-card">
-          <div class="role-head">
-            <div>
-              <a class="kicker" href="https://www.walmart.com/" target="_blank" rel="noopener">Walmart</a>
-              <h3>Senior Network Support Specialist</h3>
-            </div>
-            <span class="role-badge">May 2023 - Apr 2024</span>
+        <article class="role reveal">
+          <div class="role-marker" aria-hidden="true"><span></span></div>
+          <div class="role-main">
+            <div class="role-company"><a href="https://www.walmart.com/" target="_blank" rel="noopener">Walmart</a><span>May 2023 - Apr 2024</span></div>
+            <h3>Senior Network Support Specialist</h3>
+            <p>Kept retail networks, POS systems, enterprise hardware, dispatches, and ticket workflows moving.</p>
+            <ul class="inline-tools" aria-label="Key tools"><li>ServiceNow</li><li>Citrix</li><li>PowerShell</li><li>Linux</li></ul>
+            <details class="role-details">
+              <summary><span class="summary-open">Open role: tools, decisions, impact</span><span class="summary-close">Close role</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></summary>
+              <div class="role-detail-grid">
+                <div><h4>Tools</h4><p>ServiceNow, Java and NCR dispatching, Citrix, Cisco Jabber, Zoiper, CMD, PowerShell, Unix/Linux, Excel, Cisco/Meraki/Juniper switches, POS systems, scanners, readers, registers, printers, and retail hardware.</p></div>
+                <div><h4>What I did</h4><ul><li>Supported Walmart US and Sam's Club US across phone, tickets, and email.</li><li>Diagnosed network, POS, hardware, software, and connectivity issues.</li><li>Coordinated dispatch, repair follow-up, and documentation to reduce downtime.</li></ul></div>
+                <div><h4>Key impact</h4><ul><li>Built the troubleshooting foundation behind later analytics and support operations work.</li><li>Handled retail hardware, network, and enterprise support workflows under time pressure.</li><li>Completed network and system administration education with a 98% success score.</li></ul></div>
+              </div>
+            </details>
           </div>
-          <p>Retail infrastructure support across network equipment, POS systems, enterprise hardware, dispatching, ticket updates, and operational continuity.</p>
-          <div class="tag-list">
-            <span>ServiceNow</span><span>Citrix</span><span>Cisco Jabber</span><span>PowerShell</span><span>Linux</span><span>POS</span><span>NCR</span>
-          </div>
-          <details>
-            <summary>Open role: see tools, decisions, impact</summary>
-            <div class="detail-grid">
-              <div>
-                <h4>Tools</h4>
-                <p>ServiceNow, Java Technician Dispatching System, NCR dispatching tools, Citrix, Cisco Jabber, Zoiper, CMD, PowerShell, Unix/Linux, Excel, Cisco/Meraki/Juniper switches, POS systems, scanners, debit readers, registers, displays, printers, cabling, and retail hardware suites.</p>
-              </div>
-              <div>
-                <h4>What I did</h4>
-                <ul>
-                  <li>Supported Walmart US and Sam's Club US retail/corporate environments across phone, tickets, and email.</li>
-                  <li>Diagnosed network, POS, hardware, software, and connectivity issues for technical and non-technical users.</li>
-                  <li>Coordinated dispatch, repair follow-up, and ticket documentation to reduce operational downtime.</li>
-                </ul>
-              </div>
-              <div>
-                <h4>Key achievements</h4>
-                <ul>
-                  <li>Built the technical troubleshooting foundation behind later analytics and support operations work.</li>
-                  <li>Handled front-end retail hardware, network equipment, and enterprise support workflows under time pressure.</li>
-                  <li>Completed network/system administration education with a 98% success score and grade 10/10.</li>
-                </ul>
-              </div>
-            </div>
-          </details>
         </article>
       </div>
     </section>
 
-    <section class="section" id="recommendations" aria-labelledby="recommendations-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Recommendations</p>
-          <h2 class="section-title" id="recommendations-title">Thirteen people, same pattern: technical, reliable, customer-first.</h2>
-        </div>
-        <p>Everything here is visible on LinkedIn. Full recommendation text where it matters, plus direct proof links so the section feels verifiable, not decorative.</p>
+    <section class="section recommendations-section" id="recommendations" aria-labelledby="recommendations-title">
+      <div class="section-intro split reveal">
+        <div><p class="eyebrow">Recommendations</p><h2 id="recommendations-title">Trust, in other people's words.</h2></div>
+        <p>Managers, a CEO, mentors, and teammates independently describe the same strengths: technical depth, customer judgment, clear communication, and follow-through.</p>
       </div>
 
-      <div class="featured-rec">
-        <div>
-          <p class="kicker">Featured recommendation</p>
-          <h3>Emil Korpar - Director of Support at Databox</h3>
-          <blockquote>I've had the pleasure of working with Andrej over the past two years, having hired him into our Customer Support Specialist role, where he's since reached a Level 2 seniority. Right from the start, Andrej's valuable technical experience stood out. It allowed him to troubleshoot complex cases quickly and collaborate closely with our technical support team, which made our entire process faster and more efficient.</blockquote>
-          <blockquote>Andrej isn't just technically skilled; he's a top performer who's led trainings, improved process efficiency, supported our Sales Development team, and consistently focused on helping customers.</blockquote>
-        </div>
-        <div class="button-row">
-          <a class="button primary" href="https://www.linkedin.com/feed/update/urn:li:activity:7378328896649289728/" target="_blank" rel="noopener">LinkedIn Post</a>
-          <a class="button secondary" href="assets/emil-korpar-recommendation.pdf" target="_blank" rel="noopener">PDF Letter</a>
-          <a class="button ghost" href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">All Recommendations</a>
-        </div>
+      <div class="recommendation-feature reveal">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <blockquote>Right from the start, Andrej's valuable technical experience stood out. It allowed him to troubleshoot complex cases quickly and collaborate closely with our technical support team, which made our entire process faster and more efficient.</blockquote>
+        <div class="quote-person"><strong>Emil Korpar</strong><span>Director of Support at Databox</span></div>
+        <div class="quote-actions"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7378328896649289728/" target="_blank" rel="noopener">LinkedIn post</a><a href="assets/emil-korpar-recommendation.pdf" target="_blank" rel="noopener">Signed letter</a></div>
       </div>
 
-      <div class="recommendation-grid">
-        <article>
-          <h3>Peter Caputa</h3>
-          <p class="rec-role">CEO at Databox</p>
-          <blockquote>Andrej is a valuable member of our customer support team. He has deep product knowledge and is especially skilled at helping customers with our API and SQL integrations. This enabled him to resolve tickets quickly, even in complex cases. He also goes beyond just answering customer questions, offering proactive guidance and suggestions to customers on how to get more out of our product.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Tory Ferrall (Sher)</h3>
-          <p class="rec-role">Director of Revenue Operations</p>
-          <blockquote>Andrej brought a strong technical foundation and a proactive approach to problem-solving. He consistently went above and beyond to ensure customers received timely, accurate, and thoughtful support, whether troubleshooting complex issues, onboarding new users, or creating helpful resources.</blockquote>
-          <blockquote>He partnered closely with all teams to surface customer insights and drive improvements across our platform.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Andrej Bačić</h3>
-          <p class="rec-role">Sales Development Manager</p>
-          <blockquote>I had the pleasure of managing Andrej from the very beginning of his career at Databox. Despite joining in a role that didn't directly require his technical background, Andrej found ways to leverage his knowledge to provide exceptional support to inbound leads.</blockquote>
-          <blockquote>What stood out was how Andrej combined technical expertise with strong communication skills. He rapidly sharpened his sales acumen, learning how to read beyond the immediate context in chat and guide conversations toward the best possible outcome.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Roberta Medeiros</h3>
-          <p class="rec-role">Data & Business Intelligence Analyst</p>
-          <blockquote>Andrej has always proven to be a great colleague, fast paced and always eager to learn and help. Wherever Andrej is, you know you will have a confident person, someone who can work under pressure and have amazing results. He always is on top when his targets are being taken into consideration.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Stefan Guslov</h3>
-          <p class="rec-role">Technical Sales Consultant</p>
-          <blockquote>I was impressed that someone so young already had so much experience and knowledge in the field. Even more than me at the moment. In the months that followed, he proved how capable he is, handling multiple user requests at the same time and resolving them in short notice. Other people also saw that, since very soon he was the first in our group being promoted to the L2.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Mirabella Ingebnonse</h3>
-          <p class="rec-role">Business Account Manager / Customer Success</p>
-          <blockquote>Andrej always went the extra mile to make sure customers felt supported, whether he was troubleshooting a tricky issue, walking a new user through Databox, or collaborating closely with our technical support team. He cared about making the customer experience the best it could be.</blockquote>
-          <blockquote>What I loved most about working with Andrej was his collaborative spirit. He set a great example for everyone around him.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Nicole Castillo</h3>
-          <p class="rec-role">Customer proof and communication</p>
-          <blockquote>If you are looking for a driven, result oriented person, Andrej is the way to go. In the company we had an initiative to obtain more customer stories and Andrej took it to heart. Out of 30 we received, 24 came from Andrej. His sales-savvy communication would be a great addition to any team.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Dragan Gajic</h3>
-          <p class="rec-role">AI and customer success specialist</p>
-          <blockquote>I had the privilege of working with Andrej at Databox, where we collaborated closely on SaaS projects, prospecting, and various customer-facing tasks. Andrej is a great professional and always a team player, ready to help others. Beyond technical and professional expertise, Andrej is a thoughtful teammate who raises the bar for everyone around him.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Dragana Prica</h3>
-          <p class="rec-role">Technical Support / BI & Data Solutions mentor</p>
-          <blockquote>Throughout our mentorship, Andrej demonstrated a genuine commitment to learning. He was not only an attentive listener but also proactive in bringing up thoughtful topics and applying newly acquired knowledge in practice.</blockquote>
-          <blockquote>Beyond his technical growth, Andrej is a fantastic communicator and team player. Working with him was effortless, and his positive attitude made our collaboration both productive and enjoyable.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Jelena Cvetkovic</h3>
-          <p class="rec-role">CX & Support Ops</p>
-          <blockquote>He is incredibly hard working, punctual, and reliable, which makes him a trusted team member that everyone could count on. What stands out most is his strong technical knowledge and adaptability. Andrej has a natural ability to quickly learn new things, troubleshoot challenges, and share insights with the team in a way that makes complex topics easy to understand.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Katarina Jovanovic</h3>
-          <p class="rec-role">Customer Support Specialist</p>
-          <blockquote>Andrej was much quicker in picking up everything and was instantly seen as someone who was results-oriented. He spent some time working in Sales Development, driving leads for the Sales team, and then joined us in Customer Support to teach us what he's learned and share all of his tricks with us.</blockquote>
-          <blockquote>When he joined Customer Support, coming from Sales Development, he was 200% of his target in the first month of joining.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
-        <article>
-          <h3>Andrea Bučko</h3>
-          <p class="rec-role">Cybersecurity and collaboration</p>
-          <blockquote>I highly recommend Andrej Glavnik for any opportunity. He is a hardworking and dedicated professional with a wealth of experience and expertise in cyber security. He is a skilled communicator and a team player, always willing to go the extra mile to ensure projects are completed on time and to the highest standard.</blockquote>
-          <a href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
-        </article>
+      <div class="recommendation-pair">
+        <article class="compact-quote reveal"><blockquote>He has deep product knowledge and is especially skilled at helping customers with our API and SQL integrations.</blockquote><div><strong>Peter Caputa</strong><span>CEO at Databox</span></div></article>
+        <article class="compact-quote reveal"><blockquote>He consistently went above and beyond to ensure customers received timely, accurate, and thoughtful support.</blockquote><div><strong>Tory Ferrall (Sher)</strong><span>Director of Revenue Operations</span></div></article>
+      </div>
+
+      <details class="recommendation-library reveal">
+        <summary>Read all 13 verified recommendations <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></summary>
+        <div class="recommendation-grid">
+          <article><h3>Andrej Bačić</h3><p class="rec-role">Sales Development Manager</p><blockquote>What stood out was how Andrej combined technical expertise with strong communication skills. He rapidly sharpened his sales acumen and guided conversations toward the best possible outcome.</blockquote></article>
+          <article><h3>Roberta Medeiros</h3><p class="rec-role">Data &amp; Business Intelligence Analyst</p><blockquote>Fast paced and always eager to learn and help. Andrej can work under pressure and deliver amazing results.</blockquote></article>
+          <article><h3>Stefan Guslov</h3><p class="rec-role">Technical Sales Consultant</p><blockquote>He proved how capable he is, handling multiple user requests at the same time and resolving them in short notice. Very soon he was the first in our group promoted to L2.</blockquote></article>
+          <article><h3>Mirabella Ingebnonse</h3><p class="rec-role">Business Account Manager / Customer Success</p><blockquote>Andrej always went the extra mile to make sure customers felt supported. What I loved most was his collaborative spirit.</blockquote></article>
+          <article><h3>Nicole Castillo</h3><p class="rec-role">Customer proof and communication</p><blockquote>Out of 30 customer stories we received, 24 came from Andrej. His sales-savvy communication would be a great addition to any team.</blockquote></article>
+          <article><h3>Dragan Gajic</h3><p class="rec-role">AI and customer success specialist</p><blockquote>Andrej is a great professional and always a team player, ready to help others. He is a thoughtful teammate who raises the bar.</blockquote></article>
+          <article><h3>Dragana Prica</h3><p class="rec-role">Technical Support / BI &amp; Data Solutions mentor</p><blockquote>Andrej demonstrated a genuine commitment to learning, brought thoughtful topics, and applied newly acquired knowledge in practice.</blockquote></article>
+          <article><h3>Jelena Cvetkovic</h3><p class="rec-role">CX &amp; Support Ops</p><blockquote>Hard working, punctual, and reliable. Andrej learns quickly, troubleshoots challenges, and makes complex topics easy to understand.</blockquote></article>
+          <article><h3>Katarina Jovanovic</h3><p class="rec-role">Customer Support Specialist</p><blockquote>He was instantly seen as results-oriented. When he joined Customer Support, he reached 200% of his target in the first month.</blockquote></article>
+          <article><h3>Andrea Bučko</h3><p class="rec-role">Cybersecurity and collaboration</p><blockquote>A hardworking and dedicated professional, skilled communicator, and team player who goes the extra mile.</blockquote></article>
+        </div>
+        <a class="library-link" href="https://www.linkedin.com/in/andrejglavnik/details/recommendations/" target="_blank" rel="noopener">Verify every recommendation on LinkedIn <span aria-hidden="true">↗</span></a>
+      </details>
+    </section>
+
+    <section class="section credentials-section" id="credentials" aria-labelledby="credentials-title">
+      <div class="section-intro split reveal">
+        <div><p class="eyebrow">Certificates</p><h2 id="credentials-title">Foundations that support the work.</h2></div>
+        <p>QA, support, networking, security, analytics, and project delivery. Every credential can be verified on LinkedIn.</p>
+      </div>
+      <div class="credential-groups reveal">
+        <article><p class="credential-number">01</p><h3>Quality &amp; delivery</h3><ul><li>Certified QA Engineer &amp; Software Tester</li><li>Scrum Foundation Professional Certificate</li><li>Zendesk Customer Service Professional</li></ul></article>
+        <article><p class="credential-number">02</p><h3>Data &amp; growth</h3><ul><li>Google Analytics for Businesses</li><li>HubSpot Inbound Sales &amp; Marketing</li><li>Generative AI Fundamentals</li></ul></article>
+        <article><p class="credential-number">03</p><h3>Systems &amp; security</h3><ul><li>CCNA Routing and Switching</li><li>LPIC-1 Linux Administrator</li><li>ISO/IEC 27001 Associate</li><li>Network+, MikroTik, Network Administration</li></ul></article>
+      </div>
+      <a class="section-link reveal" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener">View all verified credentials <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="section tools-section" id="tools" aria-labelledby="tools-title">
+      <div class="section-intro split reveal">
+        <div><p class="eyebrow">Tools</p><h2 id="tools-title">A broad stack, organized by outcomes.</h2></div>
+        <p>Tools matter when they move a request, answer a customer, validate data, or help a team make a decision.</p>
+      </div>
+      <div class="tool-lines reveal">
+        <article><h3>Plan &amp; deliver</h3><p>Jira, Asana, Confluence, Slack, requirements, acceptance criteria, release notes, stakeholder reporting</p></article>
+        <article><h3>Support &amp; grow</h3><p>ServiceNow, Zendesk, Freshdesk, Intercom, HubSpot, MEDDPICC, BANT, customer education, escalation packs</p></article>
+        <article><h3>Measure &amp; explain</h3><p>GA4, BigQuery, Datorama, Looker Studio, Google Ads, Meta Ads, SQL, Snowflake, Redshift</p></article>
+        <article><h3>Connect &amp; troubleshoot</h3><p>REST APIs, Postman, AWS S3, CSV/XLS pipelines, Linux, PowerShell, Cisco, Citrix, retail POS systems</p></article>
       </div>
     </section>
 
-    <section class="section" id="credentials" aria-labelledby="credentials-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Certificates</p>
-          <h2 class="section-title" id="credentials-title">Certifications that support the actual work.</h2>
-        </div>
-        <p>Everything here is visible on LinkedIn. QA, support, networking, security, analytics, and project foundations.</p>
+    <section class="section builds-section" id="builds" aria-labelledby="builds-title">
+      <div class="section-intro centered reveal">
+        <p class="eyebrow">Flagship products</p>
+        <h2 id="builds-title">Built for the work behind the dashboard.</h2>
+        <p>Two local-first tools for daily operations and durable data knowledge. No account, backend, tracking, or upload.</p>
       </div>
-      <div class="credential-proof">
-        <div>
-          <p class="kicker">Verified credentials</p>
-          <h3>Certifications are linked back to LinkedIn.</h3>
-          <p>Use the cards or the button to verify the certification list directly on the profile.</p>
-        </div>
-        <div class="button-row">
-          <a class="button linkedin" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener">
-            <svg class="button-icon brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.9 20.5H3.6V9h3.3v11.5ZM5.2 7.4a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8Zm15.3 13.1h-3.3v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H10V9h3.2v1.6h.1c.4-.8 1.5-1.8 3.1-1.8 3.4 0 4 2.2 4 5.1v6.6Z"></path></svg>
-            <span>View Certifications</span>
-          </a>
-        </div>
-      </div>
-      <div class="credential-grid">
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>Certified QA Engineer & Software Tester</h3><p>ITAcademy by LINKgroup | Issued Sep 2025</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>Certified Computer Network Administrator</h3><p>ITAcademy by LINKgroup | Issued Sep 2024</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>CCNA Routing and Switching</h3><p>ITAcademy by LINKgroup | Issued Sep 2024</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>MikroTik Certified Network Associate</h3><p>ITAcademy by LINKgroup</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>Certified Linux Administrator (LPIC-1)</h3><p>ITAcademy by LINKgroup | Issued Sep 2024</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>ISO/IEC 27001 Information Security Associate</h3><p>SkillFront | Issued Jul 2024</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>Zendesk Customer Service Professional</h3><p>Zendesk | Issued Nov 2023</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>Scrum Foundation Professional Certificate</h3><p>Certiprof | Issued Jul 2024</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>Google Analytics for Businesses</h3><p>Google | Issued Apr 2024</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>HubSpot Inbound Sales & Marketing</h3><p>HubSpot | Issued May 2024</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>Generative AI Fundamentals</h3><p>Databricks | Issued Apr 2024</p><span class="card-link">View on LinkedIn</span></a>
-        <a class="credential-card" href="https://www.linkedin.com/in/andrejglavnik/details/certifications/" target="_blank" rel="noopener"><h3>CompTIA Network+</h3><p>ITAcademy by LINKgroup | Issued Nov 2023</p><span class="card-link">View on LinkedIn</span></a>
-      </div>
-    </section>
 
-    <section class="section" id="tools" aria-labelledby="tools-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Tools</p>
-          <h2 class="section-title" id="tools-title">The stack is broad, but the categories are simple.</h2>
-        </div>
-        <p>Tools are grouped by the work they supported: tickets, customers, analytics, data, project delivery, IT, and practical automation.</p>
-      </div>
-      <div class="tool-grid">
-        <article class="tool-card"><h3>Ticketing & support</h3><p>ServiceNow, Zendesk, Freshdesk, Intercom, HubSpot, Jira, ticket notes, escalation packs, KB updates.</p></article>
-        <article class="tool-card"><h3>Customer & revenue ops</h3><p>HubSpot CRM, live chat, email outreach, MEDDPICC, BANT, demo scheduling, sales handoffs, customer proof requests.</p></article>
-        <article class="tool-card"><h3>Analytics & reporting</h3><p>GA4, BigQuery, Datorama, Looker Studio, Google Ads, Meta Ads, LinkedIn Ads, Amazon Ads, Vendor Central.</p></article>
-        <article class="tool-card"><h3>Data & integrations</h3><p>SQL, MySQL, Snowflake, Redshift, Azure, APIs, Postman, curl/wget, AWS S3, CSV/XLS pipelines.</p></article>
-        <article class="tool-card"><h3>Project delivery</h3><p>Asana, Jira, Confluence, Slack, delivery notes, requirements, handover docs, stakeholder reporting.</p></article>
-        <article class="tool-card"><h3>IT & networking</h3><p>Cisco, Meraki, Juniper, Citrix, Jabber, PowerShell, Linux, POS systems, NCR tools, retail hardware.</p></article>
-      </div>
-    </section>
-
-    <section class="section" id="builds" aria-labelledby="builds-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Builds</p>
-          <h2 class="section-title" id="builds-title">Two tools built for real work.</h2>
-        </div>
-        <p>OpsDesk keeps daily delivery moving. SyncDesk preserves the ownership, schema, business logic, and change history behind connected data.</p>
-      </div>
-      <article class="build-feature">
-        <div class="build-feature-copy">
-          <p class="kicker">Live · local-first</p>
+      <article class="flagship flagship-ops reveal">
+        <div class="flagship-copy">
+          <div class="product-index">01 · Operations</div>
           <h3>OpsDesk</h3>
-          <p>A daily operations workbench for tasks, support cases, analytics issues, blockers, decisions, handoffs, and team updates.</p>
-          <div class="build-proof-list" aria-label="OpsDesk capabilities">
-            <span>Focus + Kanban</span>
-            <span>Notes + decisions</span>
-            <span>Automatic updates</span>
-            <span>Excel + portable backup</span>
-          </div>
-          <div class="button-row">
-            <a class="button primary" href="projects/opsdesk/">Open OpsDesk</a>
-            <a class="button secondary" href="https://github.com/AndrejGlavnik/AndrejGlavnik.github.io/tree/main/projects/opsdesk" target="_blank" rel="noopener">View source</a>
-          </div>
-          <p class="build-privacy">Runs in the browser. No account, backend, tracking, or data upload.</p>
+          <p>A daily workbench for tasks, support cases, analytics issues, blockers, decisions, handoffs, and team updates.</p>
+          <ul><li>Focus, Kanban, and to-do workflows</li><li>Decision-ready context and automatic updates</li><li>Excel reports and portable workspace backup</li></ul>
+          <div class="button-row"><a class="button primary" href="projects/opsdesk/">Open app</a><a class="button quiet" href="projects/opsdesk/case-study.html">Read case study</a></div>
         </div>
-        <a class="build-preview" href="projects/opsdesk/" aria-label="Open OpsDesk live application">
-          <img src="assets/img/opsdesk-preview.png" alt="OpsDesk daily operations workspace showing focus items, priorities, blockers, and local work details" />
-        </a>
+        <a class="flagship-visual" href="projects/opsdesk/" aria-label="Open OpsDesk application"><img src="assets/img/opsdesk-preview.png" alt="OpsDesk application dashboard" width="1600" height="1000" loading="lazy" /></a>
       </article>
-      <article class="build-feature">
-        <div class="build-feature-copy">
-          <p class="kicker">Live · local-first</p>
+
+      <article class="flagship flagship-sync reveal">
+        <div class="flagship-copy">
+          <div class="product-index">02 · Data knowledge</div>
           <h3>SyncDesk</h3>
-          <p>A data-connection knowledge workspace for owners, sync coverage, schema, calculated logic, discrepancies, runbooks, and date-based manifest history.</p>
-          <div class="build-proof-list" aria-label="SyncDesk capabilities">
-            <span>Connection catalog</span>
-            <span>Schema + data lineage</span>
-            <span>Date-based manifest</span>
-            <span>Linked OpsDesk issues</span>
-          </div>
-          <div class="button-row">
-            <a class="button primary" href="projects/syncdesk/">Open SyncDesk</a>
-            <a class="button secondary" href="https://github.com/AndrejGlavnik/AndrejGlavnik.github.io/tree/main/projects/syncdesk" target="_blank" rel="noopener">View source</a>
-          </div>
-          <p class="build-privacy">Shares one portable local workspace with OpsDesk. No account, backend, tracking, or data upload.</p>
+          <p>A connection catalog for ownership, schema, calculated logic, discrepancies, runbooks, and date-based manifest history.</p>
+          <ul><li>Connection and metric knowledge base</li><li>Date-based change manifest with field links</li><li>Shared portable workspace with OpsDesk</li></ul>
+          <div class="button-row"><a class="button primary mint" href="projects/syncdesk/">Open app</a><a class="button quiet" href="projects/syncdesk/case-study.html">Read case study</a></div>
         </div>
-        <a class="build-preview" href="projects/syncdesk/" aria-label="Open SyncDesk live application">
-          <img src="assets/img/syncdesk-preview.png" alt="SyncDesk data connection workspace showing a date-based manifest update linked to calculated business logic" />
-        </a>
+        <a class="flagship-visual" href="projects/syncdesk/" aria-label="Open SyncDesk application"><img src="assets/img/syncdesk-preview.png" alt="SyncDesk application dashboard" width="1600" height="1000" loading="lazy" /></a>
       </article>
+
+      <div class="analytics-work reveal">
+        <div class="analytics-work-heading"><div><p class="eyebrow">Analytics case studies</p><h3>Quality, governance, and decisions.</h3></div><p>Original demonstrations built with synthetic data. They show the method without exposing employer information.</p></div>
+        <div class="case-grid">
+          <a class="case-card" href="projects/ga4-quality-monitor/"><div class="case-visual quality-visual" aria-hidden="true"><span>12 checks</span><i></i><i></i><i></i><i></i><i></i></div><div><p>Analytics QA</p><h4>GA4 Quality Monitor</h4><span>Find missing events, duplicate transactions, broken UTMs, and coverage gaps.</span></div></a>
+          <a class="case-card" href="projects/analytics-change-control/"><div class="case-visual change-visual" aria-hidden="true"><span>CHANGE-024</span><b>Ready for QA</b><em>Acceptance criteria · 4/4</em></div><div><p>Delivery governance</p><h4>Analytics Change Control</h4><span>Turn a dashboard request into scope, SLA, acceptance criteria, QA, and release notes.</span></div></a>
+          <a class="case-card" href="projects/marketing-command-center/"><div class="case-visual command-visual" aria-hidden="true"><strong>€428K</strong><span>Attributed revenue</span><div><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div><p>Cross-channel analytics</p><h4>Marketing Command Center</h4><span>Harmonize spend, sessions, leads, revenue, taxonomy, and data-quality signals.</span></div></a>
+        </div>
+      </div>
     </section>
 
-    <section class="cta" id="contact" aria-labelledby="contact-title">
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-title">Send the role, the tools, and the problem.</h2>
-        <p>Best fit: technical project management, customer-facing operations, support/analytics workflows, product ownership, ticketing systems, documentation, and cross-functional delivery.</p>
-      </div>
-      <div class="button-row">
-        <a class="button primary" href="mailto:andrejglavnik1@gmail.com?subject=Role%20or%20project%20conversation&body=Hi%20Andrej%2C%0A%0ARole%20or%20project%3A%0ACompany%3A%0ALocation%2Frelocation%3A%0ATools%20involved%3A%0AContext%3A%0A">Email Andrej</a>
-        <a class="button secondary" href="assets/Andrej-Glavnik-CV.pdf" target="_blank" rel="noopener">CV</a>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-inner reveal">
+        <div><p class="eyebrow">Contact</p><h2 id="contact-title">Bring the role.<br />I'll bring structure.</h2></div>
+        <div class="contact-copy"><p>Best fit: technical project management, product ownership, analytics delivery, support operations, and customer-facing systems.</p><div class="button-row"><a class="button primary" href="mailto:andrejglavnik1@gmail.com?subject=Role%20or%20project%20conversation">Email Andrej</a><a class="button quiet" href="assets/Andrej-Glavnik-CV.pdf" target="_blank" rel="noopener">Open CV</a></div></div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <span>© <span data-year></span> Andrej Glavnik</span>
-    <span><a href="https://github.com/AndrejGlavnik" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/andrejglavnik/" target="_blank" rel="noopener">LinkedIn</a> · <a href="assets/Andrej-Glavnik-CV.pdf" target="_blank" rel="noopener">CV</a></span>
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">AG</span><span>Andrej Glavnik</span></a>
+    <p>Technical Project Manager &amp; Product Owner</p>
+    <nav aria-label="Footer"><a href="https://github.com/AndrejGlavnik" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/andrejglavnik/" target="_blank" rel="noopener">LinkedIn</a><a href="assets/Andrej-Glavnik-CV.pdf" target="_blank" rel="noopener">CV</a></nav>
+    <span>© <span data-year></span></span>
   </footer>
 
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Andrej Glavnik",
-      "url": "https://andrejglavnik.github.io/",
-      "email": "mailto:andrejglavnik1@gmail.com",
-      "jobTitle": "Technical Project Manager",
-      "sameAs": [
-        "https://github.com/AndrejGlavnik",
-        "https://www.linkedin.com/in/andrejglavnik/"
-      ],
-      "knowsAbout": [
-        "Technical Project Management",
-        "Customer Support Operations",
-        "Technical Support",
-        "Analytics Support",
-        "Product Ownership",
-        "API Troubleshooting",
-        "SQL",
-        "Ticketing Workflows",
-        "Documentation",
-        "Jira",
-        "Asana",
-        "ServiceNow",
-        "Zendesk",
-        "HubSpot"
-      ],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Danone"
-      }
-    }
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {"@type":"Person","name":"Andrej Glavnik","url":"https://andrejglavnik.github.io/","sameAs":["https://www.linkedin.com/in/andrejglavnik/","https://github.com/AndrejGlavnik"],"jobTitle":"Technical Project Manager and Product Owner","knowsAbout":["Project Management","Product Ownership","Support Operations","Analytics Delivery","Data Quality"]},
+      {"@type":"ItemList","name":"Andrej Glavnik portfolio projects","itemListElement":[{"@type":"CreativeWork","position":1,"name":"OpsDesk","url":"https://andrejglavnik.github.io/projects/opsdesk/"},{"@type":"CreativeWork","position":2,"name":"SyncDesk","url":"https://andrejglavnik.github.io/projects/syncdesk/"},{"@type":"CreativeWork","position":3,"name":"GA4 Quality Monitor","url":"https://andrejglavnik.github.io/projects/ga4-quality-monitor/"}]}
+    ]
+  }
   </script>
-  <script src="assets/js/main.js?v=20260718-opsdesk"></script>
+  <script src="assets/js/main.js?v=20260719-liquid" defer></script>
 </body>
 </html>
