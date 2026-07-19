@@ -1,4 +1,4 @@
-const cacheName = "syncdesk-shell-v2";
+const cacheName = "syncdesk-shell-v3";
 const appShell = [
   "./",
   "./index.html",
@@ -9,6 +9,7 @@ const appShell = [
   "../shared/project.css",
   "../shared/project.js",
   "../shared/workspace.js",
+  "../shared/vendor/xlsx.full.min.js",
   "../../assets/img/favicon.svg"
 ];
 

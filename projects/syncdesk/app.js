@@ -507,6 +507,161 @@
     toast("Complete workspace exported");
   }
 
+  function reportSheet(records, emptyMessage, widths = []) {
+    const sheet = XLSX.utils.json_to_sheet(records.length ? records : [{ Message: emptyMessage }]);
+    if (records.length) {
+      const columns = Object.keys(records[0]);
+      sheet["!cols"] = columns.map((column, index) => ({
+        wch: widths[index] || Math.min(52, Math.max(14, column.length + 2))
+      }));
+    } else {
+      sheet["!cols"] = [{ wch: Math.max(28, emptyMessage.length + 2) }];
+    }
+    return sheet;
+  }
+
+  function exportReport() {
+    if (!globalThis.XLSX) {
+      toast("Excel exporter is unavailable");
+      return;
+    }
+
+    persist();
+    const openDiscrepancies = state.sync.discrepancies.filter((record) => record.status !== "resolved");
+    const summary = [
+      { Metric: "Exported at", Value: new Date().toISOString() },
+      { Metric: "Applications", Value: state.sync.applications.length },
+      { Metric: "Connections", Value: state.sync.connections.length },
+      { Metric: "Active connections", Value: state.sync.connections.filter((record) => record.status === "active").length },
+      { Metric: "Datasets", Value: state.sync.datasets.length },
+      { Metric: "Documented fields", Value: state.sync.fields.length },
+      { Metric: "Calculated metrics and dimensions", Value: state.sync.calculations.length },
+      { Metric: "Manifest updates", Value: state.sync.changes.length },
+      { Metric: "Open discrepancies", Value: openDiscrepancies.length },
+      { Metric: "Resolved discrepancies", Value: state.sync.discrepancies.length - openDiscrepancies.length }
+    ];
+    const applications = state.sync.applications.map((record) => ({
+      ID: record.id,
+      Application: record.name,
+      Owner: record.owner,
+      Environment: record.environment,
+      Purpose: record.description,
+      "Created at": record.createdAt,
+      "Updated at": record.updatedAt
+    }));
+    const connections = state.sync.connections.map((record) => ({
+      ID: record.id,
+      Connection: record.name,
+      Application: applicationName(record.applicationId),
+      Status: record.status,
+      "Source type": record.sourceType,
+      Source: record.sourceSystem,
+      Destination: record.destinationSystem,
+      Provider: record.provider,
+      "Business owner": record.businessOwner,
+      "Technical owner": record.technicalOwner,
+      Cadence: record.cadence,
+      "Coverage from": record.coverageFrom,
+      "Coverage through": record.coverageTo,
+      "Last sync": record.lastSync,
+      Purpose: record.purpose,
+      Grain: record.grain,
+      Notes: record.notes,
+      Runbook: record.runbook,
+      "Updated at": record.updatedAt
+    }));
+    const datasets = state.sync.datasets.map((record) => ({
+      ID: record.id,
+      Dataset: record.name,
+      Connection: connectionName(record.connectionId),
+      Kind: record.kind,
+      Location: record.location,
+      Grain: record.grain,
+      "Primary keys": record.primaryKeys,
+      "Date field": record.dateField,
+      Description: record.description,
+      "Updated at": record.updatedAt
+    }));
+    const fields = state.sync.fields.map((record) => {
+      const dataset = state.sync.datasets.find((item) => item.id === record.datasetId);
+      return {
+        ID: record.id,
+        Field: record.name,
+        Dataset: datasetName(record.datasetId),
+        Connection: dataset ? connectionName(dataset.connectionId) : "Unknown connection",
+        Role: record.kind,
+        "Data type": record.dataType,
+        Definition: record.definition,
+        "Source field": record.sourceField,
+        Owner: record.owner,
+        "Version date": record.versionDate,
+        Status: record.status,
+        Notes: record.notes,
+        "Manifest updates": state.sync.changes.filter((change) => change.entityLinks.some((link) => link.type === "field" && link.id === record.id)).length,
+        "Updated at": record.updatedAt
+      };
+    });
+    const calculations = state.sync.calculations.map((record) => ({
+      ID: record.id,
+      Calculation: record.name,
+      Output: record.outputType,
+      Connection: connectionName(record.connectionId),
+      Dataset: datasetName(record.datasetId),
+      "Source fields": record.sourceFields.join("; "),
+      "Formula / code": record.formula,
+      "Business definition": record.businessReason,
+      Owner: record.owner,
+      "Version date": record.versionDate,
+      "Effective from": record.effectiveFrom,
+      Validation: record.validation,
+      Status: record.status,
+      "Manifest updates": state.sync.changes.filter((change) => change.entityLinks.some((link) => link.type === "calculation" && link.id === record.id)).length,
+      "Updated at": record.updatedAt
+    }));
+    const changes = state.sync.changes.map((record) => ({
+      "Commit ID": record.commitId,
+      "Version date": record.versionDate,
+      Connection: connectionName(record.connectionId),
+      "Commit message": record.title,
+      "Tagged records": record.entityLinks.map(manifestRecordLabel).join("; "),
+      "What changed and why": record.reason,
+      "Implementation snapshot": record.snapshot,
+      "Author / owner": record.owner,
+      "Approved by": record.approvedBy,
+      "Ticket / decision": record.ticket,
+      "Validation / rollout": record.validation,
+      "Created at": record.createdAt
+    }));
+    const discrepancies = state.sync.discrepancies.map((record) => ({
+      ID: record.id,
+      Discrepancy: record.title,
+      Connection: connectionName(record.connectionId),
+      Status: record.status,
+      Severity: record.severity,
+      "Observed from": record.observedFrom,
+      "Observed through": record.observedTo,
+      "Business impact": record.impact,
+      Expected: record.expected,
+      Actual: record.actual,
+      Owner: record.owner,
+      Resolution: record.resolution,
+      "Linked OpsDesk item": record.opsItemId,
+      "Updated at": record.updatedAt
+    }));
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, reportSheet(summary, "No summary available", [34, 34]), "Summary");
+    XLSX.utils.book_append_sheet(workbook, reportSheet(applications, "No applications documented"), "Applications");
+    XLSX.utils.book_append_sheet(workbook, reportSheet(connections, "No connections documented"), "Connections");
+    XLSX.utils.book_append_sheet(workbook, reportSheet(datasets, "No datasets documented"), "Datasets");
+    XLSX.utils.book_append_sheet(workbook, reportSheet(fields, "No fields documented"), "Fields");
+    XLSX.utils.book_append_sheet(workbook, reportSheet(calculations, "No calculated logic documented"), "Calculations");
+    XLSX.utils.book_append_sheet(workbook, reportSheet(changes, "No manifest updates documented"), "Manifest");
+    XLSX.utils.book_append_sheet(workbook, reportSheet(discrepancies, "No discrepancies documented"), "Discrepancies");
+    XLSX.writeFile(workbook, `syncdesk-report-${localDateString()}.xlsx`, { compression: true });
+    toast("Complete SyncDesk report exported");
+  }
+
   function prepareImport(payload, fileName) {
     const isLegacy = payload?.app === "OpsDesk" && Array.isArray(payload?.items);
     const isWorkspace = payload?.schemaVersion === 2 && Array.isArray(payload?.opsDesk?.items);
@@ -588,6 +743,7 @@
     if (event.target.closest("[data-close-detail]")) { state.selectedConnectionId = null; renderConnections(); renderDetail(); }
     const recordTarget = event.target.closest("[data-record-type][data-record-id]");
     if (recordTarget) openRecord(recordTarget.dataset.recordType, recordTarget.dataset.recordId);
+    if (event.target.closest("[data-export-report]")) exportReport();
     if (event.target.closest("[data-export-workspace]")) exportWorkspace();
     if (event.target.closest("[data-import-trigger]")) elements.importFile.click();
     if (event.target.closest("[data-storage-guide]")) elements.storageModal.showModal();

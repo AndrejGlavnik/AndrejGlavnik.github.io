@@ -946,6 +946,7 @@
       renderBoard();
     }
     if (event.target.closest("[data-export-report]")) openExportModal();
+    if (event.target.closest("[data-export-workspace]")) exportWorkspaceBackup();
     if (event.target.closest("[data-export-close]")) elements.exportModal.close();
     if (event.target.closest("[data-import-trigger]")) openImportPicker();
     if (event.target.closest("[data-storage-guide]")) elements.storageModal.showModal();

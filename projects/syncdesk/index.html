@@ -54,9 +54,9 @@
       </div>
       <div class="button-row">
         <button class="local-badge local-badge-button" type="button" data-storage-guide>Local only</button>
-        <button class="button ghost" type="button" data-export-workspace>
+        <button class="button ghost" type="button" data-export-report aria-label="Export the complete SyncDesk report as an Excel workbook">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>
-          <span>Export workspace</span>
+          <span>Export report</span>
         </button>
         <button class="button primary" type="button" data-new-connection>New connection</button>
       </div>
@@ -197,8 +197,9 @@
   <div class="toast" data-toast role="status"></div>
   <footer class="project-footer"><span>SyncDesk by Andrej Glavnik · <span data-year></span></span><button class="footer-data-link" type="button" data-storage-guide>Browser storage · shared backup · no uploads</button></footer>
 
-  <script src="../shared/project.js?v=20260719-sync"></script>
-  <script src="../shared/workspace.js?v=20260719-sync"></script>
-  <script src="app.js?v=20260719-sync"></script>
+  <script src="../shared/project.js?v=20260719-export"></script>
+  <script src="../shared/workspace.js?v=20260719-export"></script>
+  <script src="../shared/vendor/xlsx.full.min.js?v=20260719-export"></script>
+  <script src="app.js?v=20260719-export"></script>
 </body>
 </html>

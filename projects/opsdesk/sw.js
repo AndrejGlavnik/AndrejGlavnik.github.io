@@ -1,4 +1,4 @@
-const cacheName = "opsdesk-shell-v4";
+const cacheName = "opsdesk-shell-v5";
 const appShell = [
   "./",
   "./index.html",
