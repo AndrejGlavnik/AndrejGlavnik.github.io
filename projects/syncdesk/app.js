@@ -57,6 +57,10 @@
     discrepancyModal: document.querySelector("[data-discrepancy-modal]"),
     discrepancyForm: document.querySelector("[data-discrepancy-form]"),
     storageModal: document.querySelector("[data-storage-modal]"),
+    exportModal: document.querySelector("[data-export-modal]"),
+    exportForm: document.querySelector("[data-export-form]"),
+    exportScopeField: document.querySelector("[data-export-scope-field]"),
+    exportNote: document.querySelector("[data-export-note]"),
     importModal: document.querySelector("[data-import-modal]"),
     importSummary: document.querySelector("[data-import-summary]"),
     importFile: document.querySelector("[data-import-file]"),
@@ -501,6 +505,7 @@
 
   function exportWorkspace() {
     if (elements.storageModal.open) elements.storageModal.close();
+    if (elements.exportModal.open) elements.exportModal.close();
     persist();
     const payload = workspaceStore.exportPayload(workspaceStore.get());
     download(`operations-workspace-${localDateString()}.json`, JSON.stringify(payload, null, 2), "application/json;charset=utf-8");
@@ -520,15 +525,11 @@
     return sheet;
   }
 
-  function exportReport() {
-    if (!globalThis.XLSX) {
-      toast("Excel exporter is unavailable");
-      return;
-    }
-
+  function buildReportData(scope = "all") {
     persist();
     const openDiscrepancies = state.sync.discrepancies.filter((record) => record.status !== "resolved");
     const summary = [
+      { Metric: "Report scope", Value: scope },
       { Metric: "Exported at", Value: new Date().toISOString() },
       { Metric: "Applications", Value: state.sync.applications.length },
       { Metric: "Connections", Value: state.sync.connections.length },
@@ -649,17 +650,116 @@
       "Updated at": record.updatedAt
     }));
 
+    return { summary, applications, connections, datasets, fields, calculations, changes, discrepancies };
+  }
+
+  function scopedReportSections(data, scope = "all") {
+    const sections = {
+      applications: { title: "Applications", empty: "No applications documented", records: data.applications },
+      connections: { title: "Connections", empty: "No connections documented", records: data.connections },
+      datasets: { title: "Datasets", empty: "No datasets documented", records: data.datasets },
+      fields: { title: "Fields", empty: "No fields documented", records: data.fields },
+      calculations: { title: "Calculations", empty: "No calculated logic documented", records: data.calculations },
+      changes: { title: "Manifest", empty: "No manifest updates documented", records: data.changes },
+      discrepancies: { title: "Discrepancies", empty: "No discrepancies documented", records: data.discrepancies }
+    };
+    const keys = {
+      all: ["applications", "connections", "datasets", "fields", "calculations", "changes", "discrepancies"],
+      connections: ["applications", "connections"],
+      schema: ["datasets", "fields"],
+      logic: ["calculations", "changes"],
+      issues: ["discrepancies"]
+    }[scope] || [];
+    return keys.map((key) => sections[key]);
+  }
+
+  function exportExcel(scope) {
+    if (!globalThis.XLSX) {
+      toast("Excel exporter is unavailable");
+      return;
+    }
+    const data = buildReportData(scope);
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, reportSheet(summary, "No summary available", [34, 34]), "Summary");
-    XLSX.utils.book_append_sheet(workbook, reportSheet(applications, "No applications documented"), "Applications");
-    XLSX.utils.book_append_sheet(workbook, reportSheet(connections, "No connections documented"), "Connections");
-    XLSX.utils.book_append_sheet(workbook, reportSheet(datasets, "No datasets documented"), "Datasets");
-    XLSX.utils.book_append_sheet(workbook, reportSheet(fields, "No fields documented"), "Fields");
-    XLSX.utils.book_append_sheet(workbook, reportSheet(calculations, "No calculated logic documented"), "Calculations");
-    XLSX.utils.book_append_sheet(workbook, reportSheet(changes, "No manifest updates documented"), "Manifest");
-    XLSX.utils.book_append_sheet(workbook, reportSheet(discrepancies, "No discrepancies documented"), "Discrepancies");
-    XLSX.writeFile(workbook, `syncdesk-report-${localDateString()}.xlsx`, { compression: true });
-    toast("Complete SyncDesk report exported");
+    XLSX.utils.book_append_sheet(workbook, reportSheet(data.summary, "No summary available", [34, 34]), "Summary");
+    scopedReportSections(data, scope).forEach((section) => {
+      XLSX.utils.book_append_sheet(workbook, reportSheet(section.records, section.empty), section.title);
+    });
+    XLSX.writeFile(workbook, `syncdesk-report-${scope}-${localDateString()}.xlsx`, { compression: true });
+    toast("Excel report exported");
+  }
+
+  function csvCell(value) {
+    const text = String(value ?? "");
+    return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+  }
+
+  function exportCsv(scope) {
+    const data = buildReportData(scope);
+    const rows = scopedReportSections(data, scope).flatMap((section) => (
+      section.records.map((record) => ({ "Record type": section.title, ...record }))
+    ));
+    const columns = [...new Set(rows.flatMap((record) => Object.keys(record)))];
+    const body = rows.length
+      ? rows.map((record) => columns.map((column) => csvCell(record[column])).join(","))
+      : [csvCell("No records in this scope")];
+    const header = rows.length ? columns.map(csvCell).join(",") : csvCell("Message");
+    download(
+      `syncdesk-report-${scope}-${localDateString()}.csv`,
+      `\ufeff${[header, ...body].join("\n")}`,
+      "text/csv;charset=utf-8"
+    );
+    toast("CSV report exported");
+  }
+
+  function markdownReport(scope) {
+    const data = buildReportData(scope);
+    const lines = [
+      "# SyncDesk knowledge report",
+      "",
+      `Generated: ${new Date().toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })}`,
+      `Scope: ${scope}`,
+      "",
+      "## Summary",
+      ...data.summary.slice(2).map((record) => `- ${record.Metric}: ${record.Value}`),
+      ""
+    ];
+    scopedReportSections(data, scope).forEach((section) => {
+      lines.push(`## ${section.title}`);
+      if (!section.records.length) lines.push("- None");
+      section.records.forEach((record) => {
+        const entries = Object.entries(record).filter(([, value]) => String(value ?? "").trim());
+        const [, name] = entries.find(([key]) => !["ID", "Commit ID"].includes(key)) || ["Record", "Untitled"];
+        lines.push(`### ${name}`);
+        entries.forEach(([key, value]) => lines.push(`- **${key}:** ${String(value).replaceAll("\n", " ")}`));
+        lines.push("");
+      });
+      lines.push("");
+    });
+    return lines.join("\n").trim();
+  }
+
+  function exportMarkdown(scope) {
+    download(`syncdesk-report-${scope}-${localDateString()}.md`, markdownReport(scope), "text/markdown;charset=utf-8");
+    toast("Markdown report exported");
+  }
+
+  function updateExportUi() {
+    const format = elements.exportForm.elements.format.value;
+    const notes = {
+      xlsx: ["Excel is selected.", "The workbook includes a summary plus structured knowledge sheets."],
+      csv: ["CSV is selected.", "This creates a flat knowledge table for analysis and reporting."],
+      md: ["Markdown is selected.", "This creates a readable knowledge report grouped by record type."],
+      json: ["Workspace backup is selected.", "This complete restore file includes OpsDesk and SyncDesk data."]
+    };
+    elements.exportScopeField.hidden = format === "json";
+    elements.exportNote.innerHTML = `<strong>${notes[format][0]}</strong> ${notes[format][1]}`;
+  }
+
+  function openExportModal() {
+    if (elements.storageModal.open) elements.storageModal.close();
+    elements.exportForm.reset();
+    updateExportUi();
+    elements.exportModal.showModal();
   }
 
   function prepareImport(payload, fileName) {
@@ -743,8 +843,9 @@
     if (event.target.closest("[data-close-detail]")) { state.selectedConnectionId = null; renderConnections(); renderDetail(); }
     const recordTarget = event.target.closest("[data-record-type][data-record-id]");
     if (recordTarget) openRecord(recordTarget.dataset.recordType, recordTarget.dataset.recordId);
-    if (event.target.closest("[data-export-report]")) exportReport();
+    if (event.target.closest("[data-export-report]")) openExportModal();
     if (event.target.closest("[data-export-workspace]")) exportWorkspace();
+    if (event.target.closest("[data-export-close]")) elements.exportModal.close();
     if (event.target.closest("[data-import-trigger]")) elements.importFile.click();
     if (event.target.closest("[data-storage-guide]")) elements.storageModal.showModal();
     if (event.target.closest("[data-import-close]")) { pendingImport = null; elements.importModal.close(); }
@@ -863,6 +964,16 @@
 
   elements.detailForm.addEventListener("input", syncDetailToState);
   elements.detailForm.addEventListener("change", syncDetailToState);
+  elements.exportForm.addEventListener("change", updateExportUi);
+  elements.exportForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const values = Object.fromEntries(new FormData(elements.exportForm).entries());
+    if (values.format === "json") exportWorkspace();
+    if (values.format === "csv") exportCsv(values.scope);
+    if (values.format === "xlsx") exportExcel(values.scope);
+    if (values.format === "md") exportMarkdown(values.scope);
+    if (elements.exportModal.open) elements.exportModal.close();
+  });
   elements.connectionSearch.addEventListener("input", () => { state.connectionSearch = elements.connectionSearch.value; renderConnections(); });
   elements.statusFilter.addEventListener("change", () => { state.connectionStatus = elements.statusFilter.value; renderConnections(); });
   elements.schemaConnectionFilter.addEventListener("change", () => { state.schemaConnection = elements.schemaConnectionFilter.value; renderSchema(); });

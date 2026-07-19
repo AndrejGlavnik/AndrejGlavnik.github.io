@@ -1,4 +1,4 @@
-const cacheName = "syncdesk-shell-v3";
+const cacheName = "syncdesk-shell-v4";
 const appShell = [
   "./",
   "./index.html",

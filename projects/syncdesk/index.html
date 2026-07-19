@@ -14,7 +14,7 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="../shared/project.css?v=20260719-sync" />
-  <link rel="stylesheet" href="app.css?v=20260719-sync" />
+  <link rel="stylesheet" href="app.css?v=20260719-modal" />
 </head>
 <body>
   <header class="app-header">
@@ -54,7 +54,7 @@
       </div>
       <div class="button-row">
         <button class="local-badge local-badge-button" type="button" data-storage-guide>Local only</button>
-        <button class="button ghost" type="button" data-export-report aria-label="Export the complete SyncDesk report as an Excel workbook">
+        <button class="button ghost" type="button" data-export-report aria-label="Export a SyncDesk report or complete workspace backup">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>
           <span>Export report</span>
         </button>
@@ -190,6 +190,34 @@
 
   <dialog class="modal data-modal" data-storage-modal><div class="modal-form"><div class="modal-header"><div><p class="eyebrow">Workspace data</p><h2>One local workspace. Two connected desks.</h2></div><button class="icon-button" type="button" data-dialog-close aria-label="Close">×</button></div><div class="modal-content storage-content"><p class="storage-lead">SyncDesk and OpsDesk share one browser workspace. Data is not uploaded, so a workspace export is the recovery copy when site data is cleared or you change devices.</p><dl class="storage-facts"><div><dt>Local autosave</dt><dd>Every connection, field, formula, change, discrepancy, and linked OpsDesk item is saved in this browser.</dd></div><div><dt>Export workspace</dt><dd>Downloads one complete JSON file containing compatible data for both apps.</dd></div><div><dt>Import workspace</dt><dd>Merge the file with existing records or replace the browser workspace completely.</dd></div></dl></div><div class="modal-footer"><button class="button ghost" type="button" data-dialog-close>Close</button><button class="button primary" type="button" data-export-workspace>Export workspace</button></div></div></dialog>
 
+  <dialog class="modal data-modal" data-export-modal>
+    <form class="modal-form" data-export-form>
+      <div class="modal-header"><div><p class="eyebrow">Portable work</p><h2>Export report</h2></div><button class="icon-button" type="button" aria-label="Close export options" data-export-close>×</button></div>
+      <div class="modal-content export-content">
+        <p class="storage-lead">Choose a useful report for people or a complete backup for continuing the workspace later.</p>
+        <fieldset class="format-options">
+          <legend>Format</legend>
+          <label class="format-option"><input type="radio" name="format" value="xlsx" checked /><span><strong>Excel workbook</strong><small>Summary and knowledge records on separate sheets</small></span><em>.xlsx</em></label>
+          <label class="format-option"><input type="radio" name="format" value="csv" /><span><strong>CSV table</strong><small>Flat knowledge report for Sheets, BI tools, or analysis</small></span><em>.csv</em></label>
+          <label class="format-option"><input type="radio" name="format" value="md" /><span><strong>Markdown update</strong><small>Readable knowledge report for email, Slack, or documentation</small></span><em>.md</em></label>
+          <label class="format-option"><input type="radio" name="format" value="json" /><span><strong>Workspace backup</strong><small>Complete restore file for OpsDesk and SyncDesk</small></span><em>.json</em></label>
+        </fieldset>
+        <div class="field" data-export-scope-field>
+          <label for="export-scope">Report scope</label>
+          <select class="select" id="export-scope" name="scope">
+            <option value="all">Complete knowledge report</option>
+            <option value="connections">Connections and ownership</option>
+            <option value="schema">Schema and fields</option>
+            <option value="logic">Calculations and manifest</option>
+            <option value="issues">Discrepancies</option>
+          </select>
+        </div>
+        <p class="storage-note export-note" data-export-note><strong>Excel is selected.</strong> The workbook includes a summary plus structured knowledge sheets.</p>
+      </div>
+      <div class="modal-footer"><button class="button ghost" type="button" data-export-close>Cancel</button><button class="button primary" type="submit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>Export</button></div>
+    </form>
+  </dialog>
+
   <dialog class="modal data-modal" data-import-modal><div class="modal-form"><div class="modal-header"><div><p class="eyebrow">Restore workspace</p><h2>Import this workspace?</h2></div><button class="icon-button" type="button" data-import-close aria-label="Cancel import">×</button></div><div class="modal-content storage-content"><p class="import-summary" data-import-summary></p><dl class="storage-facts compact"><div><dt>Merge</dt><dd>Keep current records and update matching IDs from the file.</dd></div><div><dt>Replace</dt><dd>Use only the imported workspace, including its OpsDesk tasks.</dd></div></dl></div><div class="modal-footer import-actions"><button class="button ghost" type="button" data-import-close>Cancel</button><div class="button-row"><button class="button" type="button" data-import-mode="merge">Merge</button><button class="button primary" type="button" data-import-mode="replace">Replace workspace</button></div></div></div></dialog>
 
   <dialog class="modal data-modal" data-delete-modal><div class="modal-form"><div class="modal-header"><div><p class="eyebrow danger-eyebrow">Permanent action</p><h2>Delete this connection?</h2></div><button class="icon-button" type="button" data-delete-close aria-label="Cancel deletion">×</button></div><div class="modal-content storage-content"><p class="storage-lead" data-delete-summary></p><p class="delete-warning">The connection, its datasets, fields, calculations, changes, and discrepancies will be removed. Linked OpsDesk tasks remain available.</p></div><div class="modal-footer"><button class="button ghost" type="button" data-delete-close>Cancel</button><button class="button danger" type="button" data-confirm-delete>Delete permanently</button></div></div></dialog>
@@ -200,6 +228,6 @@
   <script src="../shared/project.js?v=20260719-export"></script>
   <script src="../shared/workspace.js?v=20260719-export"></script>
   <script src="../shared/vendor/xlsx.full.min.js?v=20260719-export"></script>
-  <script src="app.js?v=20260719-export"></script>
+  <script src="app.js?v=20260719-modal"></script>
 </body>
 </html>
