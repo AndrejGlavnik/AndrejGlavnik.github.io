@@ -737,28 +737,72 @@ ul { padding-left: 1.1rem; }
 
 @media (max-width: 700px) {
   .header-inner { width: min(calc(100% - 24px), var(--max)); min-height: 60px; gap: 8px; }
-  .brand-name { display: none; }
+  .brand { gap: 8px; font-size: 0.82rem; }
   .brand-mark { width: 30px; height: 30px; }
   .theme-toggle { min-width: 36px; padding: 0 7px; }
   .theme-toggle svg { display: none; }
   .cv-button { min-width: 36px; }
   .mobile-nav { width: calc(100% - 24px); grid-template-columns: 1fr 1fr; }
-  .hero { min-height: 760px; padding: 96px 16px 64px; align-items: flex-start; }
-  .hero-copy { width: 100%; text-align: left; }
-  .hero h1 { width: calc(100% - 140px); font-size: clamp(3.4rem, 16vw, 4.35rem); }
-  .hero-role { margin-top: 24px; font-size: 1.45rem; }
-  .hero-summary { font-size: 0.9rem; }
-  .hero-actions { gap: 8px; }
+  .hero {
+    min-height: 0;
+    padding: 94px 20px 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(104px, 29vw);
+    grid-template-rows: auto auto auto auto auto auto auto;
+    align-items: center;
+    column-gap: 16px;
+  }
+  .hero-copy { display: contents; }
+  .hero-copy.reveal { opacity: 1; transform: none; }
+  .hero .eyebrow { grid-column: 1 / -1; grid-row: 1; margin-bottom: 18px; }
+  .hero h1 {
+    grid-column: 1;
+    grid-row: 2;
+    width: auto;
+    margin-top: 0;
+    font-size: clamp(3.35rem, 15.5vw, 4.45rem);
+    line-height: 0.84;
+  }
+  .hero-role { grid-column: 1 / -1; grid-row: 3; margin-top: 28px; font-size: 1.45rem; }
+  .hero-summary { grid-column: 1 / -1; grid-row: 4; margin-top: 16px; font-size: 0.9rem; }
+  .hero-actions { grid-column: 1 / -1; grid-row: 5; margin-top: 24px; gap: 8px; }
   .button { min-height: 42px; padding: 0 13px; }
   .hero-role, .hero-summary { margin-left: 0; }
   .hero-actions, .availability { justify-content: flex-start; }
-  .availability { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; text-align: center; }
+  .availability { grid-column: 1 / -1; grid-row: 6; margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; text-align: center; }
   .availability span { min-width: 0; display: grid; place-items: center; }
-  .hero-portrait { top: 102px; right: -6px; bottom: auto; width: 152px; opacity: 0.88; transform: none; }
-  :root[data-theme="dark"] .hero-portrait { opacity: 0.72; }
-  .scroll-cue { bottom: 20px; }
+  .hero-portrait {
+    position: relative;
+    grid-column: 2;
+    grid-row: 2;
+    inset: auto;
+    width: 100%;
+    max-width: 138px;
+    justify-self: end;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    background: var(--surface-raised);
+    opacity: 1;
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+    box-shadow: var(--shadow-low);
+  }
+  .hero-portrait img { display: block; }
+  :root[data-theme="dark"] .hero-portrait { opacity: 1; mix-blend-mode: normal; }
+  .scroll-cue {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 7;
+    left: auto;
+    bottom: auto;
+    justify-self: center;
+    margin-top: 20px;
+    transform: none;
+  }
   .proof-band, .section, .contact-inner, .site-footer { width: min(calc(100% - 32px), var(--max)); }
-  .proof-band { padding: 80px 0 52px; }
+  .proof-band { padding: 64px 0 52px; }
   .section { padding: 88px 0; }
   .section-intro h2 { font-size: clamp(2.4rem, 12vw, 3.7rem); }
   .section-intro > p { font-size: 0.9rem; }
@@ -813,6 +857,8 @@ ul { padding-left: 1.1rem; }
 }
 
 @media (max-width: 390px) {
+  .hero { grid-template-columns: minmax(0, 1fr) 104px; padding-inline: 16px; column-gap: 12px; }
+  .hero h1 { font-size: clamp(3rem, 15vw, 3.65rem); }
   .hero-actions .button { flex: 1 1 auto; }
   .hero-actions .button.primary { flex-basis: 100%; }
   .proof-rail { grid-template-columns: 1fr; }
@@ -823,8 +869,9 @@ ul { padding-left: 1.1rem; }
 }
 
 @media (max-width: 360px) {
-  .hero h1 { width: calc(100% - 116px); font-size: 3rem; }
-  .hero-portrait { top: 112px; width: 128px; }
+  .brand-name { display: none; }
+  .hero { grid-template-columns: minmax(0, 1fr) 94px; }
+  .hero h1 { font-size: 2.85rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
