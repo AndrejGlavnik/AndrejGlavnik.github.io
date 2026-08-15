@@ -23,6 +23,9 @@ SITE_URL = "https://andrejglavnik.github.io"
 LINKEDIN_URL = "https://www.linkedin.com/in/andrejglavnik/"
 OPSDESK_URL = f"{SITE_URL}/projects/opsdesk/"
 SYNCDESK_URL = f"{SITE_URL}/projects/syncdesk/"
+RELIABILITY_URL = f"{SITE_URL}/projects/ga4-quality-monitor/"
+INTEGRATION_URL = f"{SITE_URL}/projects/analytics-change-control/"
+COMMERCIAL_URL = f"{SITE_URL}/projects/marketing-command-center/"
 
 
 def wrap(text: str, font: str, size: float, width: float) -> list[str]:
@@ -150,37 +153,43 @@ def draw_labeled_item(
     return y - 3.4
 
 
-def draw_project(c: canvas.Canvas, x: float, y: float, width: float) -> float:
-    title = "Desk Suite: Ops Desk and Sync Desk"
-    c.setFillColor(INK)
-    c.setFont("Helvetica-Bold", 7.9)
-    c.drawString(x, y, title)
-    y -= 9.8
-    y = draw_wrapped(
-        c,
-        "Two connected, local-first browser workspaces for operational delivery and data-connection knowledge.",
-        x,
-        y,
-        width,
-        size=7.35,
-        leading=8.7,
-        color=MUTED,
-    )
-    y -= 0.8
+def draw_projects(c: canvas.Canvas, x: float, y: float, width: float) -> float:
+    """Draw all five portfolio projects as compact, individually linked entries."""
+    font = "Helvetica-Bold"
+    size = 7.35
+    leading = 9.0
+
     c.setFillColor(LINK_BLUE)
-    c.setFont("Helvetica-Bold", 7.35)
-    c.drawString(x, y, "Open Ops Desk")
-    ops_width = stringWidth("Open Ops Desk", "Helvetica-Bold", 7.35)
+    c.setFont(font, size)
+    c.drawString(x, y, "OpsDesk")
+    ops_width = stringWidth("OpsDesk", font, size)
     c.linkURL(OPSDESK_URL, (x, y - 1.5, x + ops_width, y + 7.5), relative=0)
     separator_x = x + ops_width + 7
     c.setFillColor(MUTED)
     c.drawString(separator_x, y, "|")
     sync_x = separator_x + 8
     c.setFillColor(LINK_BLUE)
-    c.drawString(sync_x, y, "Open Sync Desk")
-    sync_width = stringWidth("Open Sync Desk", "Helvetica-Bold", 7.35)
+    c.drawString(sync_x, y, "SyncDesk")
+    sync_width = stringWidth("SyncDesk", font, size)
     c.linkURL(SYNCDESK_URL, (sync_x, y - 1.5, sync_x + sync_width, y + 7.5), relative=0)
-    return y - 9.0
+    y -= leading
+
+    analytics_projects = [
+        ("Analytics Reliability & Release Control", RELIABILITY_URL),
+        ("SaaS Implementation & Integration Health", INTEGRATION_URL),
+        ("Commercial Performance & Promotion Intelligence", COMMERCIAL_URL),
+    ]
+    for title, url in analytics_projects:
+        c.setFillColor(LINK_BLUE)
+        c.setFont(font, size)
+        c.drawString(x, y, title)
+        title_width = stringWidth(title, font, size)
+        if title_width > width:
+            raise ValueError(f"Project title exceeds CV column width: {title}")
+        c.linkURL(url, (x, y - 1.5, x + title_width, y + 7.5), relative=0)
+        y -= leading
+
+    return y
 
 
 def summary_for(variant: str) -> str:
@@ -374,7 +383,7 @@ def build_pdf(output_path: str | Path, variant: str = "main") -> Path:
     ry = draw_bullets(c, key_skills, right_x, ry, right_w, size=7.2, leading=8.2, gap=1.1) - 2.5
 
     ry = draw_section(c, "Projects", right_x, ry)
-    ry = draw_project(c, right_x, ry, right_w)
+    ry = draw_projects(c, right_x, ry, right_w)
 
     # Fail loudly during generation if future content silently overflows the page.
     if y < 24 or ry < 24:
