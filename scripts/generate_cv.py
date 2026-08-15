@@ -21,6 +21,7 @@ MUTED = HexColor("#536174")
 
 SITE_URL = "https://andrejglavnik.github.io"
 LINKEDIN_URL = "https://www.linkedin.com/in/andrejglavnik/"
+GITHUB_URL = "https://github.com/AndrejGlavnik/AndrejGlavnik.github.io"
 OPSDESK_URL = f"{SITE_URL}/projects/opsdesk/"
 SYNCDESK_URL = f"{SITE_URL}/projects/syncdesk/"
 RELIABILITY_URL = f"{SITE_URL}/projects/ga4-quality-monitor/"
@@ -154,40 +155,82 @@ def draw_labeled_item(
 
 
 def draw_projects(c: canvas.Canvas, x: float, y: float, width: float) -> float:
-    """Draw all five portfolio projects as compact, individually linked entries."""
-    font = "Helvetica-Bold"
-    size = 7.35
-    leading = 9.0
+    """Draw all five projects with a concise purpose and access links."""
+    title_font = "Helvetica-Bold"
+    title_size = 7.35
+    detail_font = "Helvetica"
+    detail_size = 7.1
 
-    c.setFillColor(LINK_BLUE)
-    c.setFont(font, size)
-    c.drawString(x, y, "OpsDesk")
-    ops_width = stringWidth("OpsDesk", font, size)
-    c.linkURL(OPSDESK_URL, (x, y - 1.5, x + ops_width, y + 7.5), relative=0)
-    separator_x = x + ops_width + 7
+    prefix = "All five projects are live on the "
+    website = "website"
+    joiner = " with source on "
+    github = "GitHub"
+    c.setFont(detail_font, detail_size)
     c.setFillColor(MUTED)
-    c.drawString(separator_x, y, "|")
-    sync_x = separator_x + 8
+    c.drawString(x, y, prefix)
+    cursor_x = x + stringWidth(prefix, detail_font, detail_size)
     c.setFillColor(LINK_BLUE)
-    c.drawString(sync_x, y, "SyncDesk")
-    sync_width = stringWidth("SyncDesk", font, size)
-    c.linkURL(SYNCDESK_URL, (sync_x, y - 1.5, sync_x + sync_width, y + 7.5), relative=0)
-    y -= leading
+    c.drawString(cursor_x, y, website)
+    website_width = stringWidth(website, detail_font, detail_size)
+    c.linkURL(f"{SITE_URL}/#work", (cursor_x, y - 1.5, cursor_x + website_width, y + 7.3), relative=0)
+    cursor_x += website_width
+    c.setFillColor(MUTED)
+    c.drawString(cursor_x, y, joiner)
+    cursor_x += stringWidth(joiner, detail_font, detail_size)
+    c.setFillColor(LINK_BLUE)
+    c.drawString(cursor_x, y, github)
+    github_width = stringWidth(github, detail_font, detail_size)
+    c.linkURL(GITHUB_URL, (cursor_x, y - 1.5, cursor_x + github_width, y + 7.3), relative=0)
+    c.setFillColor(MUTED)
+    c.drawString(cursor_x + github_width, y, ".")
+    y -= 9.2
 
-    analytics_projects = [
-        ("Analytics Reliability & Release Control", RELIABILITY_URL),
-        ("SaaS Implementation & Integration Health", INTEGRATION_URL),
-        ("Commercial Performance & Promotion Intelligence", COMMERCIAL_URL),
+    projects = [
+        (
+            "OpsDesk",
+            "Local-first workspace for tasks, cases, analytics issues, decisions, and status.",
+            OPSDESK_URL,
+        ),
+        (
+            "SyncDesk",
+            "Documents connection owners, schemas, lineage, changes, and runbooks.",
+            SYNCDESK_URL,
+        ),
+        (
+            "Analytics Reliability & Release Control",
+            "Synthetic QA dashboard for ship, hold, or caveated-release decisions.",
+            RELIABILITY_URL,
+        ),
+        (
+            "SaaS Implementation & Integration Health",
+            "Synthetic dashboard ranking go-live risk and the next account intervention.",
+            INTEGRATION_URL,
+        ),
+        (
+            "Commercial Performance & Promotion Intelligence",
+            "Synthetic dashboard comparing promotion scenarios, revenue, and margin.",
+            COMMERCIAL_URL,
+        ),
     ]
-    for title, url in analytics_projects:
+    for index, (title, detail, url) in enumerate(projects):
         c.setFillColor(LINK_BLUE)
-        c.setFont(font, size)
+        c.setFont(title_font, title_size)
         c.drawString(x, y, title)
-        title_width = stringWidth(title, font, size)
+        title_width = stringWidth(title, title_font, title_size)
         if title_width > width:
             raise ValueError(f"Project title exceeds CV column width: {title}")
         c.linkURL(url, (x, y - 1.5, x + title_width, y + 7.5), relative=0)
-        y -= leading
+        y -= 7.9
+
+        detail_width = stringWidth(detail, detail_font, detail_size)
+        if detail_width > width:
+            raise ValueError(f"Project description exceeds CV column width: {title}")
+        c.setFillColor(MUTED)
+        c.setFont(detail_font, detail_size)
+        c.drawString(x, y, detail)
+        y -= 7.9
+        if index < len(projects) - 1:
+            y -= 1.0
 
     return y
 
