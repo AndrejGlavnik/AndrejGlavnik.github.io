@@ -1,0 +1,6 @@
+root_cause,incidents,critical_incidents
+Channel definition governance,1,0
+Duplicate tracking,1,1
+Partial partition,1,1
+Schema drift,1,0
+Taxonomy drift,1,0

@@ -1,0 +1,36 @@
+{
+  "synthetic": true,
+  "seed": 43003,
+  "snapshot_date": "2026-06-30",
+  "injected_scenarios": [
+    {
+      "id": "INT-01",
+      "condition": "OAuth token expiry",
+      "error_code": "OAUTH_TOKEN_EXPIRED",
+      "http_status": 401
+    },
+    {
+      "id": "INT-02",
+      "condition": "Billing schema drift",
+      "error_code": "SCHEMA_FIELD_CHANGED",
+      "http_status": 422
+    },
+    {
+      "id": "INT-03",
+      "condition": "Warehouse rate limit",
+      "error_code": "RATE_LIMITED",
+      "http_status": 429
+    },
+    {
+      "id": "INT-04",
+      "condition": "Active accounts crossing schedule, mapping, UAT or reliability guardrails",
+      "accounts": [
+        "ACCT-055",
+        "ACCT-057",
+        "ACCT-058",
+        "ACCT-059",
+        "ACCT-060"
+      ]
+    }
+  ]
+}

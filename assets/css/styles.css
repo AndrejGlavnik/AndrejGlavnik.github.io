@@ -234,6 +234,31 @@ ul { padding-left: 1.1rem; }
 .menu-button svg { width: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
 .mobile-nav { display: none; }
 
+.page-hero {
+  width: min(calc(100% - 40px), 900px);
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: clamp(88px, 14vh, 150px) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-hero h1 {
+  max-width: 760px;
+  margin-top: 14px;
+  font-size: clamp(2.8rem, 8vw, 5.8rem);
+  line-height: 0.96;
+}
+
+.page-hero > p:not(.eyebrow) {
+  max-width: 620px;
+  margin-top: 22px;
+  font-size: 1rem;
+}
+
+.page-hero .button-row { margin-top: 28px; }
+
 .hero {
   position: relative;
   min-height: 760px;
@@ -566,6 +591,7 @@ ul { padding-left: 1.1rem; }
 .credentials-intro h2 { max-width: 790px; margin-top: 12px; color: #f7f9fc; font-size: clamp(2.7rem, 5.8vw, 5.4rem); line-height: 0.94; }
 .credential-count { min-width: 250px; padding-left: 28px; border-left: 1px solid rgba(255, 255, 255, 0.18); display: flex; align-items: end; gap: 16px; }
 .credential-count strong { color: #fff; font-size: clamp(4rem, 7vw, 6.5rem); font-weight: 760; line-height: 0.78; }
+.credential-count .credential-count-label { font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: 0.9; }
 .credential-count span { color: #aeb8c5; font-size: 0.73rem; font-weight: 680; line-height: 1.45; }
 .credential-groups { margin-top: 70px; border-block: 1px solid rgba(255, 255, 255, 0.14); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .credential-groups article { min-width: 0; padding: 34px 30px 38px; border-right: 1px solid rgba(255, 255, 255, 0.12); }
@@ -669,8 +695,9 @@ ul { padding-left: 1.1rem; }
 .site-footer nav a { color: var(--muted); font-size: 0.73rem; font-weight: 700; }
 .site-footer nav a:hover { color: var(--ink); }
 
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 620ms ease, transform 620ms cubic-bezier(.2,.7,.2,1); }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 620ms ease, transform 620ms cubic-bezier(.2,.7,.2,1); }
+.js .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .site-header.is-scrolled,
@@ -698,7 +725,7 @@ ul { padding-left: 1.1rem; }
 @media (max-width: 980px) {
   .nav-links { display: none; }
   .header-inner { grid-template-columns: 1fr auto; }
-  .menu-button { display: inline-flex; }
+  .js .menu-button { display: inline-flex; }
   .mobile-nav {
     width: min(calc(100% - 36px), var(--max));
     margin: 0 auto 12px;
@@ -733,6 +760,20 @@ ul { padding-left: 1.1rem; }
   .case-card:last-child { grid-column: 1 / -1; }
   .contact-inner { grid-template-columns: 1fr; gap: 42px; }
   .site-footer { grid-template-columns: 1fr auto; }
+  html:not(.js) .site-header {
+    position: relative;
+    border-color: var(--line);
+    background: var(--surface-raised);
+  }
+  html:not(.js) .theme-toggle,
+  html:not(.js) .menu-button { display: none; }
+  html:not(.js) .mobile-nav[hidden] { display: grid !important; }
+  html:not(.js) .hero { padding-top: 54px; }
+}
+
+@media (min-width: 701px) and (max-width: 980px) {
+  .js .hero-portrait.reveal { transform: translateX(50%) translateY(16px); }
+  .js .hero-portrait.reveal.is-visible { transform: translateX(50%); }
 }
 
 @media (max-width: 700px) {
@@ -834,6 +875,7 @@ ul { padding-left: 1.1rem; }
   .credentials-intro h2 { font-size: clamp(2.7rem, 13vw, 4rem); }
   .credential-count { min-width: 0; padding: 26px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.16); border-left: 0; justify-content: flex-start; }
   .credential-count strong { font-size: 4.8rem; }
+  .credential-count .credential-count-label { font-size: 2.7rem; }
   .credential-groups { margin-top: 48px; grid-template-columns: 1fr; }
   .credential-groups article, .credential-groups article:first-child, .credential-groups article:last-child { padding: 28px 0; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
   .credential-groups article:last-child { border-bottom: 0; }
@@ -854,6 +896,9 @@ ul { padding-left: 1.1rem; }
   .site-footer { padding: 30px 0; grid-template-columns: 1fr auto; gap: 20px; }
   .site-footer > p { display: none; }
   .site-footer nav { grid-column: 1 / -1; order: 3; }
+  .page-hero { width: min(calc(100% - 32px), 900px); padding-block: 72px; }
+  .page-hero .button-row { align-items: stretch; flex-direction: column; }
+  .page-hero .button { width: 100%; }
 }
 
 @media (max-width: 390px) {

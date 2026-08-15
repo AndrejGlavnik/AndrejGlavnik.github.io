@@ -1,0 +1,2 @@
+release_decision,critical_pass_rate,freshness_sla_rate,latest_reconciliation_variance,open_high_critical_incidents,average_change_lead_days
+SHIP WITH CAVEAT,0.988889,0.991667,0.00215,1,4.33

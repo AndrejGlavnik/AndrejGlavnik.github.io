@@ -30,6 +30,8 @@ Legacy pages remain as redirects to the relevant one-page section.
 - `index.html` - portfolio shell and content
 - `assets/css/styles.css` - portfolio design system
 - `assets/js/main.js` - theme, navigation, reveal, and experience behavior
+- `data/profile.json` - approved public positioning, experience titles, dates, and claim wording
+- `scripts/validate_profile_claims.py` - cross-surface drift check for the website and generated CV source
 - `assets/css/case-study.css` - shared case-study design system
 - `assets/js/case-study.js` - shared case-study interactions
 - `projects/opsdesk/` - installable daily operations workbench
@@ -45,6 +47,21 @@ OpsDesk and SyncDesk save working data in the browser's `localStorage`. No backe
 ## Data and claims
 
 The analytics projects use clearly labeled synthetic data created for this portfolio. They demonstrate methods, decisions, QA, and governance without exposing employer information or claiming production deployment. Employment and recommendation content is based on Andrej's supplied CV, LinkedIn material, and signed recommendation letter.
+
+Run the profile check after changing the website or CV source:
+
+```bash
+python3 scripts/validate_profile_claims.py
+```
+
+Rebuild and independently validate all three analytics projects from the repository root:
+
+```bash
+python3 scripts/build_analytics_projects.py --project all
+python3 scripts/validate_portfolio_data.py --project all
+```
+
+The current release passes all 221 portfolio assertions across source integrity, calculations, SQL and notebook evidence, packaging, provenance, accessibility, and desktop/mobile browser verification.
 
 ## Dependencies and licences
 

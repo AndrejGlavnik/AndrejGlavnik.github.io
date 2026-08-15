@@ -1,0 +1,58 @@
+{
+  "synthetic": true,
+  "seed": 42002,
+  "snapshot_date": "2026-06-30",
+  "injected_scenarios": [
+    {
+      "id": "ANOM-01",
+      "asset": "WEB_EVENTS",
+      "dates": [
+        "2026-04-14",
+        "2026-04-15"
+      ],
+      "condition": "duplicate business keys",
+      "linked_release": "REL-001"
+    },
+    {
+      "id": "ANOM-02",
+      "asset": "CAMPAIGN_SPEND",
+      "dates": [
+        "2026-05-08",
+        "2026-05-09",
+        "2026-05-10"
+      ],
+      "condition": "unmapped channel taxonomy",
+      "linked_release": "REL-003"
+    },
+    {
+      "id": "ANOM-03",
+      "asset": "CRM_LEADS",
+      "dates": [
+        "2026-06-03"
+      ],
+      "condition": "partial and late partition",
+      "linked_release": null
+    },
+    {
+      "id": "ANOM-04",
+      "asset": "COMMERCE_ORDERS",
+      "dates": [
+        "2026-06-17",
+        "2026-06-18"
+      ],
+      "condition": "required value type drift",
+      "linked_release": "REL-006"
+    },
+    {
+      "id": "ANOM-05",
+      "asset": "CAMPAIGN_SPEND",
+      "dates": [
+        "2026-06-28",
+        "2026-06-29",
+        "2026-06-30"
+      ],
+      "condition": "accepted channel-definition warning",
+      "linked_release": "REL-007"
+    }
+  ]
+}

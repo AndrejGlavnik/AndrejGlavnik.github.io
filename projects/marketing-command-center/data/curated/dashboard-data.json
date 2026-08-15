@@ -1,0 +1,374 @@
+{
+  "summary": [
+    {
+      "net_revenue": 12551042.74,
+      "budget_variance_rate": -0.00934,
+      "gross_margin_rate": 0.615324,
+      "net_units": 4157892,
+      "forecast_wape": 0.022167
+    }
+  ],
+  "monthly": [
+    {
+      "month": "2025-01",
+      "actual_revenue": 575794.85,
+      "budget_revenue": 581951.27,
+      "gross_profit": 357092.11
+    },
+    {
+      "month": "2025-02",
+      "actual_revenue": 539298.45,
+      "budget_revenue": 544209.13,
+      "gross_profit": 334170.96
+    },
+    {
+      "month": "2025-03",
+      "actual_revenue": 651741.54,
+      "budget_revenue": 656766.57,
+      "gross_profit": 403353.32
+    },
+    {
+      "month": "2025-04",
+      "actual_revenue": 664030.37,
+      "budget_revenue": 670137.29,
+      "gross_profit": 410752.49
+    },
+    {
+      "month": "2025-05",
+      "actual_revenue": 759236.74,
+      "budget_revenue": 764114.21,
+      "gross_profit": 469518.78
+    },
+    {
+      "month": "2025-06",
+      "actual_revenue": 770103.82,
+      "budget_revenue": 775863.76,
+      "gross_profit": 475709.46
+    },
+    {
+      "month": "2025-07",
+      "actual_revenue": 828445.53,
+      "budget_revenue": 833529.71,
+      "gross_profit": 511319.78
+    },
+    {
+      "month": "2025-08",
+      "actual_revenue": 799626.8,
+      "budget_revenue": 806812.17,
+      "gross_profit": 493091.68
+    },
+    {
+      "month": "2025-09",
+      "actual_revenue": 673831.08,
+      "budget_revenue": 679466.08,
+      "gross_profit": 414729.39
+    },
+    {
+      "month": "2025-10",
+      "actual_revenue": 669529.68,
+      "budget_revenue": 674276.29,
+      "gross_profit": 411690.04
+    },
+    {
+      "month": "2025-11",
+      "actual_revenue": 711182.99,
+      "budget_revenue": 714429.41,
+      "gross_profit": 436845.31
+    },
+    {
+      "month": "2025-12",
+      "actual_revenue": 812796.77,
+      "budget_revenue": 817481.37,
+      "gross_profit": 498763.38
+    },
+    {
+      "month": "2026-01",
+      "actual_revenue": 601762.93,
+      "budget_revenue": 606453.79,
+      "gross_profit": 368851.07
+    },
+    {
+      "month": "2026-02",
+      "actual_revenue": 561462.43,
+      "budget_revenue": 565623.03,
+      "gross_profit": 344042.16
+    },
+    {
+      "month": "2026-03",
+      "actual_revenue": 674518.34,
+      "budget_revenue": 681260.78,
+      "gross_profit": 412919.68
+    },
+    {
+      "month": "2026-04",
+      "actual_revenue": 691322.88,
+      "budget_revenue": 696449.36,
+      "gross_profit": 422567.69
+    },
+    {
+      "month": "2026-05",
+      "actual_revenue": 765589.73,
+      "budget_revenue": 794431.18,
+      "gross_profit": 468459.65
+    },
+    {
+      "month": "2026-06",
+      "actual_revenue": 800767.81,
+      "budget_revenue": 806123.84,
+      "gross_profit": 489086.67
+    }
+  ],
+  "market_performance": [
+    {
+      "market": "Central",
+      "net_revenue": 3701340.76,
+      "gross_margin_rate": 0.617954,
+      "budget_variance_rate": -0.008685
+    },
+    {
+      "market": "North",
+      "net_revenue": 3616506.33,
+      "gross_margin_rate": 0.636294,
+      "budget_variance_rate": -0.008243
+    },
+    {
+      "market": "South",
+      "net_revenue": 2796835.06,
+      "gross_margin_rate": 0.592989,
+      "budget_variance_rate": -0.010432
+    },
+    {
+      "market": "West",
+      "net_revenue": 2436360.59,
+      "gross_margin_rate": 0.605843,
+      "budget_variance_rate": -0.010706
+    }
+  ],
+  "promo_performance": [
+    {
+      "discount_band": "10%",
+      "discount_pct": 0.1,
+      "incremental_profit_eur": 1783.49,
+      "promotion_investment_eur": 7282.73,
+      "promotion_roi": 0.244893,
+      "unit_uplift_pct": 0.453598
+    },
+    {
+      "discount_band": "15%",
+      "discount_pct": 0.15,
+      "incremental_profit_eur": 761.42,
+      "promotion_investment_eur": 9660.68,
+      "promotion_roi": 0.078816,
+      "unit_uplift_pct": 0.57823
+    },
+    {
+      "discount_band": "20%",
+      "discount_pct": 0.2,
+      "incremental_profit_eur": 185.82,
+      "promotion_investment_eur": 12885.73,
+      "promotion_roi": 0.014421,
+      "unit_uplift_pct": 0.715378
+    },
+    {
+      "discount_band": "30%",
+      "discount_pct": 0.3,
+      "incremental_profit_eur": -7650.32,
+      "promotion_investment_eur": 18405.75,
+      "promotion_roi": -0.415648,
+      "unit_uplift_pct": 0.545958
+    }
+  ],
+  "product_performance": [
+    {
+      "sku_id": "SKU-06",
+      "product_name": "Luma Granola",
+      "category": "Breakfast",
+      "net_revenue": 982481.75,
+      "gross_margin_rate": 0.592792,
+      "budget_variance_rate": -0.007541,
+      "net_units": 215664
+    },
+    {
+      "sku_id": "SKU-05",
+      "product_name": "Luma Oats",
+      "category": "Breakfast",
+      "net_revenue": 885712.72,
+      "gross_margin_rate": 0.612449,
+      "budget_variance_rate": -0.006848,
+      "net_units": 235149
+    },
+    {
+      "sku_id": "SKU-10",
+      "product_name": "Orbit Bites",
+      "category": "Snacks",
+      "net_revenue": 874861.94,
+      "gross_margin_rate": 0.639927,
+      "budget_variance_rate": -0.002273,
+      "net_units": 304653
+    },
+    {
+      "sku_id": "SKU-12",
+      "product_name": "Vela Mix",
+      "category": "Snacks",
+      "net_revenue": 873258.06,
+      "gross_margin_rate": 0.619379,
+      "budget_variance_rate": -0.007313,
+      "net_units": 244686
+    },
+    {
+      "sku_id": "SKU-11",
+      "product_name": "Aster Crunch",
+      "category": "Snacks",
+      "net_revenue": 864712.96,
+      "gross_margin_rate": 0.624465,
+      "budget_variance_rate": -0.005966,
+      "net_units": 264738
+    },
+    {
+      "sku_id": "SKU-08",
+      "product_name": "Halo Muesli",
+      "category": "Breakfast",
+      "net_revenue": 857829.1,
+      "gross_margin_rate": 0.594837,
+      "budget_variance_rate": -0.009132,
+      "net_units": 176731
+    },
+    {
+      "sku_id": "SKU-07",
+      "product_name": "Northstar Porridge",
+      "category": "Breakfast",
+      "net_revenue": 794515.18,
+      "gross_margin_rate": 0.604488,
+      "budget_variance_rate": -0.034111,
+      "net_units": 191402
+    },
+    {
+      "sku_id": "SKU-01",
+      "product_name": "Aster Sparkling",
+      "category": "Hydration",
+      "net_revenue": 755200.6,
+      "gross_margin_rate": 0.645608,
+      "budget_variance_rate": -0.006164,
+      "net_units": 347389
+    },
+    {
+      "sku_id": "SKU-09",
+      "product_name": "Orbit Bar",
+      "category": "Snacks",
+      "net_revenue": 736665.65,
+      "gross_margin_rate": 0.651098,
+      "budget_variance_rate": -0.013455,
+      "net_units": 437151
+    },
+    {
+      "sku_id": "SKU-03",
+      "product_name": "Vela Citrus",
+      "category": "Hydration",
+      "net_revenue": 735077.32,
+      "gross_margin_rate": 0.634503,
+      "budget_variance_rate": -0.005802,
+      "net_units": 284974
+    },
+    {
+      "sku_id": "SKU-15",
+      "product_name": "Vela Protein Shake",
+      "category": "Plant-Based",
+      "net_revenue": 726034.72,
+      "gross_margin_rate": 0.562762,
+      "budget_variance_rate": -0.01209,
+      "net_units": 166568
+    },
+    {
+      "sku_id": "SKU-02",
+      "product_name": "Aster Still",
+      "category": "Hydration",
+      "net_revenue": 724210.79,
+      "gross_margin_rate": 0.647916,
+      "budget_variance_rate": -0.009813,
+      "net_units": 405696
+    },
+    {
+      "sku_id": "SKU-13",
+      "product_name": "Luma Oat Drink",
+      "category": "Plant-Based",
+      "net_revenue": 715855.37,
+      "gross_margin_rate": 0.590904,
+      "budget_variance_rate": -0.00611,
+      "net_units": 225691
+    },
+    {
+      "sku_id": "SKU-04",
+      "product_name": "Vela Berry",
+      "category": "Hydration",
+      "net_revenue": 709904.12,
+      "gross_margin_rate": 0.632355,
+      "budget_variance_rate": -0.005142,
+      "net_units": 265407
+    },
+    {
+      "sku_id": "SKU-14",
+      "product_name": "Halo Almond Drink",
+      "category": "Plant-Based",
+      "net_revenue": 683033.91,
+      "gross_margin_rate": 0.582513,
+      "budget_variance_rate": -0.00937,
+      "net_units": 186295
+    },
+    {
+      "sku_id": "SKU-16",
+      "product_name": "Orbit Plant Snack",
+      "category": "Plant-Based",
+      "net_revenue": 631688.55,
+      "gross_margin_rate": 0.61048,
+      "budget_variance_rate": -0.008739,
+      "net_units": 205698
+    }
+  ],
+  "quality_checks": [
+    {
+      "check": "All four planned discount bands are represented",
+      "status": "PASS",
+      "result": "4 bands"
+    },
+    {
+      "check": "Daily sales grain is unique",
+      "status": "PASS",
+      "result": "139,776 rows; 0 duplicates"
+    },
+    {
+      "check": "Dashboard and SQL totals agree",
+      "status": "PASS",
+      "result": "Exact to €0.01"
+    },
+    {
+      "check": "Discount depth is not confounded with one execution mechanic",
+      "status": "PASS",
+      "result": "4 mechanics represented in every discount band"
+    },
+    {
+      "check": "Every sales slice has one budget and locked forecast",
+      "status": "PASS",
+      "result": "4,608 matched slices"
+    },
+    {
+      "check": "Forecast is locked before each reporting month",
+      "status": "PASS",
+      "result": "0 invalid lock dates"
+    },
+    {
+      "check": "Net revenue formula reconciles",
+      "status": "PASS",
+      "result": "0 rows outside €0.01 tolerance"
+    },
+    {
+      "check": "Promotion dates are valid",
+      "status": "PASS",
+      "result": "0 invalid windows"
+    },
+    {
+      "check": "Returns never exceed gross units",
+      "status": "PASS",
+      "result": "0 violations"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+
+source_field,target_field,type,required,validation
+customer_id,account_id,string,yes,non-empty
+timestamp,event_time,datetime,yes,ISO-8601 UTC
+source_record_id,source_id,string,yes,unique within account
+measure_name,metric_name,string,yes,accepted taxonomy
+measure_value,metric_value,number,yes,finite numeric
+currency,currency,string,no,ISO-4217 when monetary

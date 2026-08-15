@@ -1,0 +1,481 @@
+account_id,milestone,stage_order,planned_date,actual_date,status,owner
+ACCT-001,Discovery complete,1,2025-08-07,2025-08-07,Complete,Implementation
+ACCT-001,Authentication,2,2025-08-11,2025-08-12,Complete,Integration Engineering
+ACCT-001,Mapping approved,3,2025-08-19,2025-08-20,Complete,Implementation
+ACCT-001,First test sync,4,2025-08-23,2025-08-25,Complete,Integration Engineering
+ACCT-001,UAT complete,5,2025-08-30,2025-09-01,Complete,Implementation
+ACCT-001,Training,6,2025-09-04,2025-09-05,Complete,Implementation
+ACCT-001,Go-live,7,2025-09-10,2025-09-12,Complete,Implementation
+ACCT-001,First value,8,2025-09-15,2025-09-17,Complete,Implementation
+ACCT-002,Discovery complete,1,2025-08-13,2025-08-12,Complete,Implementation
+ACCT-002,Authentication,2,2025-08-17,2025-08-17,Complete,Integration Engineering
+ACCT-002,Mapping approved,3,2025-08-25,2025-08-23,Complete,Implementation
+ACCT-002,First test sync,4,2025-08-29,2025-08-28,Complete,Integration Engineering
+ACCT-002,UAT complete,5,2025-09-05,2025-09-03,Complete,Implementation
+ACCT-002,Training,6,2025-09-10,2025-09-07,Complete,Implementation
+ACCT-002,Go-live,7,2025-09-16,2025-09-13,Complete,Implementation
+ACCT-002,First value,8,2025-09-21,2025-09-18,Complete,Implementation
+ACCT-003,Discovery complete,1,2025-08-18,2025-08-19,Complete,Implementation
+ACCT-003,Authentication,2,2025-08-24,2025-08-26,Complete,Integration Engineering
+ACCT-003,Mapping approved,3,2025-09-04,2025-09-07,Complete,Implementation
+ACCT-003,First test sync,4,2025-09-10,2025-09-15,Complete,Integration Engineering
+ACCT-003,UAT complete,5,2025-09-20,2025-09-25,Complete,Implementation
+ACCT-003,Training,6,2025-09-26,2025-10-03,Complete,Implementation
+ACCT-003,Go-live,7,2025-10-05,2025-10-13,Complete,Implementation
+ACCT-003,First value,8,2025-10-13,2025-10-19,Complete,Implementation
+ACCT-004,Discovery complete,1,2025-08-22,2025-08-22,Complete,Implementation
+ACCT-004,Authentication,2,2025-08-26,2025-08-28,Complete,Integration Engineering
+ACCT-004,Mapping approved,3,2025-09-03,2025-09-05,Complete,Implementation
+ACCT-004,First test sync,4,2025-09-07,2025-09-11,Complete,Integration Engineering
+ACCT-004,UAT complete,5,2025-09-14,2025-09-18,Complete,Implementation
+ACCT-004,Training,6,2025-09-19,2025-09-24,Complete,Implementation
+ACCT-004,Go-live,7,2025-09-25,2025-10-01,Complete,Implementation
+ACCT-004,First value,8,2025-09-30,2025-10-06,Complete,Implementation
+ACCT-005,Discovery complete,1,2025-09-01,2025-09-02,Complete,Implementation
+ACCT-005,Authentication,2,2025-09-11,2025-09-12,Complete,Integration Engineering
+ACCT-005,Mapping approved,3,2025-09-26,2025-09-29,Complete,Implementation
+ACCT-005,First test sync,4,2025-10-05,2025-10-09,Complete,Integration Engineering
+ACCT-005,UAT complete,5,2025-10-18,2025-10-23,Complete,Implementation
+ACCT-005,Training,6,2025-10-28,2025-11-02,Complete,Implementation
+ACCT-005,Go-live,7,2025-11-09,2025-11-16,Complete,Implementation
+ACCT-005,First value,8,2025-11-20,2025-11-21,Complete,Implementation
+ACCT-006,Discovery complete,1,2025-09-02,2025-09-01,Complete,Implementation
+ACCT-006,Authentication,2,2025-09-08,2025-09-07,Complete,Integration Engineering
+ACCT-006,Mapping approved,3,2025-09-19,2025-09-17,Complete,Implementation
+ACCT-006,First test sync,4,2025-09-25,2025-09-24,Complete,Integration Engineering
+ACCT-006,UAT complete,5,2025-10-05,2025-10-02,Complete,Implementation
+ACCT-006,Training,6,2025-10-11,2025-10-09,Complete,Implementation
+ACCT-006,Go-live,7,2025-10-20,2025-10-17,Complete,Implementation
+ACCT-006,First value,8,2025-10-28,2025-10-23,Complete,Implementation
+ACCT-007,Discovery complete,1,2025-09-06,2025-09-05,Complete,Implementation
+ACCT-007,Authentication,2,2025-09-10,2025-09-10,Complete,Integration Engineering
+ACCT-007,Mapping approved,3,2025-09-18,2025-09-16,Complete,Implementation
+ACCT-007,First test sync,4,2025-09-22,2025-09-21,Complete,Integration Engineering
+ACCT-007,UAT complete,5,2025-09-29,2025-09-27,Complete,Implementation
+ACCT-007,Training,6,2025-10-04,2025-10-01,Complete,Implementation
+ACCT-007,Go-live,7,2025-10-10,2025-10-07,Complete,Implementation
+ACCT-007,First value,8,2025-10-15,2025-10-12,Complete,Implementation
+ACCT-008,Discovery complete,1,2025-09-12,2025-09-12,Complete,Implementation
+ACCT-008,Authentication,2,2025-09-16,2025-09-18,Complete,Integration Engineering
+ACCT-008,Mapping approved,3,2025-09-24,2025-09-26,Complete,Implementation
+ACCT-008,First test sync,4,2025-09-28,2025-10-02,Complete,Integration Engineering
+ACCT-008,UAT complete,5,2025-10-05,2025-10-09,Complete,Implementation
+ACCT-008,Training,6,2025-10-10,2025-10-15,Complete,Implementation
+ACCT-008,Go-live,7,2025-10-16,2025-10-22,Complete,Implementation
+ACCT-008,First value,8,2025-10-21,2025-10-27,Complete,Implementation
+ACCT-009,Discovery complete,1,2025-09-17,2025-09-17,Complete,Implementation
+ACCT-009,Authentication,2,2025-09-23,2025-09-24,Complete,Integration Engineering
+ACCT-009,Mapping approved,3,2025-10-04,2025-10-05,Complete,Implementation
+ACCT-009,First test sync,4,2025-10-10,2025-10-11,Complete,Integration Engineering
+ACCT-009,UAT complete,5,2025-10-20,2025-10-21,Complete,Implementation
+ACCT-009,Training,6,2025-10-26,2025-10-28,Complete,Implementation
+ACCT-009,Go-live,7,2025-11-04,2025-11-06,Complete,Implementation
+ACCT-009,First value,8,2025-11-12,2025-11-12,Complete,Implementation
+ACCT-010,Discovery complete,1,2025-09-25,2025-09-26,Complete,Implementation
+ACCT-010,Authentication,2,2025-10-05,2025-10-07,Complete,Integration Engineering
+ACCT-010,Mapping approved,3,2025-10-20,2025-10-23,Complete,Implementation
+ACCT-010,First test sync,4,2025-10-29,2025-11-02,Complete,Integration Engineering
+ACCT-010,UAT complete,5,2025-11-11,2025-11-17,Complete,Implementation
+ACCT-010,Training,6,2025-11-21,2025-11-27,Complete,Implementation
+ACCT-010,Go-live,7,2025-12-03,2025-12-11,Complete,Implementation
+ACCT-010,First value,8,2025-12-14,2025-12-16,Complete,Implementation
+ACCT-011,Discovery complete,1,2025-09-27,2025-09-26,Complete,Implementation
+ACCT-011,Authentication,2,2025-10-01,2025-10-01,Complete,Integration Engineering
+ACCT-011,Mapping approved,3,2025-10-09,2025-10-08,Complete,Implementation
+ACCT-011,First test sync,4,2025-10-13,2025-10-12,Complete,Integration Engineering
+ACCT-011,UAT complete,5,2025-10-20,2025-10-19,Complete,Implementation
+ACCT-011,Training,6,2025-10-25,2025-10-23,Complete,Implementation
+ACCT-011,Go-live,7,2025-10-31,2025-10-29,Complete,Implementation
+ACCT-011,First value,8,2025-11-05,2025-11-03,Complete,Implementation
+ACCT-012,Discovery complete,1,2025-10-02,2025-10-01,Complete,Implementation
+ACCT-012,Authentication,2,2025-10-08,2025-10-08,Complete,Integration Engineering
+ACCT-012,Mapping approved,3,2025-10-19,2025-10-18,Complete,Implementation
+ACCT-012,First test sync,4,2025-10-25,2025-10-25,Complete,Integration Engineering
+ACCT-012,UAT complete,5,2025-11-04,2025-11-03,Complete,Implementation
+ACCT-012,Training,6,2025-11-10,2025-11-09,Complete,Implementation
+ACCT-012,Go-live,7,2025-11-19,2025-11-18,Complete,Implementation
+ACCT-012,First value,8,2025-11-27,2025-11-24,Complete,Implementation
+ACCT-013,Discovery complete,1,2025-10-06,2025-10-06,Complete,Implementation
+ACCT-013,Authentication,2,2025-10-10,2025-10-11,Complete,Integration Engineering
+ACCT-013,Mapping approved,3,2025-10-18,2025-10-19,Complete,Implementation
+ACCT-013,First test sync,4,2025-10-22,2025-10-24,Complete,Integration Engineering
+ACCT-013,UAT complete,5,2025-10-29,2025-10-31,Complete,Implementation
+ACCT-013,Training,6,2025-11-03,2025-11-05,Complete,Implementation
+ACCT-013,Go-live,7,2025-11-09,2025-11-12,Complete,Implementation
+ACCT-013,First value,8,2025-11-14,2025-11-17,Complete,Implementation
+ACCT-014,Discovery complete,1,2025-10-12,2025-10-13,Complete,Implementation
+ACCT-014,Authentication,2,2025-10-16,2025-10-19,Complete,Integration Engineering
+ACCT-014,Mapping approved,3,2025-10-24,2025-10-29,Complete,Implementation
+ACCT-014,First test sync,4,2025-10-28,2025-11-05,Complete,Integration Engineering
+ACCT-014,UAT complete,5,2025-11-04,2025-11-13,Complete,Implementation
+ACCT-014,Training,6,2025-11-09,2025-11-20,Complete,Implementation
+ACCT-014,Go-live,7,2025-11-15,2025-11-28,Complete,Implementation
+ACCT-014,First value,8,2025-11-20,2025-12-03,Complete,Implementation
+ACCT-015,Discovery complete,1,2025-10-19,2025-10-20,Complete,Implementation
+ACCT-015,Authentication,2,2025-10-29,2025-10-30,Complete,Integration Engineering
+ACCT-015,Mapping approved,3,2025-11-13,2025-11-16,Complete,Implementation
+ACCT-015,First test sync,4,2025-11-22,2025-11-26,Complete,Integration Engineering
+ACCT-015,UAT complete,5,2025-12-05,2025-12-10,Complete,Implementation
+ACCT-015,Training,6,2025-12-15,2025-12-20,Complete,Implementation
+ACCT-015,Go-live,7,2025-12-27,2026-01-03,Complete,Implementation
+ACCT-015,First value,8,2026-01-07,2026-01-09,Complete,Implementation
+ACCT-016,Discovery complete,1,2025-10-21,2025-10-22,Complete,Implementation
+ACCT-016,Authentication,2,2025-10-25,2025-10-27,Complete,Integration Engineering
+ACCT-016,Mapping approved,3,2025-11-02,2025-11-05,Complete,Implementation
+ACCT-016,First test sync,4,2025-11-06,2025-11-10,Complete,Integration Engineering
+ACCT-016,UAT complete,5,2025-11-13,2025-11-18,Complete,Implementation
+ACCT-016,Training,6,2025-11-18,2025-11-24,Complete,Implementation
+ACCT-016,Go-live,7,2025-11-24,2025-12-01,Complete,Implementation
+ACCT-016,First value,8,2025-11-29,2025-12-06,Complete,Implementation
+ACCT-017,Discovery complete,1,2025-10-27,2025-10-27,Complete,Implementation
+ACCT-017,Authentication,2,2025-10-31,2025-10-31,Complete,Integration Engineering
+ACCT-017,Mapping approved,3,2025-11-08,2025-11-08,Complete,Implementation
+ACCT-017,First test sync,4,2025-11-12,2025-11-12,Complete,Integration Engineering
+ACCT-017,UAT complete,5,2025-11-19,2025-11-19,Complete,Implementation
+ACCT-017,Training,6,2025-11-24,2025-11-24,Complete,Implementation
+ACCT-017,Go-live,7,2025-11-30,2025-11-30,Complete,Implementation
+ACCT-017,First value,8,2025-12-05,2025-12-05,Complete,Implementation
+ACCT-018,Discovery complete,1,2025-11-01,2025-11-01,Complete,Implementation
+ACCT-018,Authentication,2,2025-11-07,2025-11-08,Complete,Integration Engineering
+ACCT-018,Mapping approved,3,2025-11-18,2025-11-19,Complete,Implementation
+ACCT-018,First test sync,4,2025-11-24,2025-11-26,Complete,Integration Engineering
+ACCT-018,UAT complete,5,2025-12-04,2025-12-06,Complete,Implementation
+ACCT-018,Training,6,2025-12-10,2025-12-13,Complete,Implementation
+ACCT-018,Go-live,7,2025-12-19,2025-12-22,Complete,Implementation
+ACCT-018,First value,8,2025-12-27,2025-12-28,Complete,Implementation
+ACCT-019,Discovery complete,1,2025-11-05,2025-11-04,Complete,Implementation
+ACCT-019,Authentication,2,2025-11-09,2025-11-09,Complete,Integration Engineering
+ACCT-019,Mapping approved,3,2025-11-17,2025-11-15,Complete,Implementation
+ACCT-019,First test sync,4,2025-11-21,2025-11-20,Complete,Integration Engineering
+ACCT-019,UAT complete,5,2025-11-28,2025-11-26,Complete,Implementation
+ACCT-019,Training,6,2025-12-03,2025-11-30,Complete,Implementation
+ACCT-019,Go-live,7,2025-12-09,2025-12-06,Complete,Implementation
+ACCT-019,First value,8,2025-12-14,2025-12-11,Complete,Implementation
+ACCT-020,Discovery complete,1,2025-11-15,2025-11-15,Complete,Implementation
+ACCT-020,Authentication,2,2025-11-25,2025-11-25,Complete,Integration Engineering
+ACCT-020,Mapping approved,3,2025-12-10,2025-12-10,Complete,Implementation
+ACCT-020,First test sync,4,2025-12-19,2025-12-19,Complete,Integration Engineering
+ACCT-020,UAT complete,5,2026-01-01,2026-01-02,Complete,Implementation
+ACCT-020,Training,6,2026-01-11,2026-01-11,Complete,Implementation
+ACCT-020,Go-live,7,2026-01-23,2026-01-24,Complete,Implementation
+ACCT-020,First value,8,2026-02-03,2026-01-29,Complete,Implementation
+ACCT-021,Discovery complete,1,2025-11-16,2025-11-17,Complete,Implementation
+ACCT-021,Authentication,2,2025-11-22,2025-11-24,Complete,Integration Engineering
+ACCT-021,Mapping approved,3,2025-12-03,2025-12-07,Complete,Implementation
+ACCT-021,First test sync,4,2025-12-09,2025-12-14,Complete,Integration Engineering
+ACCT-021,UAT complete,5,2025-12-19,2025-12-25,Complete,Implementation
+ACCT-021,Training,6,2025-12-25,2026-01-02,Complete,Implementation
+ACCT-021,Go-live,7,2026-01-03,2026-01-12,Complete,Implementation
+ACCT-021,First value,8,2026-01-11,2026-01-18,Complete,Implementation
+ACCT-022,Discovery complete,1,2025-11-20,2025-11-21,Complete,Implementation
+ACCT-022,Authentication,2,2025-11-24,2025-11-26,Complete,Integration Engineering
+ACCT-022,Mapping approved,3,2025-12-02,2025-12-05,Complete,Implementation
+ACCT-022,First test sync,4,2025-12-06,2025-12-11,Complete,Integration Engineering
+ACCT-022,UAT complete,5,2025-12-13,2025-12-19,Complete,Implementation
+ACCT-022,Training,6,2025-12-18,2025-12-24,Complete,Implementation
+ACCT-022,Go-live,7,2025-12-24,2026-01-01,Complete,Implementation
+ACCT-022,First value,8,2025-12-29,2026-01-06,Complete,Implementation
+ACCT-023,Discovery complete,1,2025-11-26,2025-11-26,Complete,Implementation
+ACCT-023,Authentication,2,2025-11-30,2025-12-01,Complete,Integration Engineering
+ACCT-023,Mapping approved,3,2025-12-08,2025-12-09,Complete,Implementation
+ACCT-023,First test sync,4,2025-12-12,2025-12-14,Complete,Integration Engineering
+ACCT-023,UAT complete,5,2025-12-19,2025-12-21,Complete,Implementation
+ACCT-023,Training,6,2025-12-24,2025-12-25,Complete,Implementation
+ACCT-023,Go-live,7,2025-12-30,2026-01-01,Complete,Implementation
+ACCT-023,First value,8,2026-01-04,2026-01-06,Complete,Implementation
+ACCT-024,Discovery complete,1,2025-12-01,2025-12-01,Complete,Implementation
+ACCT-024,Authentication,2,2025-12-07,2025-12-08,Complete,Integration Engineering
+ACCT-024,Mapping approved,3,2025-12-18,2025-12-20,Complete,Implementation
+ACCT-024,First test sync,4,2025-12-24,2025-12-27,Complete,Integration Engineering
+ACCT-024,UAT complete,5,2026-01-03,2026-01-06,Complete,Implementation
+ACCT-024,Training,6,2026-01-09,2026-01-13,Complete,Implementation
+ACCT-024,Go-live,7,2026-01-18,2026-01-23,Complete,Implementation
+ACCT-024,First value,8,2026-01-26,2026-01-29,Complete,Implementation
+ACCT-025,Discovery complete,1,2025-12-09,2025-12-10,Complete,Implementation
+ACCT-025,Authentication,2,2025-12-19,2025-12-20,Complete,Integration Engineering
+ACCT-025,Mapping approved,3,2026-01-03,2026-01-04,Complete,Implementation
+ACCT-025,First test sync,4,2026-01-12,2026-01-14,Complete,Integration Engineering
+ACCT-025,UAT complete,5,2026-01-25,2026-01-28,Complete,Implementation
+ACCT-025,Training,6,2026-02-04,2026-02-07,Complete,Implementation
+ACCT-025,Go-live,7,2026-02-16,2026-02-20,Complete,Implementation
+ACCT-025,First value,8,2026-02-27,2026-02-25,Complete,Implementation
+ACCT-026,Discovery complete,1,2025-12-11,2025-12-11,Complete,Implementation
+ACCT-026,Authentication,2,2025-12-15,2025-12-16,Complete,Integration Engineering
+ACCT-026,Mapping approved,3,2025-12-23,2025-12-23,Complete,Implementation
+ACCT-026,First test sync,4,2025-12-27,2025-12-28,Complete,Integration Engineering
+ACCT-026,UAT complete,5,2026-01-03,2026-01-04,Complete,Implementation
+ACCT-026,Training,6,2026-01-08,2026-01-09,Complete,Implementation
+ACCT-026,Go-live,7,2026-01-14,2026-01-15,Complete,Implementation
+ACCT-026,First value,8,2026-01-19,2026-01-20,Complete,Implementation
+ACCT-027,Discovery complete,1,2025-12-16,2025-12-16,Complete,Implementation
+ACCT-027,Authentication,2,2025-12-22,2025-12-24,Complete,Integration Engineering
+ACCT-027,Mapping approved,3,2026-01-02,2026-01-05,Complete,Implementation
+ACCT-027,First test sync,4,2026-01-08,2026-01-12,Complete,Integration Engineering
+ACCT-027,UAT complete,5,2026-01-18,2026-01-23,Complete,Implementation
+ACCT-027,Training,6,2026-01-24,2026-01-30,Complete,Implementation
+ACCT-027,Go-live,7,2026-02-02,2026-02-09,Complete,Implementation
+ACCT-027,First value,8,2026-02-10,2026-02-15,Complete,Implementation
+ACCT-028,Discovery complete,1,2025-12-20,2025-12-19,Complete,Implementation
+ACCT-028,Authentication,2,2025-12-24,2025-12-24,Complete,Integration Engineering
+ACCT-028,Mapping approved,3,2026-01-01,2025-12-31,Complete,Implementation
+ACCT-028,First test sync,4,2026-01-05,2026-01-04,Complete,Integration Engineering
+ACCT-028,UAT complete,5,2026-01-12,2026-01-11,Complete,Implementation
+ACCT-028,Training,6,2026-01-17,2026-01-15,Complete,Implementation
+ACCT-028,Go-live,7,2026-01-23,2026-01-21,Complete,Implementation
+ACCT-028,First value,8,2026-01-28,2026-01-26,Complete,Implementation
+ACCT-029,Discovery complete,1,2025-12-26,2025-12-27,Complete,Implementation
+ACCT-029,Authentication,2,2025-12-30,2026-01-01,Complete,Integration Engineering
+ACCT-029,Mapping approved,3,2026-01-07,2026-01-10,Complete,Implementation
+ACCT-029,First test sync,4,2026-01-11,2026-01-15,Complete,Integration Engineering
+ACCT-029,UAT complete,5,2026-01-18,2026-01-23,Complete,Implementation
+ACCT-029,Training,6,2026-01-23,2026-01-29,Complete,Implementation
+ACCT-029,Go-live,7,2026-01-29,2026-02-05,Complete,Implementation
+ACCT-029,First value,8,2026-02-03,2026-02-10,Complete,Implementation
+ACCT-030,Discovery complete,1,2026-01-02,2026-01-03,Complete,Implementation
+ACCT-030,Authentication,2,2026-01-12,2026-01-13,Complete,Integration Engineering
+ACCT-030,Mapping approved,3,2026-01-27,2026-01-30,Complete,Implementation
+ACCT-030,First test sync,4,2026-02-05,2026-02-09,Complete,Integration Engineering
+ACCT-030,UAT complete,5,2026-02-18,2026-02-23,Complete,Implementation
+ACCT-030,Training,6,2026-02-28,2026-03-05,Complete,Implementation
+ACCT-030,Go-live,7,2026-03-12,2026-03-19,Complete,Implementation
+ACCT-030,First value,8,2026-03-23,2026-03-25,Complete,Implementation
+ACCT-031,Discovery complete,1,2026-01-04,2026-01-05,Complete,Implementation
+ACCT-031,Authentication,2,2026-01-08,2026-01-10,Complete,Integration Engineering
+ACCT-031,Mapping approved,3,2026-01-16,2026-01-19,Complete,Implementation
+ACCT-031,First test sync,4,2026-01-20,2026-01-24,Complete,Integration Engineering
+ACCT-031,UAT complete,5,2026-01-27,2026-02-01,Complete,Implementation
+ACCT-031,Training,6,2026-02-01,2026-02-07,Complete,Implementation
+ACCT-031,Go-live,7,2026-02-07,2026-02-14,Complete,Implementation
+ACCT-031,First value,8,2026-02-12,2026-02-19,Complete,Implementation
+ACCT-032,Discovery complete,1,2026-01-10,2026-01-10,Complete,Implementation
+ACCT-032,Authentication,2,2026-01-14,2026-01-14,Complete,Integration Engineering
+ACCT-032,Mapping approved,3,2026-01-22,2026-01-21,Complete,Implementation
+ACCT-032,First test sync,4,2026-01-26,2026-01-26,Complete,Integration Engineering
+ACCT-032,UAT complete,5,2026-02-02,2026-02-01,Complete,Implementation
+ACCT-032,Training,6,2026-02-07,2026-02-06,Complete,Implementation
+ACCT-032,Go-live,7,2026-02-13,2026-02-12,Complete,Implementation
+ACCT-032,First value,8,2026-02-18,2026-02-17,Complete,Implementation
+ACCT-033,Discovery complete,1,2026-01-15,2026-01-15,Complete,Implementation
+ACCT-033,Authentication,2,2026-01-21,2026-01-23,Complete,Integration Engineering
+ACCT-033,Mapping approved,3,2026-02-01,2026-02-03,Complete,Implementation
+ACCT-033,First test sync,4,2026-02-07,2026-02-11,Complete,Integration Engineering
+ACCT-033,UAT complete,5,2026-02-17,2026-02-21,Complete,Implementation
+ACCT-033,Training,6,2026-02-23,2026-02-28,Complete,Implementation
+ACCT-033,Go-live,7,2026-03-04,2026-03-10,Complete,Implementation
+ACCT-033,First value,8,2026-03-12,2026-03-16,Complete,Implementation
+ACCT-034,Discovery complete,1,2026-01-19,2026-01-19,Complete,Implementation
+ACCT-034,Authentication,2,2026-01-23,2026-01-23,Complete,Integration Engineering
+ACCT-034,Mapping approved,3,2026-01-31,2026-01-30,Complete,Implementation
+ACCT-034,First test sync,4,2026-02-04,2026-02-04,Complete,Integration Engineering
+ACCT-034,UAT complete,5,2026-02-11,2026-02-10,Complete,Implementation
+ACCT-034,Training,6,2026-02-16,2026-02-15,Complete,Implementation
+ACCT-034,Go-live,7,2026-02-22,2026-02-21,Complete,Implementation
+ACCT-034,First value,8,2026-02-27,2026-02-26,Complete,Implementation
+ACCT-035,Discovery complete,1,2026-01-29,2026-01-29,Complete,Implementation
+ACCT-035,Authentication,2,2026-02-08,2026-02-06,Complete,Integration Engineering
+ACCT-035,Mapping approved,3,2026-02-23,2026-02-20,Complete,Implementation
+ACCT-035,First test sync,4,2026-03-04,2026-02-28,Complete,Integration Engineering
+ACCT-035,UAT complete,5,2026-03-17,2026-03-12,Complete,Implementation
+ACCT-035,Training,6,2026-03-27,2026-03-21,Complete,Implementation
+ACCT-035,Go-live,7,2026-04-08,2026-04-01,Complete,Implementation
+ACCT-035,First value,8,2026-04-19,2026-04-06,Complete,Implementation
+ACCT-036,Discovery complete,1,2026-01-30,2026-01-30,Complete,Implementation
+ACCT-036,Authentication,2,2026-02-05,2026-02-05,Complete,Integration Engineering
+ACCT-036,Mapping approved,3,2026-02-16,2026-02-16,Complete,Implementation
+ACCT-036,First test sync,4,2026-02-22,2026-02-22,Complete,Integration Engineering
+ACCT-036,UAT complete,5,2026-03-04,2026-03-04,Complete,Implementation
+ACCT-036,Training,6,2026-03-10,2026-03-10,Complete,Implementation
+ACCT-036,Go-live,7,2026-03-19,2026-03-19,Complete,Implementation
+ACCT-036,First value,8,2026-03-27,2026-03-25,Complete,Implementation
+ACCT-037,Discovery complete,1,2026-02-03,2026-02-02,Complete,Implementation
+ACCT-037,Authentication,2,2026-02-07,2026-02-06,Complete,Integration Engineering
+ACCT-037,Mapping approved,3,2026-02-15,2026-02-13,Complete,Implementation
+ACCT-037,First test sync,4,2026-02-19,2026-02-17,Complete,Integration Engineering
+ACCT-037,UAT complete,5,2026-02-26,2026-02-22,Complete,Implementation
+ACCT-037,Training,6,2026-03-03,2026-02-27,Complete,Implementation
+ACCT-037,Go-live,7,2026-03-09,2026-03-04,Complete,Implementation
+ACCT-037,First value,8,2026-03-14,2026-03-09,Complete,Implementation
+ACCT-038,Discovery complete,1,2026-02-09,2026-02-09,Complete,Implementation
+ACCT-038,Authentication,2,2026-02-13,2026-02-14,Complete,Integration Engineering
+ACCT-038,Mapping approved,3,2026-02-21,2026-02-22,Complete,Implementation
+ACCT-038,First test sync,4,2026-02-25,2026-02-27,Complete,Integration Engineering
+ACCT-038,UAT complete,5,2026-03-04,2026-03-06,Complete,Implementation
+ACCT-038,Training,6,2026-03-09,2026-03-10,Complete,Implementation
+ACCT-038,Go-live,7,2026-03-15,2026-03-17,Complete,Implementation
+ACCT-038,First value,8,2026-03-20,2026-03-22,Complete,Implementation
+ACCT-039,Discovery complete,1,2026-02-14,2026-02-14,Complete,Implementation
+ACCT-039,Authentication,2,2026-02-20,2026-02-21,Complete,Integration Engineering
+ACCT-039,Mapping approved,3,2026-03-03,2026-03-05,Complete,Implementation
+ACCT-039,First test sync,4,2026-03-09,2026-03-12,Complete,Integration Engineering
+ACCT-039,UAT complete,5,2026-03-19,2026-03-22,Complete,Implementation
+ACCT-039,Training,6,2026-03-25,2026-03-29,Complete,Implementation
+ACCT-039,Go-live,7,2026-04-03,2026-04-08,Complete,Implementation
+ACCT-039,First value,8,2026-04-11,2026-04-14,Complete,Implementation
+ACCT-040,Discovery complete,1,2026-02-22,2026-02-22,Complete,Implementation
+ACCT-040,Authentication,2,2026-03-04,2026-03-03,Complete,Integration Engineering
+ACCT-040,Mapping approved,3,2026-03-19,2026-03-16,Complete,Implementation
+ACCT-040,First test sync,4,2026-03-28,2026-03-25,Complete,Integration Engineering
+ACCT-040,UAT complete,5,2026-04-10,2026-04-07,Complete,Implementation
+ACCT-040,Training,6,2026-04-20,2026-04-15,Complete,Implementation
+ACCT-040,Go-live,7,2026-05-02,2026-04-27,Complete,Implementation
+ACCT-040,First value,8,2026-05-13,2026-05-02,Complete,Implementation
+ACCT-041,Discovery complete,1,2026-02-24,2026-02-23,Complete,Implementation
+ACCT-041,Authentication,2,2026-02-28,2026-02-28,Complete,Integration Engineering
+ACCT-041,Mapping approved,3,2026-03-08,2026-03-06,Complete,Implementation
+ACCT-041,First test sync,4,2026-03-12,2026-03-11,Complete,Integration Engineering
+ACCT-041,UAT complete,5,2026-03-19,2026-03-17,Complete,Implementation
+ACCT-041,Training,6,2026-03-24,2026-03-21,Complete,Implementation
+ACCT-041,Go-live,7,2026-03-30,2026-03-27,Complete,Implementation
+ACCT-041,First value,8,2026-04-04,2026-04-01,Complete,Implementation
+ACCT-042,Discovery complete,1,2026-03-01,2026-03-01,Complete,Implementation
+ACCT-042,Authentication,2,2026-03-07,2026-03-07,Complete,Integration Engineering
+ACCT-042,Mapping approved,3,2026-03-18,2026-03-18,Complete,Implementation
+ACCT-042,First test sync,4,2026-03-24,2026-03-25,Complete,Integration Engineering
+ACCT-042,UAT complete,5,2026-04-03,2026-04-03,Complete,Implementation
+ACCT-042,Training,6,2026-04-09,2026-04-10,Complete,Implementation
+ACCT-042,Go-live,7,2026-04-18,2026-04-19,Complete,Implementation
+ACCT-042,First value,8,2026-04-26,2026-04-25,Complete,Implementation
+ACCT-043,Discovery complete,1,2026-03-05,2026-03-04,Complete,Implementation
+ACCT-043,Authentication,2,2026-03-09,2026-03-09,Complete,Integration Engineering
+ACCT-043,Mapping approved,3,2026-03-17,2026-03-16,Complete,Implementation
+ACCT-043,First test sync,4,2026-03-21,2026-03-20,Complete,Integration Engineering
+ACCT-043,UAT complete,5,2026-03-28,2026-03-27,Complete,Implementation
+ACCT-043,Training,6,2026-04-02,2026-03-31,Complete,Implementation
+ACCT-043,Go-live,7,2026-04-08,2026-04-06,Complete,Implementation
+ACCT-043,First value,8,2026-04-13,2026-04-11,Complete,Implementation
+ACCT-044,Discovery complete,1,2026-03-11,2026-03-10,Complete,Implementation
+ACCT-044,Authentication,2,2026-03-15,2026-03-15,Complete,Integration Engineering
+ACCT-044,Mapping approved,3,2026-03-23,2026-03-21,Complete,Implementation
+ACCT-044,First test sync,4,2026-03-27,2026-03-26,Complete,Integration Engineering
+ACCT-044,UAT complete,5,2026-04-03,2026-04-01,Complete,Implementation
+ACCT-044,Training,6,2026-04-08,2026-04-05,Complete,Implementation
+ACCT-044,Go-live,7,2026-04-14,2026-04-11,Complete,Implementation
+ACCT-044,First value,8,2026-04-19,2026-04-16,Complete,Implementation
+ACCT-045,Discovery complete,1,2026-03-18,2026-03-18,Complete,Implementation
+ACCT-045,Authentication,2,2026-03-28,2026-03-27,Complete,Integration Engineering
+ACCT-045,Mapping approved,3,2026-04-12,2026-04-11,Complete,Implementation
+ACCT-045,First test sync,4,2026-04-21,2026-04-20,Complete,Integration Engineering
+ACCT-045,UAT complete,5,2026-05-04,2026-05-03,Complete,Implementation
+ACCT-045,Training,6,2026-05-14,2026-05-13,Complete,Implementation
+ACCT-045,Go-live,7,2026-05-26,2026-05-25,Complete,Implementation
+ACCT-045,First value,8,2026-06-06,2026-05-31,Complete,Implementation
+ACCT-046,Discovery complete,1,2026-03-20,2026-03-19,Complete,Implementation
+ACCT-046,Authentication,2,2026-03-24,2026-03-24,Complete,Integration Engineering
+ACCT-046,Mapping approved,3,2026-04-01,2026-03-30,Complete,Implementation
+ACCT-046,First test sync,4,2026-04-05,2026-04-04,Complete,Integration Engineering
+ACCT-046,UAT complete,5,2026-04-12,2026-04-10,Complete,Implementation
+ACCT-046,Training,6,2026-04-17,2026-04-14,Complete,Implementation
+ACCT-046,Go-live,7,2026-04-23,2026-04-20,Complete,Implementation
+ACCT-046,First value,8,2026-04-28,2026-04-25,Complete,Implementation
+ACCT-047,Discovery complete,1,2026-03-26,2026-03-25,Complete,Implementation
+ACCT-047,Authentication,2,2026-03-30,2026-03-28,Complete,Integration Engineering
+ACCT-047,Mapping approved,3,2026-04-07,2026-04-03,Complete,Implementation
+ACCT-047,First test sync,4,2026-04-11,2026-04-06,Complete,Integration Engineering
+ACCT-047,UAT complete,5,2026-04-18,2026-04-12,Complete,Implementation
+ACCT-047,Training,6,2026-04-23,2026-04-15,Complete,Implementation
+ACCT-047,Go-live,7,2026-04-29,2026-04-20,Complete,Implementation
+ACCT-047,First value,8,2026-05-04,2026-04-25,Complete,Implementation
+ACCT-048,Discovery complete,1,2026-03-31,2026-03-31,Complete,Implementation
+ACCT-048,Authentication,2,2026-04-06,2026-04-06,Complete,Integration Engineering
+ACCT-048,Mapping approved,3,2026-04-17,2026-04-17,Complete,Implementation
+ACCT-048,First test sync,4,2026-04-23,2026-04-23,Complete,Integration Engineering
+ACCT-048,UAT complete,5,2026-05-03,2026-05-03,Complete,Implementation
+ACCT-048,Training,6,2026-05-09,2026-05-09,Complete,Implementation
+ACCT-048,Go-live,7,2026-05-18,2026-05-18,Complete,Implementation
+ACCT-048,First value,8,2026-05-26,2026-05-24,Complete,Implementation
+ACCT-049,Discovery complete,1,2026-04-04,2026-04-04,Complete,Implementation
+ACCT-049,Authentication,2,2026-04-08,2026-04-09,Complete,Integration Engineering
+ACCT-049,Mapping approved,3,2026-04-16,2026-04-17,Complete,Implementation
+ACCT-049,First test sync,4,2026-04-20,2026-04-22,Complete,Integration Engineering
+ACCT-049,UAT complete,5,2026-04-27,2026-04-29,Complete,Implementation
+ACCT-049,Training,6,2026-05-02,2026-05-03,Complete,Implementation
+ACCT-049,Go-live,7,2026-05-08,2026-05-10,Complete,Implementation
+ACCT-049,First value,8,2026-05-13,2026-05-15,Complete,Implementation
+ACCT-050,Discovery complete,1,2026-04-14,2026-04-13,Complete,Implementation
+ACCT-050,Authentication,2,2026-04-24,2026-04-22,Complete,Integration Engineering
+ACCT-050,Mapping approved,3,2026-05-09,2026-05-05,Complete,Implementation
+ACCT-050,First test sync,4,2026-05-18,2026-05-13,Complete,Integration Engineering
+ACCT-050,UAT complete,5,2026-05-31,2026-05-25,Complete,Implementation
+ACCT-050,Training,6,2026-06-10,2026-06-02,Complete,Implementation
+ACCT-050,Go-live,7,2026-06-22,2026-06-13,Complete,Implementation
+ACCT-050,First value,8,2026-07-03,2026-06-18,Complete,Implementation
+ACCT-051,Discovery complete,1,2026-04-15,2026-04-15,Complete,Implementation
+ACCT-051,Authentication,2,2026-04-21,2026-04-21,Complete,Integration Engineering
+ACCT-051,Mapping approved,3,2026-05-02,2026-05-02,Complete,Implementation
+ACCT-051,First test sync,4,2026-05-08,2026-05-09,Complete,Integration Engineering
+ACCT-051,UAT complete,5,2026-05-18,2026-05-18,Complete,Implementation
+ACCT-051,Training,6,2026-05-24,2026-05-25,Complete,Implementation
+ACCT-051,Go-live,7,2026-06-02,2026-06-03,Complete,Implementation
+ACCT-051,First value,8,2026-06-10,2026-06-09,Complete,Implementation
+ACCT-052,Discovery complete,1,2026-04-19,2026-04-20,Complete,Implementation
+ACCT-052,Authentication,2,2026-04-23,2026-04-27,Complete,Integration Engineering
+ACCT-052,Mapping approved,3,2026-05-01,2026-05-07,Complete,Implementation
+ACCT-052,First test sync,4,2026-05-05,2026-05-14,Complete,Integration Engineering
+ACCT-052,UAT complete,5,2026-05-12,2026-05-23,Complete,Implementation
+ACCT-052,Training,6,2026-05-17,2026-05-29,Complete,Implementation
+ACCT-052,Go-live,7,2026-05-23,2026-06-07,Complete,Implementation
+ACCT-052,First value,8,2026-05-28,2026-06-12,Complete,Implementation
+ACCT-053,Discovery complete,1,2026-04-25,2026-04-25,Complete,Implementation
+ACCT-053,Authentication,2,2026-04-29,2026-04-29,Complete,Integration Engineering
+ACCT-053,Mapping approved,3,2026-05-07,2026-05-06,Complete,Implementation
+ACCT-053,First test sync,4,2026-05-11,2026-05-11,Complete,Integration Engineering
+ACCT-053,UAT complete,5,2026-05-18,2026-05-17,Complete,Implementation
+ACCT-053,Training,6,2026-05-23,2026-05-22,Complete,Implementation
+ACCT-053,Go-live,7,2026-05-29,2026-05-28,Complete,Implementation
+ACCT-053,First value,8,2026-06-03,2026-06-02,Complete,Implementation
+ACCT-054,Discovery complete,1,2026-04-30,2026-04-28,Complete,Implementation
+ACCT-054,Authentication,2,2026-05-06,2026-05-04,Complete,Integration Engineering
+ACCT-054,Mapping approved,3,2026-05-17,2026-05-12,Complete,Implementation
+ACCT-054,First test sync,4,2026-05-23,2026-05-18,Complete,Integration Engineering
+ACCT-054,UAT complete,5,2026-06-02,2026-05-25,Complete,Implementation
+ACCT-054,Training,6,2026-06-08,2026-05-31,Complete,Implementation
+ACCT-054,Go-live,7,2026-06-17,2026-06-07,Complete,Implementation
+ACCT-054,First value,8,2026-06-25,2026-06-13,Complete,Implementation
+ACCT-055,Discovery complete,1,2026-05-08,2026-05-08,Complete,Implementation
+ACCT-055,Authentication,2,2026-05-18,2026-05-17,Complete,Integration Engineering
+ACCT-055,Mapping approved,3,2026-06-02,2026-06-01,Complete,Implementation
+ACCT-055,First test sync,4,2026-06-11,2026-06-10,Complete,Integration Engineering
+ACCT-055,UAT complete,5,2026-06-24,2026-06-23,Complete,Implementation
+ACCT-055,Training,6,2026-07-04,,Planned,Implementation
+ACCT-055,Go-live,7,2026-07-16,,Planned,Implementation
+ACCT-055,First value,8,2026-07-27,,Planned,Implementation
+ACCT-056,Discovery complete,1,2026-05-10,2026-05-09,Complete,Implementation
+ACCT-056,Authentication,2,2026-05-14,2026-05-14,Complete,Integration Engineering
+ACCT-056,Mapping approved,3,2026-05-22,2026-05-20,Complete,Implementation
+ACCT-056,First test sync,4,2026-05-26,2026-05-25,Complete,Integration Engineering
+ACCT-056,UAT complete,5,2026-06-02,2026-05-31,Complete,Implementation
+ACCT-056,Training,6,2026-06-07,2026-06-04,Complete,Implementation
+ACCT-056,Go-live,7,2026-06-13,2026-06-10,Complete,Implementation
+ACCT-056,First value,8,2026-06-18,2026-06-15,Complete,Implementation
+ACCT-057,Discovery complete,1,2026-05-15,2026-05-17,Complete,Implementation
+ACCT-057,Authentication,2,2026-05-21,2026-05-26,Complete,Integration Engineering
+ACCT-057,Mapping approved,3,2026-06-01,2026-06-09,Complete,Implementation
+ACCT-057,First test sync,4,2026-06-07,2026-06-18,Complete,Integration Engineering
+ACCT-057,UAT complete,5,2026-06-17,2026-06-30,Complete,Implementation
+ACCT-057,Training,6,2026-06-23,,Late,Implementation
+ACCT-057,Go-live,7,2026-07-02,,Planned,Implementation
+ACCT-057,First value,8,2026-07-10,,Planned,Implementation
+ACCT-058,Discovery complete,1,2026-05-19,2026-05-20,Complete,Implementation
+ACCT-058,Authentication,2,2026-05-23,2026-05-27,Complete,Integration Engineering
+ACCT-058,Mapping approved,3,2026-05-31,2026-06-06,Complete,Implementation
+ACCT-058,First test sync,4,2026-06-04,2026-06-12,Complete,Integration Engineering
+ACCT-058,UAT complete,5,2026-06-11,2026-06-21,Complete,Implementation
+ACCT-058,Training,6,2026-06-16,2026-06-28,Complete,Implementation
+ACCT-058,Go-live,7,2026-06-22,,Late,Implementation
+ACCT-058,First value,8,2026-06-27,,Late,Implementation
+ACCT-059,Discovery complete,1,2026-05-25,2026-05-26,Complete,Implementation
+ACCT-059,Authentication,2,2026-05-29,2026-06-01,Complete,Integration Engineering
+ACCT-059,Mapping approved,3,2026-06-06,2026-06-11,Complete,Implementation
+ACCT-059,First test sync,4,2026-06-10,2026-06-18,Complete,Integration Engineering
+ACCT-059,UAT complete,5,2026-06-17,2026-06-26,Complete,Implementation
+ACCT-059,Training,6,2026-06-22,,Late,Implementation
+ACCT-059,Go-live,7,2026-06-28,,Late,Implementation
+ACCT-059,First value,8,2026-07-03,,Planned,Implementation
+ACCT-060,Discovery complete,1,2026-06-01,2026-06-04,Complete,Implementation
+ACCT-060,Authentication,2,2026-06-11,2026-06-15,Complete,Integration Engineering
+ACCT-060,Mapping approved,3,2026-06-26,,Late,Implementation
+ACCT-060,First test sync,4,2026-07-05,,Planned,Integration Engineering
+ACCT-060,UAT complete,5,2026-07-18,,Planned,Implementation
+ACCT-060,Training,6,2026-07-28,,Planned,Implementation
+ACCT-060,Go-live,7,2026-08-09,,Planned,Implementation
+ACCT-060,First value,8,2026-08-20,,Planned,Implementation

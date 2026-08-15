@@ -1,0 +1,497 @@
+{
+  "summary": [
+    {
+      "release_decision": "SHIP WITH CAVEAT",
+      "critical_pass_rate": 0.988889,
+      "freshness_sla_rate": 0.991667,
+      "latest_reconciliation_variance": 0.00215,
+      "open_high_critical_incidents": 1,
+      "average_change_lead_days": 4.33
+    }
+  ],
+  "weekly_quality": [
+    {
+      "week": "2026-W08",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W09",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W10",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W11",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W12",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W13",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W14",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W15",
+      "pass_rate": 0.97619,
+      "failures": 4,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W16",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W17",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W18",
+      "pass_rate": 0.964286,
+      "failures": 3,
+      "warnings": 3
+    },
+    {
+      "week": "2026-W19",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W20",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W21",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W22",
+      "pass_rate": 0.982143,
+      "failures": 2,
+      "warnings": 1
+    },
+    {
+      "week": "2026-W23",
+      "pass_rate": 1.0,
+      "failures": 0,
+      "warnings": 0
+    },
+    {
+      "week": "2026-W24",
+      "pass_rate": 0.97619,
+      "failures": 2,
+      "warnings": 2
+    },
+    {
+      "week": "2026-W25",
+      "pass_rate": 0.994048,
+      "failures": 0,
+      "warnings": 1
+    },
+    {
+      "week": "2026-W26",
+      "pass_rate": 0.958333,
+      "failures": 0,
+      "warnings": 2
+    }
+  ],
+  "asset_quality": [
+    {
+      "asset_id": "CAMPAIGN_SPEND",
+      "pass_rate": 0.987705,
+      "failures": 3,
+      "warnings": 6
+    },
+    {
+      "asset_id": "COMMERCE_ORDERS",
+      "pass_rate": 0.994536,
+      "failures": 2,
+      "warnings": 2
+    },
+    {
+      "asset_id": "WEB_EVENTS",
+      "pass_rate": 0.994536,
+      "failures": 4,
+      "warnings": 0
+    },
+    {
+      "asset_id": "CRM_LEADS",
+      "pass_rate": 0.995902,
+      "failures": 2,
+      "warnings": 1
+    }
+  ],
+  "reconciliation": [
+    {
+      "asset_id": "CRM_LEADS",
+      "reconciliation_variance": 0.00215,
+      "reconciliation_variance_bps": 21.5
+    },
+    {
+      "asset_id": "COMMERCE_ORDERS",
+      "reconciliation_variance": 0.001072,
+      "reconciliation_variance_bps": 10.72
+    },
+    {
+      "asset_id": "CAMPAIGN_SPEND",
+      "reconciliation_variance": 0.000845,
+      "reconciliation_variance_bps": 8.45
+    },
+    {
+      "asset_id": "WEB_EVENTS",
+      "reconciliation_variance": 0.000831,
+      "reconciliation_variance_bps": 8.31
+    }
+  ],
+  "failure_evidence": [
+    {
+      "run_date": "2026-06-30",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Unknown taxonomy rate",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 0.02,
+      "threshold": 0.01,
+      "affected_rows": 2,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-06-29",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Unknown taxonomy rate",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 0.02,
+      "threshold": 0.01,
+      "affected_rows": 2,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-06-28",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Unknown taxonomy rate",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 0.02,
+      "threshold": 0.01,
+      "affected_rows": 2,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-06-18",
+      "asset_id": "COMMERCE_ORDERS",
+      "rule_name": "Raw-to-dashboard variance",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.021,
+      "threshold": 0.005,
+      "affected_rows": 1,
+      "owner": "Analytics Engineering"
+    },
+    {
+      "run_date": "2026-06-18",
+      "asset_id": "COMMERCE_ORDERS",
+      "rule_name": "Required type validity",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 4.0,
+      "threshold": 0.0,
+      "affected_rows": 4,
+      "owner": "Analytics Engineering"
+    },
+    {
+      "run_date": "2026-06-17",
+      "asset_id": "COMMERCE_ORDERS",
+      "rule_name": "Raw-to-dashboard variance",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.021,
+      "threshold": 0.005,
+      "affected_rows": 1,
+      "owner": "Analytics Engineering"
+    },
+    {
+      "run_date": "2026-06-17",
+      "asset_id": "COMMERCE_ORDERS",
+      "rule_name": "Required type validity",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 4.0,
+      "threshold": 0.0,
+      "affected_rows": 4,
+      "owner": "Analytics Engineering"
+    },
+    {
+      "run_date": "2026-06-03",
+      "asset_id": "CRM_LEADS",
+      "rule_name": "Partition row coverage",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.58,
+      "threshold": 0.9,
+      "affected_rows": 42,
+      "owner": "Revenue Analytics"
+    },
+    {
+      "run_date": "2026-06-03",
+      "asset_id": "CRM_LEADS",
+      "rule_name": "Raw-to-dashboard variance",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.421,
+      "threshold": 0.005,
+      "affected_rows": 1,
+      "owner": "Revenue Analytics"
+    },
+    {
+      "run_date": "2026-06-03",
+      "asset_id": "CRM_LEADS",
+      "rule_name": "Freshness lag",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 520.0,
+      "threshold": 240.0,
+      "affected_rows": 1,
+      "owner": "Revenue Analytics"
+    },
+    {
+      "run_date": "2026-05-10",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Raw-to-dashboard variance",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.012,
+      "threshold": 0.005,
+      "affected_rows": 1,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-05-10",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Unknown taxonomy rate",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 0.13,
+      "threshold": 0.01,
+      "affected_rows": 13,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-05-09",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Raw-to-dashboard variance",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.012,
+      "threshold": 0.005,
+      "affected_rows": 1,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-05-09",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Unknown taxonomy rate",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 0.13,
+      "threshold": 0.01,
+      "affected_rows": 13,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-05-08",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Raw-to-dashboard variance",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.012,
+      "threshold": 0.005,
+      "affected_rows": 1,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-05-08",
+      "asset_id": "CAMPAIGN_SPEND",
+      "rule_name": "Unknown taxonomy rate",
+      "severity": "High",
+      "status": "WARN",
+      "observed_value": 0.13,
+      "threshold": 0.01,
+      "affected_rows": 13,
+      "owner": "Marketing Operations"
+    },
+    {
+      "run_date": "2026-04-15",
+      "asset_id": "WEB_EVENTS",
+      "rule_name": "Business key uniqueness",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 6.0,
+      "threshold": 0.0,
+      "affected_rows": 6,
+      "owner": "Web Analytics"
+    },
+    {
+      "run_date": "2026-04-15",
+      "asset_id": "WEB_EVENTS",
+      "rule_name": "Raw-to-dashboard variance",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.037,
+      "threshold": 0.005,
+      "affected_rows": 1,
+      "owner": "Web Analytics"
+    },
+    {
+      "run_date": "2026-04-14",
+      "asset_id": "WEB_EVENTS",
+      "rule_name": "Business key uniqueness",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 6.0,
+      "threshold": 0.0,
+      "affected_rows": 6,
+      "owner": "Web Analytics"
+    },
+    {
+      "run_date": "2026-04-14",
+      "asset_id": "WEB_EVENTS",
+      "rule_name": "Raw-to-dashboard variance",
+      "severity": "Critical",
+      "status": "FAIL",
+      "observed_value": 0.037,
+      "threshold": 0.005,
+      "affected_rows": 1,
+      "owner": "Web Analytics"
+    }
+  ],
+  "release_gate": [
+    {
+      "release_id": "REL-007",
+      "scheduled_date": "2026-07-01",
+      "evidence_date": "2026-06-30",
+      "critical_failures": 0,
+      "high_warnings": 1,
+      "exception_owner": "Marketing Operations",
+      "exception_expiry": "2026-07-15",
+      "decision": "SHIP WITH CAVEAT"
+    },
+    {
+      "release_id": "REL-006",
+      "scheduled_date": "2026-06-19",
+      "evidence_date": "2026-06-19",
+      "critical_failures": 0,
+      "high_warnings": 0,
+      "exception_owner": "",
+      "exception_expiry": "",
+      "decision": "SHIP"
+    },
+    {
+      "release_id": "REL-005",
+      "scheduled_date": "2026-06-05",
+      "evidence_date": "2026-06-05",
+      "critical_failures": 0,
+      "high_warnings": 0,
+      "exception_owner": "",
+      "exception_expiry": "",
+      "decision": "SHIP"
+    },
+    {
+      "release_id": "REL-004",
+      "scheduled_date": "2026-05-12",
+      "evidence_date": "2026-05-12",
+      "critical_failures": 0,
+      "high_warnings": 0,
+      "exception_owner": "",
+      "exception_expiry": "",
+      "decision": "SHIP"
+    },
+    {
+      "release_id": "REL-003",
+      "scheduled_date": "2026-05-08",
+      "evidence_date": "2026-05-08",
+      "critical_failures": 1,
+      "high_warnings": 1,
+      "exception_owner": "",
+      "exception_expiry": "",
+      "decision": "HOLD"
+    },
+    {
+      "release_id": "REL-002",
+      "scheduled_date": "2026-04-17",
+      "evidence_date": "2026-04-17",
+      "critical_failures": 0,
+      "high_warnings": 0,
+      "exception_owner": "",
+      "exception_expiry": "",
+      "decision": "SHIP"
+    },
+    {
+      "release_id": "REL-001",
+      "scheduled_date": "2026-04-14",
+      "evidence_date": "2026-04-14",
+      "critical_failures": 2,
+      "high_warnings": 0,
+      "exception_owner": "",
+      "exception_expiry": "",
+      "decision": "HOLD"
+    }
+  ],
+  "incident_causes": [
+    {
+      "root_cause": "Channel definition governance",
+      "incidents": 1,
+      "critical_incidents": 0
+    },
+    {
+      "root_cause": "Duplicate tracking",
+      "incidents": 1,
+      "critical_incidents": 1
+    },
+    {
+      "root_cause": "Partial partition",
+      "incidents": 1,
+      "critical_incidents": 1
+    },
+    {
+      "root_cause": "Schema drift",
+      "incidents": 1,
+      "critical_incidents": 0
+    },
+    {
+      "root_cause": "Taxonomy drift",
+      "incidents": 1,
+      "critical_incidents": 0
+    }
+  ]
+}

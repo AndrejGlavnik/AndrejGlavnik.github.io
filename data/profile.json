@@ -1,0 +1,49 @@
+{
+  "version": "2026-08-16",
+  "source_of_truth": "LinkedIn experience titles supplied by Andrej on 2026-08-16",
+  "positioning": {
+    "primary_title": "Technical Project Manager - Analytics & Integrations",
+    "experience_years": "3+ years",
+    "platform_ecosystem": "300+",
+    "recommendations": "13+",
+    "commercial_proof": "$100K+"
+  },
+  "approved_claims": {
+    "platform_ecosystem_website": "Data-source, connector, and integration types available across the platform ecosystem I supported",
+    "platform_ecosystem_cv": "Supported customers across a platform ecosystem offering 300+ data-source, connector, and integration types.",
+    "commercial_proof": "$100K+ in ARR and pipeline influenced through qualification, demos, and high-quality handoffs.",
+    "recommendations": "13+ LinkedIn recommendations"
+  },
+  "experience": {
+    "website_role_count": 4,
+    "roles": [
+      {
+        "company": "Danone",
+        "title": "Lead Data Project Manager, Analytics & Business Intelligence",
+        "dates": "Dec 2025 - Present"
+      },
+      {
+        "company": "Databox",
+        "title": "Software Support Engineer L2, Data & Integrations",
+        "dates": "Mar 2025 - Dec 2025"
+      },
+      {
+        "company": "Databox",
+        "title": "Business Development Specialist, Sales and UX",
+        "dates": "Apr 2024 - Mar 2025"
+      },
+      {
+        "company": "Walmart",
+        "title": "Senior Technical Support Engineer, NOC (L3)",
+        "dates": "May 2023 - Apr 2024"
+      }
+    ]
+  },
+  "education": {
+    "program": "Web Project Manager & Data Analyst",
+    "issuer": "ITAcademy by LINKgroup",
+    "status": "In progress",
+    "expected": "Apr 2027"
+  },
+  "alignment_policy": "Website, CV, and LinkedIn use the same four role titles. Danone remains one continuous entry until Andrej explicitly chooses otherwise."
+}

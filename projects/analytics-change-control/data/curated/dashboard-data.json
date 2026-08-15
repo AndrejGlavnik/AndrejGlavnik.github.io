@@ -1,0 +1,234 @@
+{
+  "summary": [
+    {
+      "active_implementations": 5,
+      "on_time_go_live_rate": 0.454545,
+      "median_ttfv_days": 51.0,
+      "at_risk_active_accounts": 5,
+      "integration_success_rate": 0.980418
+    }
+  ],
+  "funnel": [
+    {
+      "milestone": "Discovery complete",
+      "stage_order": 1,
+      "completed_accounts": 60
+    },
+    {
+      "milestone": "Authentication",
+      "stage_order": 2,
+      "completed_accounts": 60
+    },
+    {
+      "milestone": "Mapping approved",
+      "stage_order": 3,
+      "completed_accounts": 59
+    },
+    {
+      "milestone": "First test sync",
+      "stage_order": 4,
+      "completed_accounts": 59
+    },
+    {
+      "milestone": "UAT complete",
+      "stage_order": 5,
+      "completed_accounts": 59
+    },
+    {
+      "milestone": "Training",
+      "stage_order": 6,
+      "completed_accounts": 56
+    },
+    {
+      "milestone": "Go-live",
+      "stage_order": 7,
+      "completed_accounts": 55
+    },
+    {
+      "milestone": "First value",
+      "stage_order": 8,
+      "completed_accounts": 55
+    }
+  ],
+  "connector_reliability": [
+    {
+      "connector_id": "WAREHOUSE",
+      "success_rate": 0.960245,
+      "data_acceptance_rate": 0.956548,
+      "average_latency_ms": 2329.0,
+      "failed_runs": 26
+    },
+    {
+      "connector_id": "BILLING",
+      "success_rate": 0.974928,
+      "data_acceptance_rate": 0.979008,
+      "average_latency_ms": 1947.0,
+      "failed_runs": 87
+    },
+    {
+      "connector_id": "PRODUCT",
+      "success_rate": 0.986233,
+      "data_acceptance_rate": 0.98062,
+      "average_latency_ms": 1950.0,
+      "failed_runs": 22
+    },
+    {
+      "connector_id": "CRM",
+      "success_rate": 0.987032,
+      "data_acceptance_rate": 0.983218,
+      "average_latency_ms": 1969.0,
+      "failed_runs": 45
+    }
+  ],
+  "cohort_lead": [
+    {
+      "kickoff_month": "2025-08",
+      "average_lead_days": 53.67,
+      "completed_accounts": 6
+    },
+    {
+      "kickoff_month": "2025-09",
+      "average_lead_days": 52.5,
+      "completed_accounts": 6
+    },
+    {
+      "kickoff_month": "2025-10",
+      "average_lead_days": 51.14,
+      "completed_accounts": 7
+    },
+    {
+      "kickoff_month": "2025-11",
+      "average_lead_days": 62.17,
+      "completed_accounts": 6
+    },
+    {
+      "kickoff_month": "2025-12",
+      "average_lead_days": 52.67,
+      "completed_accounts": 6
+    },
+    {
+      "kickoff_month": "2026-01",
+      "average_lead_days": 49.5,
+      "completed_accounts": 6
+    },
+    {
+      "kickoff_month": "2026-02",
+      "average_lead_days": 50.5,
+      "completed_accounts": 6
+    },
+    {
+      "kickoff_month": "2026-03",
+      "average_lead_days": 45.83,
+      "completed_accounts": 6
+    },
+    {
+      "kickoff_month": "2026-04",
+      "average_lead_days": 52.4,
+      "completed_accounts": 5
+    },
+    {
+      "kickoff_month": "2026-05",
+      "average_lead_days": 36.0,
+      "completed_accounts": 1
+    }
+  ],
+  "risk_queue": [
+    {
+      "account_id": "ACCT-058",
+      "account_risk_label": "ACCT-058 | RED | -8 days",
+      "risk_order": 1,
+      "fictional_account_name": "Demo Account 58",
+      "segment": "SMB",
+      "days_to_committed_go_live": -8,
+      "readiness_rate": 0.716667,
+      "mapping_coverage": 0.666667,
+      "uat_pass_rate": 1.0,
+      "recent_integration_success_rate": 0.5,
+      "risk_status": "Red",
+      "risk_reason": "Go-live ≤14 days with incomplete mapping or UAT",
+      "next_action": "Run daily recovery plan with decision owner"
+    },
+    {
+      "account_id": "ACCT-059",
+      "account_risk_label": "ACCT-059 | RED | -2 days",
+      "risk_order": 1,
+      "fictional_account_name": "Demo Account 59",
+      "segment": "SMB",
+      "days_to_committed_go_live": -2,
+      "readiness_rate": 0.754167,
+      "mapping_coverage": 0.666667,
+      "uat_pass_rate": 0.625,
+      "recent_integration_success_rate": 1.0,
+      "risk_status": "Red",
+      "risk_reason": "Go-live ≤14 days with incomplete mapping or UAT",
+      "next_action": "Run daily recovery plan with decision owner"
+    },
+    {
+      "account_id": "ACCT-057",
+      "account_risk_label": "ACCT-057 | RED | +2 days",
+      "risk_order": 1,
+      "fictional_account_name": "Demo Account 57",
+      "segment": "Mid-Market",
+      "days_to_committed_go_live": 2,
+      "readiness_rate": 0.716667,
+      "mapping_coverage": 0.666667,
+      "uat_pass_rate": 0.5,
+      "recent_integration_success_rate": 1.0,
+      "risk_status": "Red",
+      "risk_reason": "Go-live ≤14 days with incomplete mapping or UAT",
+      "next_action": "Run daily recovery plan with decision owner"
+    },
+    {
+      "account_id": "ACCT-055",
+      "account_risk_label": "ACCT-055 | AMBER | +16 days",
+      "risk_order": 2,
+      "fictional_account_name": "Demo Account 55",
+      "segment": "Enterprise",
+      "days_to_committed_go_live": 16,
+      "readiness_rate": 0.8875,
+      "mapping_coverage": 1.0,
+      "uat_pass_rate": 0.75,
+      "recent_integration_success_rate": 0.875,
+      "risk_status": "Amber",
+      "risk_reason": "Readiness, reliability or schedule guardrail at risk",
+      "next_action": "Resolve blocker and re-baseline remaining milestones"
+    },
+    {
+      "account_id": "ACCT-060",
+      "account_risk_label": "ACCT-060 | AMBER | +40 days",
+      "risk_order": 2,
+      "fictional_account_name": "Demo Account 60",
+      "segment": "Enterprise",
+      "days_to_committed_go_live": 40,
+      "readiness_rate": 0.2625,
+      "mapping_coverage": 0.0,
+      "uat_pass_rate": 0.0,
+      "recent_integration_success_rate": 0.875,
+      "risk_status": "Amber",
+      "risk_reason": "Readiness, reliability or schedule guardrail at risk",
+      "next_action": "Resolve blocker and re-baseline remaining milestones"
+    }
+  ],
+  "error_pareto": [
+    {
+      "error_code": "UPSTREAM_UNAVAILABLE",
+      "runs": 116,
+      "rejected_records": 143829
+    },
+    {
+      "error_code": "SCHEMA_FIELD_CHANGED",
+      "runs": 39,
+      "rejected_records": 11433
+    },
+    {
+      "error_code": "RATE_LIMITED",
+      "runs": 22,
+      "rejected_records": 26555
+    },
+    {
+      "error_code": "OAUTH_TOKEN_EXPIRED",
+      "runs": 3,
+      "rejected_records": 3747
+    }
+  ]
+}

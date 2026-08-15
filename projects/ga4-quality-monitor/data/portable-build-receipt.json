@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "html": "projects/ga4-quality-monitor/index.html",
+  "stages": {
+    "validation": "passed",
+    "package": "passed",
+    "verification": "passed"
+  },
+  "counts": {
+    "blocks": 14,
+    "charts": 3,
+    "html": 0,
+    "metrics": 6,
+    "tables": 3
+  },
+  "sourceDialog": "passed",
+  "sourceInteraction": "keyboard_menu_semantic_click",
+  "viewports": [
+    1440,
+    390
+  ],
+  "timings": {
+    "validateAndPackageMs": 925.5,
+    "staticChartExtractionMs": 869.1,
+    "browserRunMs": 665.6,
+    "readerReadyMs": 41.8,
+    "contentChecksMs": 32.1,
+    "sourceDialogMs": 32,
+    "responsiveChecksMs": 31.9,
+    "verificationMs": 675.6,
+    "totalMs": 1605.7
+  },
+  "delivery_attempts": 1
+}

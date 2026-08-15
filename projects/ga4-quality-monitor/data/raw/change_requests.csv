@@ -1,0 +1,8 @@
+change_id,title,priority,ready_date,release_date,owner
+CHG-101,Purchase tracking schema,P3,2026-04-08,2026-04-14,Web Analytics
+CHG-102,Purchase deduplication repair,P3,2026-04-15,2026-04-17,Analytics Engineering
+CHG-103,Channel connector upgrade,P4,2026-04-27,2026-05-08,Marketing Operations
+CHG-104,Taxonomy mapping patch,P3,2026-05-09,2026-05-12,Marketing Operations
+CHG-105,CRM partition retry policy,P3,2026-06-03,2026-06-05,Revenue Analytics
+CHG-106,Order value type guard,P3,2026-06-17,2026-06-19,Analytics Engineering
+CHG-107,Acquisition dashboard refresh,P4,2026-06-24,2026-07-01,BI Delivery

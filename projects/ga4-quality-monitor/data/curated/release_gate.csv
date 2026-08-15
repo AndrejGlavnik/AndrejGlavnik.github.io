@@ -1,0 +1,8 @@
+release_id,scheduled_date,evidence_date,critical_failures,high_warnings,exception_owner,exception_expiry,decision
+REL-007,2026-07-01,2026-06-30,0,1,Marketing Operations,2026-07-15,SHIP WITH CAVEAT
+REL-006,2026-06-19,2026-06-19,0,0,,,SHIP
+REL-005,2026-06-05,2026-06-05,0,0,,,SHIP
+REL-004,2026-05-12,2026-05-12,0,0,,,SHIP
+REL-003,2026-05-08,2026-05-08,1,1,,,HOLD
+REL-002,2026-04-17,2026-04-17,0,0,,,SHIP
+REL-001,2026-04-14,2026-04-14,2,0,,,HOLD

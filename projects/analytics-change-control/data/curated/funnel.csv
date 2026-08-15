@@ -1,0 +1,9 @@
+milestone,stage_order,completed_accounts
+Discovery complete,1,60
+Authentication,2,60
+Mapping approved,3,59
+First test sync,4,59
+UAT complete,5,59
+Training,6,56
+Go-live,7,55
+First value,8,55

@@ -1,0 +1,1097 @@
+{
+  "surface": "dashboard",
+  "manifest": {
+    "version": 1,
+    "surface": "dashboard",
+    "title": "Commercial Performance & Promotion Intelligence",
+    "description": "A decision-focused synthetic FMCG commercial analytics dashboard.",
+    "generatedAt": "2026-06-30T18:00:00Z",
+    "cards": [
+      {
+        "id": "net_revenue",
+        "dataset": "summary",
+        "sourceId": "commercial_summary",
+        "description": "Revenue after returns and discounts.",
+        "metrics": [
+          {
+            "label": "Net revenue",
+            "field": "net_revenue",
+            "format": "currency"
+          }
+        ]
+      },
+      {
+        "id": "budget_variance",
+        "dataset": "summary",
+        "sourceId": "commercial_summary",
+        "description": "Actual net revenue versus the complete-period budget.",
+        "metrics": [
+          {
+            "label": "Vs budget",
+            "field": "budget_variance_rate",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "gross_margin",
+        "dataset": "summary",
+        "sourceId": "commercial_summary",
+        "description": "Weighted gross profit divided by net revenue.",
+        "metrics": [
+          {
+            "label": "Gross margin",
+            "field": "gross_margin_rate",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "net_units",
+        "dataset": "summary",
+        "sourceId": "commercial_summary",
+        "description": "Gross units less returned units.",
+        "metrics": [
+          {
+            "label": "Net units",
+            "field": "net_units",
+            "format": "compact"
+          }
+        ]
+      },
+      {
+        "id": "forecast_wape",
+        "dataset": "summary",
+        "sourceId": "commercial_summary",
+        "description": "Absolute locked-forecast unit error divided by actual units; lower is better.",
+        "metrics": [
+          {
+            "label": "Forecast WAPE",
+            "field": "forecast_wape",
+            "format": "percent"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "monthly_revenue",
+        "title": "Net revenue and budget by month",
+        "subtitle": "Complete months · EUR · Jan 2025–Jun 2026",
+        "type": "line",
+        "dataset": "monthly",
+        "sourceId": "commercial_monthly",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "temporal"
+          },
+          "y": {
+            "fields": [
+              "actual_revenue",
+              "budget_revenue"
+            ],
+            "type": "quantitative",
+            "format": "currency"
+          }
+        },
+        "valueFormat": "currency",
+        "layout": "full",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      },
+      {
+        "id": "promo_roi",
+        "title": "Weighted modeled ROI by discount band",
+        "subtitle": "Four planned bands; ratio of summed incremental profit to summed investment",
+        "type": "horizontalBar",
+        "dataset": "promo_performance",
+        "sourceId": "commercial_promo",
+        "encodings": {
+          "x": {
+            "field": "discount_band",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "promotion_roi",
+            "type": "quantitative",
+            "format": "percent"
+          }
+        },
+        "valueFormat": "percent",
+        "layout": "full",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      },
+      {
+        "id": "product_revenue",
+        "title": "Net revenue by product",
+        "subtitle": "Click table view for margin and budget context",
+        "type": "leaderboard",
+        "dataset": "product_performance",
+        "sourceId": "commercial_product",
+        "encodings": {
+          "x": {
+            "field": "product_name",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "net_revenue",
+            "type": "quantitative",
+            "format": "currency"
+          }
+        },
+        "valueFormat": "currency",
+        "layout": "full",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "market_table",
+        "title": "Market performance",
+        "subtitle": "Revenue, weighted margin and budget variance",
+        "dataset": "market_performance",
+        "sourceId": "commercial_market",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "net_revenue",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "market",
+            "label": "Market",
+            "type": "text"
+          },
+          {
+            "field": "net_revenue",
+            "label": "Net revenue",
+            "format": "currency"
+          },
+          {
+            "field": "gross_margin_rate",
+            "label": "Gross margin",
+            "format": "percent"
+          },
+          {
+            "field": "budget_variance_rate",
+            "label": "Vs budget",
+            "format": "percent",
+            "movement": true
+          }
+        ]
+      },
+      {
+        "id": "promo_table",
+        "title": "Promotion decision detail",
+        "subtitle": "Modeled scenario evidence; not a causal experiment",
+        "dataset": "promo_performance",
+        "sourceId": "commercial_promo",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "promotion_roi",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "discount_band",
+            "label": "Discount band",
+            "type": "text"
+          },
+          {
+            "field": "promotion_roi",
+            "label": "Weighted ROI",
+            "format": "percent"
+          },
+          {
+            "field": "unit_uplift_pct",
+            "label": "Modeled unit uplift",
+            "format": "percent"
+          },
+          {
+            "field": "incremental_profit_eur",
+            "label": "Incremental profit",
+            "format": "currency"
+          },
+          {
+            "field": "promotion_investment_eur",
+            "label": "Investment",
+            "format": "currency"
+          }
+        ]
+      },
+      {
+        "id": "product_table",
+        "title": "Product decision detail",
+        "subtitle": "Revenue, margin, budget variance and units",
+        "dataset": "product_performance",
+        "sourceId": "commercial_product",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "net_revenue",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "product_name",
+            "label": "Product",
+            "type": "text"
+          },
+          {
+            "field": "category",
+            "label": "Category",
+            "type": "text"
+          },
+          {
+            "field": "net_revenue",
+            "label": "Net revenue",
+            "format": "currency"
+          },
+          {
+            "field": "gross_margin_rate",
+            "label": "Gross margin",
+            "format": "percent"
+          },
+          {
+            "field": "budget_variance_rate",
+            "label": "Vs budget",
+            "format": "percent",
+            "movement": true
+          },
+          {
+            "field": "net_units",
+            "label": "Net units",
+            "format": "compact"
+          }
+        ]
+      },
+      {
+        "id": "quality_table",
+        "title": "Quality and reconciliation evidence",
+        "dataset": "quality_checks",
+        "sourceId": "commercial_quality",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "check",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "check",
+            "label": "Check",
+            "type": "text"
+          },
+          {
+            "field": "status",
+            "label": "Status",
+            "type": "text"
+          },
+          {
+            "field": "result",
+            "label": "Evidence",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "intro",
+        "type": "markdown",
+        "body": "# Commercial Performance & Promotion Intelligence\n\n**Decision:** where should a fictional commercial team reallocate next-quarter promotion investment while protecting net revenue and gross margin?\n\n*Deterministic synthetic portfolio data · snapshot 30 Jun 2026 · no employer or customer information.*"
+      },
+      {
+        "id": "metrics",
+        "type": "metric-strip",
+        "cardIds": [
+          "net_revenue",
+          "budget_variance",
+          "gross_margin",
+          "net_units",
+          "forecast_wape"
+        ]
+      },
+      {
+        "id": "trend",
+        "type": "chart",
+        "chartId": "monthly_revenue",
+        "layout": "full"
+      },
+      {
+        "id": "market",
+        "type": "table",
+        "tableId": "market_table",
+        "layout": "full"
+      },
+      {
+        "id": "promotion_decision",
+        "type": "markdown",
+        "sourceId": "commercial_promo",
+        "body": "## Promotion decision\n\n**Recommendation:** Run a bounded next-quarter test in the 10% band (modeled weighted ROI 24.5%); keep the modeled baseline and margin guardrail visible before scaling."
+      },
+      {
+        "id": "promo",
+        "type": "chart",
+        "chartId": "promo_roi",
+        "layout": "full"
+      },
+      {
+        "id": "promo_detail",
+        "type": "table",
+        "tableId": "promo_table",
+        "layout": "full"
+      },
+      {
+        "id": "product_chart",
+        "type": "chart",
+        "chartId": "product_revenue",
+        "layout": "full"
+      },
+      {
+        "id": "product_detail",
+        "type": "table",
+        "tableId": "product_table",
+        "layout": "full"
+      },
+      {
+        "id": "quality",
+        "type": "table",
+        "tableId": "quality_table",
+        "layout": "full"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "body": "## Method and limitations\n\nPromotion baselines are modeled, so ROI is scenario analysis rather than a causal experiment. Budget and actual cover the same complete period. Exact formulas, SQL, data dictionary, notebook and QA evidence are included beside this dashboard."
+      }
+    ],
+    "sources": [
+      {
+        "id": "commercial_summary",
+        "label": "Commercial KPI summary",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "COMMERCIAL_SUMMARY",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_sales",
+            "fact_budget_forecast"
+          ],
+          "filters": [
+            "2025-01-01 through 2026-06-30",
+            "Synthetic company and entities"
+          ],
+          "metric_definitions": [
+            "Net Revenue = gross revenue - return value - discount value.",
+            "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+            "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+            "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+            "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+          ],
+          "sql": "WITH actual_by_slice AS (\n  SELECT month, sku_id, market, channel,\n         SUM(net_units) AS actual_units,\n         SUM(net_revenue_eur) AS net_revenue,\n         SUM(gross_profit_eur) AS gross_profit\n  FROM fact_sales GROUP BY month, sku_id, market, channel\n), actual AS (\n  SELECT SUM(net_revenue) AS net_revenue,\n         SUM(gross_profit) AS gross_profit,\n         SUM(actual_units) AS net_units,\n         SUM(ABS(actual_units - forecast_units)) AS absolute_forecast_error,\n         SUM(actual_units) AS actual_units\n  FROM actual_by_slice\n  JOIN fact_budget_forecast USING (month, sku_id, market, channel)\n), plan AS (\n  SELECT SUM(budget_revenue_eur) AS budget_revenue FROM fact_budget_forecast\n)\nSELECT ROUND(net_revenue, 2) AS net_revenue,\n       ROUND((net_revenue - budget_revenue) / budget_revenue, 6) AS budget_variance_rate,\n       ROUND(gross_profit / net_revenue, 6) AS gross_margin_rate,\n       net_units,\n       ROUND(absolute_forecast_error * 1.0 / actual_units, 6) AS forecast_wape\nFROM actual CROSS JOIN plan;"
+        }
+      },
+      {
+        "id": "commercial_monthly",
+        "label": "Monthly revenue and budget",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "COMMERCIAL_MONTHLY",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_sales",
+            "fact_budget_forecast"
+          ],
+          "filters": [
+            "2025-01-01 through 2026-06-30",
+            "Synthetic company and entities"
+          ],
+          "metric_definitions": [
+            "Net Revenue = gross revenue - return value - discount value.",
+            "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+            "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+            "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+            "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+          ],
+          "sql": "SELECT s.month,\n       ROUND(SUM(s.net_revenue_eur), 2) AS actual_revenue,\n       ROUND(MAX(b.budget_revenue), 2) AS budget_revenue,\n       ROUND(SUM(s.gross_profit_eur), 2) AS gross_profit\nFROM fact_sales s\nJOIN (SELECT month, SUM(budget_revenue_eur) AS budget_revenue\n      FROM fact_budget_forecast GROUP BY month) b ON b.month = s.month\nGROUP BY s.month ORDER BY s.month;"
+        }
+      },
+      {
+        "id": "commercial_market",
+        "label": "Market performance",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "COMMERCIAL_MARKET",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_sales",
+            "fact_budget_forecast"
+          ],
+          "filters": [
+            "2025-01-01 through 2026-06-30",
+            "Synthetic company and entities"
+          ],
+          "metric_definitions": [
+            "Net Revenue = gross revenue - return value - discount value.",
+            "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+            "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+            "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+            "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+          ],
+          "sql": "WITH budgets AS (\n  SELECT market, SUM(budget_revenue_eur) AS budget_revenue\n  FROM fact_budget_forecast GROUP BY market\n)\nSELECT s.market,\n       ROUND(SUM(s.net_revenue_eur), 2) AS net_revenue,\n       ROUND(SUM(s.gross_profit_eur) / SUM(s.net_revenue_eur), 6) AS gross_margin_rate,\n       ROUND((SUM(s.net_revenue_eur) - MAX(b.budget_revenue)) / MAX(b.budget_revenue), 6) AS budget_variance_rate\nFROM fact_sales s JOIN budgets b ON b.market = s.market\nGROUP BY s.market ORDER BY net_revenue DESC;"
+        }
+      },
+      {
+        "id": "commercial_promo",
+        "label": "Promotion effectiveness",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "COMMERCIAL_PROMO",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_promotion"
+          ],
+          "filters": [
+            "2025-01-01 through 2026-06-30",
+            "Synthetic company and entities"
+          ],
+          "metric_definitions": [
+            "Net Revenue = gross revenue - return value - discount value.",
+            "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+            "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+            "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+            "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+          ],
+          "sql": "SELECT CASE\n         WHEN discount_pct < .125 THEN '10%'\n         WHEN discount_pct < .175 THEN '15%'\n         WHEN discount_pct < .25 THEN '20%'\n         ELSE '30%'\n       END AS discount_band,\n       ROUND(AVG(discount_pct), 4) AS discount_pct,\n       ROUND(SUM(incremental_profit_eur), 2) AS incremental_profit_eur,\n       ROUND(SUM(promotion_investment_eur), 2) AS promotion_investment_eur,\n       ROUND(SUM(incremental_profit_eur) / SUM(promotion_investment_eur), 6) AS promotion_roi,\n       ROUND(SUM(actual_units - baseline_units) * 1.0 / SUM(baseline_units), 6) AS unit_uplift_pct\nFROM fact_promotion GROUP BY discount_band ORDER BY discount_pct;"
+        }
+      },
+      {
+        "id": "commercial_product",
+        "label": "Product decision detail",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "COMMERCIAL_PRODUCT",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_sales",
+            "fact_budget_forecast"
+          ],
+          "filters": [
+            "2025-01-01 through 2026-06-30",
+            "Synthetic company and entities"
+          ],
+          "metric_definitions": [
+            "Net Revenue = gross revenue - return value - discount value.",
+            "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+            "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+            "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+            "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+          ],
+          "sql": "WITH budgets AS (\n  SELECT sku_id, SUM(budget_revenue_eur) AS budget_revenue\n  FROM fact_budget_forecast GROUP BY sku_id\n)\nSELECT s.sku_id, MAX(s.product_name) AS product_name, MAX(s.category) AS category,\n       ROUND(SUM(s.net_revenue_eur), 2) AS net_revenue,\n       ROUND(SUM(s.gross_profit_eur) / SUM(s.net_revenue_eur), 6) AS gross_margin_rate,\n       ROUND((SUM(s.net_revenue_eur) - MAX(b.budget_revenue)) / MAX(b.budget_revenue), 6) AS budget_variance_rate,\n       SUM(s.net_units) AS net_units\nFROM fact_sales s JOIN budgets b ON b.sku_id = s.sku_id\nGROUP BY s.sku_id ORDER BY net_revenue DESC;"
+        }
+      },
+      {
+        "id": "commercial_quality",
+        "label": "Executed commercial QA checks",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "COMMERCIAL_QUALITY",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "quality_checks"
+          ],
+          "filters": [
+            "Independent deterministic build checks"
+          ],
+          "metric_definitions": [
+            "Net Revenue = gross revenue - return value - discount value.",
+            "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+            "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+            "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+            "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+          ],
+          "sql": "SELECT \"check\" AS \"check\", status, result FROM quality_checks ORDER BY \"check\";"
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-06-30T18:00:00Z",
+    "status": "fixture",
+    "datasets": {
+      "summary": [
+        {
+          "net_revenue": 12551042.74,
+          "budget_variance_rate": -0.00934,
+          "gross_margin_rate": 0.615324,
+          "net_units": 4157892,
+          "forecast_wape": 0.022167
+        }
+      ],
+      "monthly": [
+        {
+          "month": "2025-01",
+          "actual_revenue": 575794.85,
+          "budget_revenue": 581951.27,
+          "gross_profit": 357092.11
+        },
+        {
+          "month": "2025-02",
+          "actual_revenue": 539298.45,
+          "budget_revenue": 544209.13,
+          "gross_profit": 334170.96
+        },
+        {
+          "month": "2025-03",
+          "actual_revenue": 651741.54,
+          "budget_revenue": 656766.57,
+          "gross_profit": 403353.32
+        },
+        {
+          "month": "2025-04",
+          "actual_revenue": 664030.37,
+          "budget_revenue": 670137.29,
+          "gross_profit": 410752.49
+        },
+        {
+          "month": "2025-05",
+          "actual_revenue": 759236.74,
+          "budget_revenue": 764114.21,
+          "gross_profit": 469518.78
+        },
+        {
+          "month": "2025-06",
+          "actual_revenue": 770103.82,
+          "budget_revenue": 775863.76,
+          "gross_profit": 475709.46
+        },
+        {
+          "month": "2025-07",
+          "actual_revenue": 828445.53,
+          "budget_revenue": 833529.71,
+          "gross_profit": 511319.78
+        },
+        {
+          "month": "2025-08",
+          "actual_revenue": 799626.8,
+          "budget_revenue": 806812.17,
+          "gross_profit": 493091.68
+        },
+        {
+          "month": "2025-09",
+          "actual_revenue": 673831.08,
+          "budget_revenue": 679466.08,
+          "gross_profit": 414729.39
+        },
+        {
+          "month": "2025-10",
+          "actual_revenue": 669529.68,
+          "budget_revenue": 674276.29,
+          "gross_profit": 411690.04
+        },
+        {
+          "month": "2025-11",
+          "actual_revenue": 711182.99,
+          "budget_revenue": 714429.41,
+          "gross_profit": 436845.31
+        },
+        {
+          "month": "2025-12",
+          "actual_revenue": 812796.77,
+          "budget_revenue": 817481.37,
+          "gross_profit": 498763.38
+        },
+        {
+          "month": "2026-01",
+          "actual_revenue": 601762.93,
+          "budget_revenue": 606453.79,
+          "gross_profit": 368851.07
+        },
+        {
+          "month": "2026-02",
+          "actual_revenue": 561462.43,
+          "budget_revenue": 565623.03,
+          "gross_profit": 344042.16
+        },
+        {
+          "month": "2026-03",
+          "actual_revenue": 674518.34,
+          "budget_revenue": 681260.78,
+          "gross_profit": 412919.68
+        },
+        {
+          "month": "2026-04",
+          "actual_revenue": 691322.88,
+          "budget_revenue": 696449.36,
+          "gross_profit": 422567.69
+        },
+        {
+          "month": "2026-05",
+          "actual_revenue": 765589.73,
+          "budget_revenue": 794431.18,
+          "gross_profit": 468459.65
+        },
+        {
+          "month": "2026-06",
+          "actual_revenue": 800767.81,
+          "budget_revenue": 806123.84,
+          "gross_profit": 489086.67
+        }
+      ],
+      "market_performance": [
+        {
+          "market": "Central",
+          "net_revenue": 3701340.76,
+          "gross_margin_rate": 0.617954,
+          "budget_variance_rate": -0.008685
+        },
+        {
+          "market": "North",
+          "net_revenue": 3616506.33,
+          "gross_margin_rate": 0.636294,
+          "budget_variance_rate": -0.008243
+        },
+        {
+          "market": "South",
+          "net_revenue": 2796835.06,
+          "gross_margin_rate": 0.592989,
+          "budget_variance_rate": -0.010432
+        },
+        {
+          "market": "West",
+          "net_revenue": 2436360.59,
+          "gross_margin_rate": 0.605843,
+          "budget_variance_rate": -0.010706
+        }
+      ],
+      "promo_performance": [
+        {
+          "discount_band": "10%",
+          "discount_pct": 0.1,
+          "incremental_profit_eur": 1783.49,
+          "promotion_investment_eur": 7282.73,
+          "promotion_roi": 0.244893,
+          "unit_uplift_pct": 0.453598
+        },
+        {
+          "discount_band": "15%",
+          "discount_pct": 0.15,
+          "incremental_profit_eur": 761.42,
+          "promotion_investment_eur": 9660.68,
+          "promotion_roi": 0.078816,
+          "unit_uplift_pct": 0.57823
+        },
+        {
+          "discount_band": "20%",
+          "discount_pct": 0.2,
+          "incremental_profit_eur": 185.82,
+          "promotion_investment_eur": 12885.73,
+          "promotion_roi": 0.014421,
+          "unit_uplift_pct": 0.715378
+        },
+        {
+          "discount_band": "30%",
+          "discount_pct": 0.3,
+          "incremental_profit_eur": -7650.32,
+          "promotion_investment_eur": 18405.75,
+          "promotion_roi": -0.415648,
+          "unit_uplift_pct": 0.545958
+        }
+      ],
+      "product_performance": [
+        {
+          "sku_id": "SKU-06",
+          "product_name": "Luma Granola",
+          "category": "Breakfast",
+          "net_revenue": 982481.75,
+          "gross_margin_rate": 0.592792,
+          "budget_variance_rate": -0.007541,
+          "net_units": 215664
+        },
+        {
+          "sku_id": "SKU-05",
+          "product_name": "Luma Oats",
+          "category": "Breakfast",
+          "net_revenue": 885712.72,
+          "gross_margin_rate": 0.612449,
+          "budget_variance_rate": -0.006848,
+          "net_units": 235149
+        },
+        {
+          "sku_id": "SKU-10",
+          "product_name": "Orbit Bites",
+          "category": "Snacks",
+          "net_revenue": 874861.94,
+          "gross_margin_rate": 0.639927,
+          "budget_variance_rate": -0.002273,
+          "net_units": 304653
+        },
+        {
+          "sku_id": "SKU-12",
+          "product_name": "Vela Mix",
+          "category": "Snacks",
+          "net_revenue": 873258.06,
+          "gross_margin_rate": 0.619379,
+          "budget_variance_rate": -0.007313,
+          "net_units": 244686
+        },
+        {
+          "sku_id": "SKU-11",
+          "product_name": "Aster Crunch",
+          "category": "Snacks",
+          "net_revenue": 864712.96,
+          "gross_margin_rate": 0.624465,
+          "budget_variance_rate": -0.005966,
+          "net_units": 264738
+        },
+        {
+          "sku_id": "SKU-08",
+          "product_name": "Halo Muesli",
+          "category": "Breakfast",
+          "net_revenue": 857829.1,
+          "gross_margin_rate": 0.594837,
+          "budget_variance_rate": -0.009132,
+          "net_units": 176731
+        },
+        {
+          "sku_id": "SKU-07",
+          "product_name": "Northstar Porridge",
+          "category": "Breakfast",
+          "net_revenue": 794515.18,
+          "gross_margin_rate": 0.604488,
+          "budget_variance_rate": -0.034111,
+          "net_units": 191402
+        },
+        {
+          "sku_id": "SKU-01",
+          "product_name": "Aster Sparkling",
+          "category": "Hydration",
+          "net_revenue": 755200.6,
+          "gross_margin_rate": 0.645608,
+          "budget_variance_rate": -0.006164,
+          "net_units": 347389
+        },
+        {
+          "sku_id": "SKU-09",
+          "product_name": "Orbit Bar",
+          "category": "Snacks",
+          "net_revenue": 736665.65,
+          "gross_margin_rate": 0.651098,
+          "budget_variance_rate": -0.013455,
+          "net_units": 437151
+        },
+        {
+          "sku_id": "SKU-03",
+          "product_name": "Vela Citrus",
+          "category": "Hydration",
+          "net_revenue": 735077.32,
+          "gross_margin_rate": 0.634503,
+          "budget_variance_rate": -0.005802,
+          "net_units": 284974
+        },
+        {
+          "sku_id": "SKU-15",
+          "product_name": "Vela Protein Shake",
+          "category": "Plant-Based",
+          "net_revenue": 726034.72,
+          "gross_margin_rate": 0.562762,
+          "budget_variance_rate": -0.01209,
+          "net_units": 166568
+        },
+        {
+          "sku_id": "SKU-02",
+          "product_name": "Aster Still",
+          "category": "Hydration",
+          "net_revenue": 724210.79,
+          "gross_margin_rate": 0.647916,
+          "budget_variance_rate": -0.009813,
+          "net_units": 405696
+        },
+        {
+          "sku_id": "SKU-13",
+          "product_name": "Luma Oat Drink",
+          "category": "Plant-Based",
+          "net_revenue": 715855.37,
+          "gross_margin_rate": 0.590904,
+          "budget_variance_rate": -0.00611,
+          "net_units": 225691
+        },
+        {
+          "sku_id": "SKU-04",
+          "product_name": "Vela Berry",
+          "category": "Hydration",
+          "net_revenue": 709904.12,
+          "gross_margin_rate": 0.632355,
+          "budget_variance_rate": -0.005142,
+          "net_units": 265407
+        },
+        {
+          "sku_id": "SKU-14",
+          "product_name": "Halo Almond Drink",
+          "category": "Plant-Based",
+          "net_revenue": 683033.91,
+          "gross_margin_rate": 0.582513,
+          "budget_variance_rate": -0.00937,
+          "net_units": 186295
+        },
+        {
+          "sku_id": "SKU-16",
+          "product_name": "Orbit Plant Snack",
+          "category": "Plant-Based",
+          "net_revenue": 631688.55,
+          "gross_margin_rate": 0.61048,
+          "budget_variance_rate": -0.008739,
+          "net_units": 205698
+        }
+      ],
+      "quality_checks": [
+        {
+          "check": "All four planned discount bands are represented",
+          "status": "PASS",
+          "result": "4 bands"
+        },
+        {
+          "check": "Daily sales grain is unique",
+          "status": "PASS",
+          "result": "139,776 rows; 0 duplicates"
+        },
+        {
+          "check": "Dashboard and SQL totals agree",
+          "status": "PASS",
+          "result": "Exact to €0.01"
+        },
+        {
+          "check": "Discount depth is not confounded with one execution mechanic",
+          "status": "PASS",
+          "result": "4 mechanics represented in every discount band"
+        },
+        {
+          "check": "Every sales slice has one budget and locked forecast",
+          "status": "PASS",
+          "result": "4,608 matched slices"
+        },
+        {
+          "check": "Forecast is locked before each reporting month",
+          "status": "PASS",
+          "result": "0 invalid lock dates"
+        },
+        {
+          "check": "Net revenue formula reconciles",
+          "status": "PASS",
+          "result": "0 rows outside €0.01 tolerance"
+        },
+        {
+          "check": "Promotion dates are valid",
+          "status": "PASS",
+          "result": "0 invalid windows"
+        },
+        {
+          "check": "Returns never exceed gross units",
+          "status": "PASS",
+          "result": "0 violations"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "commercial_summary",
+      "label": "Commercial KPI summary",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "COMMERCIAL_SUMMARY",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_sales",
+          "fact_budget_forecast"
+        ],
+        "filters": [
+          "2025-01-01 through 2026-06-30",
+          "Synthetic company and entities"
+        ],
+        "metric_definitions": [
+          "Net Revenue = gross revenue - return value - discount value.",
+          "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+          "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+          "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+          "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+        ],
+        "sql": "WITH actual_by_slice AS (\n  SELECT month, sku_id, market, channel,\n         SUM(net_units) AS actual_units,\n         SUM(net_revenue_eur) AS net_revenue,\n         SUM(gross_profit_eur) AS gross_profit\n  FROM fact_sales GROUP BY month, sku_id, market, channel\n), actual AS (\n  SELECT SUM(net_revenue) AS net_revenue,\n         SUM(gross_profit) AS gross_profit,\n         SUM(actual_units) AS net_units,\n         SUM(ABS(actual_units - forecast_units)) AS absolute_forecast_error,\n         SUM(actual_units) AS actual_units\n  FROM actual_by_slice\n  JOIN fact_budget_forecast USING (month, sku_id, market, channel)\n), plan AS (\n  SELECT SUM(budget_revenue_eur) AS budget_revenue FROM fact_budget_forecast\n)\nSELECT ROUND(net_revenue, 2) AS net_revenue,\n       ROUND((net_revenue - budget_revenue) / budget_revenue, 6) AS budget_variance_rate,\n       ROUND(gross_profit / net_revenue, 6) AS gross_margin_rate,\n       net_units,\n       ROUND(absolute_forecast_error * 1.0 / actual_units, 6) AS forecast_wape\nFROM actual CROSS JOIN plan;"
+      }
+    },
+    {
+      "id": "commercial_monthly",
+      "label": "Monthly revenue and budget",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "COMMERCIAL_MONTHLY",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_sales",
+          "fact_budget_forecast"
+        ],
+        "filters": [
+          "2025-01-01 through 2026-06-30",
+          "Synthetic company and entities"
+        ],
+        "metric_definitions": [
+          "Net Revenue = gross revenue - return value - discount value.",
+          "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+          "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+          "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+          "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+        ],
+        "sql": "SELECT s.month,\n       ROUND(SUM(s.net_revenue_eur), 2) AS actual_revenue,\n       ROUND(MAX(b.budget_revenue), 2) AS budget_revenue,\n       ROUND(SUM(s.gross_profit_eur), 2) AS gross_profit\nFROM fact_sales s\nJOIN (SELECT month, SUM(budget_revenue_eur) AS budget_revenue\n      FROM fact_budget_forecast GROUP BY month) b ON b.month = s.month\nGROUP BY s.month ORDER BY s.month;"
+      }
+    },
+    {
+      "id": "commercial_market",
+      "label": "Market performance",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "COMMERCIAL_MARKET",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_sales",
+          "fact_budget_forecast"
+        ],
+        "filters": [
+          "2025-01-01 through 2026-06-30",
+          "Synthetic company and entities"
+        ],
+        "metric_definitions": [
+          "Net Revenue = gross revenue - return value - discount value.",
+          "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+          "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+          "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+          "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+        ],
+        "sql": "WITH budgets AS (\n  SELECT market, SUM(budget_revenue_eur) AS budget_revenue\n  FROM fact_budget_forecast GROUP BY market\n)\nSELECT s.market,\n       ROUND(SUM(s.net_revenue_eur), 2) AS net_revenue,\n       ROUND(SUM(s.gross_profit_eur) / SUM(s.net_revenue_eur), 6) AS gross_margin_rate,\n       ROUND((SUM(s.net_revenue_eur) - MAX(b.budget_revenue)) / MAX(b.budget_revenue), 6) AS budget_variance_rate\nFROM fact_sales s JOIN budgets b ON b.market = s.market\nGROUP BY s.market ORDER BY net_revenue DESC;"
+      }
+    },
+    {
+      "id": "commercial_promo",
+      "label": "Promotion effectiveness",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "COMMERCIAL_PROMO",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_promotion"
+        ],
+        "filters": [
+          "2025-01-01 through 2026-06-30",
+          "Synthetic company and entities"
+        ],
+        "metric_definitions": [
+          "Net Revenue = gross revenue - return value - discount value.",
+          "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+          "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+          "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+          "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+        ],
+        "sql": "SELECT CASE\n         WHEN discount_pct < .125 THEN '10%'\n         WHEN discount_pct < .175 THEN '15%'\n         WHEN discount_pct < .25 THEN '20%'\n         ELSE '30%'\n       END AS discount_band,\n       ROUND(AVG(discount_pct), 4) AS discount_pct,\n       ROUND(SUM(incremental_profit_eur), 2) AS incremental_profit_eur,\n       ROUND(SUM(promotion_investment_eur), 2) AS promotion_investment_eur,\n       ROUND(SUM(incremental_profit_eur) / SUM(promotion_investment_eur), 6) AS promotion_roi,\n       ROUND(SUM(actual_units - baseline_units) * 1.0 / SUM(baseline_units), 6) AS unit_uplift_pct\nFROM fact_promotion GROUP BY discount_band ORDER BY discount_pct;"
+      }
+    },
+    {
+      "id": "commercial_product",
+      "label": "Product decision detail",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "COMMERCIAL_PRODUCT",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_sales",
+          "fact_budget_forecast"
+        ],
+        "filters": [
+          "2025-01-01 through 2026-06-30",
+          "Synthetic company and entities"
+        ],
+        "metric_definitions": [
+          "Net Revenue = gross revenue - return value - discount value.",
+          "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+          "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+          "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+          "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+        ],
+        "sql": "WITH budgets AS (\n  SELECT sku_id, SUM(budget_revenue_eur) AS budget_revenue\n  FROM fact_budget_forecast GROUP BY sku_id\n)\nSELECT s.sku_id, MAX(s.product_name) AS product_name, MAX(s.category) AS category,\n       ROUND(SUM(s.net_revenue_eur), 2) AS net_revenue,\n       ROUND(SUM(s.gross_profit_eur) / SUM(s.net_revenue_eur), 6) AS gross_margin_rate,\n       ROUND((SUM(s.net_revenue_eur) - MAX(b.budget_revenue)) / MAX(b.budget_revenue), 6) AS budget_variance_rate,\n       SUM(s.net_units) AS net_units\nFROM fact_sales s JOIN budgets b ON b.sku_id = s.sku_id\nGROUP BY s.sku_id ORDER BY net_revenue DESC;"
+      }
+    },
+    {
+      "id": "commercial_quality",
+      "label": "Executed commercial QA checks",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "COMMERCIAL_QUALITY",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "quality_checks"
+        ],
+        "filters": [
+          "Independent deterministic build checks"
+        ],
+        "metric_definitions": [
+          "Net Revenue = gross revenue - return value - discount value.",
+          "Gross Margin = SUM(gross profit) / SUM(net revenue).",
+          "Budget Variance = (actual net revenue - budget net revenue) / budget net revenue.",
+          "Forecast WAPE = SUM(ABS(actual units - locked forecast units)) / SUM(actual units); the forecast is locked before each month from ex-ante planning inputs and excludes realized daily noise.",
+          "Promotion ROI = incremental profit / (discount value + activation cost); baseline is modeled and scenario uplift combines category elasticity with mechanic-specific execution lift."
+        ],
+        "sql": "SELECT \"check\" AS \"check\", status, result FROM quality_checks ORDER BY \"check\";"
+      }
+    }
+  ]
+}
