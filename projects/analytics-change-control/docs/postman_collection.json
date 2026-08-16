@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "RelayMetrics Synthetic Integration",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Submit synthetic event batch",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{synthetic_token}}"
+          }
+        ],
+        "url": {
+          "raw": "https://example.invalid/v1/events",
+          "protocol": "https",
+          "host": [
+            "example",
+            "invalid"
+          ],
+          "path": [
+            "v1",
+            "events"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"account_id\": \"ACCT-001\",\n  \"events\": [\n    {\n      \"event_id\": \"evt-001\",\n      \"event_time\": \"2026-06-30T12:00:00Z\",\n      \"metric_name\": \"active_users\",\n      \"metric_value\": 4\n    }\n  ]\n}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1271 @@
+{
+  "surface": "dashboard",
+  "manifest": {
+    "version": 1,
+    "surface": "dashboard",
+    "title": "Analytics Reliability & Release Control",
+    "description": "Synthetic analytics quality, reconciliation and release-governance dashboard.",
+    "generatedAt": "2026-06-30T18:00:00Z",
+    "cards": [
+      {
+        "id": "release_decision",
+        "dataset": "summary",
+        "sourceId": "rel_summary",
+        "description": "Hard gate derived from failures, signoff, rollback and accepted exceptions.",
+        "metrics": [
+          {
+            "label": "Release decision",
+            "field": "release_decision",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "critical_pass",
+        "dataset": "summary",
+        "sourceId": "rel_summary",
+        "description": "Passed critical controls divided by executed critical controls in June.",
+        "metrics": [
+          {
+            "label": "Critical pass rate",
+            "field": "critical_pass_rate",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "freshness",
+        "dataset": "summary",
+        "sourceId": "rel_summary",
+        "description": "Scheduled June runs completed successfully within four hours.",
+        "metrics": [
+          {
+            "label": "Freshness SLA",
+            "field": "freshness_sla_rate",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "recon",
+        "dataset": "summary",
+        "sourceId": "rel_summary",
+        "description": "Highest raw-to-dashboard variance on the snapshot date.",
+        "metrics": [
+          {
+            "label": "Latest max variance",
+            "field": "latest_reconciliation_variance",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "open_incidents",
+        "dataset": "summary",
+        "sourceId": "rel_summary",
+        "description": "Unresolved incidents whose severity is High or Critical.",
+        "metrics": [
+          {
+            "label": "Open high/critical",
+            "field": "open_high_critical_incidents",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "lead_time",
+        "dataset": "summary",
+        "sourceId": "rel_summary",
+        "description": "Ready-to-release days for completed changes.",
+        "metrics": [
+          {
+            "label": "Avg change lead days",
+            "field": "average_change_lead_days",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "weekly_quality",
+        "title": "Quality test pass rate by week",
+        "subtitle": "All executed tests; warnings are not passes",
+        "type": "line",
+        "dataset": "weekly_quality",
+        "sourceId": "rel_weekly",
+        "encodings": {
+          "x": {
+            "field": "week",
+            "type": "temporal"
+          },
+          "y": {
+            "field": "pass_rate",
+            "type": "quantitative",
+            "format": "percent"
+          }
+        },
+        "valueFormat": "percent",
+        "layout": "full",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      },
+      {
+        "id": "asset_quality",
+        "title": "Quality pass rate by asset",
+        "subtitle": "Complete Mar–Jun synthetic period",
+        "type": "horizontalBar",
+        "dataset": "asset_quality",
+        "sourceId": "rel_asset",
+        "encodings": {
+          "x": {
+            "field": "asset_id",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "pass_rate",
+            "type": "quantitative",
+            "format": "percent"
+          }
+        },
+        "valueFormat": "percent",
+        "layout": "half",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      },
+      {
+        "id": "latest_recon",
+        "title": "Latest reconciliation variance by asset",
+        "subtitle": "Basis points (bp) on 30 Jun 2026 · critical threshold 50 bp",
+        "type": "horizontalBar",
+        "dataset": "reconciliation",
+        "sourceId": "rel_recon",
+        "encodings": {
+          "x": {
+            "field": "asset_id",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "reconciliation_variance_bps",
+            "type": "quantitative",
+            "format": "number"
+          }
+        },
+        "valueFormat": "number",
+        "layout": "half",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "incident_table",
+        "title": "Incidents by root-cause category",
+        "subtitle": "Documented synthetic scenarios",
+        "dataset": "incident_causes",
+        "sourceId": "rel_incidents",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "incidents",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "root_cause",
+            "label": "Root cause",
+            "type": "text"
+          },
+          {
+            "field": "incidents",
+            "label": "Incidents",
+            "format": "number"
+          },
+          {
+            "field": "critical_incidents",
+            "label": "Critical",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "release_table",
+        "title": "Release gate history",
+        "dataset": "release_gate",
+        "sourceId": "rel_releases",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "scheduled_date",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "release_id",
+            "label": "Release",
+            "type": "text"
+          },
+          {
+            "field": "scheduled_date",
+            "label": "Scheduled",
+            "type": "date"
+          },
+          {
+            "field": "evidence_date",
+            "label": "Evidence date",
+            "type": "date"
+          },
+          {
+            "field": "critical_failures",
+            "label": "Critical failures",
+            "format": "number"
+          },
+          {
+            "field": "high_warnings",
+            "label": "High warnings",
+            "format": "number"
+          },
+          {
+            "field": "exception_owner",
+            "label": "Exception owner",
+            "type": "text"
+          },
+          {
+            "field": "exception_expiry",
+            "label": "Exception expiry",
+            "type": "date"
+          },
+          {
+            "field": "decision",
+            "label": "Decision",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "failure_table",
+        "title": "Failure and warning evidence",
+        "dataset": "failure_evidence",
+        "sourceId": "rel_failures",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "run_date",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "run_date",
+            "label": "Date",
+            "type": "date"
+          },
+          {
+            "field": "asset_id",
+            "label": "Asset",
+            "type": "text"
+          },
+          {
+            "field": "rule_name",
+            "label": "Rule",
+            "type": "text"
+          },
+          {
+            "field": "severity",
+            "label": "Severity",
+            "type": "text"
+          },
+          {
+            "field": "status",
+            "label": "Status",
+            "type": "text"
+          },
+          {
+            "field": "affected_rows",
+            "label": "Affected",
+            "format": "number"
+          },
+          {
+            "field": "owner",
+            "label": "Owner",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "intro",
+        "type": "markdown",
+        "body": "# Analytics Reliability & Release Control\n\n**Decision:** should the next analytics release ship, be held, or ship with an explicitly accepted caveat?\n\n*Deterministic synthetic portfolio data · snapshot 30 Jun 2026 · raw anomalies are disclosed in the scenario manifest.*"
+      },
+      {
+        "id": "metrics",
+        "type": "metric-strip",
+        "cardIds": [
+          "release_decision",
+          "critical_pass",
+          "freshness",
+          "recon",
+          "open_incidents",
+          "lead_time"
+        ]
+      },
+      {
+        "id": "weekly",
+        "type": "chart",
+        "chartId": "weekly_quality",
+        "layout": "full"
+      },
+      {
+        "id": "asset",
+        "type": "chart",
+        "chartId": "asset_quality",
+        "layout": "half"
+      },
+      {
+        "id": "recon",
+        "type": "chart",
+        "chartId": "latest_recon",
+        "layout": "half"
+      },
+      {
+        "id": "causes",
+        "type": "table",
+        "tableId": "incident_table",
+        "layout": "full"
+      },
+      {
+        "id": "releases",
+        "type": "table",
+        "tableId": "release_table",
+        "layout": "full"
+      },
+      {
+        "id": "failures",
+        "type": "table",
+        "tableId": "failure_table",
+        "layout": "full"
+      },
+      {
+        "id": "method",
+        "type": "markdown",
+        "body": "## Gate, evidence and limitations\n\nThe dashboard deliberately avoids an opaque trust score. A critical failure blocks release. A high warning can ship only with an accepted, owned, expiring caveat. All issues and resolutions are fictional and exist only to demonstrate quality and release-governance methods."
+      }
+    ],
+    "sources": [
+      {
+        "id": "rel_summary",
+        "label": "Release decision",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "REL_SUMMARY",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_release",
+            "fact_quality_result",
+            "fact_pipeline_run",
+            "fact_incident",
+            "fact_change_request"
+          ],
+          "filters": [
+            "Synthetic data",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+            "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+            "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+            "Average Change Lead Time = average days from ready date to release date for released changes.",
+            "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+            "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+          ],
+          "sql": "WITH latest_release AS (\n  SELECT *, CASE\n    WHEN critical_failures > 0 OR signoff_complete = 0 OR rollback_ready = 0 THEN 'HOLD'\n    WHEN high_warnings BETWEEN 1 AND 2\n         AND exceptions_accepted = 1\n         AND exception_owner <> ''\n         AND exception_expiry > scheduled_date THEN 'SHIP WITH CAVEAT'\n    WHEN high_warnings = 0 THEN 'SHIP'\n    ELSE 'HOLD' END AS release_decision\n  FROM fact_release ORDER BY scheduled_date DESC LIMIT 1\n), recent_quality AS (\n  SELECT * FROM fact_quality_result WHERE run_date >= '2026-06-01'\n), critical AS (\n  SELECT SUM(CASE WHEN status = 'PASS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS critical_pass_rate\n  FROM recent_quality WHERE severity = 'Critical'\n), freshness AS (\n  SELECT SUM(CASE WHEN freshness_minutes <= 240 AND pipeline_status = 'SUCCEEDED' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS freshness_sla_rate\n  FROM fact_pipeline_run WHERE run_date >= '2026-06-01'\n), latest_recon AS (\n  SELECT MAX(ABS(dashboard_value - governed_value) / ABS(governed_value))\n         AS latest_reconciliation_variance\n  FROM fact_pipeline_run WHERE run_date = '2026-06-30'\n), open_incidents AS (\n  SELECT COUNT(*) AS open_high_critical_incidents FROM fact_incident\n  WHERE resolved_at = '' AND severity IN ('High', 'Critical')\n), lead_time AS (\n  SELECT AVG(julianday(release_date) - julianday(ready_date)) AS average_change_lead_days\n  FROM fact_change_request WHERE release_date <= '2026-06-30'\n)\nSELECT release_decision, ROUND(critical_pass_rate, 6) AS critical_pass_rate,\n       ROUND(freshness_sla_rate, 6) AS freshness_sla_rate,\n       ROUND(latest_reconciliation_variance, 6) AS latest_reconciliation_variance,\n       open_high_critical_incidents, ROUND(average_change_lead_days, 2) AS average_change_lead_days\nFROM latest_release CROSS JOIN critical CROSS JOIN freshness CROSS JOIN latest_recon\nCROSS JOIN open_incidents CROSS JOIN lead_time;"
+        }
+      },
+      {
+        "id": "rel_weekly",
+        "label": "Weekly quality trend",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "REL_WEEKLY",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_quality_result"
+          ],
+          "filters": [
+            "Synthetic data",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+            "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+            "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+            "Average Change Lead Time = average days from ready date to release date for released changes.",
+            "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+            "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+          ],
+          "sql": "SELECT strftime('%Y-W%W', run_date) AS week,\n       ROUND(SUM(CASE WHEN status = 'PASS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*), 6) AS pass_rate,\n       SUM(CASE WHEN status = 'FAIL' THEN 1 ELSE 0 END) AS failures,\n       SUM(CASE WHEN status = 'WARN' THEN 1 ELSE 0 END) AS warnings\nFROM fact_quality_result GROUP BY week ORDER BY week;"
+        }
+      },
+      {
+        "id": "rel_asset",
+        "label": "Asset quality",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "REL_ASSET",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_quality_result"
+          ],
+          "filters": [
+            "Synthetic data",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+            "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+            "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+            "Average Change Lead Time = average days from ready date to release date for released changes.",
+            "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+            "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+          ],
+          "sql": "SELECT asset_id,\n       ROUND(SUM(CASE WHEN status = 'PASS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*), 6) AS pass_rate,\n       SUM(CASE WHEN status = 'FAIL' THEN 1 ELSE 0 END) AS failures,\n       SUM(CASE WHEN status = 'WARN' THEN 1 ELSE 0 END) AS warnings\nFROM fact_quality_result GROUP BY asset_id ORDER BY pass_rate ASC;"
+        }
+      },
+      {
+        "id": "rel_recon",
+        "label": "Latest reconciliation",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "REL_RECON",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_pipeline_run"
+          ],
+          "filters": [
+            "Synthetic data",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+            "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+            "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+            "Average Change Lead Time = average days from ready date to release date for released changes.",
+            "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+            "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+          ],
+          "sql": "SELECT asset_id,\n       ROUND(ABS(dashboard_value - governed_value) / ABS(governed_value), 6)\n       AS reconciliation_variance,\n       ROUND(ABS(dashboard_value - governed_value) / ABS(governed_value) * 10000, 2)\n       AS reconciliation_variance_bps\nFROM fact_pipeline_run WHERE run_date = '2026-06-30'\nORDER BY reconciliation_variance DESC;"
+        }
+      },
+      {
+        "id": "rel_failures",
+        "label": "Failure evidence",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "REL_FAILURES",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_quality_result"
+          ],
+          "filters": [
+            "Synthetic data",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+            "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+            "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+            "Average Change Lead Time = average days from ready date to release date for released changes.",
+            "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+            "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+          ],
+          "sql": "SELECT run_date, asset_id, rule_name, severity, status, observed_value, threshold, affected_rows, owner\nFROM fact_quality_result WHERE status <> 'PASS'\nORDER BY run_date DESC, CASE severity WHEN 'Critical' THEN 1 ELSE 2 END LIMIT 30;"
+        }
+      },
+      {
+        "id": "rel_releases",
+        "label": "Release gates",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "REL_RELEASES",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_release"
+          ],
+          "filters": [
+            "Synthetic data",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+            "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+            "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+            "Average Change Lead Time = average days from ready date to release date for released changes.",
+            "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+            "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+          ],
+          "sql": "SELECT release_id, scheduled_date, evidence_date, critical_failures, high_warnings,\n       exception_owner, exception_expiry,\n       CASE\n         WHEN critical_failures > 0 OR signoff_complete = 0 OR rollback_ready = 0 THEN 'HOLD'\n         WHEN high_warnings BETWEEN 1 AND 2\n              AND exceptions_accepted = 1\n              AND exception_owner <> ''\n              AND exception_expiry > scheduled_date THEN 'SHIP WITH CAVEAT'\n         WHEN high_warnings = 0 THEN 'SHIP'\n         ELSE 'HOLD' END AS decision\nFROM fact_release ORDER BY scheduled_date DESC;"
+        }
+      },
+      {
+        "id": "rel_incidents",
+        "label": "Incident root causes",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "REL_INCIDENTS",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_incident"
+          ],
+          "filters": [
+            "Synthetic data",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+            "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+            "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+            "Average Change Lead Time = average days from ready date to release date for released changes.",
+            "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+            "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+          ],
+          "sql": "SELECT root_cause, COUNT(*) AS incidents,\n       SUM(CASE WHEN severity = 'Critical' THEN 1 ELSE 0 END) AS critical_incidents\nFROM fact_incident GROUP BY root_cause ORDER BY incidents DESC, root_cause;"
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-06-30T18:00:00Z",
+    "status": "fixture",
+    "datasets": {
+      "summary": [
+        {
+          "release_decision": "SHIP WITH CAVEAT",
+          "critical_pass_rate": 0.988889,
+          "freshness_sla_rate": 0.991667,
+          "latest_reconciliation_variance": 0.00215,
+          "open_high_critical_incidents": 1,
+          "average_change_lead_days": 4.33
+        }
+      ],
+      "weekly_quality": [
+        {
+          "week": "2026-W08",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W09",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W10",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W11",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W12",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W13",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W14",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W15",
+          "pass_rate": 0.97619,
+          "failures": 4,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W16",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W17",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W18",
+          "pass_rate": 0.964286,
+          "failures": 3,
+          "warnings": 3
+        },
+        {
+          "week": "2026-W19",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W20",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W21",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W22",
+          "pass_rate": 0.982143,
+          "failures": 2,
+          "warnings": 1
+        },
+        {
+          "week": "2026-W23",
+          "pass_rate": 1.0,
+          "failures": 0,
+          "warnings": 0
+        },
+        {
+          "week": "2026-W24",
+          "pass_rate": 0.97619,
+          "failures": 2,
+          "warnings": 2
+        },
+        {
+          "week": "2026-W25",
+          "pass_rate": 0.994048,
+          "failures": 0,
+          "warnings": 1
+        },
+        {
+          "week": "2026-W26",
+          "pass_rate": 0.958333,
+          "failures": 0,
+          "warnings": 2
+        }
+      ],
+      "asset_quality": [
+        {
+          "asset_id": "CAMPAIGN_SPEND",
+          "pass_rate": 0.987705,
+          "failures": 3,
+          "warnings": 6
+        },
+        {
+          "asset_id": "COMMERCE_ORDERS",
+          "pass_rate": 0.994536,
+          "failures": 2,
+          "warnings": 2
+        },
+        {
+          "asset_id": "WEB_EVENTS",
+          "pass_rate": 0.994536,
+          "failures": 4,
+          "warnings": 0
+        },
+        {
+          "asset_id": "CRM_LEADS",
+          "pass_rate": 0.995902,
+          "failures": 2,
+          "warnings": 1
+        }
+      ],
+      "reconciliation": [
+        {
+          "asset_id": "CRM_LEADS",
+          "reconciliation_variance": 0.00215,
+          "reconciliation_variance_bps": 21.5
+        },
+        {
+          "asset_id": "COMMERCE_ORDERS",
+          "reconciliation_variance": 0.001072,
+          "reconciliation_variance_bps": 10.72
+        },
+        {
+          "asset_id": "CAMPAIGN_SPEND",
+          "reconciliation_variance": 0.000845,
+          "reconciliation_variance_bps": 8.45
+        },
+        {
+          "asset_id": "WEB_EVENTS",
+          "reconciliation_variance": 0.000831,
+          "reconciliation_variance_bps": 8.31
+        }
+      ],
+      "failure_evidence": [
+        {
+          "run_date": "2026-06-30",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Unknown taxonomy rate",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 0.02,
+          "threshold": 0.01,
+          "affected_rows": 2,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-06-29",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Unknown taxonomy rate",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 0.02,
+          "threshold": 0.01,
+          "affected_rows": 2,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-06-28",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Unknown taxonomy rate",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 0.02,
+          "threshold": 0.01,
+          "affected_rows": 2,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-06-18",
+          "asset_id": "COMMERCE_ORDERS",
+          "rule_name": "Raw-to-dashboard variance",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.021,
+          "threshold": 0.005,
+          "affected_rows": 1,
+          "owner": "Analytics Engineering"
+        },
+        {
+          "run_date": "2026-06-18",
+          "asset_id": "COMMERCE_ORDERS",
+          "rule_name": "Required type validity",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 4.0,
+          "threshold": 0.0,
+          "affected_rows": 4,
+          "owner": "Analytics Engineering"
+        },
+        {
+          "run_date": "2026-06-17",
+          "asset_id": "COMMERCE_ORDERS",
+          "rule_name": "Raw-to-dashboard variance",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.021,
+          "threshold": 0.005,
+          "affected_rows": 1,
+          "owner": "Analytics Engineering"
+        },
+        {
+          "run_date": "2026-06-17",
+          "asset_id": "COMMERCE_ORDERS",
+          "rule_name": "Required type validity",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 4.0,
+          "threshold": 0.0,
+          "affected_rows": 4,
+          "owner": "Analytics Engineering"
+        },
+        {
+          "run_date": "2026-06-03",
+          "asset_id": "CRM_LEADS",
+          "rule_name": "Partition row coverage",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.58,
+          "threshold": 0.9,
+          "affected_rows": 42,
+          "owner": "Revenue Analytics"
+        },
+        {
+          "run_date": "2026-06-03",
+          "asset_id": "CRM_LEADS",
+          "rule_name": "Raw-to-dashboard variance",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.421,
+          "threshold": 0.005,
+          "affected_rows": 1,
+          "owner": "Revenue Analytics"
+        },
+        {
+          "run_date": "2026-06-03",
+          "asset_id": "CRM_LEADS",
+          "rule_name": "Freshness lag",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 520.0,
+          "threshold": 240.0,
+          "affected_rows": 1,
+          "owner": "Revenue Analytics"
+        },
+        {
+          "run_date": "2026-05-10",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Raw-to-dashboard variance",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.012,
+          "threshold": 0.005,
+          "affected_rows": 1,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-05-10",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Unknown taxonomy rate",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 0.13,
+          "threshold": 0.01,
+          "affected_rows": 13,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-05-09",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Raw-to-dashboard variance",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.012,
+          "threshold": 0.005,
+          "affected_rows": 1,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-05-09",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Unknown taxonomy rate",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 0.13,
+          "threshold": 0.01,
+          "affected_rows": 13,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-05-08",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Raw-to-dashboard variance",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.012,
+          "threshold": 0.005,
+          "affected_rows": 1,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-05-08",
+          "asset_id": "CAMPAIGN_SPEND",
+          "rule_name": "Unknown taxonomy rate",
+          "severity": "High",
+          "status": "WARN",
+          "observed_value": 0.13,
+          "threshold": 0.01,
+          "affected_rows": 13,
+          "owner": "Marketing Operations"
+        },
+        {
+          "run_date": "2026-04-15",
+          "asset_id": "WEB_EVENTS",
+          "rule_name": "Business key uniqueness",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 6.0,
+          "threshold": 0.0,
+          "affected_rows": 6,
+          "owner": "Web Analytics"
+        },
+        {
+          "run_date": "2026-04-15",
+          "asset_id": "WEB_EVENTS",
+          "rule_name": "Raw-to-dashboard variance",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.037,
+          "threshold": 0.005,
+          "affected_rows": 1,
+          "owner": "Web Analytics"
+        },
+        {
+          "run_date": "2026-04-14",
+          "asset_id": "WEB_EVENTS",
+          "rule_name": "Business key uniqueness",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 6.0,
+          "threshold": 0.0,
+          "affected_rows": 6,
+          "owner": "Web Analytics"
+        },
+        {
+          "run_date": "2026-04-14",
+          "asset_id": "WEB_EVENTS",
+          "rule_name": "Raw-to-dashboard variance",
+          "severity": "Critical",
+          "status": "FAIL",
+          "observed_value": 0.037,
+          "threshold": 0.005,
+          "affected_rows": 1,
+          "owner": "Web Analytics"
+        }
+      ],
+      "release_gate": [
+        {
+          "release_id": "REL-007",
+          "scheduled_date": "2026-07-01",
+          "evidence_date": "2026-06-30",
+          "critical_failures": 0,
+          "high_warnings": 1,
+          "exception_owner": "Marketing Operations",
+          "exception_expiry": "2026-07-15",
+          "decision": "SHIP WITH CAVEAT"
+        },
+        {
+          "release_id": "REL-006",
+          "scheduled_date": "2026-06-19",
+          "evidence_date": "2026-06-19",
+          "critical_failures": 0,
+          "high_warnings": 0,
+          "exception_owner": "",
+          "exception_expiry": "",
+          "decision": "SHIP"
+        },
+        {
+          "release_id": "REL-005",
+          "scheduled_date": "2026-06-05",
+          "evidence_date": "2026-06-05",
+          "critical_failures": 0,
+          "high_warnings": 0,
+          "exception_owner": "",
+          "exception_expiry": "",
+          "decision": "SHIP"
+        },
+        {
+          "release_id": "REL-004",
+          "scheduled_date": "2026-05-12",
+          "evidence_date": "2026-05-12",
+          "critical_failures": 0,
+          "high_warnings": 0,
+          "exception_owner": "",
+          "exception_expiry": "",
+          "decision": "SHIP"
+        },
+        {
+          "release_id": "REL-003",
+          "scheduled_date": "2026-05-08",
+          "evidence_date": "2026-05-08",
+          "critical_failures": 1,
+          "high_warnings": 1,
+          "exception_owner": "",
+          "exception_expiry": "",
+          "decision": "HOLD"
+        },
+        {
+          "release_id": "REL-002",
+          "scheduled_date": "2026-04-17",
+          "evidence_date": "2026-04-17",
+          "critical_failures": 0,
+          "high_warnings": 0,
+          "exception_owner": "",
+          "exception_expiry": "",
+          "decision": "SHIP"
+        },
+        {
+          "release_id": "REL-001",
+          "scheduled_date": "2026-04-14",
+          "evidence_date": "2026-04-14",
+          "critical_failures": 2,
+          "high_warnings": 0,
+          "exception_owner": "",
+          "exception_expiry": "",
+          "decision": "HOLD"
+        }
+      ],
+      "incident_causes": [
+        {
+          "root_cause": "Channel definition governance",
+          "incidents": 1,
+          "critical_incidents": 0
+        },
+        {
+          "root_cause": "Duplicate tracking",
+          "incidents": 1,
+          "critical_incidents": 1
+        },
+        {
+          "root_cause": "Partial partition",
+          "incidents": 1,
+          "critical_incidents": 1
+        },
+        {
+          "root_cause": "Schema drift",
+          "incidents": 1,
+          "critical_incidents": 0
+        },
+        {
+          "root_cause": "Taxonomy drift",
+          "incidents": 1,
+          "critical_incidents": 0
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "rel_summary",
+      "label": "Release decision",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "REL_SUMMARY",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_release",
+          "fact_quality_result",
+          "fact_pipeline_run",
+          "fact_incident",
+          "fact_change_request"
+        ],
+        "filters": [
+          "Synthetic data",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+          "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+          "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+          "Average Change Lead Time = average days from ready date to release date for released changes.",
+          "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+          "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+        ],
+        "sql": "WITH latest_release AS (\n  SELECT *, CASE\n    WHEN critical_failures > 0 OR signoff_complete = 0 OR rollback_ready = 0 THEN 'HOLD'\n    WHEN high_warnings BETWEEN 1 AND 2\n         AND exceptions_accepted = 1\n         AND exception_owner <> ''\n         AND exception_expiry > scheduled_date THEN 'SHIP WITH CAVEAT'\n    WHEN high_warnings = 0 THEN 'SHIP'\n    ELSE 'HOLD' END AS release_decision\n  FROM fact_release ORDER BY scheduled_date DESC LIMIT 1\n), recent_quality AS (\n  SELECT * FROM fact_quality_result WHERE run_date >= '2026-06-01'\n), critical AS (\n  SELECT SUM(CASE WHEN status = 'PASS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS critical_pass_rate\n  FROM recent_quality WHERE severity = 'Critical'\n), freshness AS (\n  SELECT SUM(CASE WHEN freshness_minutes <= 240 AND pipeline_status = 'SUCCEEDED' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS freshness_sla_rate\n  FROM fact_pipeline_run WHERE run_date >= '2026-06-01'\n), latest_recon AS (\n  SELECT MAX(ABS(dashboard_value - governed_value) / ABS(governed_value))\n         AS latest_reconciliation_variance\n  FROM fact_pipeline_run WHERE run_date = '2026-06-30'\n), open_incidents AS (\n  SELECT COUNT(*) AS open_high_critical_incidents FROM fact_incident\n  WHERE resolved_at = '' AND severity IN ('High', 'Critical')\n), lead_time AS (\n  SELECT AVG(julianday(release_date) - julianday(ready_date)) AS average_change_lead_days\n  FROM fact_change_request WHERE release_date <= '2026-06-30'\n)\nSELECT release_decision, ROUND(critical_pass_rate, 6) AS critical_pass_rate,\n       ROUND(freshness_sla_rate, 6) AS freshness_sla_rate,\n       ROUND(latest_reconciliation_variance, 6) AS latest_reconciliation_variance,\n       open_high_critical_incidents, ROUND(average_change_lead_days, 2) AS average_change_lead_days\nFROM latest_release CROSS JOIN critical CROSS JOIN freshness CROSS JOIN latest_recon\nCROSS JOIN open_incidents CROSS JOIN lead_time;"
+      }
+    },
+    {
+      "id": "rel_weekly",
+      "label": "Weekly quality trend",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "REL_WEEKLY",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_quality_result"
+        ],
+        "filters": [
+          "Synthetic data",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+          "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+          "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+          "Average Change Lead Time = average days from ready date to release date for released changes.",
+          "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+          "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+        ],
+        "sql": "SELECT strftime('%Y-W%W', run_date) AS week,\n       ROUND(SUM(CASE WHEN status = 'PASS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*), 6) AS pass_rate,\n       SUM(CASE WHEN status = 'FAIL' THEN 1 ELSE 0 END) AS failures,\n       SUM(CASE WHEN status = 'WARN' THEN 1 ELSE 0 END) AS warnings\nFROM fact_quality_result GROUP BY week ORDER BY week;"
+      }
+    },
+    {
+      "id": "rel_asset",
+      "label": "Asset quality",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "REL_ASSET",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_quality_result"
+        ],
+        "filters": [
+          "Synthetic data",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+          "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+          "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+          "Average Change Lead Time = average days from ready date to release date for released changes.",
+          "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+          "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+        ],
+        "sql": "SELECT asset_id,\n       ROUND(SUM(CASE WHEN status = 'PASS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*), 6) AS pass_rate,\n       SUM(CASE WHEN status = 'FAIL' THEN 1 ELSE 0 END) AS failures,\n       SUM(CASE WHEN status = 'WARN' THEN 1 ELSE 0 END) AS warnings\nFROM fact_quality_result GROUP BY asset_id ORDER BY pass_rate ASC;"
+      }
+    },
+    {
+      "id": "rel_recon",
+      "label": "Latest reconciliation",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "REL_RECON",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_pipeline_run"
+        ],
+        "filters": [
+          "Synthetic data",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+          "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+          "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+          "Average Change Lead Time = average days from ready date to release date for released changes.",
+          "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+          "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+        ],
+        "sql": "SELECT asset_id,\n       ROUND(ABS(dashboard_value - governed_value) / ABS(governed_value), 6)\n       AS reconciliation_variance,\n       ROUND(ABS(dashboard_value - governed_value) / ABS(governed_value) * 10000, 2)\n       AS reconciliation_variance_bps\nFROM fact_pipeline_run WHERE run_date = '2026-06-30'\nORDER BY reconciliation_variance DESC;"
+      }
+    },
+    {
+      "id": "rel_failures",
+      "label": "Failure evidence",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "REL_FAILURES",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_quality_result"
+        ],
+        "filters": [
+          "Synthetic data",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+          "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+          "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+          "Average Change Lead Time = average days from ready date to release date for released changes.",
+          "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+          "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+        ],
+        "sql": "SELECT run_date, asset_id, rule_name, severity, status, observed_value, threshold, affected_rows, owner\nFROM fact_quality_result WHERE status <> 'PASS'\nORDER BY run_date DESC, CASE severity WHEN 'Critical' THEN 1 ELSE 2 END LIMIT 30;"
+      }
+    },
+    {
+      "id": "rel_releases",
+      "label": "Release gates",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "REL_RELEASES",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_release"
+        ],
+        "filters": [
+          "Synthetic data",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+          "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+          "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+          "Average Change Lead Time = average days from ready date to release date for released changes.",
+          "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+          "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+        ],
+        "sql": "SELECT release_id, scheduled_date, evidence_date, critical_failures, high_warnings,\n       exception_owner, exception_expiry,\n       CASE\n         WHEN critical_failures > 0 OR signoff_complete = 0 OR rollback_ready = 0 THEN 'HOLD'\n         WHEN high_warnings BETWEEN 1 AND 2\n              AND exceptions_accepted = 1\n              AND exception_owner <> ''\n              AND exception_expiry > scheduled_date THEN 'SHIP WITH CAVEAT'\n         WHEN high_warnings = 0 THEN 'SHIP'\n         ELSE 'HOLD' END AS decision\nFROM fact_release ORDER BY scheduled_date DESC;"
+      }
+    },
+    {
+      "id": "rel_incidents",
+      "label": "Incident root causes",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "REL_INCIDENTS",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_incident"
+        ],
+        "filters": [
+          "Synthetic data",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "Critical Pass Rate = passed critical tests / executed critical tests in Jun 2026.",
+          "Freshness SLA = successful scheduled runs completed within 240 minutes / all scheduled runs in Jun 2026.",
+          "Reconciliation Variance = ABS(dashboard value - governed raw value) / ABS(governed raw value).",
+          "Average Change Lead Time = average days from ready date to release date for released changes.",
+          "Open High/Critical Incidents = unresolved incidents whose severity is High or Critical.",
+          "Release gate: HOLD on critical failure or missing signoff/rollback; caveated ship requires accepted high warnings with an owner and expiry after the scheduled release."
+        ],
+        "sql": "SELECT root_cause, COUNT(*) AS incidents,\n       SUM(CASE WHEN severity = 'Critical' THEN 1 ELSE 0 END) AS critical_incidents\nFROM fact_incident GROUP BY root_cause ORDER BY incidents DESC, root_cause;"
+      }
+    }
+  ]
+}

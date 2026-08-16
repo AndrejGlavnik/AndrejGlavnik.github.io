@@ -1,0 +1,6 @@
+ticket_id,account_id,created_at,severity,category,status,owner,next_action
+BLK-055,ACCT-055,2026-06-25,Medium,Schedule/reliability,Open,Implementation,Resolve blocker and re-baseline remaining milestones
+BLK-057,ACCT-057,2026-06-23,High,Mapping/UAT readiness,Open,Implementation,Run daily recovery plan with decision owner
+BLK-058,ACCT-058,2026-06-22,High,Mapping/UAT readiness,Open,Implementation,Run daily recovery plan with decision owner
+BLK-059,ACCT-059,2026-06-21,High,Mapping/UAT readiness,Open,Implementation,Run daily recovery plan with decision owner
+BLK-060,ACCT-060,2026-06-26,Medium,Mapping/UAT readiness,Open,Implementation,Resolve blocker and re-baseline remaining milestones

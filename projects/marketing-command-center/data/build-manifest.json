@@ -1,0 +1,105 @@
+{
+  "synthetic": true,
+  "scenario_version": "commercial-v1",
+  "seed": 41001,
+  "snapshot_date": "2026-06-30",
+  "generated_at": "2026-06-30T18:00:00Z",
+  "generator": "scripts/build_analytics_projects.py",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 937,
+      "sha256": "e525c9b8fb42990d951e3c771c71bf16bbbad32ec4317e8ec299935ba3e1d8f8"
+    },
+    {
+      "path": "artifact.json",
+      "bytes": 43977,
+      "sha256": "6d46aaba2238d05ec3a806fc14606320af9f20c52364b7353f118330f4666bc9"
+    },
+    {
+      "path": "data/curated/dashboard-data.json",
+      "bytes": 9482,
+      "sha256": "17f41a5e622e025f8c5aaca10a8f5e35af1562954add8ce79520bb3d4411fc45"
+    },
+    {
+      "path": "data/curated/market_performance.csv",
+      "bytes": 203,
+      "sha256": "1a09d16baeb96ecf4af7249d7e9120e9d327204ea083ffe89b8fa8e3e657b780"
+    },
+    {
+      "path": "data/curated/monthly_performance.csv",
+      "bytes": 732,
+      "sha256": "522a72fb5782831119fc433bbb8d7fec272ba3efc4ea18ed798e7a92e0803b3a"
+    },
+    {
+      "path": "data/curated/product_performance.csv",
+      "bytes": 1147,
+      "sha256": "265cad1ca8c36104f0605b2b13837c7fb7f8cb98509253419d77c6675c0077be"
+    },
+    {
+      "path": "data/curated/promotion_performance.csv",
+      "bytes": 275,
+      "sha256": "93eb254b92ab7d81861b1372decc7d42bd94f3ee611ebeb353bab0aa9bb46316"
+    },
+    {
+      "path": "data/curated/quality_checks.csv",
+      "bytes": 632,
+      "sha256": "bfeac67ce5e2ff3c4b6a88c7178450a2e06a65d9c19a13217000d4e731bdc89d"
+    },
+    {
+      "path": "data/curated/summary.json",
+      "bytes": 155,
+      "sha256": "160a2315ab1a8234554af1b7a6b64d05f5bf9dc227d07badc72449d37a3fcea1"
+    },
+    {
+      "path": "data/raw/budget_forecast.csv",
+      "bytes": 493460,
+      "sha256": "92d4997005de2b59a5a47a2008294b2fcdc9c955ab760db9eea9eed716712a40"
+    },
+    {
+      "path": "data/raw/promotions.csv",
+      "bytes": 18353,
+      "sha256": "d7acbd44461afeab9ce8b7335d344242b760429b512c3de34b1c5cde0c3abc49"
+    },
+    {
+      "path": "data/raw/sales_daily.csv",
+      "bytes": 17455496,
+      "sha256": "f06d2ddafa09043c4108a8226c113663d6939eb9b5d30f2b82cb2fa3ec1c038e"
+    },
+    {
+      "path": "docs/data-dictionary.md",
+      "bytes": 686,
+      "sha256": "33f08a994c06175cae60e76920fd7275b6c9f4ff923dd7c51bea03e3e947f3f0"
+    },
+    {
+      "path": "docs/methodology.md",
+      "bytes": 1063,
+      "sha256": "36c9b30e6962652bdc4ce547c31fb1343f3ffb9d34117a1f693f2923002a79a1"
+    },
+    {
+      "path": "docs/metric-dictionary.md",
+      "bytes": 597,
+      "sha256": "d228894b4cbe854b435a719174be5e71b0288efeb2825ad4c1c79e7310aaa261"
+    },
+    {
+      "path": "docs/qa-report.md",
+      "bytes": 720,
+      "sha256": "1091461b309027ada200622f4e63bbd3f6c22f555c3d1e8769a3f64dab706e1f"
+    },
+    {
+      "path": "notebooks/analysis.ipynb",
+      "bytes": 6255,
+      "sha256": "3ad31203cdb841c8452cf31dbc7dcfe273b257cb56e9b9a67894ac6956190e54"
+    },
+    {
+      "path": "sql/analytics.sql",
+      "bytes": 3448,
+      "sha256": "e68601c94a52a85a45c2d14e31dfccbf06cffa693f54644e305e3511ec7dc228"
+    },
+    {
+      "path": "sql/tests.sql",
+      "bytes": 817,
+      "sha256": "cbed5d0eee9fd8bdbe02112509d9f36aab0d341793d5c3be5cb8e2ce2d645e02"
+    }
+  ]
+}

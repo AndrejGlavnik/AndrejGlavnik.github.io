@@ -1,0 +1,165 @@
+{
+  "synthetic": true,
+  "scenario_version": "integration-v1",
+  "seed": 43003,
+  "snapshot_date": "2026-06-30",
+  "generated_at": "2026-06-30T18:00:00Z",
+  "generator": "scripts/build_analytics_projects.py",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 694,
+      "sha256": "c57c8a4e45725de88043aa6cdda9071c96e9ac1caffc1b24eff9f32b62eb4a52"
+    },
+    {
+      "path": "artifact.json",
+      "bytes": 40794,
+      "sha256": "258aceb55d7887668316112d9c481b2067ca5a222aa2e5a49eaef95665244d29"
+    },
+    {
+      "path": "data/curated/cohort_lead.csv",
+      "bytes": 206,
+      "sha256": "ab2255e6f77b382761b7d5383e366472fa19ca8ddd0f91feb87ac90a3d749e8e"
+    },
+    {
+      "path": "data/curated/connector_reliability.csv",
+      "bytes": 219,
+      "sha256": "316a78b06a10ceff69bac015118cc193a83872ce68ebeb8c569cc77b016765a5"
+    },
+    {
+      "path": "data/curated/dashboard-data.json",
+      "bytes": 6205,
+      "sha256": "f62ebc3aa8cdf21bd079c1461cc2d4b40b3676bd9acda27dab7e94525180d835"
+    },
+    {
+      "path": "data/curated/error_pareto.csv",
+      "bytes": 144,
+      "sha256": "aeeb2a3f490254f0201e4f6f982c48bd478e375a2541f0dbc57e61a1032eb19c"
+    },
+    {
+      "path": "data/curated/funnel.csv",
+      "bytes": 190,
+      "sha256": "b754c0f3951f54409fc8c033e8b79e551b6b431c39dcaf7d20813c41db039be0"
+    },
+    {
+      "path": "data/curated/risk_queue.csv",
+      "bytes": 1178,
+      "sha256": "c48970a0756c33f164cdd6c8445741470f8d5252fa75d6bbb30ccc1bbaced8d7"
+    },
+    {
+      "path": "data/curated/summary.csv",
+      "bytes": 137,
+      "sha256": "377760bb680fb2b677ec3d6e02e34bce4f20d6980685f7472bb4f2bbbb6c4bc2"
+    },
+    {
+      "path": "data/curated/summary.json",
+      "bytes": 170,
+      "sha256": "12915e963e36797f7679a3899fee8884929ec563dbbca7227ebe90444109269e"
+    },
+    {
+      "path": "data/raw/account_connectors.csv",
+      "bytes": 10162,
+      "sha256": "6226b89cc4b16d66d3e117debd56c8c4016416fe545ec4285864784ae1d3cebd"
+    },
+    {
+      "path": "data/raw/accounts.csv",
+      "bytes": 13350,
+      "sha256": "80677cbdabb398d4f6371e799e3aad8f19feea504ab23728cf7570d1b0e14232"
+    },
+    {
+      "path": "data/raw/blockers.csv",
+      "bytes": 691,
+      "sha256": "734fd43a0231fae8228efb5f5d081b12e87d377a980c4c15c543e2368b325e92"
+    },
+    {
+      "path": "data/raw/integration_runs.csv",
+      "bytes": 909946,
+      "sha256": "52cc6c387a8aceadbc80665e5ad5400a579ff98db440b0ae45a87ae46d1cb841"
+    },
+    {
+      "path": "data/raw/mapping_validation.csv",
+      "bytes": 58780,
+      "sha256": "4c06311e4cbb1539c311a15da373ee55f9206ee8af4f4820726edcf2843cf6e2"
+    },
+    {
+      "path": "data/raw/milestones.csv",
+      "bytes": 34846,
+      "sha256": "054b8ce13d8242beadc815111670f1876483c751628b77047a3beae18ecf05a6"
+    },
+    {
+      "path": "data/raw/uat_results.csv",
+      "bytes": 23241,
+      "sha256": "ccd4aacb0fdcf4c1f4e95b18427218354eab8dd323bf2e8e3cae90724ea6251b"
+    },
+    {
+      "path": "data/raw/usage_daily.csv",
+      "bytes": 50162,
+      "sha256": "4cf36b68f300c5477a151d8f5da0695883642e144864467f16706102c4d54512"
+    },
+    {
+      "path": "data/scenario-manifest.json",
+      "bytes": 792,
+      "sha256": "9897412a18898e05d9668c052d257ae132c4b0b8460699f6f76a764f4273f615"
+    },
+    {
+      "path": "docs/data-dictionary.md",
+      "bytes": 509,
+      "sha256": "f3d7963a8d1fc0705f46004670add1e03d9fd8048c5bf5c90d415d9bbb86a52e"
+    },
+    {
+      "path": "docs/go-live-runbook.md",
+      "bytes": 545,
+      "sha256": "29a6b4116ae7067bf3c352b32f3de036448de85103aa6127bd06594f1ed33653"
+    },
+    {
+      "path": "docs/metric-dictionary.md",
+      "bytes": 769,
+      "sha256": "7970526dc4875ae50f9f212cc4971d9b0967e1231441655aa492c67675d7b6ef"
+    },
+    {
+      "path": "docs/openapi.yaml",
+      "bytes": 934,
+      "sha256": "ee0c0f244b6c8bc16fc73c2c92e93e8a8f6ab1279e6f974046d5843e4ff181f0"
+    },
+    {
+      "path": "docs/postman_collection.json",
+      "bytes": 984,
+      "sha256": "ba3c5568bc35e634c40fff749b95551eec484cd191d85dd2d30db5350c6771cb"
+    },
+    {
+      "path": "docs/qa-report.md",
+      "bytes": 356,
+      "sha256": "0fcc534bfeb7fc80880444462f2fcddea7bfcb0b6b57728a7bc63165fc674247"
+    },
+    {
+      "path": "docs/raci.md",
+      "bytes": 289,
+      "sha256": "60400f4c1eafdd4cf92dbdccc3512759264a3ca55b5388a47315422e27d74ecd"
+    },
+    {
+      "path": "docs/source-to-target-mapping.csv",
+      "bytes": 361,
+      "sha256": "11bb21b035ea225485ad23cda28ae04a7eb7b45332943f68a3afe7b4800bab8f"
+    },
+    {
+      "path": "docs/uat-plan.md",
+      "bytes": 413,
+      "sha256": "e2d90a0ae4f3f5eccff474b39e522a831f71ef6d042ab8766f25737745253085"
+    },
+    {
+      "path": "notebooks/analysis.ipynb",
+      "bytes": 5527,
+      "sha256": "5d062fa663e588e8939a19467ef437f7f701c13aad0b8de02296ec7a1918a0f5"
+    },
+    {
+      "path": "sql/analytics.sql",
+      "bytes": 3165,
+      "sha256": "9af6eca48a8e0b30a7319e9c315e8f5a446ac33242d33efc343c6ce7fa9bb56a"
+    },
+    {
+      "path": "sql/tests.sql",
+      "bytes": 962,
+      "sha256": "f56e0d32025fe1eb9bae71e9dac5a065a894e4104a721c24643dc677d8b9e8a2"
+    }
+  ]
+}

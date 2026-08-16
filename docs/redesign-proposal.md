@@ -26,7 +26,7 @@ The result will remain a dependency-light static site suitable for GitHub Pages.
 | Hero | Name, professional positioning, short operating promise, CV, LinkedIn, work-mode labels | Preserve facts, tighten language, improve visual proof |
 | Impact | Eight metrics and proof points | Keep the strongest verified metrics; reduce first-screen density |
 | Proof | Experience, recommendations, director letter, credentials | Preserve and present as an evidence strip |
-| Experience | Five roles with tools, responsibilities, and achievements | Preserve all accurate content; use a compact timeline and progressive disclosure |
+| Experience | Four roles with tools, responsibilities, and achievements | Preserve all accurate content; use a compact timeline and progressive disclosure |
 | Recommendations | Featured director recommendation and twelve additional recommendations | Preserve full proof, feature two, collapse the full archive |
 | Credentials | Twelve LinkedIn-listed certifications | Preserve; group by capability instead of twelve equal cards |
 | Tools | Six broad categories | Preserve categories; remove badge-wall behavior |

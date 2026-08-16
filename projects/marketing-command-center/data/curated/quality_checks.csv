@@ -1,0 +1,10 @@
+check,status,result
+All four planned discount bands are represented,PASS,4 bands
+Daily sales grain is unique,PASS,"139,776 rows; 0 duplicates"
+Dashboard and SQL totals agree,PASS,Exact to €0.01
+Discount depth is not confounded with one execution mechanic,PASS,4 mechanics represented in every discount band
+Every sales slice has one budget and locked forecast,PASS,"4,608 matched slices"
+Forecast is locked before each reporting month,PASS,0 invalid lock dates
+Net revenue formula reconciles,PASS,0 rows outside €0.01 tolerance
+Promotion dates are valid,PASS,0 invalid windows
+Returns never exceed gross units,PASS,0 violations

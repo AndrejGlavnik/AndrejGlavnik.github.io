@@ -1,0 +1,30 @@
+
+openapi: 3.0.3
+info:
+  title: RelayMetrics Synthetic Ingestion API
+  version: 1.0.0
+  description: Fictional portfolio contract; no production endpoint exists.
+paths:
+  /v1/events:
+    post:
+      summary: Submit a bounded synthetic event batch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [account_id, events]
+              properties:
+                account_id: {type: string}
+                events:
+                  type: array
+                  maxItems: 1000
+                  items:
+                    type: object
+                    required: [event_id, event_time, metric_name, metric_value]
+      responses:
+        '202': {description: Accepted for validation}
+        '400': {description: Contract violation}
+        '401': {description: Authentication failed}
+        '429': {description: Rate limited}

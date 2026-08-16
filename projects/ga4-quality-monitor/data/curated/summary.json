@@ -1,0 +1,8 @@
+{
+  "release_decision": "SHIP WITH CAVEAT",
+  "critical_pass_rate": 0.988889,
+  "freshness_sla_rate": 0.991667,
+  "latest_reconciliation_variance": 0.00215,
+  "open_high_critical_incidents": 1,
+  "average_change_lead_days": 4.33
+}

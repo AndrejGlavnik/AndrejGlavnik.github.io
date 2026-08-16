@@ -1,0 +1,17 @@
+sku_id,product_name,category,net_revenue,gross_margin_rate,budget_variance_rate,net_units
+SKU-06,Luma Granola,Breakfast,982481.75,0.592792,-0.007541,215664
+SKU-05,Luma Oats,Breakfast,885712.72,0.612449,-0.006848,235149
+SKU-10,Orbit Bites,Snacks,874861.94,0.639927,-0.002273,304653
+SKU-12,Vela Mix,Snacks,873258.06,0.619379,-0.007313,244686
+SKU-11,Aster Crunch,Snacks,864712.96,0.624465,-0.005966,264738
+SKU-08,Halo Muesli,Breakfast,857829.1,0.594837,-0.009132,176731
+SKU-07,Northstar Porridge,Breakfast,794515.18,0.604488,-0.034111,191402
+SKU-01,Aster Sparkling,Hydration,755200.6,0.645608,-0.006164,347389
+SKU-09,Orbit Bar,Snacks,736665.65,0.651098,-0.013455,437151
+SKU-03,Vela Citrus,Hydration,735077.32,0.634503,-0.005802,284974
+SKU-15,Vela Protein Shake,Plant-Based,726034.72,0.562762,-0.01209,166568
+SKU-02,Aster Still,Hydration,724210.79,0.647916,-0.009813,405696
+SKU-13,Luma Oat Drink,Plant-Based,715855.37,0.590904,-0.00611,225691
+SKU-04,Vela Berry,Hydration,709904.12,0.632355,-0.005142,265407
+SKU-14,Halo Almond Drink,Plant-Based,683033.91,0.582513,-0.00937,186295
+SKU-16,Orbit Plant Snack,Plant-Based,631688.55,0.61048,-0.008739,205698

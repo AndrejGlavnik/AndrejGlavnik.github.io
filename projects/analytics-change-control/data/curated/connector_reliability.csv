@@ -1,0 +1,5 @@
+connector_id,success_rate,data_acceptance_rate,average_latency_ms,failed_runs
+WAREHOUSE,0.960245,0.956548,2329.0,26
+BILLING,0.974928,0.979008,1947.0,87
+PRODUCT,0.986233,0.98062,1950.0,22
+CRM,0.987032,0.983218,1969.0,45

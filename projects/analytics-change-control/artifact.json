@@ -1,0 +1,949 @@
+{
+  "surface": "dashboard",
+  "manifest": {
+    "version": 1,
+    "surface": "dashboard",
+    "title": "SaaS Implementation & Integration Health",
+    "description": "Synthetic implementation portfolio, connector reliability and intervention dashboard.",
+    "generatedAt": "2026-06-30T18:00:00Z",
+    "cards": [
+      {
+        "id": "active",
+        "dataset": "summary",
+        "sourceId": "int_summary",
+        "description": "Projects not complete at the snapshot date.",
+        "metrics": [
+          {
+            "label": "Active implementations",
+            "field": "active_implementations",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "ontime",
+        "dataset": "summary",
+        "sourceId": "int_summary",
+        "description": "Completed implementations delivered by committed date.",
+        "metrics": [
+          {
+            "label": "On-time go-live",
+            "field": "on_time_go_live_rate",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "ttfv",
+        "dataset": "summary",
+        "sourceId": "int_summary",
+        "description": "Median kickoff-to-first-value days for eligible accounts.",
+        "metrics": [
+          {
+            "label": "Median TTFV days",
+            "field": "median_ttfv_days",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "risk",
+        "dataset": "summary",
+        "sourceId": "int_summary",
+        "description": "Active accounts classified red or amber by explicit rules.",
+        "metrics": [
+          {
+            "label": "At-risk active",
+            "field": "at_risk_active_accounts",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "success",
+        "dataset": "summary",
+        "sourceId": "int_summary",
+        "description": "Successful sync runs divided by all attempted runs.",
+        "metrics": [
+          {
+            "label": "Integration success",
+            "field": "integration_success_rate",
+            "format": "percent"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "cohort",
+        "title": "Average implementation lead time by kickoff cohort",
+        "subtitle": "Completed accounts only; observational synthetic cohorts",
+        "type": "line",
+        "dataset": "cohort_lead",
+        "sourceId": "int_cohort",
+        "encodings": {
+          "x": {
+            "field": "kickoff_month",
+            "type": "temporal"
+          },
+          "y": {
+            "field": "average_lead_days",
+            "type": "quantitative",
+            "format": "number"
+          }
+        },
+        "valueFormat": "number",
+        "layout": "full",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      },
+      {
+        "id": "risk_matrix",
+        "title": "Active implementation readiness by account",
+        "subtitle": "Account | risk | days to committed go-live · critical-first order",
+        "type": "horizontalBar",
+        "dataset": "risk_queue",
+        "sourceId": "int_risk",
+        "encodings": {
+          "x": {
+            "field": "account_risk_label",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "readiness_rate",
+            "type": "quantitative",
+            "format": "percent"
+          },
+          "color": {
+            "field": "risk_status",
+            "type": "nominal"
+          }
+        },
+        "valueFormat": "percent",
+        "layout": "full",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      },
+      {
+        "id": "errors",
+        "title": "Failed sync runs by error code",
+        "subtitle": "Explicit synthetic OAuth, schema, rate-limit and upstream scenarios",
+        "type": "horizontalBar",
+        "dataset": "error_pareto",
+        "sourceId": "int_errors",
+        "encodings": {
+          "x": {
+            "field": "error_code",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "runs",
+            "type": "quantitative",
+            "format": "number"
+          }
+        },
+        "valueFormat": "number",
+        "layout": "full",
+        "referenceLines": [],
+        "surface": {
+          "viewMode": "both",
+          "showControls": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "funnel_table",
+        "title": "Implementation stage completion",
+        "subtitle": "Count of 60 synthetic accounts with completed milestone",
+        "dataset": "funnel",
+        "sourceId": "int_funnel",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "stage_order",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "stage_order",
+            "label": "Stage",
+            "format": "number"
+          },
+          {
+            "field": "milestone",
+            "label": "Milestone",
+            "type": "text"
+          },
+          {
+            "field": "completed_accounts",
+            "label": "Completed accounts",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "risk_table",
+        "title": "Intervention queue",
+        "subtitle": "Explicit reason, owner-level action and readiness evidence",
+        "dataset": "risk_queue",
+        "sourceId": "int_risk",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "days_to_committed_go_live",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "account_id",
+            "label": "Account",
+            "type": "text"
+          },
+          {
+            "field": "fictional_account_name",
+            "label": "Fictional name",
+            "type": "text"
+          },
+          {
+            "field": "segment",
+            "label": "Segment",
+            "type": "text"
+          },
+          {
+            "field": "risk_status",
+            "label": "Risk",
+            "type": "text"
+          },
+          {
+            "field": "days_to_committed_go_live",
+            "label": "Days to committed",
+            "format": "number"
+          },
+          {
+            "field": "readiness_rate",
+            "label": "Readiness",
+            "format": "percent"
+          },
+          {
+            "field": "mapping_coverage",
+            "label": "Mapping",
+            "format": "percent"
+          },
+          {
+            "field": "uat_pass_rate",
+            "label": "Required UAT",
+            "format": "percent"
+          },
+          {
+            "field": "recent_integration_success_rate",
+            "label": "7-day sync success",
+            "format": "percent"
+          },
+          {
+            "field": "next_action",
+            "label": "Next action",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "connector_table",
+        "title": "Connector evidence",
+        "dataset": "connector_reliability",
+        "sourceId": "int_connector",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "success_rate",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "connector_id",
+            "label": "Connector",
+            "type": "text"
+          },
+          {
+            "field": "success_rate",
+            "label": "Success",
+            "format": "percent"
+          },
+          {
+            "field": "data_acceptance_rate",
+            "label": "Data acceptance",
+            "format": "percent"
+          },
+          {
+            "field": "average_latency_ms",
+            "label": "Avg latency ms",
+            "format": "number"
+          },
+          {
+            "field": "failed_runs",
+            "label": "Failed runs",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "intro",
+        "type": "markdown",
+        "body": "# SaaS Implementation & Integration Health\n\n**Decision:** which implementations risk missing committed go-live, why, and what intervention should happen next?\n\n*Deterministic synthetic portfolio data · 60 fictional accounts · snapshot 30 Jun 2026.*"
+      },
+      {
+        "id": "metrics",
+        "type": "metric-strip",
+        "cardIds": [
+          "active",
+          "ontime",
+          "ttfv",
+          "risk",
+          "success"
+        ]
+      },
+      {
+        "id": "funnel",
+        "type": "table",
+        "tableId": "funnel_table",
+        "layout": "full"
+      },
+      {
+        "id": "cohort",
+        "type": "chart",
+        "chartId": "cohort",
+        "layout": "full"
+      },
+      {
+        "id": "risk_matrix",
+        "type": "chart",
+        "chartId": "risk_matrix",
+        "layout": "full"
+      },
+      {
+        "id": "risk_queue",
+        "type": "table",
+        "tableId": "risk_table",
+        "layout": "full"
+      },
+      {
+        "id": "errors",
+        "type": "chart",
+        "chartId": "errors",
+        "layout": "full"
+      },
+      {
+        "id": "connector_table",
+        "type": "table",
+        "tableId": "connector_table",
+        "layout": "full"
+      },
+      {
+        "id": "method",
+        "type": "markdown",
+        "body": "## Method and limitations\n\nRisk is determined by visible schedule, mapping, UAT and reliability rules—not an opaque health score. Readiness combines mapping (40%), required UAT (30%) and recent sync success (30%) for chart positioning; the red/amber intervention status still follows the explicit guardrails. Template-cohort comparisons are observational synthetic patterns and do not establish causality. Account names, payloads and outcomes are fictional."
+      }
+    ],
+    "sources": [
+      {
+        "id": "int_summary",
+        "label": "Implementation portfolio KPIs",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "INT_SUMMARY",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "dim_account",
+            "fact_integration_run"
+          ],
+          "filters": [
+            "Synthetic accounts",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+            "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+            "Integration Success = successful runs / all attempted non-cancelled runs.",
+            "Data Acceptance = SUM(accepted records) / SUM(received records).",
+            "Mapping Coverage = mapped required target fields / all required target fields.",
+            "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+            "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+          ],
+          "sql": "WITH completed AS (\n  SELECT *, julianday(actual_go_live_date) - julianday(kickoff_date) AS lead_days\n  FROM dim_account WHERE project_status = 'Completed'\n), ordered_ttfv AS (\n  SELECT time_to_first_value_days,\n         ROW_NUMBER() OVER (ORDER BY time_to_first_value_days) AS row_number,\n         COUNT(*) OVER () AS total_rows\n  FROM dim_account WHERE time_to_first_value_days IS NOT NULL AND time_to_first_value_days <> ''\n), median_ttfv AS (\n  SELECT AVG(time_to_first_value_days) AS median_ttfv_days\n  FROM ordered_ttfv\n  WHERE row_number IN ((total_rows + 1) / 2, (total_rows + 2) / 2)\n), run_rate AS (\n  SELECT SUM(CASE WHEN status = 'SUCCESS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS integration_success_rate\n  FROM fact_integration_run\n)\nSELECT SUM(CASE WHEN project_status = 'Active' THEN 1 ELSE 0 END) AS active_implementations,\n       ROUND((SELECT SUM(CASE WHEN actual_go_live_date <= committed_go_live_date THEN 1 ELSE 0 END) * 1.0 / COUNT(*) FROM completed), 6) AS on_time_go_live_rate,\n       ROUND((SELECT median_ttfv_days FROM median_ttfv), 2) AS median_ttfv_days,\n       SUM(CASE WHEN project_status = 'Active' AND risk_status IN ('Red','Amber') THEN 1 ELSE 0 END) AS at_risk_active_accounts,\n       ROUND((SELECT integration_success_rate FROM run_rate), 6) AS integration_success_rate\nFROM dim_account;"
+        }
+      },
+      {
+        "id": "int_funnel",
+        "label": "Implementation funnel",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "INT_FUNNEL",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_milestone"
+          ],
+          "filters": [
+            "Synthetic accounts",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+            "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+            "Integration Success = successful runs / all attempted non-cancelled runs.",
+            "Data Acceptance = SUM(accepted records) / SUM(received records).",
+            "Mapping Coverage = mapped required target fields / all required target fields.",
+            "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+            "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+          ],
+          "sql": "SELECT milestone, MIN(stage_order) AS stage_order,\n       SUM(CASE WHEN actual_date <> '' THEN 1 ELSE 0 END) AS completed_accounts\nFROM fact_milestone GROUP BY milestone ORDER BY stage_order;"
+        }
+      },
+      {
+        "id": "int_connector",
+        "label": "Connector reliability",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "INT_CONNECTOR",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_integration_run"
+          ],
+          "filters": [
+            "Synthetic accounts",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+            "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+            "Integration Success = successful runs / all attempted non-cancelled runs.",
+            "Data Acceptance = SUM(accepted records) / SUM(received records).",
+            "Mapping Coverage = mapped required target fields / all required target fields.",
+            "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+            "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+          ],
+          "sql": "SELECT connector_id,\n       ROUND(SUM(CASE WHEN status = 'SUCCESS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*), 6) AS success_rate,\n       ROUND(SUM(records_accepted) * 1.0 / SUM(records_received), 6) AS data_acceptance_rate,\n       ROUND(AVG(latency_ms), 0) AS average_latency_ms,\n       SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) AS failed_runs\nFROM fact_integration_run GROUP BY connector_id ORDER BY success_rate ASC;"
+        }
+      },
+      {
+        "id": "int_cohort",
+        "label": "Cohort lead time",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "INT_COHORT",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "dim_account"
+          ],
+          "filters": [
+            "Synthetic accounts",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+            "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+            "Integration Success = successful runs / all attempted non-cancelled runs.",
+            "Data Acceptance = SUM(accepted records) / SUM(received records).",
+            "Mapping Coverage = mapped required target fields / all required target fields.",
+            "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+            "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+          ],
+          "sql": "SELECT substr(kickoff_date, 1, 7) AS kickoff_month,\n       ROUND(AVG(julianday(actual_go_live_date) - julianday(kickoff_date)), 2) AS average_lead_days,\n       COUNT(*) AS completed_accounts\nFROM dim_account WHERE project_status = 'Completed'\nGROUP BY kickoff_month ORDER BY kickoff_month;"
+        }
+      },
+      {
+        "id": "int_risk",
+        "label": "Intervention queue",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "INT_RISK",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "dim_account"
+          ],
+          "filters": [
+            "Synthetic accounts",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+            "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+            "Integration Success = successful runs / all attempted non-cancelled runs.",
+            "Data Acceptance = SUM(accepted records) / SUM(received records).",
+            "Mapping Coverage = mapped required target fields / all required target fields.",
+            "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+            "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+          ],
+          "sql": "SELECT account_id,\n       account_id || ' | ' || UPPER(risk_status) || ' | '\n         || printf('%+d days', days_to_committed_go_live) AS account_risk_label,\n       CASE risk_status WHEN 'Red' THEN 1 WHEN 'Amber' THEN 2 ELSE 3 END AS risk_order,\n       fictional_account_name, segment, days_to_committed_go_live,\n       readiness_rate, mapping_coverage, uat_pass_rate,\n       recent_integration_success_rate, risk_status, risk_reason, next_action\nFROM dim_account WHERE project_status = 'Active'\nORDER BY risk_order, days_to_committed_go_live ASC, account_id ASC;"
+        }
+      },
+      {
+        "id": "int_errors",
+        "label": "Integration errors",
+        "path": "sql/analytics.sql",
+        "query": {
+          "engine": "SQLite 3",
+          "language": "sql",
+          "id": "INT_ERRORS",
+          "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+          "executed_at": "2026-06-30T18:00:00Z",
+          "tables_used": [
+            "fact_integration_run"
+          ],
+          "filters": [
+            "Synthetic accounts",
+            "Snapshot through 2026-06-30"
+          ],
+          "metric_definitions": [
+            "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+            "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+            "Integration Success = successful runs / all attempted non-cancelled runs.",
+            "Data Acceptance = SUM(accepted records) / SUM(received records).",
+            "Mapping Coverage = mapped required target fields / all required target fields.",
+            "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+            "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+          ],
+          "sql": "SELECT CASE WHEN error_code = '' THEN 'NONE' ELSE error_code END AS error_code,\n       COUNT(*) AS runs,\n       SUM(records_rejected) AS rejected_records\nFROM fact_integration_run WHERE status = 'FAILED'\nGROUP BY error_code ORDER BY runs DESC;"
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-06-30T18:00:00Z",
+    "status": "fixture",
+    "datasets": {
+      "summary": [
+        {
+          "active_implementations": 5,
+          "on_time_go_live_rate": 0.454545,
+          "median_ttfv_days": 51.0,
+          "at_risk_active_accounts": 5,
+          "integration_success_rate": 0.980418
+        }
+      ],
+      "funnel": [
+        {
+          "milestone": "Discovery complete",
+          "stage_order": 1,
+          "completed_accounts": 60
+        },
+        {
+          "milestone": "Authentication",
+          "stage_order": 2,
+          "completed_accounts": 60
+        },
+        {
+          "milestone": "Mapping approved",
+          "stage_order": 3,
+          "completed_accounts": 59
+        },
+        {
+          "milestone": "First test sync",
+          "stage_order": 4,
+          "completed_accounts": 59
+        },
+        {
+          "milestone": "UAT complete",
+          "stage_order": 5,
+          "completed_accounts": 59
+        },
+        {
+          "milestone": "Training",
+          "stage_order": 6,
+          "completed_accounts": 56
+        },
+        {
+          "milestone": "Go-live",
+          "stage_order": 7,
+          "completed_accounts": 55
+        },
+        {
+          "milestone": "First value",
+          "stage_order": 8,
+          "completed_accounts": 55
+        }
+      ],
+      "connector_reliability": [
+        {
+          "connector_id": "WAREHOUSE",
+          "success_rate": 0.960245,
+          "data_acceptance_rate": 0.956548,
+          "average_latency_ms": 2329.0,
+          "failed_runs": 26
+        },
+        {
+          "connector_id": "BILLING",
+          "success_rate": 0.974928,
+          "data_acceptance_rate": 0.979008,
+          "average_latency_ms": 1947.0,
+          "failed_runs": 87
+        },
+        {
+          "connector_id": "PRODUCT",
+          "success_rate": 0.986233,
+          "data_acceptance_rate": 0.98062,
+          "average_latency_ms": 1950.0,
+          "failed_runs": 22
+        },
+        {
+          "connector_id": "CRM",
+          "success_rate": 0.987032,
+          "data_acceptance_rate": 0.983218,
+          "average_latency_ms": 1969.0,
+          "failed_runs": 45
+        }
+      ],
+      "cohort_lead": [
+        {
+          "kickoff_month": "2025-08",
+          "average_lead_days": 53.67,
+          "completed_accounts": 6
+        },
+        {
+          "kickoff_month": "2025-09",
+          "average_lead_days": 52.5,
+          "completed_accounts": 6
+        },
+        {
+          "kickoff_month": "2025-10",
+          "average_lead_days": 51.14,
+          "completed_accounts": 7
+        },
+        {
+          "kickoff_month": "2025-11",
+          "average_lead_days": 62.17,
+          "completed_accounts": 6
+        },
+        {
+          "kickoff_month": "2025-12",
+          "average_lead_days": 52.67,
+          "completed_accounts": 6
+        },
+        {
+          "kickoff_month": "2026-01",
+          "average_lead_days": 49.5,
+          "completed_accounts": 6
+        },
+        {
+          "kickoff_month": "2026-02",
+          "average_lead_days": 50.5,
+          "completed_accounts": 6
+        },
+        {
+          "kickoff_month": "2026-03",
+          "average_lead_days": 45.83,
+          "completed_accounts": 6
+        },
+        {
+          "kickoff_month": "2026-04",
+          "average_lead_days": 52.4,
+          "completed_accounts": 5
+        },
+        {
+          "kickoff_month": "2026-05",
+          "average_lead_days": 36.0,
+          "completed_accounts": 1
+        }
+      ],
+      "risk_queue": [
+        {
+          "account_id": "ACCT-058",
+          "account_risk_label": "ACCT-058 | RED | -8 days",
+          "risk_order": 1,
+          "fictional_account_name": "Demo Account 58",
+          "segment": "SMB",
+          "days_to_committed_go_live": -8,
+          "readiness_rate": 0.716667,
+          "mapping_coverage": 0.666667,
+          "uat_pass_rate": 1.0,
+          "recent_integration_success_rate": 0.5,
+          "risk_status": "Red",
+          "risk_reason": "Go-live ≤14 days with incomplete mapping or UAT",
+          "next_action": "Run daily recovery plan with decision owner"
+        },
+        {
+          "account_id": "ACCT-059",
+          "account_risk_label": "ACCT-059 | RED | -2 days",
+          "risk_order": 1,
+          "fictional_account_name": "Demo Account 59",
+          "segment": "SMB",
+          "days_to_committed_go_live": -2,
+          "readiness_rate": 0.754167,
+          "mapping_coverage": 0.666667,
+          "uat_pass_rate": 0.625,
+          "recent_integration_success_rate": 1.0,
+          "risk_status": "Red",
+          "risk_reason": "Go-live ≤14 days with incomplete mapping or UAT",
+          "next_action": "Run daily recovery plan with decision owner"
+        },
+        {
+          "account_id": "ACCT-057",
+          "account_risk_label": "ACCT-057 | RED | +2 days",
+          "risk_order": 1,
+          "fictional_account_name": "Demo Account 57",
+          "segment": "Mid-Market",
+          "days_to_committed_go_live": 2,
+          "readiness_rate": 0.716667,
+          "mapping_coverage": 0.666667,
+          "uat_pass_rate": 0.5,
+          "recent_integration_success_rate": 1.0,
+          "risk_status": "Red",
+          "risk_reason": "Go-live ≤14 days with incomplete mapping or UAT",
+          "next_action": "Run daily recovery plan with decision owner"
+        },
+        {
+          "account_id": "ACCT-055",
+          "account_risk_label": "ACCT-055 | AMBER | +16 days",
+          "risk_order": 2,
+          "fictional_account_name": "Demo Account 55",
+          "segment": "Enterprise",
+          "days_to_committed_go_live": 16,
+          "readiness_rate": 0.8875,
+          "mapping_coverage": 1.0,
+          "uat_pass_rate": 0.75,
+          "recent_integration_success_rate": 0.875,
+          "risk_status": "Amber",
+          "risk_reason": "Readiness, reliability or schedule guardrail at risk",
+          "next_action": "Resolve blocker and re-baseline remaining milestones"
+        },
+        {
+          "account_id": "ACCT-060",
+          "account_risk_label": "ACCT-060 | AMBER | +40 days",
+          "risk_order": 2,
+          "fictional_account_name": "Demo Account 60",
+          "segment": "Enterprise",
+          "days_to_committed_go_live": 40,
+          "readiness_rate": 0.2625,
+          "mapping_coverage": 0.0,
+          "uat_pass_rate": 0.0,
+          "recent_integration_success_rate": 0.875,
+          "risk_status": "Amber",
+          "risk_reason": "Readiness, reliability or schedule guardrail at risk",
+          "next_action": "Resolve blocker and re-baseline remaining milestones"
+        }
+      ],
+      "error_pareto": [
+        {
+          "error_code": "UPSTREAM_UNAVAILABLE",
+          "runs": 116,
+          "rejected_records": 143829
+        },
+        {
+          "error_code": "SCHEMA_FIELD_CHANGED",
+          "runs": 39,
+          "rejected_records": 11433
+        },
+        {
+          "error_code": "RATE_LIMITED",
+          "runs": 22,
+          "rejected_records": 26555
+        },
+        {
+          "error_code": "OAUTH_TOKEN_EXPIRED",
+          "runs": 3,
+          "rejected_records": 3747
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "int_summary",
+      "label": "Implementation portfolio KPIs",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "INT_SUMMARY",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "dim_account",
+          "fact_integration_run"
+        ],
+        "filters": [
+          "Synthetic accounts",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+          "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+          "Integration Success = successful runs / all attempted non-cancelled runs.",
+          "Data Acceptance = SUM(accepted records) / SUM(received records).",
+          "Mapping Coverage = mapped required target fields / all required target fields.",
+          "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+          "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+        ],
+        "sql": "WITH completed AS (\n  SELECT *, julianday(actual_go_live_date) - julianday(kickoff_date) AS lead_days\n  FROM dim_account WHERE project_status = 'Completed'\n), ordered_ttfv AS (\n  SELECT time_to_first_value_days,\n         ROW_NUMBER() OVER (ORDER BY time_to_first_value_days) AS row_number,\n         COUNT(*) OVER () AS total_rows\n  FROM dim_account WHERE time_to_first_value_days IS NOT NULL AND time_to_first_value_days <> ''\n), median_ttfv AS (\n  SELECT AVG(time_to_first_value_days) AS median_ttfv_days\n  FROM ordered_ttfv\n  WHERE row_number IN ((total_rows + 1) / 2, (total_rows + 2) / 2)\n), run_rate AS (\n  SELECT SUM(CASE WHEN status = 'SUCCESS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS integration_success_rate\n  FROM fact_integration_run\n)\nSELECT SUM(CASE WHEN project_status = 'Active' THEN 1 ELSE 0 END) AS active_implementations,\n       ROUND((SELECT SUM(CASE WHEN actual_go_live_date <= committed_go_live_date THEN 1 ELSE 0 END) * 1.0 / COUNT(*) FROM completed), 6) AS on_time_go_live_rate,\n       ROUND((SELECT median_ttfv_days FROM median_ttfv), 2) AS median_ttfv_days,\n       SUM(CASE WHEN project_status = 'Active' AND risk_status IN ('Red','Amber') THEN 1 ELSE 0 END) AS at_risk_active_accounts,\n       ROUND((SELECT integration_success_rate FROM run_rate), 6) AS integration_success_rate\nFROM dim_account;"
+      }
+    },
+    {
+      "id": "int_funnel",
+      "label": "Implementation funnel",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "INT_FUNNEL",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_milestone"
+        ],
+        "filters": [
+          "Synthetic accounts",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+          "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+          "Integration Success = successful runs / all attempted non-cancelled runs.",
+          "Data Acceptance = SUM(accepted records) / SUM(received records).",
+          "Mapping Coverage = mapped required target fields / all required target fields.",
+          "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+          "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+        ],
+        "sql": "SELECT milestone, MIN(stage_order) AS stage_order,\n       SUM(CASE WHEN actual_date <> '' THEN 1 ELSE 0 END) AS completed_accounts\nFROM fact_milestone GROUP BY milestone ORDER BY stage_order;"
+      }
+    },
+    {
+      "id": "int_connector",
+      "label": "Connector reliability",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "INT_CONNECTOR",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_integration_run"
+        ],
+        "filters": [
+          "Synthetic accounts",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+          "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+          "Integration Success = successful runs / all attempted non-cancelled runs.",
+          "Data Acceptance = SUM(accepted records) / SUM(received records).",
+          "Mapping Coverage = mapped required target fields / all required target fields.",
+          "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+          "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+        ],
+        "sql": "SELECT connector_id,\n       ROUND(SUM(CASE WHEN status = 'SUCCESS' THEN 1 ELSE 0 END) * 1.0 / COUNT(*), 6) AS success_rate,\n       ROUND(SUM(records_accepted) * 1.0 / SUM(records_received), 6) AS data_acceptance_rate,\n       ROUND(AVG(latency_ms), 0) AS average_latency_ms,\n       SUM(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) AS failed_runs\nFROM fact_integration_run GROUP BY connector_id ORDER BY success_rate ASC;"
+      }
+    },
+    {
+      "id": "int_cohort",
+      "label": "Cohort lead time",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "INT_COHORT",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "dim_account"
+        ],
+        "filters": [
+          "Synthetic accounts",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+          "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+          "Integration Success = successful runs / all attempted non-cancelled runs.",
+          "Data Acceptance = SUM(accepted records) / SUM(received records).",
+          "Mapping Coverage = mapped required target fields / all required target fields.",
+          "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+          "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+        ],
+        "sql": "SELECT substr(kickoff_date, 1, 7) AS kickoff_month,\n       ROUND(AVG(julianday(actual_go_live_date) - julianday(kickoff_date)), 2) AS average_lead_days,\n       COUNT(*) AS completed_accounts\nFROM dim_account WHERE project_status = 'Completed'\nGROUP BY kickoff_month ORDER BY kickoff_month;"
+      }
+    },
+    {
+      "id": "int_risk",
+      "label": "Intervention queue",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "INT_RISK",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "dim_account"
+        ],
+        "filters": [
+          "Synthetic accounts",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+          "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+          "Integration Success = successful runs / all attempted non-cancelled runs.",
+          "Data Acceptance = SUM(accepted records) / SUM(received records).",
+          "Mapping Coverage = mapped required target fields / all required target fields.",
+          "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+          "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+        ],
+        "sql": "SELECT account_id,\n       account_id || ' | ' || UPPER(risk_status) || ' | '\n         || printf('%+d days', days_to_committed_go_live) AS account_risk_label,\n       CASE risk_status WHEN 'Red' THEN 1 WHEN 'Amber' THEN 2 ELSE 3 END AS risk_order,\n       fictional_account_name, segment, days_to_committed_go_live,\n       readiness_rate, mapping_coverage, uat_pass_rate,\n       recent_integration_success_rate, risk_status, risk_reason, next_action\nFROM dim_account WHERE project_status = 'Active'\nORDER BY risk_order, days_to_committed_go_live ASC, account_id ASC;"
+      }
+    },
+    {
+      "id": "int_errors",
+      "label": "Integration errors",
+      "path": "sql/analytics.sql",
+      "query": {
+        "engine": "SQLite 3",
+        "language": "sql",
+        "id": "INT_ERRORS",
+        "description": "Deterministic query executed by scripts/build_analytics_projects.py.",
+        "executed_at": "2026-06-30T18:00:00Z",
+        "tables_used": [
+          "fact_integration_run"
+        ],
+        "filters": [
+          "Synthetic accounts",
+          "Snapshot through 2026-06-30"
+        ],
+        "metric_definitions": [
+          "On-Time Go-Live = completed implementations delivered on or before committed date / completed implementations.",
+          "Median Time to First Value = median days from kickoff to first date meeting sync, acceptance, usage and workflow conditions.",
+          "Integration Success = successful runs / all attempted non-cancelled runs.",
+          "Data Acceptance = SUM(accepted records) / SUM(received records).",
+          "Mapping Coverage = mapped required target fields / all required target fields.",
+          "Required UAT Pass Rate = passed required cases / all required cases; not executed remains incomplete.",
+          "Red risk = go-live within 14 days with mapping <95% or UAT <90%; amber covers incomplete mapping/UAT outside the red window, integration success <98%, or go-live within 22 days."
+        ],
+        "sql": "SELECT CASE WHEN error_code = '' THEN 'NONE' ELSE error_code END AS error_code,\n       COUNT(*) AS runs,\n       SUM(records_rejected) AS rejected_records\nFROM fact_integration_run WHERE status = 'FAILED'\nGROUP BY error_code ORDER BY runs DESC;"
+      }
+    }
+  ]
+}

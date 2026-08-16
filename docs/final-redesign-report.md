@@ -161,7 +161,7 @@ Images have explicit dimensions, lower-page previews use lazy loading, no webfon
 ## 17. Preview Instructions
 
 ```bash
-cd /Users/andrejg/Documents/Codex/2026-07-18/ch/work/AndrejGlavnik.github.io
+cd AndrejGlavnik.github.io
 python3 -m http.server 4180 --bind 127.0.0.1
 ```
 

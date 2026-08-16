@@ -1,0 +1,21 @@
+run_date,asset_id,rule_name,severity,status,observed_value,threshold,affected_rows,owner
+2026-06-30,CAMPAIGN_SPEND,Unknown taxonomy rate,High,WARN,0.02,0.01,2,Marketing Operations
+2026-06-29,CAMPAIGN_SPEND,Unknown taxonomy rate,High,WARN,0.02,0.01,2,Marketing Operations
+2026-06-28,CAMPAIGN_SPEND,Unknown taxonomy rate,High,WARN,0.02,0.01,2,Marketing Operations
+2026-06-18,COMMERCE_ORDERS,Raw-to-dashboard variance,Critical,FAIL,0.021,0.005,1,Analytics Engineering
+2026-06-18,COMMERCE_ORDERS,Required type validity,High,WARN,4.0,0.0,4,Analytics Engineering
+2026-06-17,COMMERCE_ORDERS,Raw-to-dashboard variance,Critical,FAIL,0.021,0.005,1,Analytics Engineering
+2026-06-17,COMMERCE_ORDERS,Required type validity,High,WARN,4.0,0.0,4,Analytics Engineering
+2026-06-03,CRM_LEADS,Partition row coverage,Critical,FAIL,0.58,0.9,42,Revenue Analytics
+2026-06-03,CRM_LEADS,Raw-to-dashboard variance,Critical,FAIL,0.421,0.005,1,Revenue Analytics
+2026-06-03,CRM_LEADS,Freshness lag,High,WARN,520.0,240.0,1,Revenue Analytics
+2026-05-10,CAMPAIGN_SPEND,Raw-to-dashboard variance,Critical,FAIL,0.012,0.005,1,Marketing Operations
+2026-05-10,CAMPAIGN_SPEND,Unknown taxonomy rate,High,WARN,0.13,0.01,13,Marketing Operations
+2026-05-09,CAMPAIGN_SPEND,Raw-to-dashboard variance,Critical,FAIL,0.012,0.005,1,Marketing Operations
+2026-05-09,CAMPAIGN_SPEND,Unknown taxonomy rate,High,WARN,0.13,0.01,13,Marketing Operations
+2026-05-08,CAMPAIGN_SPEND,Raw-to-dashboard variance,Critical,FAIL,0.012,0.005,1,Marketing Operations
+2026-05-08,CAMPAIGN_SPEND,Unknown taxonomy rate,High,WARN,0.13,0.01,13,Marketing Operations
+2026-04-15,WEB_EVENTS,Business key uniqueness,Critical,FAIL,6.0,0.0,6,Web Analytics
+2026-04-15,WEB_EVENTS,Raw-to-dashboard variance,Critical,FAIL,0.037,0.005,1,Web Analytics
+2026-04-14,WEB_EVENTS,Business key uniqueness,Critical,FAIL,6.0,0.0,6,Web Analytics
+2026-04-14,WEB_EVENTS,Raw-to-dashboard variance,Critical,FAIL,0.037,0.005,1,Web Analytics

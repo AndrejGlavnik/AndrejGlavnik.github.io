@@ -1,0 +1,145 @@
+{
+  "synthetic": true,
+  "scenario_version": "reliability-v1",
+  "seed": 42002,
+  "snapshot_date": "2026-06-30",
+  "generated_at": "2026-06-30T18:00:00Z",
+  "generator": "scripts/build_analytics_projects.py",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 675,
+      "sha256": "10337cd4b3115e9d752585507f29aab9f618e8ac170bbe6ce7057c6dda303696"
+    },
+    {
+      "path": "artifact.json",
+      "bytes": 50478,
+      "sha256": "31c67f25ba038e7ad6b0a83ca6a810d66f6f40248fb59f563773e13ec39d4ac4"
+    },
+    {
+      "path": "data/curated/asset_quality.csv",
+      "bytes": 141,
+      "sha256": "2854a9afedd05469f35fa231fbc60333054958258ccfd696bea1b360537aad6c"
+    },
+    {
+      "path": "data/curated/dashboard-data.json",
+      "bytes": 11740,
+      "sha256": "4d90f95a0a7e72caca1fbb16c82bd1d6bd9f04c11c09c68867c05a8915e13813"
+    },
+    {
+      "path": "data/curated/failure_evidence.csv",
+      "bytes": 1937,
+      "sha256": "aeb271b5fb0cb928207159c1e881a39a6ebb6ee76b5611469432beddd129e48b"
+    },
+    {
+      "path": "data/curated/incident_causes.csv",
+      "bytes": 155,
+      "sha256": "d7efbdad3a7348bac1c0fb2d848daadc9163cf27dee7037cabe103c67becb9fc"
+    },
+    {
+      "path": "data/curated/reconciliation.csv",
+      "bytes": 169,
+      "sha256": "60e1381c47e734c64fff0d1bf34cf032a1ab7032d35638b98ac3518ed2692f1c"
+    },
+    {
+      "path": "data/curated/release_gate.csv",
+      "bytes": 443,
+      "sha256": "29f5539d4285bbe54f083dee91a519605d92735328aecf4800cec9fa0ee6085a"
+    },
+    {
+      "path": "data/curated/summary.csv",
+      "bytes": 190,
+      "sha256": "4cc0b5b1161f571eea1f02a157fa96f4c0dffdaaea71f1934c6a5f1958359780"
+    },
+    {
+      "path": "data/curated/summary.json",
+      "bytes": 231,
+      "sha256": "e518ebd9a77c4201c4fdc4ce0bfbcbfd6b931b4664d90f9e3ede77950912144e"
+    },
+    {
+      "path": "data/curated/weekly_quality.csv",
+      "bytes": 384,
+      "sha256": "b5af050fa2450d11e8d789ea006018e84d0ae0cd1a11fe3a307e3e24258d129e"
+    },
+    {
+      "path": "data/raw/change_requests.csv",
+      "bytes": 600,
+      "sha256": "cde462881133e52555e4c198855d5eb6b744d20e62faaa00379fca1160005bbf"
+    },
+    {
+      "path": "data/raw/incidents.csv",
+      "bytes": 712,
+      "sha256": "9c13a0c9af9186ce7289ca129f03ccf4eb236c9023a6005f9e90aa33851bb4b5"
+    },
+    {
+      "path": "data/raw/pipeline_runs.csv",
+      "bytes": 65899,
+      "sha256": "038f38b8479dd4f37e7e5df8e4a48084589f8aae67ccf3e8584057d04076ecef"
+    },
+    {
+      "path": "data/raw/quality_results.csv",
+      "bytes": 409110,
+      "sha256": "c0f968af5d3e375f1431a47e14a8b66cc334337bd7439bffa2c5a0c7a60ebc57"
+    },
+    {
+      "path": "data/raw/releases.csv",
+      "bytes": 549,
+      "sha256": "ff05d1537b049963c0921926a639a44d311b03420fd3dd0b6220d85286bb6a72"
+    },
+    {
+      "path": "data/raw/source_records.csv",
+      "bytes": 5704857,
+      "sha256": "7c8f4a75473cf811fd37a12317f80c68bde770b13bfe0ad91e6069ba88179194"
+    },
+    {
+      "path": "data/scenario-manifest.json",
+      "bytes": 1222,
+      "sha256": "1e89c6adf5800658c0038d341c8aa2db4bc6fd397632260581785ec855c870b8"
+    },
+    {
+      "path": "docs/data-contract.md",
+      "bytes": 410,
+      "sha256": "63b9cbe650ecfca19866d1af75828bee9c07fdcf970b3f172cbdf491b1cf0adb"
+    },
+    {
+      "path": "docs/data-dictionary.md",
+      "bytes": 458,
+      "sha256": "bb727a87d7f6789d47e93491f7f13af05818004843253d6d2770e75b186568c5"
+    },
+    {
+      "path": "docs/incident-postmortem.md",
+      "bytes": 348,
+      "sha256": "1149f82c047178d4961904bac3929b077acbcb9a062218ef47cc42dda2d4bcef"
+    },
+    {
+      "path": "docs/metric-dictionary.md",
+      "bytes": 665,
+      "sha256": "48be12a8ba18bfe8b6a0b55bb73492ad96f8623e32a56930a953ba31243eb242"
+    },
+    {
+      "path": "docs/qa-report.md",
+      "bytes": 368,
+      "sha256": "3c32caa41fad54d3f686526955af7ceb7ba9d75f02fa7861ecd18e5d11279fb4"
+    },
+    {
+      "path": "docs/release-checklist.md",
+      "bytes": 296,
+      "sha256": "4c5493da8445a70fbd1d8af5ad7da310e4ed28819338f2a5d4a86d726359e5c6"
+    },
+    {
+      "path": "notebooks/analysis.ipynb",
+      "bytes": 6322,
+      "sha256": "4ce022e0c7b923723b65abc2ee393082a1bdf10c86c8ea6ce836bfcc5f895dd5"
+    },
+    {
+      "path": "sql/analytics.sql",
+      "bytes": 4045,
+      "sha256": "93aac925df0ac0bb7591b0ee4650725780cbde028e444dc6a71621b86d8d6608"
+    },
+    {
+      "path": "sql/tests.sql",
+      "bytes": 1302,
+      "sha256": "d24e852ce59798986d74ca39dd3efcb4e933448d4c7cff299900ace5a0c3d993"
+    }
+  ]
+}

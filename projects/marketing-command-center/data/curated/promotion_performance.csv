@@ -1,0 +1,5 @@
+discount_band,discount_pct,incremental_profit_eur,promotion_investment_eur,promotion_roi,unit_uplift_pct
+10%,0.1,1783.49,7282.73,0.244893,0.453598
+15%,0.15,761.42,9660.68,0.078816,0.57823
+20%,0.2,185.82,12885.73,0.014421,0.715378
+30%,0.3,-7650.32,18405.75,-0.415648,0.545958

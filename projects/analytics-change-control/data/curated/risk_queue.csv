@@ -1,0 +1,6 @@
+account_id,account_risk_label,risk_order,fictional_account_name,segment,days_to_committed_go_live,readiness_rate,mapping_coverage,uat_pass_rate,recent_integration_success_rate,risk_status,risk_reason,next_action
+ACCT-058,ACCT-058 | RED | -8 days,1,Demo Account 58,SMB,-8,0.716667,0.666667,1.0,0.5,Red,Go-live ≤14 days with incomplete mapping or UAT,Run daily recovery plan with decision owner
+ACCT-059,ACCT-059 | RED | -2 days,1,Demo Account 59,SMB,-2,0.754167,0.666667,0.625,1.0,Red,Go-live ≤14 days with incomplete mapping or UAT,Run daily recovery plan with decision owner
+ACCT-057,ACCT-057 | RED | +2 days,1,Demo Account 57,Mid-Market,2,0.716667,0.666667,0.5,1.0,Red,Go-live ≤14 days with incomplete mapping or UAT,Run daily recovery plan with decision owner
+ACCT-055,ACCT-055 | AMBER | +16 days,2,Demo Account 55,Enterprise,16,0.8875,1.0,0.75,0.875,Amber,"Readiness, reliability or schedule guardrail at risk",Resolve blocker and re-baseline remaining milestones
+ACCT-060,ACCT-060 | AMBER | +40 days,2,Demo Account 60,Enterprise,40,0.2625,0.0,0.0,0.875,Amber,"Readiness, reliability or schedule guardrail at risk",Resolve blocker and re-baseline remaining milestones
