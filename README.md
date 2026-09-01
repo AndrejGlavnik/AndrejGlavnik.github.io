@@ -63,9 +63,15 @@ python3 scripts/validate_portfolio_data.py --project all
 
 The current release passes all 221 portfolio assertions across source integrity, calculations, SQL and notebook evidence, packaging, provenance, accessibility, and desktop/mobile browser verification.
 
-## Dependencies and licences
+## Licensing and dependencies
 
-The portfolio uses system fonts and first-party HTML, CSS, JavaScript, screenshots, and synthetic data. OpsDesk and SyncDesk vendor SheetJS Community Edition for spreadsheet export. Attribution and licence details are recorded in [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md).
+Licensing is intentionally scoped by material type:
+
+- First-party site, application, build, validation, SQL, and notebook code is available under the MIT License.
+- Portfolio and case-study prose, CVs, recommendation letters, photographs, previews, icons, logos, personal branding, synthetic data, and generated analytical outputs are Copyright (c) 2026 Andrej Glavnik, All Rights Reserved unless a file expressly states otherwise.
+- The vendored SheetJS Community Edition 0.20.3 browser build remains under Apache-2.0.
+
+See [`LICENSE.md`](LICENSE.md) for the exact first-party scope and MIT terms. See [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md) and [`LICENSES/Apache-2.0.txt`](LICENSES/Apache-2.0.txt) for SheetJS attribution and the complete Apache-2.0 text.
 
 ## Deployment
 
