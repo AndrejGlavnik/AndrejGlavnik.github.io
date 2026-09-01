@@ -36,6 +36,34 @@ PORTABLE_FAVICON = (
     '<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2016%2016%22%3E%3Crect%20width=%2216%22%20height=%2216%22%20rx=%223%22%20fill=%22%230d0d0d%22/%3E%3Ctext%20x=%228%22%20y=%2211.5%22%20text-anchor=%22middle%22%20font-size=%228%22%20fill=%22white%22%3EAG%3C/text%3E%3C/svg%3E" />'
 )
 
+DASHBOARD_EVIDENCE = {
+    "ga4-quality-monitor": {
+        "qa_path": "docs/qa-report.md",
+        "qa_label": "QA report",
+    },
+    "analytics-change-control": {
+        "qa_path": "docs/qa-report.md",
+        "qa_label": "QA report",
+    },
+    "marketing-command-center": {
+        "qa_path": "docs/methodology.md",
+        "qa_label": "Methodology",
+    },
+}
+
+DASHBOARD_EVIDENCE_STYLE = """
+.portfolio-evidence-nav{position:relative;z-index:100;display:flex;align-items:center;gap:16px;width:100%;padding:10px clamp(16px,3vw,32px);border-bottom:1px solid var(--portable-border);background:var(--portable-canvas);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.portfolio-evidence-nav>strong{flex:0 0 auto;color:var(--portable-muted);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.portfolio-evidence-links{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.portfolio-evidence-links a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 10px;border:1px solid var(--portable-border);border-radius:999px;background:var(--portable-surface);color:var(--portable-ink);font-size:12px;font-weight:600;line-height:1.25;text-align:center;text-decoration:none}
+.portfolio-evidence-links a:hover,.portfolio-evidence-links a:focus-visible{border-color:var(--portable-accent);color:var(--portable-accent)}
+.portfolio-evidence-links a:focus-visible{outline:2px solid var(--portable-accent);outline-offset:2px}
+.portfolio-evidence-links .portfolio-return-link{border-color:transparent;background:var(--portable-accent);color:#fff}
+.portfolio-evidence-links .portfolio-return-link:hover,.portfolio-evidence-links .portfolio-return-link:focus-visible{border-color:transparent;color:#fff;filter:brightness(.94)}
+@media screen and (max-width:760px){.portfolio-evidence-nav{align-items:stretch;flex-direction:column;gap:8px;padding:14px 16px}.portfolio-evidence-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.portfolio-evidence-links a{min-width:0;padding-inline:8px;overflow-wrap:anywhere}}
+@media print{.portfolio-evidence-nav{display:none!important}}
+""".strip()
+
 
 def discover_portable_builder():
     """Resolve the canonical builder without embedding a workstation path."""
@@ -240,6 +268,62 @@ def artifact_source(source_id, label, sql, tables, definitions, source_path, fil
     }
 
 
+def add_dashboard_evidence_navigation(project_dir: Path, html: str):
+    """Add durable portfolio and source links to a generated dashboard."""
+    project_slug = project_dir.name
+    config = DASHBOARD_EVIDENCE.get(project_slug)
+    if config is None:
+        raise KeyError(f"Dashboard evidence configuration missing for {project_slug}")
+
+    github_project = (
+        "https://github.com/AndrejGlavnik/AndrejGlavnik.github.io/"
+        f"tree/main/projects/{project_slug}"
+    )
+    github_blob = (
+        "https://github.com/AndrejGlavnik/AndrejGlavnik.github.io/"
+        f"blob/main/projects/{project_slug}"
+    )
+    links = [
+        ("← Portfolio", "../../#builds", False, "portfolio-return-link"),
+        ("Case study / README", f"{github_blob}/README.md", True, ""),
+        ("GitHub", github_project, True, ""),
+        ("SQL", f"{github_blob}/sql/analytics.sql", True, ""),
+        ("Notebook", f"{github_blob}/notebooks/analysis.ipynb", True, ""),
+        ("Data dictionary", f"{github_blob}/docs/data-dictionary.md", True, ""),
+        (config["qa_label"], f"{github_blob}/{config['qa_path']}", True, ""),
+        ("Reproduce", f"{github_blob}/README.md#reproduce", True, ""),
+    ]
+    anchor_html = []
+    for label, href, external, class_name in links:
+        class_attribute = f' class="{class_name}"' if class_name else ""
+        external_attributes = (
+            ' target="_blank" rel="noopener"'
+            f' aria-label="{label} (opens in a new tab)"'
+            if external else ""
+        )
+        anchor_html.append(
+            f'<a{class_attribute} href="{href}"{external_attributes}>{label}</a>'
+        )
+    navigation = (
+        '<nav class="portfolio-evidence-nav" '
+        'aria-label="Project evidence and navigation">'
+        '<strong>Project evidence</strong>'
+        f'<div class="portfolio-evidence-links">{"".join(anchor_html)}</div>'
+        '</nav>'
+    )
+
+    style_marker = "</style>"
+    body_marker = "<body>"
+    if style_marker not in html or body_marker not in html:
+        raise RuntimeError(f"Portable HTML injection markers missing: {project_dir}")
+    html = html.replace(
+        style_marker,
+        f"\n{DASHBOARD_EVIDENCE_STYLE}\n{style_marker}",
+        1,
+    )
+    return html.replace(body_marker, f"{body_marker}\n{navigation}", 1)
+
+
 def build_artifact(project_dir: Path, manifest, datasets, sources):
     payload = {
         "surface": "dashboard",
@@ -299,7 +383,8 @@ def build_artifact(project_dir: Path, manifest, datasets, sources):
         if head_marker not in html:
             raise RuntimeError(f"Portable HTML head marker missing: {html_path}")
         html = html.replace(head_marker, f"{head_marker}\n{PORTABLE_FAVICON}", 1)
-        html_path.write_text(html, encoding="utf-8")
+    html = add_dashboard_evidence_navigation(project_dir, html)
+    html_path.write_text(html, encoding="utf-8")
     receipt = json.loads(result.stdout)
     receipt["html"] = html_path.relative_to(ROOT).as_posix()
     receipt["delivery_attempts"] = attempts
